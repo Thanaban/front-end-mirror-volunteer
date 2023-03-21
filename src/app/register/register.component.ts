@@ -1,20 +1,43 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss'],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: {showError: true},
+    },
+  ],
+
 })
 export class RegisterComponent implements OnInit {
   form: any = {
-    username: null,
     email: null,
-    password: null
+    password: null,
+    name: null,
+    lastname: null,
+    nickname: null,
+    birthday: null,
+    gender: null,
+    religion: null,
+    phoneNumber: null,
+    career: null,
+    workplace: null,
+    congenitalDisease: null,
+    allergicFood: null,
+    talent: null,
+    know_from: null
   };
+  
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+
+  
 
   constructor(private authService: AuthService) { }
 
@@ -22,9 +45,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, email, password } = this.form;
+    const { email, password, name, lastname, nickname, birthday, gender, religion, phoneNumber, career, workplace, congenitalDisease, allergicFood, talent, know_from} = this.form;
 
-    this.authService.register(username, email, password).subscribe({
+    this.authService.register( email, password, name,lastname,nickname, birthday, gender, religion, phoneNumber, career, workplace, congenitalDisease, allergicFood, talent, know_from).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;

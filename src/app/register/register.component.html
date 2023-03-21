@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<!-- <div class="col-md-12">
   <div class="card card-container">
     <img
       id="profile-img"
@@ -85,5 +85,250 @@
     <div class="alert alert-success" *ngIf="isSuccessful">
       Your registration is successful!
     </div>
+  </div>
+</div> -->
+<!-- <div class="bg-register">
+  <div class="register-box">
+    <div class="image-holder">
+      <img src="../../assets/image/6.jpg">
+    </div>
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+    <div class="form-row">
+      <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          minlength="3"
+          maxlength="20"
+          #username="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          minlength="3"
+          maxlength="20"
+          #username="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && username.errors }"
+        />
+    </div>
+      
+    </form>
+  </div>
+</div> -->
+
+<div class="page-content">
+  <div class="form-v10-content">
+    <form 
+    class="form-detail"
+    *ngIf="!isSuccessful"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate>
+      <div class="form-left">
+        <h2>บัญชี</h2>
+        <div class="form-row">
+          <input 
+          type="email" 
+          name="email" 
+          [(ngModel)]="form.email"
+          #email="ngModel" 
+          class="input-text" 
+          placeholder="อีเมล" 
+          required>
+        </div>
+        <div class="form-row">
+          <input type="password" 
+          name="password"
+          [(ngModel)]="form.password"
+          #password="ngModel" 
+          class="input-text"  
+          placeholder="รหัสผ่าน" 
+          required>
+        </div>
+        <div class="form-row">
+          <input type="password" 
+          name="password"
+          class="input-text"  
+          placeholder="รหัสผ่านอีกครั้ง" 
+          required>
+        </div>
+      </div>
+      <div class="form-right">
+        <h2>ข้อมูลส่วนตัว</h2>
+        <div class="form-group">
+          <div class="form-row form-row-1">
+            <input 
+            type="text" 
+            name="name" 
+            [(ngModel)]="form.name"
+            #name="ngModel" 
+            class="input-text" 
+            placeholder="ชื่อ" 
+            required>
+          </div>
+          <div class="form-row form-row-2">
+            <input 
+            type="text" 
+            name="lastname" 
+            [(ngModel)]="form.lastname"
+            #firstname="ngModel" 
+            class="input-text" 
+            placeholder="นามสกุล" 
+            required>
+          </div>          
+        
+        </div>
+        <div class="form-group">
+          <div class="form-row form-row-1">
+            <input 
+            type="text" 
+            name="nickname" 
+            [(ngModel)]="form.nickname"
+            #nickname="ngModel" 
+            class="input-text" 
+            placeholder="ชื่อเล่น" 
+            required>          
+          </div>
+          <div class="form-row form-row-2">  
+            <input 
+            type="date" 
+            name="birthday" 
+            [(ngModel)]="form.birthday"
+            #birthday="ngModel" 
+            class="input-text" 
+            required>            
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row form-row-1">
+            <select 
+            name="gender" 
+            placeholder="เลือกเพศของท่าน"
+            [(ngModel)]="form.gender"
+            #gender="ngModel" >
+              <option value="ชาย">ชาย</option>
+              <option value="หญิง">หญิง</option>
+            </select>
+            <span class="select-btn">
+              <i class="zmdi zmdi-chevron-down"></i>
+            </span>          
+            </div>
+          <div class="form-row form-row-2">              
+            <input 
+            type="text" 
+            name="religion" 
+            [(ngModel)]="form.religion"
+            #religion="ngModel" 
+            class="input-text" 
+            placeholder="ศาสนา" 
+            required>
+          </div>
+        </div>
+        <div class="form-row">
+          <input 
+            type="text" 
+            name="phoneNumber" 
+            [(ngModel)]="form.phoneNumber"
+            #phoneNumber="ngModel" 
+            class="input-text" 
+            required  
+            placeholder="เบอร์โทรศัพท์">
+          </div>
+          <div class="form-group">
+            <div class="form-row form-row-1">
+              <input 
+                type="text" 
+                name="career" 
+                [(ngModel)]="form.career"
+                #career="ngModel" 
+                class="input-text" 
+                placeholder="อาชีพ" 
+                required>  
+            </div>
+            <div class="form-row form-row-2">
+              <input 
+                type="text" 
+                name="workplace" 
+                [(ngModel)]="form.workplace"
+                #workplace="ngModel" 
+                class="input-text" 
+                placeholder="สถานที่ทำงาน/สถานศึกษา" 
+                required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-row form-row-1">
+              <input 
+                type="text" 
+                name="congenitalDisease" 
+                [(ngModel)]="form.congenitalDisease"
+                #congenitalDisease="ngModel" 
+                class="input-text" 
+                placeholder="โรคประจำตัว" 
+                required>
+            </div>
+            <div class="form-row form-row-2">
+              <input 
+                type="text" 
+                name="allergicFood" 
+                [(ngModel)]="form.allergicFood"
+                #allergicFood="ngModel" 
+                class="input-text" 
+                placeholder="อาหารที่แพ้" 
+                required>
+            </div>
+          </div>
+          <div class="form-row">
+            <input 
+                type="text" 
+                name="talent" 
+                [(ngModel)]="form.talent"
+                #talent="ngModel" 
+                class="input-text" 
+                placeholder="ความสามารถพิเศษ" 
+                required>
+            </div>
+            <div class="form-row">
+              <select 
+              name="know_from" 
+              placeholder="ช่องทางที่รู้จักมูลนิธิกระจกเงา"
+              [(ngModel)]="form.know_from"
+              #know_from="ngModel">
+                <option value="" disabled="" selected="">ช่องทางที่รู้จักมูลนิธิกระจกเงา</option>
+                <option value="สื่อสิ่งพิมพ์">สื่อสิ่งพิมพ์</option>
+                <option value="สื่อทางวิทยุโทรทัศน์">สื่อทางวิทยุโทรทัศน์</option>
+                <option value="สื่อออนไลน์ Google Search">สื่อออนไลน์ Google Search</option>
+                <option value="บุคคลที่เคยมาร่วมกิจกรรมอาสา">บุคคลที่เคยมาร่วมกิจกรรมอาสา</option>
+                <option value="หน่วยงานหรือสังกัดที่เคยอาสา">หน่วยงานหรือสังกัดที่เคยอาสา</option>
+                <option value="เพื่อน/คนรู้จักแนะนำ">เพื่อน/คนรู้จักแนะนำ</option>
+                <option value="สื่อออนไลน์ Facebook">สื่อออนไลน์ Facebook</option>
+                <option value="สื่อออนไลน์ Twitter">สื่อออนไลน์ Twitter</option>
+                <option value="อื่นๆ">อื่นๆ</option>
+                </select>
+                <span class="select-btn">
+                <i class="zmdi zmdi-chevron-down"></i>
+                </span>               
+              </div>
+              <div class="form-row-last">
+                <input type="submit" name="register" class="register" value="ลงทะเบียน">
+                </div>
+      </div>
+        
+      
+      
+    </form>
   </div>
 </div>

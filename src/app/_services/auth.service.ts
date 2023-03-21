@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = 'http://localhost:8000/users/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -14,22 +14,10 @@ const httpOptions = {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string): Observable<any> {
+  login(email: string, password: string): Observable<any> {
     return this.http.post(
-      AUTH_API + 'signin',
+      AUTH_API + 'login',
       {
-        username,
-        password,
-      },
-      httpOptions
-    );
-  }
-
-  register(username: string, email: string, password: string): Observable<any> {
-    return this.http.post(
-      AUTH_API + 'signup',
-      {
-        username,
         email,
         password,
       },
@@ -37,7 +25,52 @@ export class AuthService {
     );
   }
 
+  register(
+    email: string, 
+    password: string, 
+    name:string,
+    lastname:string,
+    nickname:string,
+    birthday: Date,
+    gender: string,
+    religion: string,
+    phoneNumber: string,
+    career: string,
+    workplace: string,
+    congenitalDisease: string,
+    allergicFood: string,
+    talent: string,
+    know_from: string
+    ): Observable<any> {
+    return this.http.post(
+      AUTH_API + 'register',
+      {
+        email, 
+        password,
+        name, 
+        lastname, 
+        nickname, 
+        birthday, 
+        gender, 
+        religion, 
+        phoneNumber, 
+        career, 
+        workplace, 
+        congenitalDisease, 
+        allergicFood, 
+        talent, 
+        know_from
+      },
+      httpOptions
+    );
+  }
+
   logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'signout', { }, httpOptions);
+    return this.http.post(AUTH_API + 'logout', { }, httpOptions);
+    
+  }
+
+  refreshToken() {
+    return this.http.post(AUTH_API + 'refreshtoken', { }, httpOptions);
   }
 }

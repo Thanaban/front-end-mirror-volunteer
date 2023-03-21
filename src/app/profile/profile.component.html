@@ -1,21 +1,222 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<!-- <div class="container" *ngIf="currentUser; else loggedOut">
   <header class="jumbotron">
     <h3>
-      <strong>{{ currentUser.username }}</strong> Profile
+      <strong>{{ currentUser }}</strong> Profile
     </h3>
   </header>
   <p>
     <strong>Email:</strong>
     {{ currentUser.email }}
   </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
+  
 </div>
 
 <ng-template #loggedOut>
   Please login.
-</ng-template>
+</ng-template> -->
+<!-- <div class="container">
+{{currentUser}}
+{{currentUser.id }}
+{{currentUser.name }}
+{{currentUser.email}}
+</div> -->
+<!-- <ul>
+  <li  *ngFor="let v of currentUser">
+    {{v.name}}
+  </li>
+</ul> -->
+<div class="gutters-sm">
+  <div class="profile-box">
+    <div class="card mb-3">
+    <div class="profile-detail">
+      <div class="profile-left">
+        <div class="mt-3">
+          <img
+      id="profile-img"
+      src="../../assets/image/user1.png"
+      class="profile-img"
+    />
+          <h4>{{currentUser.name }}         {{currentUser.lastname }}</h4>
+          <p class="">สถานะ : {{currentUser.non_blacklist }} </p>
+        </div>
+      </div>
+      <div class="profile-right">
+        <div class="part1">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">ชื่อ</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.name }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">นามสกุล</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.lastname }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">ชื่อเล่น</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.nickname }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">เพศ</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.gender }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">วันเกิด</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.birthday }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">ศาสนา</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.religion }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-12">
+                <a class="btn btn-info "  href="">Edit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="part2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">อีเมล</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.email }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">เบอร์โทรศัพท์</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.phoneNumber }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">อาชีพ</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.career }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">สถานที่ทำงาน</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.workplace }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">โรคประจำตัว</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.congenitalDisease }}
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">อาหารที่แพ้</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                {{currentUser.allergicFood }}
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Full Name</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            Kenneth Valdez
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Email</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            fip@jukmuh.al
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Phone</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            (239) 816-9029
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Mobile</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            (320) 380-4539
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Address</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            Bay Area, San Francisco, CA
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-12">
+            <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->

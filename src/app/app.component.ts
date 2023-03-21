@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
 import { EventBusService } from './_shared/event-bus.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,13 +16,15 @@ export class AppComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
+  currentUser: any;
 
   eventBusSub?: Subscription;
 
   constructor(
     private storageService: StorageService,
     private authService: AuthService,
-    private eventBusService: EventBusService
+    private eventBusService: EventBusService,
+    private http:HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -30,11 +33,19 @@ export class AppComponent {
     if (this.isLoggedIn) {
       const user = this.storageService.getUser();
       this.roles = user.roles;
+      
+        // this.currentUser = this.storageService.getUser();
+        this.http.get('http://localhost:8000/users/user')
+        .subscribe(response => {
+          this.currentUser = response;
+          console.warn("result",response)
+        })
+      
 
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
-      this.username = user.username;
+      this.username = user.name;
     }
 
     this.eventBusSub = this.eventBusService.on('logout', () => {
@@ -55,4 +66,6 @@ export class AppComponent {
       }
     });
   }
+
+  
 }
