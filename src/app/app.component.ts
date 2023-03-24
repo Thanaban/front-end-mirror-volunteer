@@ -34,18 +34,20 @@ export class AppComponent {
       const user = this.storageService.getUser();
       this.roles = user.roles;
       
-        // this.currentUser = this.storageService.getUser();
+        this.currentUser = this.storageService.getUser();
         this.http.get('http://localhost:8000/users/user')
         .subscribe(response => {
           this.currentUser = response;
-          console.warn("result",response)
-        })
+          console.warn("result",this.currentUser)
+         })
+        console.warn(this.currentUser)
+        console.log(this.currentUser.id)
       
 
       // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
-      this.username = user.name;
+      // this.username = user.name;
     }
 
     this.eventBusSub = this.eventBusService.on('logout', () => {

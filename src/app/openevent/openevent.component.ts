@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Event_show } from './openevent-request-get';
+import {MatDialog} from '@angular/material/dialog';
+import { ModalEventComponent } from './modal-event/modal-event.component';
+import { JoinEventComponent } from './join-event/join-event.component';
+import { Observable } from 'rxjs';
+import { StorageService } from '../_services/storage.service';
+import { EventService } from '../_services/event.service';
 
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Component({
   selector: 'app-openevent',
@@ -11,22 +22,74 @@ import { Event_show } from './openevent-request-get';
 export class OpeneventComponent implements OnInit{
 
 
-
+  currentUser: any;
   eventlist: Event_show[]=[];
   event_open: any;
+  select_join_event: any;
+  currentUserID:any
 
-  constructor(private http:HttpClient,) { 
+  constructor(
+    private http:HttpClient,
+    public dialog: MatDialog,
+    private select_Event:EventService) { 
     
   }
 
   ngOnInit(): void {
     // this.currentUser = this.storageService.getUser();
-    this.http.get<Event_show[]>('http://localhost:8000/users/test')
+    this.http.get<Event_show[]>('http://localhost:8000/users/activities')
     .subscribe(response => {
       this.eventlist = response;
       console.warn("result",response)
     })
+    
+    this.http.get('http://localhost:8000/users/user')
+    .subscribe(response => {
+      this.currentUser = response;
+      console.warn("result",this.currentUser)
+      })
+  }
+  
+  openDialog() {
+    
+    this.dialog.open(ModalEventComponent);
+    
+  }
+  
+
+  openDialog2(currentEventID:number,currentUserID:number) {
+    
+    
+
+    let data = {currentEventID,currentUserID};
+    localStorage.setItem('KUY',JSON.stringify(data))
+
+    console.warn(
+      'ID event:'+currentEventID,
+      'ID user:'+this.currentUser.id);
+    
+    this.dialog.open(JoinEventComponent);
+    this.http.get('http://localhost:8000/activities/'+(currentEventID))
+    .subscribe(response => {
+      console.warn("result",response)
+    })
+  
+    // return this.http.post('http://localhost:8000/users/dateAc2',{})
+  }
+  
+  join_event(activityId: number, userId: number,date: Date): Observable<any> {
+    return this.http.post('http://localhost:8000/users/dateAc2',
+      {
+        activityId,
+        userId,
+        date
+      },
+      httpOptions
+    );
   }
 
-  
+  // update2(i: any){
+  //   console.log(i);
+  // }
+
 }

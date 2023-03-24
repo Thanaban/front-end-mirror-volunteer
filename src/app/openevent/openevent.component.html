@@ -5,11 +5,11 @@
         <label for="tab-1" class="tab-label">แนะนำ</label>
         <div class="tab-content">
           
-          <div *ngFor="let event of eventlist ">
+          <div *ngFor="let event of eventlist,let i = index ">
             
-            <div class="event-box">
+            <div class="event-box" >
               
-              <div class="event-box-left">
+              <div class="event-box-left" id="id_event{{i}}">
               <img src="../../assets/image/14.jpg" style="width: 100%; border-top-left-radius: 10px;
               border-bottom-left-radius: 10px;">
             </div>
@@ -18,11 +18,13 @@
                 กิจกรรม : {{event.activity_name}}<br>
                 รายละเอียด : {{event.activity_details}}<br>
                 จำนวนผู้เข้าร่วม : {{event.regised_number}}/{{event.size_number}}
+                
               </div>
               <br>
               <div class="text-event-bottom">
-                <app-event-dialog></app-event-dialog>
-                <a routerLink="/r" routerLinkActive="active">ดูรายละเอียดเพิ่มเติม</a>
+                <button mat-button (click)="openDialog()" style="background-color: #EE4266;color: rgb(255, 255, 255);">ดูรายละเอียดเพิ่มเติม</button>
+                <button mat-button (click)="openDialog2(event.id,currentUser.id)" style="background-color: #27A644;color: rgb(255, 255, 255);">สมัครเข้าร่วม</button>
+
               </div>
               
             </div>
@@ -44,6 +46,8 @@
         <div class="tab-content">When I left Mr. Bates, I went down to my father: where, by the assistance of him and my uncle John, and some other relations, I got forty pounds, and a promise of thirty pounds a year to maintain me at Leyden: there I studied physic two years and seven months, knowing it would be useful in long voyages.</div>
       </div>
     </div>
-    <p>Example line outside of tab box</p>
+    
   </div>
-  <!-- <button mat-button (click)="openDialog()">Open dialog</button> -->
+
+
+  

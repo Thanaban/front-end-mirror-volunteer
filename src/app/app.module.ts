@@ -16,6 +16,9 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { OpeneventComponent } from './openevent/openevent.component';
 import { OpeneventModule } from './openevent/openevent.module';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalEventComponent } from './openevent/modal-event/modal-event.component';
+import { JoinEventComponent } from './openevent/join-event/join-event.component';
 
 
 @NgModule({
@@ -28,9 +31,12 @@ import { OpeneventModule } from './openevent/openevent.module';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
+    JoinEventComponent
     
     
-    
+  ],
+  entryComponents:[
+    ModalEventComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,8 @@ import { OpeneventModule } from './openevent/openevent.module';
     FormsModule,
     HttpClientModule,
     CommonModule,
-    OpeneventModule
+    
+    MatDialogModule
     
   ],
   providers: [httpInterceptorProviders],

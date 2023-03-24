@@ -1,0 +1,23 @@
+
+
+  <h2 mat-dialog-title>เลือกวันที่เข้าร่วม</h2>
+  <mat-dialog-content class="mat-typography">
+    <form 
+    class="form-detail"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate>
+    <input 
+  type="date" 
+  name="birthday" 
+  [(ngModel)]="form.date"
+  #date="ngModel" 
+  required>  
+  <input type="submit" name="register" class="register" value="ลงทะเบียน">
+    </form>
+    
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>ปิดหน้านี้</button>
+  </mat-dialog-actions>

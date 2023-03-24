@@ -7,18 +7,22 @@ import { OpeneventRoutingModule } from './openevent-routing.module';
 import { OpeneventComponent } from './openevent.component';
 
 import { BrowserModule } from '@angular/platform-browser';
-import { EventDialogComponent } from './event-dialog/event-dialog.component'
+import { ModalEventComponent } from './modal-event/modal-event.component';
+
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
     OpeneventComponent,
-    EventDialogComponent
+    ModalEventComponent,
+    
   ],
   imports: [
     CommonModule,
     OpeneventRoutingModule,
     BrowserModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class OpeneventModule { }
