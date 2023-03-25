@@ -83,7 +83,7 @@
     text-align: left;
     font-size: 20px;
     color: black;
-    
+
 }
 
 .detail-container .detail-container-body .body-pl .detail-text-left-container .detail-text .detail-text-right{
@@ -91,6 +91,12 @@
     text-align: left;
     font-size: 20px;
     color: black;
-    
-    
+}
+
+.detail-container .detail-container-body .body-pl .detail-text-left-container .detail-text .timeline-left{
+    width: 50%;
+    text-align: left;
+    font-size: 20px;
+    color: black;
+
 }
