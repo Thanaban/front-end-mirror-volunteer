@@ -27,17 +27,9 @@ export class JoinEventComponent implements OnInit{
 
   ngOnInit(): void {
     
-    let data:any = localStorage.getItem('KUY');
+    let data:any = localStorage.getItem('EVENT');
     this.join_event = JSON.parse(data);
     console.log(this.join_event.currentEventID,this.join_event.currentUserID)
-    
-    // this.currentUser = this.storageService.getUser();
-    // this.http.get<Event_show[]>('http://localhost:8000/activities/1')
-    // .subscribe(response => {
-    //   this.eventlist1 = response;
-    //   console.warn("result",response)
-    // })
-    
   }
 
   onSubmit(): void {
@@ -49,6 +41,7 @@ export class JoinEventComponent implements OnInit{
       },
     
     });
+    localStorage.removeItem('EVENT');
   }
   
 }

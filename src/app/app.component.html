@@ -3,7 +3,7 @@
     
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">หน้าแรก </a>
+        <button  class="btn" routerLink="home"><img src="../assets/image/logo.jpg" width="30" height="30">หน้าแรก </button>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
@@ -11,7 +11,7 @@
     </ul>
     <ul class="navbar-nav " *ngIf="isLoggedIn">
       <li class="nav-item" >
-        <a href="/openevent" class="nav-link" *ngIf="isLoggedIn" routerLink="openevent">กิจกรรมอาสา</a>
+        <button class="btn" *ngIf="isLoggedIn" routerLink="openevent">กิจกรรมอาสา</button>
       </li>
       
     </ul>
@@ -21,14 +21,17 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a href="/profile" class="nav-link" routerLink="profile">{{currentUser.name}}</a>
-      </li>
+      </li> -->
       <li class="nav-item">
+        <button mat-button [matMenuTriggerFor]="menu" class="btn">{{currentUser.name}}<i class="fa fa-bars" style="margin-left: 0.7rem;"></i></button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="profile">ข้อมูลบัญชี</button>
+            <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
+          </mat-menu>
       </li>
-      <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">ออกจากระบบ</a>
-      </li>
+      
     </ul>
   </nav>
 

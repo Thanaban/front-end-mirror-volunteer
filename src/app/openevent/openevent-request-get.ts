@@ -12,4 +12,6 @@ export interface Event_show {
   createdAt: string;
   updatedAt: string;
   userActivities: any[];
+  picture?: string;
+  priority?: number;
 }

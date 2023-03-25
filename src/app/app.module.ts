@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
@@ -19,6 +20,12 @@ import { OpeneventModule } from './openevent/openevent.module';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ModalEventComponent } from './openevent/modal-event/modal-event.component';
 import { JoinEventComponent } from './openevent/join-event/join-event.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCommonModule} from '@angular/material/core';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 @NgModule({
@@ -31,9 +38,8 @@ import { JoinEventComponent } from './openevent/join-event/join-event.component'
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    JoinEventComponent
-    
-    
+    JoinEventComponent,
+    ModalEventComponent
   ],
   entryComponents:[
     ModalEventComponent
@@ -44,9 +50,13 @@ import { JoinEventComponent } from './openevent/join-event/join-event.component'
     FormsModule,
     HttpClientModule,
     CommonModule,
-    
-    MatDialogModule
-    
+    MatMenuModule,
+    MatDialogModule,
+    MatCommonModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

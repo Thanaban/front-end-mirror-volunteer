@@ -5,8 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { ModalEventComponent } from './modal-event/modal-event.component';
 import { JoinEventComponent } from './join-event/join-event.component';
 import { Observable } from 'rxjs';
-import { StorageService } from '../_services/storage.service';
-import { EventService } from '../_services/event.service';
+
 
 
 
@@ -31,7 +30,7 @@ export class OpeneventComponent implements OnInit{
   constructor(
     private http:HttpClient,
     public dialog: MatDialog,
-    private select_Event:EventService) { 
+    ) { 
     
   }
 
@@ -62,14 +61,14 @@ export class OpeneventComponent implements OnInit{
     
 
     let data = {currentEventID,currentUserID};
-    localStorage.setItem('KUY',JSON.stringify(data))
+    localStorage.setItem('EVENT',JSON.stringify(data))
 
     console.warn(
       'ID event:'+currentEventID,
       'ID user:'+this.currentUser.id);
     
     this.dialog.open(JoinEventComponent);
-    this.http.get('http://localhost:8000/activities/'+(currentEventID))
+    this.http.get('http://localhost:8000/activities/getoneid/'+(currentEventID))
     .subscribe(response => {
       console.warn("result",response)
     })

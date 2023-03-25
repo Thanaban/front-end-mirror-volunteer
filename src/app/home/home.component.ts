@@ -8,12 +8,17 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
   content?: string;
+  
 
   constructor(private userService: UserService) { 
     
   }
+  reloadPage(): void {
+    window.location.reload();
+  }
 
   ngOnInit(): void {
+  
     this.userService.getPublicContent().subscribe({
       next: data => {
         this.content = data;
@@ -32,4 +37,5 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+  
 }

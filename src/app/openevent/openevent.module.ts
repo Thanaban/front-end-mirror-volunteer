@@ -14,7 +14,7 @@ import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     OpeneventComponent,
-    ModalEventComponent,
+    
     
   ],
   imports: [

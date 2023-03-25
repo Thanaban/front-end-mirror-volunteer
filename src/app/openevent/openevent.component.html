@@ -10,15 +10,13 @@
             <div class="event-box" >
               
               <div class="event-box-left" id="id_event{{i}}">
-              <img src="../../assets/image/14.jpg" style="width: 100%; border-top-left-radius: 10px;
+              <img src={{event.picture}} style="width: 100%; border-top-left-radius: 10px;
               border-bottom-left-radius: 10px;">
             </div>
             <div class="event-box-right">
               <div class="text-event">
                 กิจกรรม : {{event.activity_name}}<br>
-                รายละเอียด : {{event.activity_details}}<br>
-                จำนวนผู้เข้าร่วม : {{event.regised_number}}/{{event.size_number}}
-                
+                จำกัดผู้เข้าร่วมวันละ : {{event.size_number}} คน
               </div>
               <br>
               <div class="text-event-bottom">
