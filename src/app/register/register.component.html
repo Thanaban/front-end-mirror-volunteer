@@ -154,13 +154,17 @@
           name="password"
           [(ngModel)]="form.password"
           #password="ngModel" 
-          class="input-text"  
+          class="password"  
           placeholder="รหัสผ่าน" 
-          required>
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+          required/>
+          <span></span>
         </div>
         <div class="form-row">
           <input type="password" 
-          name="password"
+          name="verifypassword"
+          [(ngModel)]="form.confirmPassword"
+          #confirmPassword="ngModel"
           class="input-text"  
           placeholder="รหัสผ่านอีกครั้ง" 
           required>
@@ -170,39 +174,48 @@
         <h2>ข้อมูลส่วนตัว</h2>
         <div class="form-group">
           <div class="form-row form-row-1">
+            <div></div>
+            <label htmlFor='name'>ชื่อ</label>
             <input 
             type="text" 
             name="name" 
             [(ngModel)]="form.name"
             #name="ngModel" 
-            class="input-text" 
+            class="name" 
             placeholder="ชื่อ" 
             required>
+            <span></span>
           </div>
+          
           <div class="form-row form-row-2">
+            <label htmlFor='lastname'>นามสกุล</label>
             <input 
             type="text" 
             name="lastname" 
             [(ngModel)]="form.lastname"
             #firstname="ngModel" 
-            class="input-text" 
+            class="lastname" 
             placeholder="นามสกุล" 
             required>
+            <span></span>
           </div>          
         
         </div>
         <div class="form-group">
           <div class="form-row form-row-1">
+            <label htmlFor='nickname'>ชื่อเล่น</label>
             <input 
             type="text" 
             name="nickname" 
             [(ngModel)]="form.nickname"
             #nickname="ngModel" 
-            class="input-text" 
+            class="nickname" 
             placeholder="ชื่อเล่น" 
-            required>          
+            required>   
+            <span></span>       
           </div>
           <div class="form-row form-row-2">  
+            <label htmlFor='birthday'>วันเกิด</label>
             <input 
             type="date" 
             name="birthday" 
@@ -214,9 +227,10 @@
         </div>
         <div class="form-group">
           <div class="form-row form-row-1">
+            <label htmlFor='gender'>เพศ</label>
             <select 
             name="gender" 
-            placeholder="เลือกเพศของท่าน"
+            placeholer="เลือกเพศของท่าน"
             [(ngModel)]="form.gender"
             #gender="ngModel" >
               <option value="ชาย">ชาย</option>
@@ -226,7 +240,8 @@
               <i class="zmdi zmdi-chevron-down"></i>
             </span>          
             </div>
-          <div class="form-row form-row-2">              
+          <div class="form-row form-row-2">      
+            <label htmlFor='religion'>ศาสนา</label>        
             <input 
             type="text" 
             name="religion" 
@@ -238,6 +253,7 @@
           </div>
         </div>
         <div class="form-row">
+          <label htmlFor='phoneNumber'>เบอร์โทรศัพท์</label>        
           <input 
             type="text" 
             name="phoneNumber" 
@@ -249,6 +265,7 @@
           </div>
           <div class="form-group">
             <div class="form-row form-row-1">
+              <label htmlFor='career'>อาชีพ</label>
               <input 
                 type="text" 
                 name="career" 
@@ -259,6 +276,7 @@
                 required>  
             </div>
             <div class="form-row form-row-2">
+              <label htmlFor='workplace'>สถานที่ทำงาน/สถานศึกษา</label>
               <input 
                 type="text" 
                 name="workplace" 
@@ -271,6 +289,7 @@
           </div>
           <div class="form-group">
             <div class="form-row form-row-1">
+              <label htmlFor='congenitalDisease'>โรคประจำตัว</label>
               <input 
                 type="text" 
                 name="congenitalDisease" 
@@ -281,6 +300,7 @@
                 required>
             </div>
             <div class="form-row form-row-2">
+              <label htmlFor='allergicFood'>อาหารที่แพ้</label>
               <input 
                 type="text" 
                 name="allergicFood" 
@@ -288,10 +308,11 @@
                 #allergicFood="ngModel" 
                 class="input-text" 
                 placeholder="อาหารที่แพ้" 
-                required>
+                >
             </div>
           </div>
           <div class="form-row">
+            <label htmlFor='talent'>ความสามารถพิเศษ</label>
             <input 
                 type="text" 
                 name="talent" 
@@ -299,10 +320,12 @@
                 #talent="ngModel" 
                 class="input-text" 
                 placeholder="ความสามารถพิเศษ" 
-                required>
+                >
             </div>
             <div class="form-row">
-              <select 
+                
+                <label htmlFor="know_form">ช่องทางที่รู้จักมูลนิธิกระจกเงา</label>
+                <select 
               name="know_from" 
               placeholder="ช่องทางที่รู้จักมูลนิธิกระจกเงา"
               [(ngModel)]="form.know_from"
@@ -325,6 +348,7 @@
               <div class="form-row-last">
                 <input type="submit" name="register" class="register" value="ลงทะเบียน">
                 </div>
+                
       </div>
         
       

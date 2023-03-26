@@ -2,6 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 
+
+const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+const nameRegex: RegExp = /^[ก-๏a-zA-Z\s]+$/;
+const phoneRegex: RegExp = /^[0]{1}[6,8,9]{1}[0-9]{8}/;
+
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,6 +26,7 @@ export class RegisterComponent implements OnInit {
   form: any = {
     email: null,
     password: null,
+    confirmPassword:null,
     name: null,
     lastname: null,
     nickname: null,
@@ -45,18 +54,38 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { email, password, name, lastname, nickname, birthday, gender, religion, phoneNumber, career, workplace, congenitalDisease, allergicFood, talent, know_from} = this.form;
+    const { email, password,confirmPassword, name, lastname, nickname, birthday, gender, religion, phoneNumber, career, workplace, congenitalDisease, allergicFood, talent, know_from} = this.form;
+    if (emailRegex.test(email) == false) {
+      alert('กรุณาใส่รูปแบบอีเมลล์ให้ถูกต้อง')
+    } else if (passwordRegex.test(password) == false) {
+      alert('พาสเวิดต้องประกอบด้วะ')
+    } else if (password !== confirmPassword) {
+      alert('รหัสผ่านไม่ตรงกันจย้่ส')
+    } else if (nameRegex.test(name) == false ) {
+      alert('ใส่ชื่อไม่ถุกจ้า')
+    } else if (nameRegex.test(lastname) == false) {
+      alert('นามสกุลก็ไม่ได้เป่า')
+    } else if (nameRegex.test(nickname) == false ) {
+      alert('ชื่อเล่นกะผิด')
+    } else if (phoneRegex.test(phoneNumber) == false) {
+      alert('เบอร์ผิด')
+    }
+   
 
-    this.authService.register( email, password, name,lastname,nickname, birthday, gender, religion, phoneNumber, career, workplace, congenitalDisease, allergicFood, talent, know_from).subscribe({
+    else {
+      this.authService.register( email, password ,name,lastname,nickname, birthday, gender, religion, phoneNumber, career, workplace, congenitalDisease, allergicFood, talent, know_from).subscribe({
       next: data => {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },
       error: err => {
+        alert('มีอีเมลล์นี้ในระบบแร้วน้า')
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
       }
     });
+    }
+    
   }
 }

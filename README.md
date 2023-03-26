@@ -1,5 +1,5 @@
 # Angular 15 JWT Authentication & Authorization example with Rest API
-
+Mind is here
 Build Angular 15 JWT Authentication & Authorization example with Rest Api, HttpOnly Cookie and JWT (including HttpInterceptor, Router & Form Validation).
 - JWT Authentication Flow for User Registration (Signup) & User Login
 - Project Structure with HttpInterceptor, Router
