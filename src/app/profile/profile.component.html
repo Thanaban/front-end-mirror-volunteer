@@ -37,7 +37,10 @@
       class="profile-img"
     />
           <h4>{{currentUser.name }}         {{currentUser.lastname }}</h4>
-          <p class="">สถานะ : {{currentUser.non_blacklist }} </p>
+          <p class="">สถานะ : {{currentUser.non_blacklist }} <br>
+            เวลาการเข้าร่วม : {{currentUser.received_hours }} ชั่วโมง
+
+          </p>
         </div>
       </div>
       <div class="profile-right">
@@ -165,58 +168,24 @@
       </div>
     </div>
   </div>
-    <!-- <div class="card mb-3">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Full Name</h6>
+  <div class="wrapper">
+    <div class="tabs">
+      <div class="tab">
+        <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+        <label for="tab-1" class="tab-label">ตรวจสอบกิจกรรม</label>
+        <div class="tab-content">
+         
+          <div *ngFor="let x of check_activity ">
+            {{x.activityId}}
           </div>
-          <div class="col-sm-9 text-secondary">
-            Kenneth Valdez
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Email</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            fip@jukmuh.al
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Phone</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            (239) 816-9029
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Mobile</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            (320) 380-4539
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-3">
-            <h6 class="mb-0">Address</h6>
-          </div>
-          <div class="col-sm-9 text-secondary">
-            Bay Area, San Francisco, CA
-          </div>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-sm-12">
-            <a class="btn btn-info " target="__blank" href="https://www.bootdey.com/snippets/view/profile-edit-data-and-skills">Edit</a>
-          </div>
+          
         </div>
       </div>
+      <div class="tab">
+        <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
+        <label for="tab-2" class="tab-label">ประวัติการเข้าร่วม</label>
+        <div class="tab-content"> </div>
+      </div>
     </div>
-  </div> -->
+    
+  </div>

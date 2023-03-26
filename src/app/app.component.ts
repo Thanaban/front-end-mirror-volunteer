@@ -40,10 +40,10 @@ export class AppComponent {
         this.http.get('http://localhost:8000/users/user')
         .subscribe(response => {
           this.currentUser = response;
-          console.warn("result",this.currentUser)
+          // console.warn("result",this.currentUser)
          })
-        console.warn(this.currentUser)
-        console.log(this.currentUser.id)
+        // console.warn(this.currentUser)
+        // console.log(this.currentUser.id)
       
 
       // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');

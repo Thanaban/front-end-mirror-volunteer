@@ -14,4 +14,6 @@ export interface User_show{
     talent?: string,
     know_from?: string,
     non_blacklist?: boolean
+    received_hours?: number;
+
 }
