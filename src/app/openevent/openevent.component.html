@@ -18,14 +18,19 @@
                 กิจกรรม : {{event.activity_name}}<br>
                 จำกัดผู้เข้าร่วมวันละ : {{event.size_number}} คน
               </div>
-              <br>
               <div class="text-event-bottom">
-                <button mat-button (click)="openDialog()" style="background-color: #EE4266;color: rgb(255, 255, 255);">ดูรายละเอียดเพิ่มเติม</button>
-                <button mat-button (click)="openDialog2(event.id,currentUser.id)" style="background-color: #27A644;color: rgb(255, 255, 255);">สมัครเข้าร่วม</button>
-
+                <div class="row">
+                  <div class="button-left">
+                    <button mat-button (click)="openDialog()" style="background-color: #EE4266;color: rgb(255, 255, 255);">ดูรายละเอียดเพิ่มเติม</button>
+                  </div>
+                  <div class="button-right">
+                    <button mat-button (click)="openDialog2(event.id,event.activity_name,currentUser.id,currentUser.name)" style="background-color: #27A644;color: rgb(255, 255, 255);">สมัครเข้าร่วม</button>
+                  </div>
+                </div>
               </div>
               
             </div>
+            
           </div>
           
         

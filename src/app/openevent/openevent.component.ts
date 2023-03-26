@@ -26,6 +26,7 @@ export class OpeneventComponent implements OnInit{
   event_open: any;
   select_join_event: any;
   currentUserID:any
+  currentUserName:any
 
   constructor(
     private http:HttpClient,
@@ -56,11 +57,11 @@ export class OpeneventComponent implements OnInit{
   }
   
 
-  openDialog2(currentEventID:number,currentUserID:number) {
+  openDialog2(currentEventID:number,currentEventName:string,currentUserID:number,currentUserName:string) {
     
     
 
-    let data = {currentEventID,currentUserID};
+    let data = {currentEventID,currentEventName,currentUserID,currentUserName};
     localStorage.setItem('EVENT',JSON.stringify(data))
 
     console.warn(

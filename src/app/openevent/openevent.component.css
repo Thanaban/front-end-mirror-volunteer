@@ -1,5 +1,5 @@
 .wrapper {
-    max-width: 60%;
+    max-width: 50%;
     width: 100%;
     margin: 0 auto;
     
@@ -92,7 +92,7 @@
   height: 100%;
   width: 50%;
   /* background-color: #2c3e50; */
-  display: block;
+ 
 }
 
 .event-box .event-box-right .text-event{
@@ -102,15 +102,32 @@
   font-size: 20px;
   width: 100%;
   display: flex;
+  
 }
 
 .event-box .event-box-right .text-event-bottom{
+  margin-top: 16rem;
   height:  10%;
-  margin-left: 6%;
+  margin-left: 4%;
   font-size: 14px;
   width: 100%;
+  
+}
+
+.event-box .event-box-right .text-event-bottom .button-left{
+  text-align: center;
+  height:  100%;
+  width: 50%;
   padding-bottom: 4%;
 }
+
+.event-box .event-box-right .text-event-bottom .button-right{
+  text-align: center;
+  height:  100%;
+  width: 50%;
+  padding-bottom: 4%;
+}
+
 
 .modal {
   display: none; /* Hidden by default */

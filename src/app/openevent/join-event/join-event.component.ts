@@ -29,7 +29,7 @@ export class JoinEventComponent implements OnInit{
     
     let data:any = localStorage.getItem('EVENT');
     this.join_event = JSON.parse(data);
-    console.log(this.join_event.currentEventID,this.join_event.currentUserID)
+    console.log(this.join_event.currentEventID,this.join_event.currentEventName,this.join_event.currentUserID,this.join_event.currentUserName)
   }
 
   onSubmit(): void {
@@ -43,5 +43,7 @@ export class JoinEventComponent implements OnInit{
     });
     localStorage.removeItem('EVENT');
   }
+
+  
   
 }

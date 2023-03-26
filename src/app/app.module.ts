@@ -25,6 +25,8 @@ import {MatCommonModule} from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
+import { GoogleMapsModule } from '@angular/google-maps'
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -56,7 +58,9 @@ import {MatDividerModule} from '@angular/material/divider';
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
-    MatDividerModule
+    MatDividerModule,
+    GoogleMapsModule,
+    MatButtonModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
