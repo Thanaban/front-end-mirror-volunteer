@@ -28,6 +28,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { GoogleMapsModule } from '@angular/google-maps'
 import {MatButtonModule} from '@angular/material/button';
 import { DetailActivityComponent } from './profile/detail-activity/detail-activity.component';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
+import { ImageSliderModule } from './image-slider/image-slider.module';
 
 
 
@@ -43,7 +45,8 @@ import { DetailActivityComponent } from './profile/detail-activity/detail-activi
     BoardUserComponent,
     JoinEventComponent,
     ModalEventComponent,
-    DetailActivityComponent
+    DetailActivityComponent,
+    
   ],
   entryComponents:[
     ModalEventComponent
@@ -62,7 +65,8 @@ import { DetailActivityComponent } from './profile/detail-activity/detail-activi
     MatCardModule,
     MatDividerModule,
     GoogleMapsModule,
-    MatButtonModule
+    MatButtonModule,
+    ImageSliderModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

@@ -18,6 +18,10 @@ export class AppComponent {
   showModeratorBoard = false;
   username?: string;
   currentUser: any;
+  // slides = [
+  //   { url:"../../assets/image/1.jpg", title: '1'},
+  //   { url:"../../assets/image/2.jpg", title: '1'}
+  // ]
 
   eventBusSub?: Subscription;
 

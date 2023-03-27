@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { SlideInterface } from '../image-slider/slide.interface';
+
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,11 @@ import { UserService } from '../_services/user.service';
 })
 export class HomeComponent implements OnInit {
   content?: string;
-  
+  slides: SlideInterface[]= [
+    { url:"../../assets/image/2.jpg", title: '1'},
+    { url:"../../assets/image/3.jpg", title: '1'},
+    { url:"../../assets/image/4.jpg", title: '1'}
+  ]
 
   constructor(private userService: UserService) { 
     
@@ -37,5 +43,7 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+  
   
 }
