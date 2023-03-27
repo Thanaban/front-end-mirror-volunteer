@@ -27,6 +27,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import { GoogleMapsModule } from '@angular/google-maps'
 import {MatButtonModule} from '@angular/material/button';
+import { DetailActivityComponent } from './profile/detail-activity/detail-activity.component';
 
 
 
@@ -41,7 +42,8 @@ import {MatButtonModule} from '@angular/material/button';
     BoardModeratorComponent,
     BoardUserComponent,
     JoinEventComponent,
-    ModalEventComponent
+    ModalEventComponent,
+    DetailActivityComponent
   ],
   entryComponents:[
     ModalEventComponent

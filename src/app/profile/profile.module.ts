@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     BrowserModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class ProfileModule { }

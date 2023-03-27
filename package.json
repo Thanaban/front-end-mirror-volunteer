@@ -24,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@syncfusion/ej2-angular-popups": "^20.4.53",
     "bootstrap": "^4.6.2",
+    "primeflex": "^3.3.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

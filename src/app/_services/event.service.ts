@@ -23,4 +23,15 @@ export class EventService {
       httpOptions
     );
   }
+
+  cancel_activity(activityId: number, userId: number,date: Date): Observable<any> {
+    return this.http.patch('http://localhost:8000/users/cancel_activity',
+      {
+        activityId,
+        userId,
+        date
+      },
+      httpOptions
+    );
+  }
 }

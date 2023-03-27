@@ -33,14 +33,15 @@ export class AppComponent {
     this.isLoggedIn = this.storageService.isLoggedIn();
 
     if (this.isLoggedIn) {
-      const user = this.storageService.getUser();
-      this.roles = user.roles;
+      // const user = this.storageService.getUser();
+      // this.roles = user.roles;
       
         this.currentUser = this.storageService.getUser();
         this.http.get('http://localhost:8000/users/user')
         .subscribe(response => {
           this.currentUser = response;
-          // console.warn("result",this.currentUser)
+          
+          console.warn("result",this.currentUser)
          })
         // console.warn(this.currentUser)
         // console.log(this.currentUser.id)

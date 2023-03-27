@@ -42,8 +42,11 @@ export class JoinEventComponent implements OnInit{
     
     });
     localStorage.removeItem('EVENT');
+    this.reloadPage();
   }
 
-  
+  reloadPage(): void {
+    window.location.reload();
+  }
   
 }
