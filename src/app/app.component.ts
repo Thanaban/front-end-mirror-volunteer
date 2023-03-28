@@ -14,10 +14,12 @@ import {Router} from '@angular/router'
 export class AppComponent {
   private roles: string[] = [];
   isLoggedIn = false;
+  isAdmin = false
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
   currentUser: any;
+  showFiller = false;
   // slides = [
   //   { url:"../../assets/image/1.jpg", title: '1'},
   //   { url:"../../assets/image/2.jpg", title: '1'}
@@ -35,6 +37,8 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
+    
+    
 
     if (this.isLoggedIn) {
       // const user = this.storageService.getUser();
@@ -44,9 +48,18 @@ export class AppComponent {
         this.http.get('http://localhost:8000/users/user')
         .subscribe(response => {
           this.currentUser = response;
-          
           console.warn("result",this.currentUser)
+          if (this.currentUser.admin){
+            this.isAdmin = this.currentUser.admin;
+            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',this.isAdmin)
+          }
+          else{
+            this.isAdmin = this.currentUser.admin;
+            console.warn('BBBBBBBBBBBBBBBBBBBBBBB',this.isAdmin)
+          }
          })
+
+        
         // console.warn(this.currentUser)
         // console.log(this.currentUser.id)
       

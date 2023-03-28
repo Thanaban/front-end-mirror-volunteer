@@ -12,8 +12,8 @@ export class HomeComponent implements OnInit {
   content?: string;
   slides: SlideInterface[]= [
     { url:"../../assets/image/2.jpg", title: '1'},
-    { url:"../../assets/image/3.jpg", title: '1'},
-    { url:"../../assets/image/4.jpg", title: '1'}
+    { url:"../../assets/image/5.jpg", title: '1'},
+    { url:"../../assets/image/14.jpg", title: '1'}
   ]
 
   constructor(private userService: UserService) { 

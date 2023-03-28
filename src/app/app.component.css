@@ -170,7 +170,221 @@
   background-color: #e4c500;
 }
 
+.brand {
+  font-weight: bold;
+  font-size: 20px; }
+
+.site-header {
+  position: relative;
+  background-color: #def7ff; }
+
+.site-header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+  @media (min-width: 660px) {
+    .site-header__wrapper {
+      padding-top: 0;
+      padding-bottom: 0; } }
+@media (max-width: 659px) {
+  .site-header__end {
+    padding-right: 4rem; } }
+
+@media (min-width: 660px) {
+  .nav__wrapper {
+    display: flex; } }
+
+@media (max-width: 659px) {
+  .nav__wrapper {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    background-color: #f1f7d9;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out; }
+    .nav__wrapper.active {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0); } }
+
+.nav__item a {
+  display: block;
+  padding: 1.5rem 1rem; }
+
+.nav__toggle {
+  display: none; }
+  @media (max-width: 659px) {
+    .nav__toggle {
+      display: block;
+      position: absolute;
+      right: 1rem;
+      top: 1rem; } }
+      
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+      .wrapper {
+        max-width: 1140px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+      
+      a {
+        text-decoration: none;
+        color: #222;
+      }
+      
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        
+      }
+      
+      body {
+        font-family: "Roboto", sans-serif;
+        
+      }
+      
+      .sr-only {
+        position: absolute;
+        clip: rect(1px, 1px, 1px, 1px);
+        padding: 0;
+        border: 0;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+      }
+      
+      .button2 {
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+        color: #fff;
+        background-color: #2fa0f6;
+        min-width: 120px;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-align: center;
+      }
+      
+      .button2 svg {
+        display: inline-block;
+        vertical-align: middle;
+        width: 24px;
+        height: 24px;
+        fill: #fff;
+      }
+      
+      .button2 span {
+        display: none;
+      }
+      
+      @media (min-width: 600px) {
+        .button2 span {
+          display: initial;
+        }
+      }
+      
+      .button2--icon {
+        min-width: initial;
+        padding: 0.5rem;
+      }
+
+.container-content{
+width: 100%;
+height: 100% !important;
+background-color: #E2E8F0;
+}
 
 
+.material-symbols-outlined {
+font-variation-settings:
+'FILL' 0,
+'wght' 700,
+'GRAD' 0,
+'opsz' 48
+}
+
+.btn2 {
+background-color: #0355FF;
+color: rgb(255, 255, 255);
+padding: 5% 20px;
+font-size: 16px;
+cursor: pointer;
+text-align: center;
+transition: all 0.5s;
+border: 1px solid transparent;
+}
+
+.btn2-profile2 {
+background-color: #0355FF;
+color: rgb(255, 255, 255);
+padding: 5% 20px;
+font-size: 16px;
+cursor: pointer;
+text-align: center;
+transition: all 0.5s;
+}
+
+.btn2:hover{
+color: #ffffff;
+background-color: #0357ffd7;
+}
 
 
+.example-container {
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
+
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background: rgba(255, 0, 0, 0.5);
+}
+
+.example-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.app-container {
+  height: 90%;
+  margin: 0;
+}  
+.app-sidenav {
+  width: 230px;
+}
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+} 

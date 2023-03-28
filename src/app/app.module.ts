@@ -30,7 +30,11 @@ import {MatButtonModule} from '@angular/material/button';
 import { DetailActivityComponent } from './profile/detail-activity/detail-activity.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { ImageSliderModule } from './image-slider/image-slider.module';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -66,7 +70,12 @@ import { ImageSliderModule } from './image-slider/image-slider.module';
     MatDividerModule,
     GoogleMapsModule,
     MatButtonModule,
-    ImageSliderModule
+    ImageSliderModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatExpansionModule,
+    MatListModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

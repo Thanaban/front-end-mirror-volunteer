@@ -26,9 +26,19 @@ export class StorageService {
     return {};
   }
 
+  public isAdmin(): boolean {
+    const user = window.sessionStorage.getItem(USER_KEY);
+    if (user) {
+      console.log('test',user)
+      return true
+    }
+    return false;
+  }
+
   public isLoggedIn(): boolean {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
+      console.log('KKKKKKKKKKKKKKKKKKKKKKKKKKKK')
       return true;
     }
 
