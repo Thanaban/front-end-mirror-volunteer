@@ -35,6 +35,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/edit-event-detail/edit-event-detail.component';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import {MatListModule} from '@angular/material/list';
     JoinEventComponent,
     ModalEventComponent,
     DetailActivityComponent,
-    
+    AdminDashboardComponent,
+    EditEventDetailComponent
   ],
   entryComponents:[
     ModalEventComponent

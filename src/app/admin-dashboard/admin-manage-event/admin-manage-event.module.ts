@@ -12,11 +12,13 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { EditEventDetailComponent } from './edit-event-detail/edit-event-detail.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @NgModule({
   declarations: [
     AdminManageEventComponent,
-    EditEventDetailComponent
+    AddEventComponent,
+    
   ],
   imports: [
     CommonModule,

@@ -44,4 +44,29 @@ export class EventService {
       httpOptions
     );
   }
+
+  update_activity(
+    id :number,
+    activity_name:string,
+    time_detail:string,
+    clothes_detail:string,
+    map:string,
+    travel_public_detail:string,
+    travel_detail:string,
+    travel_etc_detail:string 
+    ): Observable<any> {
+    return this.http.patch('http://localhost:8000/activities/update_activity',
+      {
+        id,
+        activity_name,
+      time_detail,
+      clothes_detail,
+      map,
+      travel_public_detail,
+      travel_detail,
+      travel_etc_detail
+      },
+      httpOptions
+    );
+  }
 }
