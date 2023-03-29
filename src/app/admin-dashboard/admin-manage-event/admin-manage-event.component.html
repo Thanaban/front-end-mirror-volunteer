@@ -30,7 +30,7 @@
     <mat-card-content>
         <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" style="margin-bottom: 2rem;">
             <mat-tab label="หลายวัน" >
-              <button mat-button  style="background-color: #27A644;color: rgb(255, 255, 255); margin-top: 1.4rem; margin-bottom: 1.4rem; margin-right: 2rem;">เพิ่มกิจกรรม</button>
+              <button mat-button (click)="openDialogaAddEvent()" style="background-color: #27A644;color: rgb(255, 255, 255); margin-top: 1.4rem; margin-bottom: 1.4rem; margin-right: 2rem;">เพิ่มกิจกรรม</button>
 
                 <div *ngFor="let event of eventlist" style="margin-bottom: 1rem;" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
                 

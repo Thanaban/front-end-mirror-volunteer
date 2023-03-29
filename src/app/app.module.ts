@@ -52,7 +52,7 @@ import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/e
     JoinEventComponent,
     ModalEventComponent,
     DetailActivityComponent,
-    AdminDashboardComponent,
+    
     EditEventDetailComponent
   ],
   entryComponents:[

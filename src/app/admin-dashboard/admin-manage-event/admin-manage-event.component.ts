@@ -4,6 +4,7 @@ import { Event_show } from '../../openevent/openevent-request-get';
 import { EventService } from 'src/app/_services/event.service';
 import { EditEventDetailComponent} from './edit-event-detail/edit-event-detail.component'
 import { MatDialog } from '@angular/material/dialog';
+import { AddEventComponent } from './add-event/add-event.component';
 
 @Component({
   selector: 'app-admin-manage-event',
@@ -63,6 +64,11 @@ export class AdminManageEventComponent implements OnInit {
     let data = {currentActivityId};
     localStorage.setItem('EVENT',JSON.stringify(data))
     
+  }
+
+  openDialogaAddEvent() {
+    this.dialog.open(AddEventComponent);
+
   }
 
   reloadPage(): void {

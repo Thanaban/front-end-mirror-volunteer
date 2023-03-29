@@ -16,9 +16,6 @@ export interface Event_show {
   start_date: string;
   end_date?: any;
   is_open: boolean;
-  createdAt: string;
-  updatedAt: string;
-  userActivities: any[];
   picture?: string;
   priority?: number;
 }

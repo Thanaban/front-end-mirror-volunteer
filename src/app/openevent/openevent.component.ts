@@ -37,7 +37,7 @@ export class OpeneventComponent implements OnInit{
 
   ngOnInit(): void {
     // this.currentUser = this.storageService.getUser();
-    this.http.get<Event_show[]>('http://localhost:8000/users/activities')
+    this.http.get<Event_show[]>('http://localhost:8000/activities/open_activity')
     .subscribe(response => {
       this.eventlist = response;
       console.warn("result",response)

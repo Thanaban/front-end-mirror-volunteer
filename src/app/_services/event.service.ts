@@ -69,4 +69,48 @@ export class EventService {
       httpOptions
     );
   }
+
+  create_activity(
+    activity_name:string,
+      activity_details:string,
+      clothes_detail:string,
+      etc_detail:string,
+      time_detail:string,
+      timeline:string,
+      travel_detail:string,
+      travel_etc_detail:string,
+      travel_public_detail:string,
+      regised_number:number,
+      size_number:number,
+      received_hours:number,
+      map:string,
+      start_date:Date,
+      end_date:Date,
+      
+      picture:string,
+      priority:number
+    ): Observable<any> {
+    return this.http.post('http://localhost:8000/activities/createActivity',
+      {
+        activity_name,
+      activity_details,
+      clothes_detail,
+      etc_detail,
+      time_detail,
+      timeline,
+      travel_detail,
+      travel_etc_detail,
+      travel_public_detail,
+      regised_number,
+      size_number,
+      received_hours,
+      map,
+      start_date,
+      end_date,
+      picture,
+      priority,
+      },
+      httpOptions
+    );
+  }
 }
