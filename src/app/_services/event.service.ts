@@ -34,4 +34,14 @@ export class EventService {
       httpOptions
     );
   }
+
+  status_activity(id: number,is_open:boolean): Observable<any> {
+    return this.http.patch('http://localhost:8000/activities/update_activity_status',
+      {
+        id,
+        is_open
+      },
+      httpOptions
+    );
+  }
 }
