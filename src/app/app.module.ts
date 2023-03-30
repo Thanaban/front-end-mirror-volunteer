@@ -37,6 +37,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/edit-event-detail/edit-event-detail.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -52,8 +54,8 @@ import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/e
     JoinEventComponent,
     ModalEventComponent,
     DetailActivityComponent,
+    EditEventDetailComponent,
     
-    EditEventDetailComponent
   ],
   entryComponents:[
     ModalEventComponent
@@ -78,7 +80,9 @@ import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/e
     MatFormFieldModule,
     MatSelectModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatTableModule,
+    MatGridListModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

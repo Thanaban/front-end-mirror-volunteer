@@ -113,4 +113,15 @@ export class EventService {
       httpOptions
     );
   }
+
+  status_user(id: number,non_blacklist:boolean): Observable<any> {
+    return this.http.patch('http://localhost:8000/activities/update_blacklist',
+      {
+        id,
+        non_blacklist
+      },
+      httpOptions
+    );
+  }
+
 }

@@ -8,6 +8,9 @@ import { SlideInterface } from '../image-slider/slide.interface';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
+
 export class HomeComponent implements OnInit {
   content?: string;
   slides: SlideInterface[]= [
