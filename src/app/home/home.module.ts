@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GalleryModule } from  'ng-gallery';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -9,7 +10,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
   imports: [
     CommonModule,
     GalleryModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule
   ]
 })
 export class HomeModule { }

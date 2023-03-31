@@ -28,7 +28,6 @@ import { AdminManageVolunteerComponent } from './admin-manage-volunteer/admin-ma
     MatExpansionModule,
     BrowserAnimationsModule,
     MatIconModule,
-    CdkTableModule
     
   ]
 })

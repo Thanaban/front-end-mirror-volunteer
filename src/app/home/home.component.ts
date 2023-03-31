@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { SlideInterface } from '../image-slider/slide.interface';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -12,6 +13,10 @@ import { SlideInterface } from '../image-slider/slide.interface';
 
 
 export class HomeComponent implements OnInit {
+
+  
+  allUser:any
+
   content?: string;
   slides: SlideInterface[]= [
     { url:"../../assets/image/2.jpg", title: '1'},
@@ -19,7 +24,7 @@ export class HomeComponent implements OnInit {
     { url:"../../assets/image/14.jpg", title: '1'}
   ]
 
-  constructor(private userService: UserService) { 
+  constructor(private userService: UserService,private http:HttpClient) { 
     
   }
   reloadPage(): void {
@@ -27,6 +32,12 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.http.get('http://localhost:8000/activities/get_user_for_competition')
+    .subscribe(response => {
+      this.allUser = response;
+      console.warn("result",this.allUser.received_hours.sort())
+    })
   
     this.userService.getPublicContent().subscribe({
       next: data => {
