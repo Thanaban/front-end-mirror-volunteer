@@ -20,6 +20,8 @@ const httpOptions = {
 })
 export class OpeneventComponent implements OnInit{
 
+  panelOpenState = false;
+
 
   currentUser: any;
   eventlist: Event_show[]=[];
@@ -27,6 +29,7 @@ export class OpeneventComponent implements OnInit{
   select_join_event: any;
   currentUserID:any
   currentUserName:any
+  commentActivity:any
 
   constructor(
     private http:HttpClient,
@@ -47,6 +50,12 @@ export class OpeneventComponent implements OnInit{
     .subscribe(response => {
       this.currentUser = response;
       console.warn("result",this.currentUser)
+      })
+
+      this.http.get('http://localhost:8000/activities/get_all_comment')
+      .subscribe(response2 => {
+        this.commentActivity = response2;
+        console.warn("test",this.commentActivity[0].comment_detail)
       })
   }
   
@@ -87,9 +96,5 @@ export class OpeneventComponent implements OnInit{
       httpOptions
     );
   }
-
-  // update2(i: any){
-  //   console.log(i);
-  // }
 
 }

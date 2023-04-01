@@ -5,6 +5,7 @@ import { User_show } from './profile-request-get';
 import { EventService } from '../_services/event.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailActivityComponent } from './detail-activity/detail-activity.component';
+import { PostCommentComponent } from './post-comment/post-comment.component';
 
 @Component({
   selector: 'app-profile',
@@ -23,7 +24,7 @@ export class ProfileComponent implements OnInit {
   currentActivity:any
 
   constructor(private http:HttpClient,private storageService: StorageService,private eventService:EventService,public dialog: MatDialog) { 
-    
+
   }
   
   ngOnInit(): void {
@@ -72,4 +73,13 @@ export class ProfileComponent implements OnInit {
     let data = {currentActivityId,currentActivityName,currentUserID,currentUserName,cancelDate};
     localStorage.setItem('EVENT',JSON.stringify(data))
   }
+
+  openDialogComment(currentActivityId:number,currentActivityName:string,currentUserID:number,currentUserName:string) {
+    this.dialog.open(PostCommentComponent);
+
+    let data = {currentActivityId,currentActivityName,currentUserID,currentUserName};
+    localStorage.setItem('EVENT',JSON.stringify(data))
+  }
+
+  
 }

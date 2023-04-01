@@ -65,6 +65,14 @@ export class AuthService {
     );
   }
 
+  emailResetPassWord(email:string): Observable<any> {
+    return this.http.post('http://localhost:8000/users/password-reset',{email},httpOptions);
+  }
+
+  confirmResetPassWord(password:string): Observable<any> {
+    return this.http.post('http://localhost:8000/users/reset-password',{password},httpOptions);
+  }
+
   logout(): Observable<any> {
     return this.http.post(AUTH_API + 'logout', { }, httpOptions);
     

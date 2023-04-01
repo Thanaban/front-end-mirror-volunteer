@@ -1,0 +1,27 @@
+<form 
+class="form-detail"
+name="form"
+(ngSubmit)="f.form.valid && onSubmit()"
+#f="ngForm"
+novalidate>
+<mat-dialog-content class="mat-typography">  
+    <input 
+            type="textarea" 
+            name="lastname" 
+            class="input-text" 
+            placeholder="นามสกุล" 
+            [(ngModel)]="form.comment"
+            #comment="ngModel"
+            required>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <div style="margin-right: 3rem; color: #FF2626;">
+      *หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์ 
+    </div>
+    
+    <button mat-button type="submit" name="register" class="register" value="ลงทะเบียน" style="background-color: #27A644;color: #fff;">ยกเลิกการสมัครเข้าร่วม</button>
+    <button mat-button mat-dialog-close style="background-color: #FF2626;color: #fff;">ปิดหน้านี้</button>
+  </mat-dialog-actions>
+
+</form>
+

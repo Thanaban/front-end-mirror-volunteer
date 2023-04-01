@@ -22,7 +22,9 @@ const routes: Routes = [
   { path: 'openevent', component: OpeneventComponent},
   { path: 'admin-dashboard', loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule) },
   { path: 'admin-manage-event', loadChildren: () => import('./admin-dashboard/admin-manage-event/admin-manage-event.module').then(m => m.AdminManageEventModule) },
-  { path: 'admin-manage-volunteer', loadChildren: () => import('./admin-dashboard/admin-manage-volunteer/admin-manage-volunteer.module').then(m => m.AdminManageVolunteerModule) }
+  { path: 'admin-manage-volunteer', loadChildren: () => import('./admin-dashboard/admin-manage-volunteer/admin-manage-volunteer.module').then(m => m.AdminManageVolunteerModule) },
+  { path: 'reset-password', loadChildren: () => import('./reset-password/reset-password.module').then(m => m.ResetPasswordModule) },
+  { path: 'confirm-password', loadChildren: () => import('./reset-password/confirm-password/confirm-password.module').then(m => m.ConfirmPasswordModule) }
 ];
 
 @NgModule({

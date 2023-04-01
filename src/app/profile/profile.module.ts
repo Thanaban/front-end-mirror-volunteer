@@ -7,7 +7,9 @@ import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
     CommonModule,
     BrowserModule,

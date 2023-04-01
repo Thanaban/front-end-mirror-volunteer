@@ -10,6 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ModalEventComponent } from './modal-event/modal-event.component';
 
 import {MatButtonModule} from '@angular/material/button';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {MatButtonModule} from '@angular/material/button';
     OpeneventRoutingModule,
     BrowserModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatExpansionModule
   ]
 })
 export class OpeneventModule { }

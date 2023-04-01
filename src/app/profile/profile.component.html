@@ -185,8 +185,8 @@
     <div class="tab" >
       <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
       <label for="tab-3" class="tab-label">ประวัติการเข้าร่วม</label>
-      <div class="tab-content" *ngFor="let h of history_activity">
-        <div class="activity-container">
+      <div class="tab-content" >
+        <div class="activity-container" *ngFor="let h of history_activity">
           <div class="header-contain">
             <div class="header-text">
               {{con_date(h.date)}}<br>
@@ -202,6 +202,8 @@
       </div>
       <div class="button-contain">
       </div>
+      <button mat-button (click)="openDialogComment(h.activityId,h.userActivityName,currentUser.id,currentUser.name)" style="background-color: #27A644;color: rgb(255, 255, 255); margin-top: 1.4rem; margin-bottom: 1.4rem; margin-right: 2rem;">รายละเอียด</button>
+
         <!-- <button mat-button type="submit" name="register" class="register" value="ลงทะเบียน" style="background-color: #FF2626;color: #fff;">รายละเอียด</button> -->
       </div>
         

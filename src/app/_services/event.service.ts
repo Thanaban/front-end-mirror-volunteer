@@ -124,4 +124,15 @@ export class EventService {
     );
   }
 
+  post_comment(userId:number,activityId: number,comment_detail:string): Observable<any> {
+    return this.http.post('http://localhost:8000/users/post_comment',
+      {
+        userId,
+        activityId,
+        comment_detail
+      },
+      httpOptions
+    );
+  }
+
 }

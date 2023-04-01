@@ -39,6 +39,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/edit-event-detail/edit-event-detail.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { PostCommentComponent } from './profile/post-comment/post-comment.component';
 
 
 @NgModule({
@@ -55,7 +56,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     ModalEventComponent,
     DetailActivityComponent,
     EditEventDetailComponent,
-    
+    PostCommentComponent
   ],
   entryComponents:[
     ModalEventComponent

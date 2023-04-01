@@ -26,14 +26,30 @@
                   <div class="button-right">
                     <button mat-button (click)="openDialog2(event.id,event.activity_name,currentUser.id,currentUser.name)" style="background-color: #27A644;color: rgb(255, 255, 255);">สมัครเข้าร่วม</button>
                   </div>
+                  
                 </div>
+                
               </div>
               
             </div>
             
           </div>
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false" *ngFor="let comment of commentActivity">
+          <mat-expansion-panel-header>
+          <mat-panel-title>
+          Self aware panel
+          </mat-panel-title>
+          <mat-panel-description>
+          {{comment.comment_detail}}
+          </mat-panel-description>
+          </mat-expansion-panel-header>
+          {{comment.comment_detail}}
+          </mat-expansion-panel>
           </div>
+          
         </div>
+        
       </div>
       
     </div>
