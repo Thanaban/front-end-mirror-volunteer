@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'openevent', component: OpeneventComponent}
+  { path: 'openevent', component: OpeneventComponent},
+  { path: 'cert', loadChildren: () => import('./cert/cert.module').then(m => m.CertModule) }
 ];
 
 @NgModule({

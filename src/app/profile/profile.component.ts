@@ -25,4 +25,5 @@ export class ProfileComponent implements OnInit {
       console.warn("result",response)
     })
   }
+  
 }

@@ -13,7 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
-
+import { CertComponent } from './cert/cert.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { OpeneventComponent } from './openevent/openevent.component';
 import { OpeneventModule } from './openevent/openevent.module';
