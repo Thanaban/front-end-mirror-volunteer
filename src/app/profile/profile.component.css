@@ -289,16 +289,9 @@
 .activity-container-check-activity .header-contain{
   width: 25%;
   background-color: #FFDE02;
-  /* width: 25% ;
-  
-  border-radius: 10px 0px 0px 10px;
-  background-image: url('../../assets/image/2.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center; 
-  background-color: #FFDE02; */
-  
-              
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;        
 }
 
 .activity-container-check-activity .header-contain .img-container{
@@ -317,7 +310,14 @@
   width: 45%;
   height: 100%;
   display: flex;
-  
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.activity-container-check-activity .activity-name-contain .activity-name-text{
+  width: 45%;
+  height: 100%;
+  display: flex;
 }
 
 .activity-container-check-activity .button-contain{

@@ -138,11 +138,18 @@
         <div *ngFor="let x of check_activity">
           <div class="activity-container-check-activity">
             <div class="header-contain">
-
+              <div style="margin-top: 10%;">
+                {{x.date}}
+              </div>
+              
             </div>
             
             <div class="activity-name-contain">
-              <div class="activity-name-text"></div>
+              <div class="activity-name-text">
+                <div style="margin-top: 12%;margin-left: 10%;">
+                  {{x.userActivityName}}
+                </div>
+              </div>
             </div>
             <div class="button-contain">
               <mat-button-toggle-group
