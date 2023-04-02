@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -15,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
     BrowserModule,
     MatDialogModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ]
 })
 export class ProfileModule { }

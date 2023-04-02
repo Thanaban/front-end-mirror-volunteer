@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
     <div class="tabs">
       <div class="tab">
         <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
@@ -12,40 +12,58 @@
               <div class="event-box-left" id="id_event{{i}}">
               <img src={{event.picture}} style="width: 100%; border-top-left-radius: 10px;
               border-bottom-left-radius: 10px;">
+              
             </div>
+            
             <div class="event-box-right">
-              <div class="text-event">
-                กิจกรรม : {{event.activity_name}}<br>
-                จำกัดผู้เข้าร่วมวันละ : {{event.size_number}} คน
-              </div>
-              <div class="text-event-bottom">
-                <div class="row">
-                  <div class="button-left">
-                    <button mat-button (click)="openDialog()" style="background-color: #EE4266;color: rgb(255, 255, 255);">ดูรายละเอียดเพิ่มเติม</button>
-                  </div>
-                  <div class="button-right">
-                    <button mat-button (click)="openDialog2(event.id,event.activity_name,currentUser.id,currentUser.name)" style="background-color: #27A644;color: rgb(255, 255, 255);">สมัครเข้าร่วม</button>
-                  </div>
-                  
-                </div>
-                
-              </div>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false" >
+          <mat-expansion-panel-header >
+          <mat-panel-title >
+            กิจกรรม : {{event.activity_name}} 
+          </mat-panel-title>
+          <mat-panel-description >
+           
+          </mat-panel-description>
+          </mat-expansion-panel-header >
+          
+          <div class="text-comment-box" >
+            <mat-divider></mat-divider>
+            <div class="text-comment">
+
+            </div>
+              
+          </div>
+          <mat-divider></mat-divider>
+          </mat-expansion-panel>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false" >
+          <mat-expansion-panel-header >
+          <mat-panel-title >
+          ความคิดเห็น
+          </mat-panel-title>
+          <mat-panel-description >
+          
+          </mat-panel-description>
+          </mat-expansion-panel-header >
+          
+          <div class="text-comment-box" *ngFor="let comment of commentActivity">
+            <mat-divider></mat-divider>
+            <div class="text-comment">
+              {{comment.comment_detail}}
+            </div>
+              
+          </div>
+          <mat-divider></mat-divider>
+          </mat-expansion-panel>
+          <button mat-button (click)="openDialog()" style="background-color: #EE4266;color: rgb(255, 255, 255);">ดูรายละเอียดเพิ่มเติม</button>
+          <button mat-button (click)="openDialog2(event.id,event.activity_name,currentUser.id,currentUser.name)" style="background-color: #27A644;color: rgb(255, 255, 255);">สมัครเข้าร่วม</button>
+
               
             </div>
             
           </div>
-          <mat-expansion-panel (opened)="panelOpenState = true"
-                               (closed)="panelOpenState = false" *ngFor="let comment of commentActivity">
-          <mat-expansion-panel-header>
-          <mat-panel-title>
-          Self aware panel
-          </mat-panel-title>
-          <mat-panel-description>
-          {{comment.comment_detail}}
-          </mat-panel-description>
-          </mat-expansion-panel-header>
-          {{comment.comment_detail}}
-          </mat-expansion-panel>
+          
           </div>
           
         </div>
@@ -54,7 +72,99 @@
       
     </div>
     
+  </div> -->
+<div class="wrapper" style="margin-top: 2%">
+  <div *ngFor="let event of eventlist; let i = index">
+    <div class="event-box">
+      <div>
+        <div style="display: flex">
+          <img
+            src="{{ event.picture }}"
+            style="width: 50%; border-top-left-radius: 10px"
+          />
+          <div style="width: 100%">
+            <div class="text-header">
+              <div style="width: 100%; font-family: 'Kanit'; font-weight: bold">
+                <div style="margin-top: 4%; margin-left: 6%;font-size: 28px;">
+                  กิจกรรม : {{ event.activity_name }}
+                </div>
+                <mat-tab-group style="margin: 4%">
+                  <mat-tab label="สิ่งที่อาสาจะได้ทำ">
+                    <div
+                      style="font-size: 18px; margin-top: 4%; overflow: auto"
+                    >
+                      {{ event.activity_details }}
+                    </div></mat-tab
+                  >
+                  <mat-tab label="สถานที่ปฏิบัติกิจกรรม"
+                    ><div style="font-size: 18px; margin-top: 4%">
+                      Google map link : <br />
+                      <div style="text-align: center">
+                        <a href="{{ event.map }}" target="_blank"
+                          ><img
+                            src="../../assets/image/map.png"
+                            style="width: 20%"
+                        /></a>
+                      </div>
+                    </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </div>
+            </div>
+
+            <div style="display: flex; width: 100%; margin-top: 4%">
+              <mat-button-toggle-group
+                name="fontStyle"
+                aria-label="Font Style"
+                style="width: 100%"
+              >
+                <mat-button-toggle
+                  value="ดูรายละเอียดเพิ่มเติม"
+                  (click)="openDialog()"
+                  style="width: 50%"
+                  >ดูรายละเอียดเพิ่มเติม</mat-button-toggle
+                >
+                <mat-button-toggle
+                  value="สมัครเข้าร่วม"
+                  (click)="
+                    openDialog2(
+                      event.id,
+                      event.activity_name,
+                      currentUser.id,
+                      currentUser.name
+                    )
+                  "
+                  style="width: 50%; background-color: #ffde02"
+                  >สมัครเข้าร่วม</mat-button-toggle
+                >
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header style="background-color: #f7f1e5">
+            <mat-panel-title
+              ><div
+                style="font-size: 24px; font-weight: bold; font-family: 'Kanit'"
+              >
+                กดดูความคิดเห็นจากอาสา
+              </div>
+            </mat-panel-title>
+            <mat-panel-description> </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <div class="text-comment-box" *ngFor="let comment of commentActivity">
+            <mat-divider></mat-divider>
+            <div class="text-comment">
+              {{ comment.comment_detail }}
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-expansion-panel>
+      </div>
+    </div>
   </div>
-
-
-  
+</div>

@@ -65,6 +65,16 @@ export class ProfileComponent implements OnInit {
     d = d.split("-").reverse().join("-");
     return d
   }
+
+  cancle_activity(currentActivityId:number,currentActivityName:string,currentUserID:number,currentUserName:string,cancelDate:Date){
+    this.eventService.cancel_activity(currentActivityId,currentUserID,cancelDate ).subscribe({
+      next: test => {
+        console.log(test.date);
+      },
+    
+    });
+    this.reloadPage();
+  }
   
 
   openDialogDetail(currentActivityId:number,currentActivityName:string,currentUserID:number,currentUserName:string,cancelDate:Date) {
@@ -79,6 +89,10 @@ export class ProfileComponent implements OnInit {
 
     let data = {currentActivityId,currentActivityName,currentUserID,currentUserName};
     localStorage.setItem('EVENT',JSON.stringify(data))
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
   

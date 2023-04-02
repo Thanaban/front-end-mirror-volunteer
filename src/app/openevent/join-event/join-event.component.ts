@@ -11,6 +11,8 @@ import { EventService } from 'src/app/_services/event.service';
 })
 export class JoinEventComponent implements OnInit{
 
+  
+
   form: any = {
     date: null,
   };

@@ -11,7 +11,11 @@ import { ModalEventComponent } from './modal-event/modal-event.component';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,13 @@ import {MatExpansionModule} from '@angular/material/expansion';
     BrowserModule,
     MatDialogModule,
     MatButtonModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDividerModule,
+    MatTabsModule,
+    MatButtonToggleModule
+    
   ]
 })
 export class OpeneventModule { }

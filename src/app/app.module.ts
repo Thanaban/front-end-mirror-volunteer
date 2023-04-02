@@ -40,7 +40,13 @@ import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/e
 import { MatTableModule } from '@angular/material/table';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { PostCommentComponent } from './profile/post-comment/post-comment.component';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf } from '@angular/common';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
@@ -83,7 +89,14 @@ import { PostCommentComponent } from './profile/post-comment/post-comment.compon
     MatExpansionModule,
     MatListModule,
     MatTableModule,
-    MatGridListModule
+    MatGridListModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    NgbCarouselModule,
+    NgIf,
+    MatTabsModule,
+    MatButtonToggleModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

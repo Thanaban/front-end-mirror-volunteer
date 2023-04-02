@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { GalleryModule } from  'ng-gallery';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf } from '@angular/common';
 
 
 @NgModule({
@@ -11,7 +13,10 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     GalleryModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    NgbCarouselModule,
+    NgIf
+    
   ]
 })
 export class HomeModule { }

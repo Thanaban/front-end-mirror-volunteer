@@ -93,6 +93,7 @@
     max-width: 70%;
     width: 100%;
     margin: 0 auto;
+    font-family: 'Kanit';
     
   }
   .tabs {
@@ -271,13 +272,93 @@
 
 }
 
-.activity-container .header-contain{
-  width: 25%;
+.activity-container-check-activity{
+  /* min-width:90rem; */
+  width: 100%;
   height: 100%;
+  min-height: 6rem;
+  /* margin: 1rem; */
+  display: flex;
+  border: 1px solid #DFDFDF;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+  margin-bottom: 1rem;
+
+}
+
+.activity-container-check-activity .header-contain{
+  width: 25%;
   background-color: #FFDE02;
+  /* width: 25% ;
+  
   border-radius: 10px 0px 0px 10px;
+  background-image: url('../../assets/image/2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  background-color: #FFDE02; */
+  
+              
+}
+
+.activity-container-check-activity .header-contain .img-container{
+  
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  vertical-align:middle
+            
+}
+
+.activity-container-check-activity .activity-name-contain{
+  width: 45%;
+  height: 100%;
+  display: flex;
   
 }
+
+.activity-container-check-activity .button-contain{
+  width: 30%;
+  text-align: right;
+  display: flex;
+  font-size: 24px;
+  
+}
+
+.activity-container-check-activity .button-contain .detail-button{
+  width: 50%;
+  color: #27a644;
+  font-family: 'Kanit';
+  font-weight: bold;
+}
+
+.activity-container-check-activity .button-contain .detail-button:hover{
+  width: 50%;
+  color: #ffffff;
+  background-color: #27a644;
+  font-family: 'Kanit';
+  font-weight: bold;
+}
+
+.activity-container-check-activity .button-contain .cancel-button{
+  width: 50%;
+  color: #FF2626;
+  font-family: 'Kanit';
+  font-weight: bold;
+}
+
+.activity-container-check-activity .button-contain .cancel-button:hover{
+  width: 50%;
+  color: #ffffff;
+  background-color: #FF2626;
+  font-family: 'Kanit';
+  font-weight: bold;
+}
+
+
 
 .activity-container .header-contain .header-text{
   width: 100%;
@@ -291,6 +372,7 @@
   width: 45%;
   height: 100%;
   display: flex;
+  
 }
 
 .activity-container .activity-name-contain .activity-name-text{
@@ -307,4 +389,11 @@
   width: 30%;
   height: 100%;
   text-align: right;
+}
+
+.label-row{
+  flex: 0 0 25%;
+  max-width: 25%;
+  text-align: left;
+  margin-left: 4%;
 }

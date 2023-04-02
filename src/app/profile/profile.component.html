@@ -1,25 +1,27 @@
 <div class="wrapper">
-  
-  <div class="tabs">
-    <div class="tab">
-      <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
-      <label for="tab-1" class="tab-label">ข้อมูลบัญชี</label>
-      <div class="tab-content">
-        <div class="gutters-sm">
-          <div class="profile-box">
-            <div class="card mb-3">
+  <mat-tab-group
+    mat-stretch-tabs="false"
+    mat-align-tabs="center"
+    style="margin-top: 2%"
+  >
+    <mat-tab label="ข้อมูลบัญชี"
+      ><div class="gutters-sm" style="font-weight: bold">
+        <div class="profile-box">
+          <div class="card mb-3">
             <div class="profile-detail">
               <div class="profile-left">
                 <div class="mt-3">
                   <img
-              id="profile-img"
-              src="../../assets/image/user1.png"
-              class="profile-img"
-            />
-                  <h4>{{currentUser.name }}         {{currentUser.lastname }}</h4>
-                  <p class="">สถานะ : {{this.status}} <br>
-                    เวลาการเข้าร่วม : {{currentUser.received_hours }} ชั่วโมง
-        
+                    id="profile-img"
+                    src="../../assets/image/user1.png"
+                    class="profile-img"
+                  />
+                  <h4 style="font-weight: bold">
+                    {{ currentUser.name }} {{ currentUser.lastname }}
+                  </h4>
+                  <p class="">
+                    สถานะ : {{ this.status }} <br />
+                    เวลาการเข้าร่วม : {{ currentUser.received_hours }} ชั่วโมง
                   </p>
                 </div>
               </div>
@@ -27,190 +29,267 @@
                 <div class="part1">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">ชื่อ</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.name }}
+                      <div class="label-row">ชื่อ</div>
+                      <div>
+                        {{ currentUser.name }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">นามสกุล</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.lastname }}
+                      <div class="label-row">นามสกุล</div>
+                      <div>
+                        {{ currentUser.lastname }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">ชื่อเล่น</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.nickname }}
+                      <div class="label-row">ชื่อเล่น</div>
+                      <div>
+                        {{ currentUser.nickname }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">เพศ</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.gender }}
+                      <div class="label-row">เพศ</div>
+                      <div>
+                        {{ currentUser.gender }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">วันเกิด</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.birthday }}
+                      <div class="label-row">วันเกิด</div>
+                      <div>
+                        {{ currentUser.birthday }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">ศาสนา</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.religion }}
+                      <div class="label-row">ศาสนา</div>
+                      <div>
+                        {{ currentUser.religion }}
                       </div>
                     </div>
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <a class="btn btn-info "  href="">Edit</a>
-                      </div>
-                    </div>
+                    <hr />
                   </div>
                 </div>
                 <div class="part2">
                   <div class="card-body">
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">อีเมล</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.email }}
+                      <div class="label-row">อีเมล</div>
+                      <div>
+                        {{ currentUser.email }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">เบอร์โทรศัพท์</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.phoneNumber }}
+                      <div class="label-row">เบอร์โทรศัพท์</div>
+                      <div>
+                        {{ currentUser.phoneNumber }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">อาชีพ</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.career }}
+                      <div class="label-row">อาชีพ</div>
+                      <div>
+                        {{ currentUser.career }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">สถานที่ทำงาน</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.workplace }}
+                      <div class="label-row">สถานที่ทำงาน</div>
+                      <div>
+                        {{ currentUser.workplace }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">โรคประจำตัว</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.congenitalDisease }}
+                      <div class="label-row">โรคประจำตัว</div>
+                      <div>
+                        {{ currentUser.congenitalDisease }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                     <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">อาหารที่แพ้</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{currentUser.allergicFood }}
+                      <div class="label-row">อาหารที่แพ้</div>
+                      <div>
+                        {{ currentUser.allergicFood }}
                       </div>
                     </div>
-                    <hr>
+                    <hr />
                   </div>
                 </div>
               </div>
             </div>
-        
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title> This is the expansion title </mat-panel-title>
+                <mat-panel-description>
+                  This is a summary of the content
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>This is the primary content of the panel.</p>
+            </mat-expansion-panel>
           </div>
-          </div>
-      </div>
-    </div>
-  </div>
-    <div class="tab">
-      <input type="radio" name="css-tabs" id="tab-2" class="tab-switch">
-      <label for="tab-2" class="tab-label">ตรวจสอบกิจกรรม</label>
-      <div class="tab-content"> 
-            <div class="activity-container" *ngFor="let x of check_activity">
-              <div class="header-contain">
-                <div class="header-text">
-                  {{con_date(x.date)}}<br>
-                  {{x.userActivityName}}
-                </div>
-            
-          </div>
-          <div class="activity-name-contain">
-            <div class="activity-name-text">
-              
-            </div>
-            
-          </div>
-          <div class="button-contain">
-          <button mat-button (click)="openDialogDetail(x.activityId,x.userActivityName,currentUser.id,currentUser.name,x.date)" style="background-color: #27A644;color: rgb(255, 255, 255); margin-top: 1.4rem; margin-bottom: 1.4rem; margin-right: 2rem;">รายละเอียด</button>
-          </div>
-            <!-- <button mat-button type="submit" name="register" class="register" value="ลงทะเบียน" style="background-color: #FF2626;color: #fff;">รายละเอียด</button> -->
-          </div>
-          <div style="margin-right: 3rem; color: #FF2626;">
-            *หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์ 
-          </div>
-      </div>
-      
-    </div>
-    <div class="tab" >
-      <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
-      <label for="tab-3" class="tab-label">ประวัติการเข้าร่วม</label>
-      <div class="tab-content" >
-        <div class="activity-container" *ngFor="let h of history_activity">
-          <div class="header-contain">
-            <div class="header-text">
-              {{con_date(h.date)}}<br>
-              {{h.userActivityName}}
-            </div>
-        
-      </div>
-      <div class="activity-name-contain">
-        <div class="activity-name-text">
-          
         </div>
-        
-      </div>
-      <div class="button-contain">
-      </div>
-      <button mat-button (click)="openDialogComment(h.activityId,h.userActivityName,currentUser.id,currentUser.name)" style="background-color: #27A644;color: rgb(255, 255, 255); margin-top: 1.4rem; margin-bottom: 1.4rem; margin-right: 2rem;">รายละเอียด</button>
+      </div></mat-tab
+    >
+    <mat-tab label="ตรวจสอบกิจกรรม"
+      ><div style="margin-top: 4%">
+        <div *ngFor="let x of check_activity">
+          <div class="activity-container-check-activity">
+            <div class="header-contain">
 
-        <!-- <button mat-button type="submit" name="register" class="register" value="ลงทะเบียน" style="background-color: #FF2626;color: #fff;">รายละเอียด</button> -->
-      </div>
-        
-      </div>
-    </div>
-  </div>
+            </div>
+            
+            <div class="activity-name-contain">
+              <div class="activity-name-text"></div>
+            </div>
+            <div class="button-contain">
+              <mat-button-toggle-group
+                name="fontStyle"
+                aria-label="Font Style"
+                style="width: 100%"
+              >
+                <mat-button-toggle
+                  value="bold"
+                  class="detail-button"
+                  (click)="
+                    openDialogDetail(
+                      x.activityId,
+                      x.userActivityName,
+                      currentUser.id,
+                      currentUser.name,
+                      x.date
+                    )
+                  "
+                  ><div style="margin-top: 20%">
+                    รายละเอียด
+                  </div></mat-button-toggle
+                >
+                <mat-button-toggle value="italic" class="cancel-button"
+                  ><div style="margin-top: 35%">ยกเลิก</div></mat-button-toggle
+                >
+              </mat-button-toggle-group>
+
+              <!-- <div class="detail-button">
+                  <button style="width: 100%;height: 100%;">
+                    SSSSSSSS
+                  </button>
+                </div>
+                <div class="cancel-button" >
+                  <button style="width: 100%;height: 100%;">
+                    SSSSSSSS
+                  </button>
+                </div> -->
+
+              <!-- <button
+                mat-button
+                (click)="
+                  openDialogDetail(
+                    x.activityId,
+                    x.userActivityName,
+                    currentUser.id,
+                    currentUser.name,
+                    x.date
+                  )
+                "
+                style="
+                  background-color: #27a644;
+                  color: rgb(255, 255, 255);
+                  margin-top: 1.4rem;
+                  margin-bottom: 1.4rem;
+                  margin-right: 2rem;
+                "
+              >
+                รายละเอียด
+              </button>
+              <button
+                mat-button
+                (click)="
+                cancle_activity(
+                    x.activityId,
+                    x.userActivityName,
+                    currentUser.id,
+                    currentUser.name,
+                    x.date
+                  )
+                "
+                style="
+                  background-color: #27a644;
+                  color: rgb(255, 255, 255);
+                  margin-top: 1.4rem;
+                  margin-bottom: 1.4rem;
+                  margin-right: 2rem;
+                "
+              >
+                ยกเลิก
+              </button> -->
+            </div>
+          </div>
+        </div>
+      </div></mat-tab
+    >
+    <mat-tab label="ประวัติการเข้าร่วม"
+      ><div style="margin-top: 4%">
+        <div *ngFor="let h of history_activity">
+          <div class="activity-container">
+            <div class="header-contain">
+              <div class="header-text" style="font-weight: bold">
+                {{ con_date(h.date) }}<br />
+                {{ h.userActivityName }}
+              </div>
+            </div>
+            <div class="activity-name-contain">
+              <div class="activity-name-text"></div>
+            </div>
+            <div class="button-contain"></div>
+            <button
+              mat-button
+              (click)="
+                openDialogComment(
+                  h.activityId,
+                  h.userActivityName,
+                  currentUser.id,
+                  currentUser.name
+                )
+              "
+              style="
+                background-color: #27a644;
+                color: rgb(255, 255, 255);
+                margin-top: 1.4rem;
+                margin-bottom: 1.4rem;
+                margin-right: 2rem;
+              "
+            >
+              รายละเอียด
+            </button>
+          </div>
+        </div>
+      </div></mat-tab
+    >
+  </mat-tab-group>
 </div>
+<!-- <div
+              class="header-contain"
+              style="
+              width: 25%;
+              background-image: url({{x.picture_activity}});
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+              background-position: center;
+              background-size: 100% 100%;
+              border-radius: 10px 0px 0px 10px; "
+              
+            > -->
+              <!-- <img src="{{x.picture_activity}}"  class="img-container"> -->
 
-  
-
+              <!-- <div
+                style="
+                  height: 100%;
+                  width: 100%;
+                  background-image: url({x.picture_activity});
+                  background-position: center;
+                  background-size: 100%;
+                "
+              ></div> -->
+            <!-- </div> -->
