@@ -14,6 +14,8 @@ import { PostCommentComponent } from './post-comment/post-comment.component';
 })
 export class ProfileComponent implements OnInit {
 
+  tabs={tabs:0};
+
   public C1: User_show[] = [];
   currentUser: any;
   check_activity: any;
@@ -22,6 +24,8 @@ export class ProfileComponent implements OnInit {
   date_con:any
   status:any
   currentActivity:any
+
+  
 
   constructor(private http:HttpClient,private storageService: StorageService,private eventService:EventService,public dialog: MatDialog) { 
 
@@ -59,6 +63,15 @@ export class ProfileComponent implements OnInit {
     .subscribe(response4 => {
       this.history_activity = response4;
     })
+    
+    // let data:any = localStorage.getItem('TABS');
+    // this.tabs = JSON.parse(data);
+
+    // if(this.tabs.tabs == 1){
+    //   this.reloadPage()
+    //   localStorage.removeItem('TABS');
+    // }
+
   }
   
   con_date(d:any){

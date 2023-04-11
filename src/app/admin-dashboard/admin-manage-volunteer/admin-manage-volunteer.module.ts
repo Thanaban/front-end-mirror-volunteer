@@ -6,6 +6,10 @@ import { AdminManageVolunteerComponent } from './admin-manage-volunteer.componen
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule,MatTableDataSource } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { FormsModule } from '@angular/forms';
     AdminManageVolunteerRoutingModule,
     MatExpansionModule,
     MatSlideToggleModule,
-    FormsModule
+    FormsModule,
+    MatTableModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
     
     
   ]

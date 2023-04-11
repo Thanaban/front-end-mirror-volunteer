@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { ModalEventComponent } from './modal-event/modal-event.component';
 import { JoinEventComponent } from './join-event/join-event.component';
 import { Observable } from 'rxjs';
+import { SuccessJoinEventComponent } from './success-join-event/success-join-event.component';
 
 
 
@@ -85,6 +86,8 @@ export class OpeneventComponent implements OnInit{
   
     // return this.http.post('http://localhost:8000/users/dateAc2',{})
   }
+
+  
   
   join_event(activityId: number, userId: number,date: Date): Observable<any> {
     return this.http.post('http://localhost:8000/users/dateAc2',

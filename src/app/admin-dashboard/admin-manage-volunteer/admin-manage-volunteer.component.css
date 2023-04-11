@@ -1,4 +1,5 @@
-table {
+
+  table {
     width: 100%;
   }
   
@@ -45,27 +46,3 @@ table {
   .example-element-description-attribution {
     opacity: 0.5;
   }
-
-
-  mat-table {
-    width: 100%;
-  }
-  
-  mat-row.example-detail-row {
-    flex-basis: 0;
-    min-height: initial; /* override mat-row styling */
-  }
-  
-  mat-row.example-element-row:not(.example-expanded-row):hover {
-    background: whitesmoke;
-  }
-  
-  mat-row.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-  }
-  
-  .example-element-row, /* override mat-row styling */
-  .example-element-row mat-cell {
-    border-bottom-width: 0;
-  }
-  

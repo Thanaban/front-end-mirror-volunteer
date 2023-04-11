@@ -16,10 +16,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { SuccessJoinEventComponent } from './success-join-event/success-join-event.component';
 
 @NgModule({
   declarations: [
     OpeneventComponent,
+    SuccessJoinEventComponent,
     
     
   ],

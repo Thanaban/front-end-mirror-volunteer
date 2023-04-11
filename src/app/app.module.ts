@@ -38,6 +38,7 @@ import {MatListModule} from '@angular/material/list';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { EditEventDetailComponent } from './admin-dashboard/admin-manage-event/edit-event-detail/edit-event-detail.component';
 import { MatTableModule } from '@angular/material/table';
+
 import {MatGridListModule} from '@angular/material/grid-list';
 import { PostCommentComponent } from './profile/post-comment/post-comment.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -47,6 +48,9 @@ import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgIf } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { SuccessJoinEventComponent } from './openevent/success-join-event/success-join-event.component';
+import { AppServerComponent } from './app-server/app-server.component';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ModalEventComponent,
     DetailActivityComponent,
     EditEventDetailComponent,
-    PostCommentComponent
+    PostCommentComponent,
+    AppServerComponent,
   ],
   entryComponents:[
     ModalEventComponent
@@ -96,7 +101,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     NgbCarouselModule,
     NgIf,
     MatTabsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatInputModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

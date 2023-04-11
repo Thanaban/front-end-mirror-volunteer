@@ -1,68 +1,72 @@
-
-<form 
-class="form-detail"
-name="form"
-(ngSubmit)="f.form.valid && onSubmit()"
-#f="ngForm"
-novalidate>
+<form
+  class="form-detail"
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
   <mat-dialog-content class="mat-typography">
     <div class="detail-container">
       <div class="container-calender">
         <div class="detail-text">
           ข้อมูลการลงทะเบียนเข้าร่วม
-          <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-            <div class="list-detail-left">
-                กิจกรรม : 
-            </div>
+          <div
+            class="row"
+            style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+          >
+            <div class="list-detail-left">กิจกรรม :</div>
             <div class="list-detail-right">
-              {{join_event.currentEventName}}
+              {{ join_event.currentEventName }}
             </div>
           </div>
-          <div class="row" style="margin-right: 0rem; margin-left: 0rem;">
-            <div class="list-detail-left">
-                เวลาทำกิจกรรม : 
-            </div>
+          <div class="row" style="margin-right: 0rem; margin-left: 0rem">
+            <div class="list-detail-left">เวลาทำกิจกรรม :</div>
+            <div class="list-detail-right">09.00-16.00 น.</div>
+          </div>
+          <div class="row" style="margin-right: 0rem; margin-left: 0rem">
+            <div class="list-detail-left">ชื่ออาสา :</div>
             <div class="list-detail-right">
-              09.00-16.00 น. 
+              {{ join_event.currentUserName }}
             </div>
           </div>
-          <div class="row" style="margin-right: 0rem; margin-left: 0rem;">
-            <div class="list-detail-left">
-                ชื่ออาสา : 
-            </div>
+          <div class="row" style="margin-right: 0rem; margin-left: 0rem">
+            <div class="list-detail-left">เลือกวันที่ต้องการเข้าร่วม :</div>
             <div class="list-detail-right">
-              {{join_event.currentUserName}}
-            </div>
-          </div>
-          <div class="row" style="margin-right: 0rem; margin-left: 0rem;">
-            <div class="list-detail-left">
-                เลือกวันที่ต้องการเข้าร่วม : 
-            </div>
-            <div class="list-detail-right">
-              
-              <input 
-                type="date" 
-                name="birthday" 
+              <input
+                type="date"
+                name="birthday"
                 [(ngModel)]="form.date"
-                #date="ngModel" 
+                #date="ngModel"
                 required
-                min="2023-03-25" max="2023-05-25">
-
-                
-              
+                min="2023-03-25"
+                max="2023-05-25"
+              />
             </div>
           </div>
-          
         </div>
-        
-    </div>
+      </div>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <div style="margin-right: 3rem; color: #FF2626;">
-      *หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์ 
+    <div style="margin-right: 3rem; color: #ff2626">
+      *หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์
     </div>
-    <button mat-button type="submit" name="register" class="register" value="ลงทะเบียน" style="background-color: #27A644;color: #fff;">ลงทะเบียน</button>
-    <button mat-button mat-dialog-close style="background-color: #FF2626;color: #fff;">ปิดหน้านี้</button>
+    <button
+      mat-button
+      type="submit"
+      name="register"
+      class="register"
+      value="ลงทะเบียน"
+      style="background-color: #27a644; color: #fff"
+    >
+      ลงทะเบียน
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      style="background-color: #ff2626; color: #fff"
+    >
+      ปิดหน้านี้
+    </button>
   </mat-dialog-actions>
 </form>

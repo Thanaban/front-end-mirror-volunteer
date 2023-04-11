@@ -2,9 +2,12 @@
   <mat-tab-group
     mat-stretch-tabs="false"
     mat-align-tabs="center"
+    [selectedIndex]="(tabs.tabs)"
     style="margin-top: 2%"
+
   >
-    <mat-tab label="ข้อมูลบัญชี"
+  
+    <mat-tab label="ข้อมูลบัญชี" 
       ><div class="gutters-sm" style="font-weight: bold">
         <div class="profile-box">
           <div class="card mb-3">
@@ -21,7 +24,7 @@
                   </h4>
                   <p class="">
                     สถานะ : {{ this.status }} <br />
-                    เวลาการเข้าร่วม : {{ currentUser.received_hours }} ชั่วโมง
+                    เวลาการเข้าร่วม : {{ currentUser.received_hours }} ชั่วโมง 
                   </p>
                 </div>
               </div>
@@ -138,16 +141,15 @@
         <div *ngFor="let x of check_activity">
           <div class="activity-container-check-activity">
             <div class="header-contain">
-              <div style="margin-top: 10%;">
-                {{x.date}}
+              <div style="margin-top: 10%">
+                {{ x.date }}
               </div>
-              
             </div>
-            
+
             <div class="activity-name-contain">
               <div class="activity-name-text">
-                <div style="margin-top: 12%;margin-left: 10%;">
-                  {{x.userActivityName}}
+                <div style="margin-top: 12%; margin-left: 10%">
+                  {{ x.userActivityName }}
                 </div>
               </div>
             </div>
@@ -173,7 +175,18 @@
                     รายละเอียด
                   </div></mat-button-toggle
                 >
-                <mat-button-toggle value="italic" class="cancel-button"
+                <mat-button-toggle
+                  value="italic"
+                  class="cancel-button"
+                  (click)="
+                    cancle_activity(
+                      x.activityId,
+                      x.userActivityName,
+                      currentUser.id,
+                      currentUser.name,
+                      x.date
+                    )
+                  "
                   ><div style="margin-top: 35%">ยกเลิก</div></mat-button-toggle
                 >
               </mat-button-toggle-group>
@@ -288,9 +301,9 @@
               border-radius: 10px 0px 0px 10px; "
               
             > -->
-              <!-- <img src="{{x.picture_activity}}"  class="img-container"> -->
+<!-- <img src="{{x.picture_activity}}"  class="img-container"> -->
 
-              <!-- <div
+<!-- <div
                 style="
                   height: 100%;
                   width: 100%;
@@ -299,4 +312,4 @@
                   background-size: 100%;
                 "
               ></div> -->
-            <!-- </div> -->
+<!-- </div> -->

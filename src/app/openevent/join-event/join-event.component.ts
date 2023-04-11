@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Event_show } from '../openevent-request-get';
 import { OpeneventComponent } from '../openevent.component';
 import { EventService } from 'src/app/_services/event.service';
+import { SuccessJoinEventComponent } from '../success-join-event/success-join-event.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-join-event',
@@ -23,7 +25,7 @@ export class JoinEventComponent implements OnInit{
   event_open: any;
   join_event: any;
 
-  constructor(private http:HttpClient,private eventService:EventService) { 
+  constructor(private http:HttpClient,private eventService:EventService,public dialog: MatDialog) { 
   
   }
 
@@ -40,11 +42,17 @@ export class JoinEventComponent implements OnInit{
     this.eventService.join_activity( this.join_event.currentEventID,this.join_event.currentUserID,date ).subscribe({
       next: test => {
         console.log(test.date);
+        
       },
     
     });
-    localStorage.removeItem('EVENT');
-    this.reloadPage();
+    
+    this.dialog.open(SuccessJoinEventComponent)
+    // this.reloadPage();
+  }
+
+  openDialog3(){
+    this.dialog.open(SuccessJoinEventComponent)
   }
 
   reloadPage(): void {

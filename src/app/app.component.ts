@@ -5,6 +5,14 @@ import { AuthService } from './_services/auth.service';
 import { EventBusService } from './_shared/event-bus.service';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router'
+import { Express } from 'express'; 
+import { Server } from 'http';
+import { createServer } from 'https';
+import { readFileSync } from 'fs';
+// import cors from 'cors';
+import { BodyParser } from 'body-parser';
+import { Socket } from 'socket.io';
+
 
 @Component({
   selector: 'app-root',
@@ -20,12 +28,16 @@ export class AppComponent {
   username?: string;
   currentUser: any;
   showFiller = false;
+
+  
   // slides = [
   //   { url:"../../assets/image/1.jpg", title: '1'},
   //   { url:"../../assets/image/2.jpg", title: '1'}
   // ]
 
   eventBusSub?: Subscription;
+
+
 
   constructor(
     private storageService: StorageService,
