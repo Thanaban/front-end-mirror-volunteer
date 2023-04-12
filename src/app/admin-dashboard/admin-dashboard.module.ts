@@ -12,14 +12,20 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import { CdkTableModule} from '@angular/cdk/table';
 import { AdminManageVolunteerComponent } from './admin-manage-volunteer/admin-manage-volunteer.component';
-
+import {MatCardModule} from '@angular/material/card';
+import { BrowserModule } from '@angular/platform-browser';
+import {MatDividerModule} from '@angular/material/divider';
+import { BlacklistSnackBarComponent } from './Snack-bar/blacklist-snack-bar/blacklist-snack-bar.component';
 
 @NgModule({
   declarations: [
-    AdminDashboardComponent
+    
+  
+    
   ],
   imports: [
     CommonModule,
+    BrowserModule,
     AdminDashboardRoutingModule,
     MatSidenavModule,
     MatFormFieldModule,
@@ -28,6 +34,8 @@ import { AdminManageVolunteerComponent } from './admin-manage-volunteer/admin-ma
     MatExpansionModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatCardModule,
+    MatDividerModule
     
   ]
 })

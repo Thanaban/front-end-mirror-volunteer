@@ -1,18 +1,22 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,AfterViewInit,ViewChild } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { EventService } from 'src/app/_services/event.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+
+import { MatSort } from '@angular/material/sort';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { BlacklistSnackBarComponent } from '../Snack-bar/blacklist-snack-bar/blacklist-snack-bar.component';
 
 export interface PeriodicElement {
   name: string;
   position: number;
   weight: number;
+  test: number;
   symbol: string;
 }
-
-
 
 @Component({
   selector: 'app-admin-manage-volunteer',
@@ -28,23 +32,40 @@ export interface PeriodicElement {
 })
 
 
-export class AdminManageVolunteerComponent implements OnInit{
+export class AdminManageVolunteerComponent implements OnInit {
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  
+  durationInSeconds = 5;
   currentUser: any;
   status:any
   index:any
-
-
+  color_button = "#27A644"
   form: any = {
     status_event:null
   };
 
-  displayedColumns: string[] = ['position', 'name', 'email', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['position', 'name', 'weight','test', 'symbol'];
+  dataSource = new MatTableDataSource<any>;
+  
 
 
-  constructor(private eventService:EventService,private http:HttpClient){
+  constructor(private eventService:EventService,private http:HttpClient,private _snackBar: MatSnackBar){
+
+    
 
   }
+
+  openSnackBar(userName:string,userLastName:string
+    ,userStatus:boolean) {
+    this._snackBar.openFromComponent(BlacklistSnackBarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+    let data = {userName,userLastName,userStatus};
+    localStorage.setItem('MANAGEUSER',JSON.stringify(data))
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -53,22 +74,38 @@ export class AdminManageVolunteerComponent implements OnInit{
   ngOnInit() {
     this.http.get('http://localhost:8000/activities/get_all_users')
     .subscribe(response => {
+      
       this.currentUser = response;
+      this.dataSource = new MatTableDataSource(this.currentUser);
       this.index = this.currentUser.length
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       if (this.currentUser.non_blacklist == true) {
         this.status = "ปกติ"
+        
       } else {
         this.status = "แบล็คลิสต์"
+        
       }
       // console.warn("result",response)
     })
+
+    
   }
+
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator!;
+  // }
+
+  
 
   change_status(x:boolean){
     if (x == true) {
       this.status = "ปกติ"
+      this.color_button = "#27A644"
     } else {
       this.status = "แบล็คลิสต์"
+      this.color_button = "#FF2626"
     }
   }
 
@@ -84,16 +121,4 @@ export class AdminManageVolunteerComponent implements OnInit{
   }
 
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 

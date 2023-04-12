@@ -51,6 +51,13 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SuccessJoinEventComponent } from './openevent/success-join-event/success-join-event.component';
 import { AppServerComponent } from './app-server/app-server.component';
 import { MatInputModule } from '@angular/material/input';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AdminManageVolunteerComponent } from './admin-dashboard/admin-manage-volunteer/admin-manage-volunteer.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BlacklistSnackBarComponent } from './admin-dashboard/Snack-bar/blacklist-snack-bar/blacklist-snack-bar.component';
+
 
 @NgModule({
   declarations: [
@@ -68,6 +75,9 @@ import { MatInputModule } from '@angular/material/input';
     EditEventDetailComponent,
     PostCommentComponent,
     AppServerComponent,
+    AdminDashboardComponent,
+    AdminManageVolunteerComponent,
+    BlacklistSnackBarComponent
   ],
   entryComponents:[
     ModalEventComponent
@@ -102,7 +112,12 @@ import { MatInputModule } from '@angular/material/input';
     NgIf,
     MatTabsModule,
     MatButtonToggleModule,
-    MatInputModule
+    MatInputModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

@@ -17,50 +17,126 @@
 
 <mat-card style="margin-top: 2rem; margin-left: 6rem; margin-right: 6rem">
   <mat-card-content>
+    <mat-form-field style="width: 100%">
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="ค้นหา"
+        #input
+      />
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="
+              background-color: #0355ff;
+              color: #ffffff;
+              font-family: 'Kanit';
+              font-size: large;
+              font-weight: bold;
+            "
+          >
+            ชื่อ-นามสกุล
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.name }} {{ element.lastname }}
+          </td>
+        </ng-container>
 
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
-      </mat-form-field>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            อีเมล
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
 
-      
-    <table mat-table [dataSource]="currentUser" class="mat-elevation-z8" >
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            เบอร์โทรศัพท์
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+        </ng-container>
 
+        <ng-container matColumnDef="test">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            ชั่วโมงเข้าร่วม
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.received_hours }} ชม.
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="position" style="width: 20%;">
-        <th mat-header-cell *matHeaderCellDef>ID</th>
-        <td mat-cell *matCellDef="let currentUser">
-          {{currentUser.id}}
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="name" style="width: 20%;">
-        <th mat-header-cell *matHeaderCellDef>ชื่อ</th>
-        <td mat-cell *matCellDef="let currentUser">{{ currentUser.name }}  {{ currentUser.lastname }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="email" style="width: 20%;">
-        <th mat-header-cell *matHeaderCellDef>อีเมล</th>
-        <td mat-cell *matCellDef="let currentUser">{{ currentUser.email }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="weight" style="width: 20%;">
-        <th mat-header-cell *matHeaderCellDef >เบอร์โทรศัพท์</th>
-        <td mat-cell *matCellDef="let currentUser">{{ currentUser.phoneNumber }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="symbol" style="width: 20%;">
-        <th mat-header-cell *matHeaderCellDef>สถานะ</th>
-        <td mat-cell *matCellDef="let currentUser">
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            สถานะ
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <!-- <button mat-raised-button (click)="
+          update_user_status(element.id, element.non_blacklist)
+        ">
+            {{ change_status(element.non_blacklist) }}{{ status }}
+          </button> -->
             <mat-slide-toggle
-              [(ngModel)]="currentUser.non_blacklist"
+              color="primary"
+              [(ngModel)]="element.non_blacklist"
+              (click)="update_user_status(element.id, element.non_blacklist)"
               (click)="
-                update_user_status(currentUser.id, currentUser.non_blacklist)
+                openSnackBar(
+                  element.name,
+                  element.lastname,
+                  element.non_blacklist
+                )
               "
-              >{{ change_status(currentUser.non_blacklist) }}{{status}}</mat-slide-toggle></td>
-      </ng-container>
+              style="font-family: 'Kanit';font-weight: bold;"
+              >{{ change_status(element.non_blacklist) }}
+              {{ status }}</mat-slide-toggle
+            >
+          </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">
+            ไม่พบสิ่งที่ค้นหา "{{ input.value }}"
+          </td>
+        </tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+    </div>
   </mat-card-content>
 </mat-card>
