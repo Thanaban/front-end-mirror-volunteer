@@ -52,9 +52,6 @@ export class AdminManageVolunteerComponent implements OnInit {
 
 
   constructor(private eventService:EventService,private http:HttpClient,private _snackBar: MatSnackBar){
-
-    
-
   }
 
   openSnackBar(userName:string,userLastName:string

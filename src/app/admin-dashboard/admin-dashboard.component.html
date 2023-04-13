@@ -2,7 +2,17 @@
     <mat-card-content>
         <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" style="margin-bottom: 2rem;">
         <mat-tab label="กิจกรรมที่กำลังจะเกิดขึ้น" >
-
+          <mat-expansion-panel hideToggle *ngFor="let x of event_all" >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{x.userActivityName}}
+              </mat-panel-title>
+              <mat-panel-description>
+                {{x.userId.length}}
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>This is the primary content of the panel.</p>
+          </mat-expansion-panel>
         </mat-tab>
         <mat-tab label="กิจกรรมที่รอดำเนินการ">Content 2</mat-tab>
         
