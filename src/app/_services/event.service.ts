@@ -135,4 +135,10 @@ export class EventService {
     );
   }
 
+  get_user_in_userAc(id:number): Observable<any> {
+    return this.http.post('http://localhost:8000/activities/get_user_in_userAc',{
+      id
+    })
+  }
+
 }

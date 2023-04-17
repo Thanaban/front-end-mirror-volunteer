@@ -16,8 +16,7 @@ export class BlacklistSnackBarComponent implements OnInit {
   ngOnInit(): void {
     let data:any = localStorage.getItem('MANAGEUSER');
     this.blacklistData = JSON.parse(data);
-    console.log(this.blacklistData.userStatus)
-    
+    localStorage.removeItem('MANAGEUSER');
   }
 
   // change_status(x:boolean){

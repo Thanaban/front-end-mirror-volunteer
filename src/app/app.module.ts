@@ -57,6 +57,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { AdminManageVolunteerComponent } from './admin-dashboard/admin-manage-volunteer/admin-manage-volunteer.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BlacklistSnackBarComponent } from './admin-dashboard/Snack-bar/blacklist-snack-bar/blacklist-snack-bar.component';
+import { AdminVolunteerListComponent } from './admin-dashboard/admin-volunteer-list/admin-volunteer-list.component';
 
 
 @NgModule({
@@ -77,7 +78,8 @@ import { BlacklistSnackBarComponent } from './admin-dashboard/Snack-bar/blacklis
     AppServerComponent,
     AdminDashboardComponent,
     AdminManageVolunteerComponent,
-    BlacklistSnackBarComponent
+    BlacklistSnackBarComponent,
+    AdminVolunteerListComponent
   ],
   entryComponents:[
     ModalEventComponent

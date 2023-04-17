@@ -1,2 +1,65 @@
-
+.activity-container-check-activity{
+    /* min-width:90rem; */
+    width: 100%;
+    height: 100%;
+    min-height: 6rem;
+    /* margin: 1rem; */
+    display: flex;
+    border: 1px solid #DFDFDF;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+    margin-bottom: 1rem;
   
+  }
+
+  .activity-container-check-activity .header-contain{
+    width: 20%;
+    background-color: #0355FF;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;        
+    color: rgb(255, 255, 255);
+  }
+
+  .activity-container-check-activity .activity-name-contain{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .activity-container-check-activity .activity-name-contain .activity-name-text{
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .activity-container-check-activity .activity-volunteer-join{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .activity-container-check-activity .activity-volunteer-join .text{
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  .activity-container-check-activity .volunteer-join-list{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .activity-container-check-activity .volunteer-join-list .text{
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+

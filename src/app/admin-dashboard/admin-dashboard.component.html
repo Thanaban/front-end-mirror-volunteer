@@ -1,21 +1,81 @@
-<mat-card style="margin-top: 2rem; margin-left: 6rem; margin-right: 6rem">
+<div class="wrapper">
+  <mat-card style="margin-top: 2rem; margin-left: 6rem; margin-right: 6rem">
     <mat-card-content>
-        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" style="margin-bottom: 2rem;">
-        <mat-tab label="กิจกรรมที่กำลังจะเกิดขึ้น" >
-          <mat-expansion-panel hideToggle *ngFor="let x of event_all" >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                {{x.userActivityName}}
-              </mat-panel-title>
-              <mat-panel-description>
-                {{x.userId.length}}
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-            <p>This is the primary content of the panel.</p>
-          </mat-expansion-panel>
+      <mat-tab-group
+        mat-stretch-tabs="false"
+        mat-align-tabs="center"
+        style="margin-bottom: 2rem"
+      >
+        <mat-tab label="กิจกรรมที่กำลังจะเกิดขึ้น">
+          <div *ngFor="let x of userAc">
+            <div class="activity-container-check-activity">
+              <div class="header-contain">
+                <div style="margin-top: 9%">
+                  {{ con_date(x.date) }}
+                </div>
+              </div>
+              <div class="activity-name-contain">
+                <div class="activity-name-text">
+                  <div style="margin-top: 4%; margin-left: 10%">
+                    {{ x.userActivityName }}
+                  </div>
+                </div>
+              </div>
+              <div class="activity-volunteer-join">
+                <div class="text">
+                  <div style="margin-top: 4%; margin-left: 10%">
+                    อาสาเข้าร่วม
+                    {{ x.userId.length }} คน
+                  </div>
+                </div>
+              </div>
+              <div class="volunteer-join-list">
+                <button
+              mat-button
+              (click)="
+              openDialogVolunteerList(
+                  x.id
+                )
+              "
+              style="
+                background-color: #27a644;
+                color: rgb(255, 255, 255);
+                margin-top: 1.4rem;
+                margin-bottom: 1.4rem;
+                margin-right: 2rem;
+              "
+            >
+              รายชื่อผู้เข้าร่วม
+            </button>
+              </div>
+            </div>
+          </div>
+          <!-- <mat-card *ngFor="let x of userAc">
+          <mat-card-content
+            >{{ con_date(x.date) }} {{ x.userActivityName }} ผู้เข้าร่วม
+            {{ x.userId.length }} คน
+            <button
+              mat-button
+              (click)="
+              openDialogVolunteerList(
+                  x.id
+                )
+              "
+              style="
+                background-color: #27a644;
+                color: rgb(255, 255, 255);
+                margin-top: 1.4rem;
+                margin-bottom: 1.4rem;
+                margin-right: 2rem;
+              "
+            >
+              รายละเอียด
+            </button>
+          </mat-card-content>
+        </mat-card> -->
         </mat-tab>
         <mat-tab label="กิจกรรมที่รอดำเนินการ">Content 2</mat-tab>
-        
-      </mat-tab-group>   
-        </mat-card-content>
+      </mat-tab-group>
+    </mat-card-content>
   </mat-card>
+</div>

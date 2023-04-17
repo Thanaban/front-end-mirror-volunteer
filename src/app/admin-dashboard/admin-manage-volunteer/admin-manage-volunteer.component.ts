@@ -10,13 +10,6 @@ import { MatSort } from '@angular/material/sort';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { BlacklistSnackBarComponent } from '../Snack-bar/blacklist-snack-bar/blacklist-snack-bar.component';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  test: number;
-  symbol: string;
-}
 
 @Component({
   selector: 'app-admin-manage-volunteer',
@@ -56,11 +49,12 @@ export class AdminManageVolunteerComponent implements OnInit {
 
   openSnackBar(userName:string,userLastName:string
     ,userStatus:boolean) {
+      let data = {userName,userLastName,userStatus};
+      localStorage.setItem('MANAGEUSER',JSON.stringify(data))
     this._snackBar.openFromComponent(BlacklistSnackBarComponent, {
       duration: this.durationInSeconds * 1000,
     });
-    let data = {userName,userLastName,userStatus};
-    localStorage.setItem('MANAGEUSER',JSON.stringify(data))
+    
   }
 
   applyFilter(event: Event) {
