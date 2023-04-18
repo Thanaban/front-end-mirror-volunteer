@@ -32,7 +32,14 @@
           <div class="row" style="margin-right: 0rem; margin-left: 0rem">
             <div class="list-detail-left">เลือกวันที่ต้องการเข้าร่วม :</div>
             <div class="list-detail-right">
-              <input
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" name="birthday" [(ngModel)]="form.date" #date="ngModel">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+              <!-- <input
                 type="date"
                 name="birthday"
                 [(ngModel)]="form.date"
@@ -40,7 +47,7 @@
                 required
                 min="2023-03-25"
                 max="2023-05-25"
-              />
+              /> -->
             </div>
           </div>
         </div>
@@ -68,5 +75,6 @@
     >
       ปิดหน้านี้
     </button>
+    
   </mat-dialog-actions>
 </form>

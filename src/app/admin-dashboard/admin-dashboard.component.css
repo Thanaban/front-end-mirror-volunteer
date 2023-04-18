@@ -62,4 +62,23 @@
     height: 100%;
     display: flex;
   }
+  table {
+    width: 100%;
+    
+  }
+  
+  td{
+    width: 25%;
+    font-family: 'Kanit';
+    font-weight: bold;
+  }
 
+  th{
+    width: 25%;
+    
+              background-color: #0355ff;
+              color: #ffffff;
+              font-family: 'Kanit';
+              font-size: large;
+              font-weight: bold;
+  }

@@ -24,8 +24,13 @@ export class JoinEventComponent implements OnInit{
   eventlist1: Event_show[]=[];
   event_open: any;
   join_event: any;
+  minDate: Date;
+  maxDate: Date;
 
   constructor(private http:HttpClient,private eventService:EventService,public dialog: MatDialog) { 
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date(currentYear + 1, 11, 31);
   
   }
 
