@@ -141,4 +141,14 @@ export class EventService {
     })
   }
 
+  remove_user_from_useractivity(userId: number,userActivityId:number): Observable<any> {
+    return this.http.patch('http://localhost:8000/activities/remove_user_from_useractivity',
+      {
+        userId,
+        userActivityId
+      },
+      httpOptions
+    );
+  }
+
 }

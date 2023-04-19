@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { AdminVolunteerListComponent } from './admin-volunteer-list/admin-volunteer-list.component';
 import {MatTableDataSource} from '@angular/material/table';
+import { AdminManageVolunteerListComponent } from './admin-manage-volunteer-list/admin-manage-volunteer-list.component';
 
 
 @Component({
@@ -12,35 +13,50 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class AdminDashboardComponent implements OnInit{
 
-  event_all:any
+  eventWaitToStartActivity:any
+  eventOnGoingActivity:any
   dateForm:any
   month:any
   afterMonth:string = ""
   userAc = [] as any;
 
-  displayedColumns: string[] = ['date', 'gender', 'birthday','religion'];
-  dataSource = new MatTableDataSource<any>;
+  displayedColumns: string[] = ['date', 'gender', 'birthday','volunteer'];
+  dataSourceWaitToStartActivity = new MatTableDataSource<any>;
+  dataSourceOnGoingActivity = new MatTableDataSource<any>;
 
-  applyFilter(event: Event) {
+  applyFilterWaitToStartActivity(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSourceWaitToStartActivity.filter = filterValue.trim().toLowerCase();
+  }
+
+  applyFilterOnGoingActivity(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceOnGoingActivity.filter = filterValue.trim().toLowerCase();
   }
 
   constructor(private http:HttpClient,public dialog: MatDialog){
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:8000/activities/get_lated_activity')
+    this.http.get('http://localhost:8000/activities/wait_to_start')
     .subscribe(response => {
-      this.event_all = response;
+      this.eventWaitToStartActivity = response;
       
-      for (let i = 0; i < this.event_all.length;i++){
-        if (this.event_all[i].userId.length > 0 ){
-          this.event_all[i].date = this.con_date(this.event_all[i].date)
-          this.userAc.push(this.event_all[i]);
+      for (let i = 0; i < this.eventWaitToStartActivity.length;i++){
+        if (this.eventWaitToStartActivity[i].userId.length > 0 ){
+          this.eventWaitToStartActivity[i].date = this.con_date(this.eventWaitToStartActivity[i].date)
+          this.userAc.push(this.eventWaitToStartActivity[i]);
         }
       }
-      this.dataSource = new MatTableDataSource(this.userAc);
+      this.dataSourceWaitToStartActivity = new MatTableDataSource(this.userAc);
+    })
+
+    this.http.get('http://localhost:8000/activities/ongoing_activity')
+    .subscribe(response2 => {
+      this.eventOnGoingActivity = response2;
+      
+      
+      this.dataSourceOnGoingActivity = new MatTableDataSource(this.userAc);
     })
   }
 
@@ -60,6 +76,12 @@ export class AdminDashboardComponent implements OnInit{
 
   openDialogVolunteerList(currentActivityId:number) {
     this.dialog.open(AdminVolunteerListComponent);
+    let data = {currentActivityId};
+    localStorage.setItem('ADMINEVENT',JSON.stringify(data))
+  }
+
+  openDialogEditVolunteerList(currentActivityId:number) {
+    this.dialog.open(AdminManageVolunteerListComponent);
     let data = {currentActivityId};
     localStorage.setItem('ADMINEVENT',JSON.stringify(data))
   }

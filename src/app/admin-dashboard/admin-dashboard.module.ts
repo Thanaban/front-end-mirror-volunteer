@@ -17,10 +17,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import {MatDividerModule} from '@angular/material/divider';
 import { BlacklistSnackBarComponent } from './Snack-bar/blacklist-snack-bar/blacklist-snack-bar.component';
 import { AdminVolunteerListComponent } from './admin-volunteer-list/admin-volunteer-list.component';
+import { AdminManageVolunteerListComponent } from './admin-manage-volunteer-list/admin-manage-volunteer-list.component';
+import { ConfirmEditVolunteerListComponent } from './admin-manage-volunteer-list/confirm-edit-volunteer-list/confirm-edit-volunteer-list.component';
 
 @NgModule({
   declarations: [
   
+  
+    
+  
+    
   ],
   imports: [
     CommonModule,

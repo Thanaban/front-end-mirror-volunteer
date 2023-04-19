@@ -58,6 +58,8 @@ import { AdminManageVolunteerComponent } from './admin-dashboard/admin-manage-vo
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BlacklistSnackBarComponent } from './admin-dashboard/Snack-bar/blacklist-snack-bar/blacklist-snack-bar.component';
 import { AdminVolunteerListComponent } from './admin-dashboard/admin-volunteer-list/admin-volunteer-list.component';
+import { AdminManageVolunteerListComponent } from './admin-dashboard/admin-manage-volunteer-list/admin-manage-volunteer-list.component';
+import { ConfirmEditVolunteerListComponent } from './admin-dashboard/admin-manage-volunteer-list/confirm-edit-volunteer-list/confirm-edit-volunteer-list.component';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { AdminVolunteerListComponent } from './admin-dashboard/admin-volunteer-l
     AdminDashboardComponent,
     AdminManageVolunteerComponent,
     BlacklistSnackBarComponent,
-    AdminVolunteerListComponent
+    AdminVolunteerListComponent,
+    AdminManageVolunteerListComponent,
+    ConfirmEditVolunteerListComponent
   ],
   entryComponents:[
     ModalEventComponent

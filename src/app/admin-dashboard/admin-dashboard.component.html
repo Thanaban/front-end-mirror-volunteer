@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <mat-card style="margin-top: 2%; margin-left: 6%; margin-right: 6%">
+  <mat-card style="margin-top: 1%; margin-left: 6%; margin-right: 6%">
     <mat-card-content>
       <mat-tab-group
         mat-stretch-tabs="false"
@@ -7,15 +7,15 @@
         style="margin-bottom: 2%"
       >
         <mat-tab label="กิจกรรมที่กำลังจะเกิดขึ้น">
-          <mat-form-field style="width: 100%;margin-top: 2%;">
+          <mat-form-field style="width: 100%; margin-top: 2%">
             <input
               matInput
-              (keyup)="applyFilter($event)"
+              (keyup)="applyFilterWaitToStartActivity($event)"
               placeholder="ค้นหา"
               #input
             />
           </mat-form-field>
-          <table mat-table [dataSource]="dataSource" matSort>
+          <table mat-table [dataSource]="dataSourceWaitToStartActivity" matSort>
             <!-- Position Column -->
             <ng-container matColumnDef="date">
               <th
@@ -36,7 +36,7 @@
                 {{ element.date }}
               </td>
             </ng-container>
-    
+
             <!-- Name Column -->
             <ng-container matColumnDef="gender">
               <th
@@ -47,9 +47,11 @@
               >
                 ชื่อกิจกรรม
               </th>
-              <td mat-cell *matCellDef="let element">{{ element.userActivityName }}</td>
+              <td mat-cell *matCellDef="let element">
+                {{ element.userActivityName }}
+              </td>
             </ng-container>
-    
+
             <!-- Weight Column -->
             <ng-container matColumnDef="birthday">
               <th
@@ -60,10 +62,12 @@
               >
                 จำนวนอาสาเข้าร่วม
               </th>
-              <td mat-cell *matCellDef="let element">{{ element.userId.length }} คน </td>
+              <td mat-cell *matCellDef="let element">
+                {{ element.userId.length }} คน
+              </td>
             </ng-container>
-    
-            <ng-container matColumnDef="religion">
+
+            <ng-container matColumnDef="volunteer">
               <th
                 mat-header-cell
                 *matHeaderCellDef
@@ -74,34 +78,123 @@
               </th>
               <td mat-cell *matCellDef="let element">
                 <button
-              mat-button
-              (click)="
-              openDialogVolunteerList(
-                  element.id
-                )
-              "
-              style="
-                background-color: #27a644;
-                color: rgb(255, 255, 255);
-                margin-top: 1.4rem;
-                margin-bottom: 1.4rem;
-                margin-right: 2rem;
-              "
-            >
-              รายชื่อผู้เข้าร่วม
-            </button>
+                  mat-button
+                  (click)="openDialogVolunteerList(element.id)"
+                  style="
+                    background-color: #27a644;
+                    color: rgb(255, 255, 255);
+                    margin-top: 1.4rem;
+                    margin-bottom: 1.4rem;
+                    margin-right: 2rem;
+                    font-family: 'Kanit';
+                    font-weight: bold;
+                  "
+                >
+                  รายชื่อผู้เข้าร่วม
+                </button>
               </td>
             </ng-container>
-    
-            
-    
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    
-            
           </table>
         </mat-tab>
-        <mat-tab label="กิจกรรมที่รอดำเนินการ">Content 2</mat-tab>
+        <mat-tab label="กิจกรรมที่รอดำเนินการ">
+          <mat-form-field style="width: 100%; margin-top: 2%">
+            <input
+              matInput
+              (keyup)="applyFilterOnGoingActivity($event)"
+              placeholder="ค้นหา"
+              #input
+            />
+          </mat-form-field>
+          <table mat-table [dataSource]="eventOnGoingActivity" matSort>
+            <!-- Position Column -->
+            <ng-container matColumnDef="date">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                style="
+                  background-color: #0355ff;
+                  color: #ffffff;
+                  font-family: 'Kanit';
+                  font-size: large;
+                  font-weight: bold;
+                "
+              >
+                กิจกรรมวันที่
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.date }}
+              </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="gender">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                style="background-color: #0355ff; color: #ffffff"
+              >
+                ชื่อกิจกรรม
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.userActivityName }}
+              </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="birthday">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-headerห
+                style="background-color: #0355ff; color: #ffffff"
+              >
+                จำนวนอาสาเข้าร่วม
+              </th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.userId.length }} คน
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="volunteer">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                style="background-color: #0355ff; color: #ffffff"
+              >
+                รายชื่อ
+              </th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-button
+                  (click)="openDialogEditVolunteerList(element.id)"
+                  style="
+                    background-color: #ffde02;
+                    color: rgb(0, 0, 0);
+                    margin-top: 1.4rem;
+                    margin-bottom: 1.4rem;
+                    margin-right: 2rem;
+                    font-family: 'Kanit';
+                    font-weight: bold;
+                  "
+                >
+                  ยืนยันรายชื่อ
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumns"
+            ></tr></table
+        ></mat-tab>
+        <mat-tab label="กิจกรรมที่เสร็จสิ้น">Content 2</mat-tab>
       </mat-tab-group>
     </mat-card-content>
   </mat-card>
