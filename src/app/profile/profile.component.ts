@@ -6,6 +6,7 @@ import { EventService } from '../_services/event.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailActivityComponent } from './detail-activity/detail-activity.component';
 import { PostCommentComponent } from './post-comment/post-comment.component';
+import { CancelEventConfirmComponent } from './cancel-event-confirm/cancel-event-confirm.component';
 
 @Component({
   selector: 'app-profile',
@@ -25,8 +26,6 @@ export class ProfileComponent implements OnInit {
   status:any
   currentActivity:any
 
-  
-
   constructor(private http:HttpClient,private storageService: StorageService,private eventService:EventService,public dialog: MatDialog) { 
 
   }
@@ -44,6 +43,15 @@ export class ProfileComponent implements OnInit {
      
     })
 
+    this.getDataUserActivity();
+
+    this.http.get('http://localhost:8000/users/get-ended-useractivity')
+    .subscribe(response4 => {
+      this.history_activity = response4;
+    })
+  }
+
+  getDataUserActivity(){
     this.http.get('http://localhost:8000/users/get-useractivity')
     .subscribe(response2 => {
       this.check_activity = response2;
@@ -57,11 +65,6 @@ export class ProfileComponent implements OnInit {
     })
       }
     })
-
-    this.http.get('http://localhost:8000/users/get-ended-useractivity')
-    .subscribe(response4 => {
-      this.history_activity = response4;
-    })
   }
   
   con_date(d:any){
@@ -74,10 +77,20 @@ export class ProfileComponent implements OnInit {
       next: test => {
         console.log(test.date);
       },
-    
     });
     // this.reloadPage();
   }
+
+  openDialogCancel(currentActivityId:number,currentActivityName:string,currentUserID:number,currentUserName:string,cancelDate:Date) {
+    this.dialog.open(CancelEventConfirmComponent).afterClosed()
+    .subscribe((result) => {
+      this.getDataUserActivity();
+    });;
+
+    let data = {currentActivityId,currentActivityName,currentUserID,currentUserName,cancelDate};
+    localStorage.setItem('EVENT',JSON.stringify(data))
+  }
+  
   
 
   openDialogDetail(currentActivityId:number,currentActivityName:string,currentUserID:number,currentUserName:string,cancelDate:Date) {

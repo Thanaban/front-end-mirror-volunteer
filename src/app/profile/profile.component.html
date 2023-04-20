@@ -179,13 +179,13 @@
                   value="italic"
                   class="cancel-button"
                   (click)="
-                    cancle_activity(
-                      x.activityId,
-                      x.userActivityName,
-                      currentUser.id,
-                      currentUser.name,
-                      x.date
-                    )
+                  openDialogCancel(
+                    x.activityId,
+                    x.userActivityName,
+                    currentUser.id,
+                    currentUser.name,
+                    x.date
+                  )
                   "
                   ><div style="margin-top: 35%">ยกเลิก</div></mat-button-toggle
                 >
