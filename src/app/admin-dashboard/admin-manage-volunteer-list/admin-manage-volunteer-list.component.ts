@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/_services/event.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatDialog } from '@angular/material/dialog';
+import { MatTable } from '@angular/material/table';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmEditVolunteerListComponent } from './confirm-edit-volunteer-list/confirm-edit-volunteer-list.component';
 
 @Component({
@@ -11,7 +12,11 @@ import { ConfirmEditVolunteerListComponent } from './confirm-edit-volunteer-list
   styleUrls: ['./admin-manage-volunteer-list.component.css'],
 })
 export class AdminManageVolunteerListComponent implements OnInit {
-  constructor(private eventService: EventService,public dialog: MatDialog) {}
+  constructor(
+    private eventService: EventService,
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<ConfirmEditVolunteerListComponent>
+  ) {}
 
   userActivityId: any;
   VolunteerList: any;
@@ -38,7 +43,10 @@ export class AdminManageVolunteerListComponent implements OnInit {
     let data: any = localStorage.getItem('ADMINEVENT');
     this.userActivityId = JSON.parse(data);
     console.log(this.userActivityId);
+    this.get_data();
+  }
 
+  get_data() {
     this.eventService
       .get_user_in_userAc(this.userActivityId.currentActivityId)
       .subscribe({
@@ -50,15 +58,16 @@ export class AdminManageVolunteerListComponent implements OnInit {
       });
   }
 
-  openDialogEditVolunteerList(userId:number) {
-    this.dialog.open(ConfirmEditVolunteerListComponent);
-    let data = {userId};
-    localStorage.setItem('REMOVEVOLUNTEERLIST',JSON.stringify(data))
+  openDialogEditVolunteerList(userId: number) {
+    this.dialog
+      .open(ConfirmEditVolunteerListComponent)
+      .afterClosed()
+      .subscribe((result) => {
+        this.get_data();
+      });
+    let data = { userId };
+    localStorage.setItem('REMOVEVOLUNTEERLIST', JSON.stringify(data));
   }
 
-
-  editVolunteerList(userId:number,userActivityId:number){
-    
-
-  }
+  editVolunteerList(userId: number, userActivityId: number) {}
 }

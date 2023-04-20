@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { EventService } from 'src/app/_services/event.service';
 
 @Component({
@@ -10,7 +11,10 @@ export class ConfirmEditVolunteerListComponent implements OnInit {
   userActivityId: any;
   userId: any;
 
-  constructor(private eventService: EventService) {}
+  constructor(
+    private eventService: EventService,
+    public dialogRef: MatDialogRef<ConfirmEditVolunteerListComponent>
+  ) {}
 
   ngOnInit(): void {
     let datauser: any = localStorage.getItem('REMOVEVOLUNTEERLIST');
@@ -18,19 +22,26 @@ export class ConfirmEditVolunteerListComponent implements OnInit {
     let data: any = localStorage.getItem('ADMINEVENT');
     this.userActivityId = JSON.parse(data);
   }
+  
 
   remove_user(userId: number) {
     this.eventService
       .remove_user_from_useractivity(
         userId,
         this.userActivityId.currentActivityId
-      ).subscribe({
+      )
+      .subscribe({
         next: (data) => {
-          
           console.log('test', data);
         },
       });
-      
-    console.warn('remove success',userId,this.userActivityId.currentActivityId)
+
+    console.warn(
+      'remove success',
+      userId,
+      this.userActivityId.currentActivityId
+    );
+    this.dialogRef.close();
+
   }
 }
