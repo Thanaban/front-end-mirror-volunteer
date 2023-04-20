@@ -38,6 +38,14 @@ export class AdminDashboardComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.getDataWaitToStartActivity()
+    this.getDataOnGoingActivity()
+    
+
+    
+  }
+
+  getDataWaitToStartActivity(){
     this.http.get('http://localhost:8000/activities/wait_to_start')
     .subscribe(response => {
       this.eventWaitToStartActivity = response;
@@ -50,12 +58,13 @@ export class AdminDashboardComponent implements OnInit{
       }
       this.dataSourceWaitToStartActivity = new MatTableDataSource(this.userAc);
     })
+  }
 
+
+  getDataOnGoingActivity(){
     this.http.get('http://localhost:8000/activities/ongoing_activity')
     .subscribe(response2 => {
       this.eventOnGoingActivity = response2;
-      
-      
       this.dataSourceOnGoingActivity = new MatTableDataSource(this.userAc);
     })
   }
@@ -81,7 +90,10 @@ export class AdminDashboardComponent implements OnInit{
   }
 
   openDialogEditVolunteerList(currentActivityId:number) {
-    this.dialog.open(AdminManageVolunteerListComponent);
+    this.dialog.open(AdminManageVolunteerListComponent).afterClosed()
+    .subscribe((result) => {
+      this.getDataOnGoingActivity();
+    });
     let data = {currentActivityId};
     localStorage.setItem('ADMINEVENT',JSON.stringify(data))
   }

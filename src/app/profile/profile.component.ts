@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // this.currentUser = this.storageService.getUser();
+    
     this.http.get('http://localhost:8000/users/user')
     .subscribe(response => {
       this.currentUser = response;
@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
       } else {
         this.status = "แบล็คลิสต์"
       }
-      // console.warn("result",response)
+     
     })
 
     this.http.get('http://localhost:8000/users/get-useractivity')
@@ -56,22 +56,12 @@ export class ProfileComponent implements OnInit {
         console.warn("result3",response3)
     })
       }
-      // console.warn("result2",this.check_activity[0].activityId)
     })
 
     this.http.get('http://localhost:8000/users/get-ended-useractivity')
     .subscribe(response4 => {
       this.history_activity = response4;
     })
-    
-    // let data:any = localStorage.getItem('TABS');
-    // this.tabs = JSON.parse(data);
-
-    // if(this.tabs.tabs == 1){
-    //   this.reloadPage()
-    //   localStorage.removeItem('TABS');
-    // }
-
   }
   
   con_date(d:any){
@@ -86,7 +76,7 @@ export class ProfileComponent implements OnInit {
       },
     
     });
-    this.reloadPage();
+    // this.reloadPage();
   }
   
 
