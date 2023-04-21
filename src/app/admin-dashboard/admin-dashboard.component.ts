@@ -16,7 +16,8 @@ export class AdminDashboardComponent implements OnInit {
   dateForm: any;
   month: any;
   afterMonth: string = '';
-  userAc = [] as any;
+  userActivityWaitToStart = [] as any;
+  userActivityOnGoing = [] as any;
 
   displayedColumns: string[] = ['date', 'gender', 'birthday', 'volunteer'];
   dataSourceWaitToStartActivity = new MatTableDataSource<any>();
@@ -52,11 +53,11 @@ export class AdminDashboardComponent implements OnInit {
             this.eventWaitToStartActivity[i].date = this.con_date(
               this.eventWaitToStartActivity[i].date
             );
-            this.userAc.push(this.eventWaitToStartActivity[i]);
+            this.userActivityWaitToStart.push(this.eventWaitToStartActivity[i]);
           }
         }
         this.dataSourceWaitToStartActivity = new MatTableDataSource(
-          this.userAc
+          this.userActivityWaitToStart
         );
       });
   }
@@ -66,7 +67,15 @@ export class AdminDashboardComponent implements OnInit {
       .get('http://localhost:8000/activities/ongoing_activity')
       .subscribe((response2) => {
         this.eventOnGoingActivity = response2;
-        this.dataSourceOnGoingActivity = new MatTableDataSource(this.userAc);
+        for (let i = 0; i < this.eventOnGoingActivity.length; i++) {
+          this.eventOnGoingActivity[i].date = this.con_date(
+            this.eventOnGoingActivity[i].date
+          );
+          this.userActivityOnGoing.push(this.eventOnGoingActivity[i]);
+        }
+        this.dataSourceOnGoingActivity = new MatTableDataSource(
+          this.userActivityOnGoing
+        );
       });
   }
 
@@ -89,14 +98,18 @@ export class AdminDashboardComponent implements OnInit {
     localStorage.setItem('ADMINEVENT', JSON.stringify(data));
   }
 
-  openDialogEditVolunteerList(currentActivityId: number) {
+  openDialogEditVolunteerList(
+    currentActivityId: number,
+    currentActivityName: string,
+    date: string
+  ) {
     this.dialog
       .open(AdminManageVolunteerListComponent)
       .afterClosed()
       .subscribe((result) => {
         this.getDataOnGoingActivity();
       });
-    let data = { currentActivityId };
+    let data = { currentActivityId, currentActivityName, date };
     localStorage.setItem('ADMINEVENT', JSON.stringify(data));
   }
 }

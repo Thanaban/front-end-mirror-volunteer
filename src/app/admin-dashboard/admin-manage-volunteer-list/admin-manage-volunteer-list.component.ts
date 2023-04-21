@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatTable } from '@angular/material/table';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmEditVolunteerListComponent } from './confirm-edit-volunteer-list/confirm-edit-volunteer-list.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarMessageComponent } from 'src/app/snack-bar-message/snack-bar-message.component';
 
 @Component({
   selector: 'app-admin-manage-volunteer-list',
@@ -15,11 +17,14 @@ export class AdminManageVolunteerListComponent implements OnInit {
   constructor(
     private eventService: EventService,
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<ConfirmEditVolunteerListComponent>
+    public dialogRef: MatDialogRef<ConfirmEditVolunteerListComponent>,
+    private _snackBar: MatSnackBar
   ) {}
 
+  durationInSeconds = 5;
   userActivityId: any;
   VolunteerList: any;
+  settext:string = ''
 
   displayedColumns: string[] = [
     'name',
@@ -69,5 +74,19 @@ export class AdminManageVolunteerListComponent implements OnInit {
     localStorage.setItem('REMOVEVOLUNTEERLIST', JSON.stringify(data));
   }
 
-  editVolunteerList(userId: number, userActivityId: number) {}
+  finish_activity() {
+    this.eventService
+      .finish_activity(this.userActivityId.currentActivityId)
+      .subscribe({
+        next: (data) => {
+          console.warn(data);
+        },
+      });
+    this.settext = 'กิจกรรม:'+' '+this.userActivityId.currentActivityName + '  '+ 'วันที่:'+'  '+this.userActivityId.date+'  '+'เสร็จสิ้นกิจกรรม'
+    let message = { text:  this.settext};
+    localStorage.setItem('MESSAGE', JSON.stringify(message));
+    this._snackBar.openFromComponent(SnackBarMessageComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
 }
