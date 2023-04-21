@@ -61,6 +61,7 @@ import { AdminVolunteerListComponent } from './admin-dashboard/admin-volunteer-l
 import { AdminManageVolunteerListComponent } from './admin-dashboard/admin-manage-volunteer-list/admin-manage-volunteer-list.component';
 import { ConfirmEditVolunteerListComponent } from './admin-dashboard/admin-manage-volunteer-list/confirm-edit-volunteer-list/confirm-edit-volunteer-list.component';
 import { CancelEventConfirmComponent } from './profile/cancel-event-confirm/cancel-event-confirm.component';
+import { SnackBarMessageComponent } from './snack-bar-message/snack-bar-message.component';
 
 
 @NgModule({
@@ -85,7 +86,8 @@ import { CancelEventConfirmComponent } from './profile/cancel-event-confirm/canc
     AdminVolunteerListComponent,
     AdminManageVolunteerListComponent,
     ConfirmEditVolunteerListComponent,
-    CancelEventConfirmComponent
+    CancelEventConfirmComponent,
+    SnackBarMessageComponent
   ],
   entryComponents:[
     ModalEventComponent
