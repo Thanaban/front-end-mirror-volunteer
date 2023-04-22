@@ -22,7 +22,6 @@ export class ConfirmEditVolunteerListComponent implements OnInit {
     let data: any = localStorage.getItem('ADMINEVENT');
     this.userActivityId = JSON.parse(data);
   }
-  
 
   remove_user(userId: number) {
     this.eventService
@@ -42,6 +41,5 @@ export class ConfirmEditVolunteerListComponent implements OnInit {
       this.userActivityId.currentActivityId
     );
     this.dialogRef.close();
-
   }
 }

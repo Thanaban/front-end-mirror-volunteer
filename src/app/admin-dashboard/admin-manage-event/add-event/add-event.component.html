@@ -1,179 +1,173 @@
-<form
-        
-        name="form"
-        (ngSubmit)="onSubmit()"
-        #f="ngForm"
-        
-      > 
-<mat-dialog-content class="mat-typography">
+<form name="form" (ngSubmit)="onSubmit()" #f="ngForm">
+  <mat-dialog-content class="mat-typography">
     <div class="detail-container">
-        <div class="detail-container-body">
-            <div class="body-pl">
-              <div class="detail-text-left-container">
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>ชื่อกิจกรรม</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="activity_name"
-                    [(ngModel)]="form.activity_name"
-                    #activity_name="ngModel"
-                    
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>เวลาทำกิจกรรม</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="time_detail"
-                    [(ngModel)]="form.time_detail"
-                    #time_detail="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>ราายละเอียดกิจกรรม</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="activity_details"
-                    [(ngModel)]="form.activity_details"
-                    #activity_details="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>จำนวนจำกัด</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="size_number"
-                    [(ngModel)]="form.size_number"
-                    #size_number="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>จำนวนชั่วโมงที่ได้รับ</label>
-                    <input
-                    type="textarea"
-                    class="form-control"
-                    name="received_hours"
-                    [(ngModel)]="form.received_hours"
-                    #received_hours="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>วันที่เริ่ม</label>
-                    <input
-                    type="date"
-                    class="form-control"
-                    name="start_date"
-                    [(ngModel)]="form.start_date"
-                    #start_date="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>การแต่งกาย</label>
-                    <input
-                    type="textarea"
-                    class="form-control"
-                    name="clothes_detail"
-                    [(ngModel)]="form.clothes_detail"
-                    #clothes_detail="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>Google map link</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="map"
-                    [(ngModel)]="form.map"
-                    #map="ngModel"
-                    required
-                  
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>การเดินทางด้วยรถสาธารณะ</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="travel_public_detail"
-                    [(ngModel)]="form.travel_public_detail"
-                    #travel_public_detail="ngModel"
-                    required
-                   
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>การเดินทางด้วยรถส่วนตัว</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="travel_detail"
-                    [(ngModel)]="form.travel_detail"
-                    #travel_detail="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>การเดินทางอื่นๆ</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="travel_etc_detail"
-                    [(ngModel)]="form.travel_etc_detail"
-                    #travel_etc_detail="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>รูป</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="picture"
-                    [(ngModel)]="form.picture"
-                    #picture="ngModel"
-                    required
-                    
-                />
-                </div>
-                <div class="row" style="margin-bottom: 1rem;">
-                    <label>ความสำคัญ</label>
-                    <input
-                    type="text"
-                    class="form-control"
-                    name="priority"
-                    [(ngModel)]="form.priority"
-                    #priority="ngModel"
-                    required
-                    
-                />
-                </div>
-                </div>
-                </div>
+      <div class="detail-container-body">
+        <div class="body-pl">
+          <div class="detail-text-left-container">
+            <div class="row" style="margin-bottom: 1rem">
+              <label>ชื่อกิจกรรม</label>
+              <input
+                type="text"
+                class="form-control"
+                name="activity_name"
+                [(ngModel)]="form.activity_name"
+                #activity_name="ngModel"
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>เวลาทำกิจกรรม</label>
+              <input
+                type="text"
+                class="form-control"
+                name="time_detail"
+                [(ngModel)]="form.time_detail"
+                #time_detail="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>ราายละเอียดกิจกรรม</label>
+              <input
+                type="text"
+                class="form-control"
+                name="activity_details"
+                [(ngModel)]="form.activity_details"
+                #activity_details="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>จำนวนจำกัด</label>
+              <input
+                type="text"
+                class="form-control"
+                name="size_number"
+                [(ngModel)]="form.size_number"
+                #size_number="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>จำนวนชั่วโมงที่ได้รับ</label>
+              <input
+                type="textarea"
+                class="form-control"
+                name="received_hours"
+                [(ngModel)]="form.received_hours"
+                #received_hours="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>วันที่เริ่ม</label>
+              <input
+                type="date"
+                class="form-control"
+                name="start_date"
+                [(ngModel)]="form.start_date"
+                #start_date="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>การแต่งกาย</label>
+              <input
+                type="textarea"
+                class="form-control"
+                name="clothes_detail"
+                [(ngModel)]="form.clothes_detail"
+                #clothes_detail="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>Google map link</label>
+              <input
+                type="text"
+                class="form-control"
+                name="map"
+                [(ngModel)]="form.map"
+                #map="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>การเดินทางด้วยรถสาธารณะ</label>
+              <input
+                type="text"
+                class="form-control"
+                name="travel_public_detail"
+                [(ngModel)]="form.travel_public_detail"
+                #travel_public_detail="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>การเดินทางด้วยรถส่วนตัว</label>
+              <input
+                type="text"
+                class="form-control"
+                name="travel_detail"
+                [(ngModel)]="form.travel_detail"
+                #travel_detail="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>การเดินทางอื่นๆ</label>
+              <input
+                type="text"
+                class="form-control"
+                name="travel_etc_detail"
+                [(ngModel)]="form.travel_etc_detail"
+                #travel_etc_detail="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>รูป</label>
+              <input
+                type="text"
+                class="form-control"
+                name="picture"
+                [(ngModel)]="form.picture"
+                #picture="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>ความสำคัญ</label>
+              <input
+                type="text"
+                class="form-control"
+                name="priority"
+                [(ngModel)]="form.priority"
+                #priority="ngModel"
+                required
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-    
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button type="submit" name="register" class="register" value="ลงทะเบียน" style="background-color: #27A644;color: #fff;">เพิ่มกิจกรรม</button>
-  <button mat-button mat-dialog-close style="background-color: #FF2626;color: #fff;">ปิดหน้านี้</button>
-</mat-dialog-actions>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      mat-button
+      type="submit"
+      name="register"
+      class="register"
+      value="ลงทะเบียน"
+      style="background-color: #27a644; color: #fff"
+    >
+      เพิ่มกิจกรรม
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      style="background-color: #ff2626; color: #fff"
+    >
+      ปิดหน้านี้
+    </button>
+  </mat-dialog-actions>
 </form>

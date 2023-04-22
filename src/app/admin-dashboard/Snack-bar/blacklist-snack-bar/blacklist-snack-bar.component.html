@@ -1,9 +1,25 @@
-<div style="text-align: center" >
-  <p *ngIf="blacklistData.userStatus" style="color: #27A644;font-family: 'Kanit';font-weight: bold;font-size: medium;">
+<div style="text-align: center">
+  <p
+    *ngIf="blacklistData.userStatus"
+    style="
+      color: #27a644;
+      font-family: 'Kanit';
+      font-weight: bold;
+      font-size: medium;
+    "
+  >
     !จัดการปลดแบล็คลิสต์
     {{ blacklistData.userName }} {{ blacklistData.userLastName }} เรียบร้อย!
   </p>
-  <p *ngIf="!blacklistData.userStatus" style="color: #FF2626;font-family: 'Kanit';font-weight: bold;font-size: medium;">
+  <p
+    *ngIf="!blacklistData.userStatus"
+    style="
+      color: #ff2626;
+      font-family: 'Kanit';
+      font-weight: bold;
+      font-size: medium;
+    "
+  >
     !จัดการให้แบล็คลิสต์
     {{ blacklistData.userName }} {{ blacklistData.userLastName }} เรียบร้อย!
   </p>

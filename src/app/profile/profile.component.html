@@ -2,12 +2,10 @@
   <mat-tab-group
     mat-stretch-tabs="false"
     mat-align-tabs="center"
-    [selectedIndex]="(tabs.tabs)"
+    [selectedIndex]="tabs.tabs"
     style="margin-top: 2%"
-
   >
-  
-    <mat-tab label="ข้อมูลบัญชี" 
+    <mat-tab label="ข้อมูลบัญชี"
       ><div class="gutters-sm" style="font-weight: bold">
         <div class="profile-box">
           <div class="card mb-3">
@@ -24,7 +22,7 @@
                   </h4>
                   <p class="">
                     สถานะ : {{ this.status }} <br />
-                    เวลาการเข้าร่วม : {{ currentUser.received_hours }} ชั่วโมง 
+                    เวลาการเข้าร่วม : {{ currentUser.received_hours }} ชั่วโมง
                   </p>
                 </div>
               </div>
@@ -179,71 +177,17 @@
                   value="italic"
                   class="cancel-button"
                   (click)="
-                  openDialogCancel(
-                    x.activityId,
-                    x.userActivityName,
-                    currentUser.id,
-                    currentUser.name,
-                    x.date
-                  )
+                    openDialogCancel(
+                      x.activityId,
+                      x.userActivityName,
+                      currentUser.id,
+                      currentUser.name,
+                      x.date
+                    )
                   "
                   ><div style="margin-top: 35%">ยกเลิก</div></mat-button-toggle
                 >
               </mat-button-toggle-group>
-
-              <!-- <div class="detail-button">
-                  <button style="width: 100%;height: 100%;">
-                    SSSSSSSS
-                  </button>
-                </div>
-                <div class="cancel-button" >
-                  <button style="width: 100%;height: 100%;">
-                    SSSSSSSS
-                  </button>
-                </div> -->
-
-              <!-- <button
-                mat-button
-                (click)="
-                  openDialogDetail(
-                    x.activityId,
-                    x.userActivityName,
-                    currentUser.id,
-                    currentUser.name,
-                    x.date
-                  )
-                "
-                style="
-                  background-color: #27a644;
-                  color: rgb(255, 255, 255);
-                  margin-top: 1.4rem;
-                  margin-bottom: 1.4rem;
-                  margin-right: 2rem;
-                "
-              >
-                รายละเอียด
-              </button>
-              <button
-                mat-button
-                (click)="
-                cancle_activity(
-                    x.activityId,
-                    x.userActivityName,
-                    currentUser.id,
-                    currentUser.name,
-                    x.date
-                  )
-                "
-                style="
-                  background-color: #27a644;
-                  color: rgb(255, 255, 255);
-                  margin-top: 1.4rem;
-                  margin-bottom: 1.4rem;
-                  margin-right: 2rem;
-                "
-              >
-                ยกเลิก
-              </button> -->
             </div>
           </div>
         </div>

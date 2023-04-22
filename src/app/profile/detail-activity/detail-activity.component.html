@@ -1,173 +1,215 @@
-<form 
-class="form-detail"
-name="form"
-(ngSubmit)="f.form.valid && onSubmit()"
-#f="ngForm"
-novalidate>
-<mat-dialog-content class="mat-typography">
-  <div class="detail-container">
-    <mat-divider></mat-divider>
-    <div class="detail-container-header">
-      <div class="detail-header-name">
-        <div class="detail-name">
-          อาสาจัดเต็ม
+<form
+  class="form-detail"
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+>
+  <mat-dialog-content class="mat-typography">
+    <div class="detail-container">
+      <mat-divider></mat-divider>
+      <div class="detail-container-header">
+        <div class="detail-header-name">
+          <div class="detail-name">อาสาจัดเต็ม</div>
         </div>
-      </div>
-      <div class="detail-header-space">
-        
-      </div>
-      <div class="detail-header-time">
-        <div class="detail-time">
-          ระยะเวลาทำกิจกรรม
+        <div class="detail-header-space"></div>
+        <div class="detail-header-time">
+          <div class="detail-time">ระยะเวลาทำกิจกรรม</div>
         </div>
+        <div class="detail-header-space"></div>
       </div>
-      <div class="detail-header-space">
-        
-      </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="detail-container-body">
-      <div class="body-pl">
-        <div class="detail-text-left-container">
-          <div class="detail-text">
-            รายละเอียดกิจกรรม
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="detail-text-left">
-                เวลาทำกิจกรรม : 
+      <mat-divider></mat-divider>
+      <div class="detail-container-body">
+        <div class="body-pl">
+          <div class="detail-text-left-container">
+            <div class="detail-text">
+              รายละเอียดกิจกรรม
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="detail-text-left">เวลาทำกิจกรรม :</div>
+                <div class="detail-text-right">09.00-16.00 น.</div>
               </div>
-              <div class="detail-text-right">
-                09.00-16.00 น. 
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="detail-text-left">การแต่งกาย :</div>
+                <div class="detail-text-right">
+                  กางเกงขายาว รองเท้าผ้าใบ<br />
+                  สามารถใส่ชุดนักเรียน ชุดพละ <br />
+                  ชุดนักศึกษาได้
+                </div>
+              </div>
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="detail-text-left">เพิ่มเติม :</div>
+                <div class="detail-text-right">
+                  มีบริการอาหารกลางวันให้ 1 มื้อ
+                </div>
               </div>
             </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="detail-text-left">
-                การแต่งกาย : 
+            <mat-divider></mat-divider>
+            <div class="detail-text">
+              ไทมไลน์กิจกรรม
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="timeline-left">09:00 น.</div>
+                <div class="timeline-right">ปฐมนิเทศ</div>
               </div>
-              <div class="detail-text-right">
-                กางเกงขายาว รองเท้าผ้าใบ<br>
-                สามารถใส่ชุดนักเรียน ชุดพละ <br>
-                ชุดนักศึกษาได้
+              <div
+                class="row"
+                style="
+                  margin-right: 0rem;
+                  margin-left: 0rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <div class="timeline-left">09:30 น.</div>
+                <div class="timeline-right">กิจกรรมรอบเช้า</div>
               </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="detail-text-left">
-                เพิ่มเติม : 
+              <div
+                class="row"
+                style="
+                  margin-right: 0rem;
+                  margin-left: 0rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <div class="timeline-left">12.00 น.</div>
+                <div class="timeline-right">พักกลางวัน</div>
               </div>
-              <div class="detail-text-right">
-                มีบริการอาหารกลางวันให้ 1 มื้อ
+              <div
+                class="row"
+                style="
+                  margin-right: 0rem;
+                  margin-left: 0rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <div class="timeline-left">13.00 น.</div>
+                <div class="timeline-right">กิจกรรมรอบบ่าย</div>
+              </div>
+              <div
+                class="row"
+                style="
+                  margin-right: 0rem;
+                  margin-left: 0rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <div class="timeline-left">15.30 น.</div>
+                <div class="timeline-right">เตรียมเลิกกิจกรรม</div>
+              </div>
+              <div
+                class="row"
+                style="
+                  margin-right: 0rem;
+                  margin-left: 0rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <div class="timeline-left">16.00 น.</div>
+                <div class="timeline-right">สิ้นสุดกิจกรรม</div>
               </div>
             </div>
           </div>
-          <mat-divider></mat-divider>
-          <div class="detail-text">
-            ไทมไลน์กิจกรรม
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="timeline-left">
-                09:00 น.
-              </div>
-              <div class="timeline-right">
-                ปฐมนิเทศ
-              </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 0.5rem;">
-              <div class="timeline-left">
-                09:30 น.
-              </div>
-              <div class="timeline-right">
-                กิจกรรมรอบเช้า
-              </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 0.5rem;">
-              <div class="timeline-left">
-                12.00 น.
-              </div>
-              <div class="timeline-right">
-                พักกลางวัน
-              </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 0.5rem;">
-              <div class="timeline-left">
-                13.00 น.
-              </div>
-              <div class="timeline-right">
-                กิจกรรมรอบบ่าย
-              </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 0.5rem;">
-              <div class="timeline-left">
-                15.30 น.
-              </div>
-              <div class="timeline-right">
-                เตรียมเลิกกิจกรรม
-              </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 0.5rem;">
-              <div class="timeline-left">
-                16.00 น.
-              </div>
-              <div class="timeline-right">
-                สิ้นสุดกิจกรรม
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="body-pm">
-        <div class="detail-text-mid-container">
-          <div class="detail-location">
-            ตำแหน่งสถานที่
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="location-text-left">
-                Google map link : 
+        <div class="body-pm">
+          <div class="detail-text-mid-container">
+            <div class="detail-location">
+              ตำแหน่งสถานที่
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="location-text-left">Google map link :</div>
+                <div class="location-text-right">
+                  <a
+                    href="https://goo.gl/maps/JDoN6Bcu3JjQpGsLA"
+                    target="_blank"
+                    >Mirror art</a
+                  >
+                </div>
               </div>
-              <div class="location-text-right">
-                <a href="https://goo.gl/maps/JDoN6Bcu3JjQpGsLA" target="_blank">Mirror art</a>
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="location-text-left2">การเดินทางด้วยรถสาธารณะ</div>
+                <div class="location-text-right2">
+                  1.โดยสารรถไฟฟ้า BTS ลงสถานนีปลายทางวัดพระศรีมหาธาตุ
+                  หรือสารรถไฟฟ้าใต้ดิน MRT ลงสถานีปลายทางจตุจักร สามารถขึ้น BTS
+                  ลงสถานนีปลายทางวัดพระศรีมหาธาตุ<br />
+                  2.ต่อรถเมล์สาย <br />
+                  -สาย 510(ไม่ขึ้นทางด่วน)
+                  โดยขึ้นฝั่งเดียวกันกับสวนจตุจักรลงป้ายหน้าโรงแรมมิราเคิล(กรณีมาจากฝั่งรังสิต
+                  ให้ลงป้ายรถเมล์ โรงเรียนผไทอุดมศึกษา )<br />
+                  -สาย 51 โดยขึ้นฝั่ง ม.เกษตรศาสตร์
+                  ลงป้ายตรงข้ามโรงเรียนเจริญผล<br />
+                  -สาย 95ก โดยขึ้นจากท่ารถแฮปปี้แลนด์
+                  ลงป้ายตรงข้ามโรงเรียนเจริญผล<br />
+                  -สาย ปอ.150 โดยขึ้นจากท่ารถแฮปปี้แลนด์
+                  ลงป้ายตรงข้ามโรงเรียนเจริญผล<br />
+                  3.ข้ามสะพานลอย เดินมาปากซอยวิภาวดี64
+                  ต่อวินมอเตอร์ไซต์แจ้งว่าจะไปมูลนิธิกระจกเงาซอยแจ้งวัฒนะ1 แยก6
+                </div>
               </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="location-text-left2">
-                การเดินทางด้วยรถสาธารณะ 
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="location-text-left2">การเดินทางด้วยรถส่วนตัว</div>
+                <div class="location-text-right2">
+                  ให้ปักหมุดมายัง Mirror Art เลขที่ 143/19 ถนนแจ้งวัฒนะ
+                  ซอยแจ้งวัฒนะ1แยก6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร
+                  10210
+                </div>
               </div>
-              <div class="location-text-right2">
-                1.โดยสารรถไฟฟ้า BTS ลงสถานนีปลายทางวัดพระศรีมหาธาตุ หรือสารรถไฟฟ้าใต้ดิน MRT ลงสถานีปลายทางจตุจักร สามารถขึ้น BTS ลงสถานนีปลายทางวัดพระศรีมหาธาตุ<br>
-                2.ต่อรถเมล์สาย <br>
-                -สาย 510(ไม่ขึ้นทางด่วน) โดยขึ้นฝั่งเดียวกันกับสวนจตุจักรลงป้ายหน้าโรงแรมมิราเคิล(กรณีมาจากฝั่งรังสิต ให้ลงป้ายรถเมล์ โรงเรียนผไทอุดมศึกษา )<br>
-                -สาย 51 โดยขึ้นฝั่ง ม.เกษตรศาสตร์ ลงป้ายตรงข้ามโรงเรียนเจริญผล<br>
-                -สาย 95ก โดยขึ้นจากท่ารถแฮปปี้แลนด์ ลงป้ายตรงข้ามโรงเรียนเจริญผล<br>
-                -สาย ปอ.150 โดยขึ้นจากท่ารถแฮปปี้แลนด์ ลงป้ายตรงข้ามโรงเรียนเจริญผล<br>
-                3.ข้ามสะพานลอย เดินมาปากซอยวิภาวดี64 ต่อวินมอเตอร์ไซต์แจ้งว่าจะไปมูลนิธิกระจกเงาซอยแจ้งวัฒนะ1 แยก6
-              </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="location-text-left2">
-                การเดินทางด้วยรถส่วนตัว
-              </div>
-              <div class="location-text-right2">
-                ให้ปักหมุดมายัง Mirror Art เลขที่ 143/19 ถนนแจ้งวัฒนะ ซอยแจ้งวัฒนะ1แยก6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210
-              </div>
-            </div>
-            <div class="row" style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem;">
-              <div class="location-text-left2">
-                <div style="color: red; font-size: 20px;">
-                  *ตอนเลิก กิจกรรม จะมีเจ้าหน้าที่ไปส่งที่ BTS สีเขียวสถานนี วัดพระศรีมหาธาตุ และ BTS สายสีแดง สถานนี หลักสี่
+              <div
+                class="row"
+                style="margin-right: 0rem; margin-left: 0rem; margin-top: 1rem"
+              >
+                <div class="location-text-left2">
+                  <div style="color: red; font-size: 20px">
+                    *ตอนเลิก กิจกรรม จะมีเจ้าหน้าที่ไปส่งที่ BTS สีเขียวสถานนี
+                    วัดพระศรีมหาธาตุ และ BTS สายสีแดง สถานนี หลักสี่
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
         </div>
       </div>
+      <mat-divider></mat-divider>
     </div>
-    <mat-divider></mat-divider>
-  </div>
-   
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <div style="margin-right: 3rem; color: #FF2626;">
-      *หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์ 
+    <div style="margin-right: 3rem; color: #ff2626">
+      *หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์
     </div>
-    
-    <button mat-button type="submit" name="register" class="register" value="ลงทะเบียน" style="background-color: #27A644;color: #fff;">ยกเลิกการสมัครเข้าร่วม</button>
-    <button mat-button mat-dialog-close style="background-color: #FF2626;color: #fff;">ปิดหน้านี้</button>
+
+    <button
+      mat-button
+      type="submit"
+      name="register"
+      class="register"
+      value="ลงทะเบียน"
+      style="background-color: #27a644; color: #fff"
+    >
+      ยกเลิกการสมัครเข้าร่วม
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      style="background-color: #ff2626; color: #fff"
+    >
+      ปิดหน้านี้
+    </button>
   </mat-dialog-actions>
 </form>

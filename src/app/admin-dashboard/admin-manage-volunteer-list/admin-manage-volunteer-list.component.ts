@@ -24,7 +24,7 @@ export class AdminManageVolunteerListComponent implements OnInit {
   durationInSeconds = 5;
   userActivityId: any;
   VolunteerList: any;
-  settext:string = ''
+  settext: string = '';
 
   displayedColumns: string[] = [
     'name',
@@ -82,8 +82,17 @@ export class AdminManageVolunteerListComponent implements OnInit {
           console.warn(data);
         },
       });
-    this.settext = 'กิจกรรม:'+' '+this.userActivityId.currentActivityName + '  '+ 'วันที่:'+'  '+this.userActivityId.date+'  '+'เสร็จสิ้นกิจกรรม'
-    let message = { text:  this.settext};
+    this.settext =
+      'กิจกรรม:' +
+      ' ' +
+      this.userActivityId.currentActivityName +
+      '  ' +
+      'วันที่:' +
+      '  ' +
+      this.userActivityId.date +
+      '  ' +
+      'เสร็จสิ้นกิจกรรม';
+    let message = { text: this.settext };
     localStorage.setItem('MESSAGE', JSON.stringify(message));
     this._snackBar.openFromComponent(SnackBarMessageComponent, {
       duration: this.durationInSeconds * 1000,

@@ -1,21 +1,21 @@
-
 <div id="app" *ngIf="!isAdmin">
-  <nav class="navbar navbar-expand " style="background-color: #FFDE02;">
-    
+  <nav class="navbar navbar-expand" style="background-color: #ffde02">
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <button  class="btn" routerLink="home"><img src="../assets/image/logo.jpg" width="30" height="30">หน้าแรก </button>
+        <button class="btn" routerLink="home">
+          <img src="../assets/image/logo.jpg" width="30" height="30" />หน้าแรก
+        </button>
       </li>
-      
     </ul>
-    <ul class="navbar-nav " *ngIf="isLoggedIn">
-      <li class="nav-item" >
-        <button class="btn" *ngIf="isLoggedIn" routerLink="openevent">กิจกรรมอาสา</button>
+    <ul class="navbar-nav" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <button class="btn" *ngIf="isLoggedIn" routerLink="openevent">
+          กิจกรรมอาสา
+        </button>
       </li>
-      
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item" >
+      <li class="nav-item">
         <a href="/login" class="nav-link" routerLink="login">เข้าสู่ระบบ</a>
       </li>
     </ul>
@@ -24,13 +24,15 @@
         <a href="/profile" class="nav-link" routerLink="profile">{{currentUser.name}}</a>
       </li> -->
       <li class="nav-item">
-        <button mat-button [matMenuTriggerFor]="menu" class="btn">{{currentUser.name}}<i class="fa fa-bars" style="margin-left: 0.7rem;"></i></button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="profile">โปรไฟล์</button>
-            <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
-          </mat-menu>
+        <button mat-button [matMenuTriggerFor]="menu" class="btn">
+          {{ currentUser.name
+          }}<i class="fa fa-bars" style="margin-left: 0.7rem"></i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="profile">โปรไฟล์</button>
+          <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
+        </mat-menu>
       </li>
-      
     </ul>
   </nav>
 
@@ -40,11 +42,10 @@
 </div>
 
 <div id="app" *ngIf="isAdmin">
-  <nav class="navbar navbar-expand " style="background-color: #0355FF;">
-    
+  <nav class="navbar navbar-expand" style="background-color: #0355ff">
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <button  class="btn2" routerLink="home">หน้าแรก </button>
+        <button class="btn2" routerLink="home">หน้าแรก</button>
       </li>
       <li class="nav-item" *ngIf="isAdmin">
         <!-- <button  class="btn2"  routerLink="admin-dashboard" >แอดมิน </button> -->
@@ -57,14 +58,15 @@
         <!-- <button  class="btn2"  (click)="sidenav.toggle()">แอดมิน </button> -->
       </li>
     </ul>
-    <ul class="navbar-nav " *ngIf="isLoggedIn">
-      <li class="nav-item" >
-        <button class="btn2" *ngIf="isLoggedIn" routerLink="openevent">กิจกรรมอาสา</button>
+    <ul class="navbar-nav" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <button class="btn2" *ngIf="isLoggedIn" routerLink="openevent">
+          กิจกรรมอาสา
+        </button>
       </li>
-      
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
-      <li class="nav-item" >
+      <li class="nav-item">
         <a href="/login" class="nav-link" routerLink="login">เข้าสู่ระบบ</a>
       </li>
     </ul>
@@ -73,26 +75,32 @@
         <a href="/profile" class="nav-link" routerLink="profile">{{currentUser.name}}</a>
       </li> -->
       <li class="nav-item">
-        <button mat-button [matMenuTriggerFor]="menu" class="btn2" style="color: #fff;">แอดมิน</button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="admin-dashboard">ภาพรวม</button>
-            <button mat-menu-item routerLink="admin-manage-event">จัดการกิจกรรม</button>
-            <button mat-menu-item routerLink="admin-manage-volunteer">จัดการอาสา</button>
-            <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
-          </mat-menu>
+        <button
+          mat-button
+          [matMenuTriggerFor]="menu"
+          class="btn2"
+          style="color: #fff"
+        >
+          แอดมิน
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="admin-dashboard">ภาพรวม</button>
+          <button mat-menu-item routerLink="admin-manage-event">
+            จัดการกิจกรรม
+          </button>
+          <button mat-menu-item routerLink="admin-manage-volunteer">
+            จัดการอาสา
+          </button>
+          <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
+        </mat-menu>
       </li>
-      
     </ul>
   </nav>
 
   <div class="">
-    
     <router-outlet></router-outlet>
   </div>
-  
 </div>
-
-
 
 <!-- <header class="site-header">
 <div class="wrapper site-header__wrapper">
