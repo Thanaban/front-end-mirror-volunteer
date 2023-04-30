@@ -27,6 +27,8 @@ export class AppComponent {
   username?: string;
   currentUser: any;
   showFiller = false;
+  eventTomorrow: any;
+  userActivityTomorrow: number = 0;
 
   // slides = [
   //   { url:"../../assets/image/1.jpg", title: '1'},
@@ -62,6 +64,22 @@ export class AppComponent {
           } else {
             this.isAdmin = this.currentUser.admin;
             console.warn('BBBBBBBBBBBBBBBBBBBBBBB', this.isAdmin);
+          }
+        });
+
+      this.http
+        .get(
+          'http://localhost:8000/activities/get_useractivity_for_notification'
+        )
+        .subscribe((data) => {
+          this.eventTomorrow = data;
+          console.warn('Tomorrow', this.eventTomorrow[0].userId);
+          for (let i = 0; i < this.eventTomorrow.length; i++) {
+            for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
+              if ((this.eventTomorrow[i].userId[j] = this.currentUser.id)) {
+                this.userActivityTomorrow = this.userActivityTomorrow + 1;
+              }
+            }
           }
         });
 
