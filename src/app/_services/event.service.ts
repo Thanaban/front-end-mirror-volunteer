@@ -185,4 +185,14 @@ export class EventService {
       httpOptions
     );
   }
+
+  get_useractivity_by_id(id: number): Observable<any> {
+    return this.http.post(
+      'http://localhost:8000/activities/get_useractivity_by_id',
+      { 
+        id 
+      },
+      httpOptions
+    );
+  }
 }

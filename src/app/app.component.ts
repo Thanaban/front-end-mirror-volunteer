@@ -12,6 +12,7 @@ import { readFileSync } from 'fs';
 // import cors from 'cors';
 import { BodyParser } from 'body-parser';
 import { Socket } from 'socket.io';
+import { EventService } from './_services/event.service';
 
 @Component({
   selector: 'app-root',
@@ -29,12 +30,10 @@ export class AppComponent {
   showFiller = false;
   eventTomorrow: any;
   userActivityTomorrow: number = 0;
-
-  // slides = [
-  //   { url:"../../assets/image/1.jpg", title: '1'},
-  //   { url:"../../assets/image/2.jpg", title: '1'}
-  // ]
-
+  tettte: any;
+  listUserActivityTomorrow = [] as any;
+  dateForm: any;
+  month: any;
   eventBusSub?: Subscription;
 
   constructor(
@@ -42,7 +41,8 @@ export class AppComponent {
     private authService: AuthService,
     private eventBusService: EventBusService,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private eventService: EventService
   ) {}
 
   ngOnInit(): void {
@@ -66,35 +66,61 @@ export class AppComponent {
             console.warn('BBBBBBBBBBBBBBBBBBBBBBB', this.isAdmin);
           }
         });
-
+      
       this.http
         .get(
           'http://localhost:8000/activities/get_useractivity_for_notification'
         )
         .subscribe((data) => {
           this.eventTomorrow = data;
-          console.warn('Tomorrow', this.eventTomorrow[0].userId);
+
           for (let i = 0; i < this.eventTomorrow.length; i++) {
             for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
               if ((this.eventTomorrow[i].userId[j] = this.currentUser.id)) {
                 this.userActivityTomorrow = this.userActivityTomorrow + 1;
+                this.eventTomorrow[i].date = this.con_date(
+                  this.eventTomorrow[i].date
+                );
+
+                this.eventService
+                  .get_useractivity_by_id(this.eventTomorrow[i].id)
+                  .subscribe({
+                    next: (data) => {
+                      data.date = this.con_date(data.date);
+                      this.tettte = data;
+                      console.warn('ssss', this.tettte.date);
+                      this.listUserActivityTomorrow.push(this.tettte);
+                      let dad = this.listUserActivityTomorrow;
+                      
+                    },
+                  });
               }
             }
           }
         });
-
-      // console.warn(this.currentUser)
-      // console.log(this.currentUser.id)
-
-      // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
-      // this.username = user.name;
     }
 
     this.eventBusSub = this.eventBusService.on('logout', () => {
       this.logout();
     });
+  }
+
+  con_date(d: any) {
+    d = d.split('-');
+    this.month = d[1];
+    if (d[1] == '04') {
+      d[1] = 'เมษายน';
+    } else if (d[1] == '05') {
+      d[1] = 'พฤษภาคม';
+    }
+    d[0] = parseInt(d[0]) + 543;
+    this.dateForm = d.reverse().join(' ');
+    return this.dateForm;
+  }
+
+  notification_bell(): void {
+    localStorage.setItem('TABS', JSON.stringify(1));
+    this.router.navigate(['/profile']);
   }
 
   logout(): void {

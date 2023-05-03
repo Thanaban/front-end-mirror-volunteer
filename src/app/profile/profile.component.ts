@@ -14,7 +14,7 @@ import { CancelEventConfirmComponent } from './cancel-event-confirm/cancel-event
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  tabs = { tabs: 0 };
+  tabs: number = 0;
 
   public C1: User_show[] = [];
   currentUser: any;
@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   date_con: any;
   status: any;
   currentActivity: any;
+  isLoggedIn = false;
 
   constructor(
     private http: HttpClient,
@@ -33,6 +34,11 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
+
+    let data: any = localStorage.getItem('TABS');
+    this.tabs = data;
+    localStorage.removeItem('TABS');
     this.http.get('http://localhost:8000/users/user').subscribe((response) => {
       this.currentUser = response;
       if (this.currentUser.non_blacklist == true) {

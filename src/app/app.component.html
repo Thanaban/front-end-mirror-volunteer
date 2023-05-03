@@ -7,9 +7,9 @@
         </button>
       </li>
     </ul>
-    <ul class="navbar-nav" *ngIf="isLoggedIn">
+    <ul class="navbar-nav" >
       <li class="nav-item">
-        <button class="btn" *ngIf="isLoggedIn" routerLink="openevent">
+        <button class="btn"  routerLink="openevent">
           กิจกรรมอาสา
         </button>
       </li>
@@ -20,14 +20,32 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <!-- <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{currentUser.name}}</a>
-      </li> -->
       <li class="nav-item">
-        <button mat-button [matMenuTriggerFor]="menu" class="btn" >
-          <div matBadge={{this.userActivityTomorrow}} matBadgeColor="warn">{{ currentUser.name
-          }}<i class="fa fa-bars" style="margin-left: 0.7rem"></i></div>
+        <button mat-button [matMenuTriggerFor]="notifications">
+          <span
+            class="material-symbols-outlined"
+            matBadge="{{ this.userActivityTomorrow }}"
+            matBadgeColor="warn"
+          >
+            notifications
+          </span>
+        </button>
+        <mat-menu #notifications="matMenu">
+          <button mat-menu-item *ngFor="let x of listUserActivityTomorrow" (click)="notification_bell()">
+            คุณมีกิจกรรม{{ x.userActivityName }} ที่ลงทะเบียนไว้
+            กิจกรรมเริ่มวันที่ {{ x.date }}
+            <mat-divider></mat-divider>
+          </button>
           
+        </mat-menu>
+      </li>
+
+      <li class="nav-item">
+        <button mat-button [matMenuTriggerFor]="menu" class="btn">
+          <div>
+            {{ currentUser.name
+            }}<i class="fa fa-bars" style="margin-left: 0.7rem"></i>
+          </div>
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item routerLink="profile">โปรไฟล์</button>
