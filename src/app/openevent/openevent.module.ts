@@ -17,11 +17,13 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SuccessJoinEventComponent } from './success-join-event/success-join-event.component';
+import { PleaseLoginComponent } from './please-login/please-login.component';
 
 @NgModule({
   declarations: [
     OpeneventComponent,
     SuccessJoinEventComponent,
+    PleaseLoginComponent,
     
     
   ],

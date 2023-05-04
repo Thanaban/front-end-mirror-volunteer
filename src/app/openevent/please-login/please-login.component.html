@@ -1,0 +1,60 @@
+<!-- <p></p>
+<button
+      mat-button
+      type="submit"
+      name="register"
+      class="register"
+      value="ลงทะเบียน"
+      routerLink="login"
+      mat-dialog-close
+      style="background-color: #27a644; color: #fff"
+    >
+      เข้าสู่ระบบ
+    </button>
+    
+<mat-dialog-actions align="end">
+  
+    <button
+      mat-button
+      mat-dialog-close
+      style="background-color: #ff2626; color: #fff"
+    >
+      ปิดหน้านี้
+    </button>
+  </mat-dialog-actions> -->
+<div style="text-align: center; width: 100%;margin: auto;">
+  <span class="material-symbols-outlined" style="color: rgb(0, 0, 0);">
+    cancel
+    </span>
+  เกิดข้อผิดพลาด
+  <p>โปรดเข้าสู่ระบบก่อนสมัครเข้าร่วม</p>
+  <mat-button-toggle-group
+    name="fontStyle"
+    aria-label="Font Style"
+    style="width: 100%"
+  >
+    <mat-button-toggle
+      value="ดูรายละเอียดเพิ่มเติม"
+      style="
+        width: 50%;
+        font-family: 'Kanit';
+        font-weight: bold;
+        background-color: #27a644;
+        color: #fff;
+      "
+      >เข้าสู่ระบบ</mat-button-toggle
+    >
+    <mat-button-toggle
+      value="สมัครเข้าร่วม"
+      mat-dialog-close
+      style="
+        width: 50%;
+        background-color: #ff2626;
+        font-family: 'Kanit';
+        font-weight: bold;
+        color: #fff;
+      "
+      >ปิดหน้านี้</mat-button-toggle
+    >
+  </mat-button-toggle-group>
+</div>

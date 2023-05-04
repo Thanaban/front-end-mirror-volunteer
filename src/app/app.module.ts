@@ -63,6 +63,7 @@ import { ConfirmEditVolunteerListComponent } from './admin-dashboard/admin-manag
 import { CancelEventConfirmComponent } from './profile/cancel-event-confirm/cancel-event-confirm.component';
 import { SnackBarMessageComponent } from './snack-bar-message/snack-bar-message.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import Swal from 'sweetalert2';
 
 
 @NgModule({
@@ -128,7 +129,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatPaginatorModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatBadgeModule
+    MatBadgeModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
