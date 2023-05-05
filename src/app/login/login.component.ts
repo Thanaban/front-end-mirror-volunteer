@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
 import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
+import { passwordValidator } from './password-Validator';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,7 @@ export class LoginComponent implements OnInit {
     email: null,
     password: null,
   };
+
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -49,6 +52,17 @@ export class LoginComponent implements OnInit {
       },
     });
   }
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    passwordValidator(),
+    Validators.minLength(8),
+  ]);
+  hide = true;
+
 
   reloadPage(): void {
     window.location.reload();

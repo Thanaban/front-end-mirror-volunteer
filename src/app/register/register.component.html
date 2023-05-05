@@ -10,213 +10,263 @@
     >
       <div class="form-left">
         <h2>บัญชี</h2>
-        <div class="form-row">
-          <input
-            type="email"
-            name="email"
-            [(ngModel)]="form.email"
-            #email="ngModel"
-            class="input-text"
-            placeholder="อีเมล"
-            required
-          />
+        <div class="form-group">
+          <div class="form-row">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="email"
+                name="email"
+                [(ngModel)]="form.email"
+                [formControl]="emailFormControl"
+                class="input-text"
+                placeholder="Ex. pat@example.com"
+              />
+              <mat-error
+                *ngIf="
+                  emailFormControl.hasError('email') &&
+                  !emailFormControl.hasError('required')
+                "
+              >
+                โปรดกรอกอีเมลที่ถูกต้อง
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                โปรดกรอกอีเมล
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="form-row">
-          <input
-            type="password"
-            name="password"
-            [(ngModel)]="form.password"
-            #password="ngModel"
-            class="input-text"
-            placeholder="รหัสผ่าน"
-            required
-          />
+        <div class="form-group">
+          <div class="form-row">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="password"
+                name="password"
+                [(ngModel)]="form.password"
+                #password="ngModel"
+                class="input-text"
+                placeholder="รหัสผ่าน"
+                required
+              />
+            </mat-form-field>
+          </div>
         </div>
-        <div class="form-row">
-          <input
-            type="password"
-            name="password"
-            class="input-text"
-            placeholder="รหัสผ่านอีกครั้ง"
-            required
-          />
+        <div class="form-group">
+          <div class="form-row">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="password"
+                name="password"
+                class="input-text"
+                placeholder="รหัสผ่านอีกครั้ง"
+                required
+              />
+            </mat-form-field>
+          </div>
         </div>
       </div>
-      <div class="form-right">
+      <div class="form-middle">
         <h2>ข้อมูลส่วนตัว</h2>
         <div class="form-group">
           <div class="form-row form-row-1">
-            <input
-              type="text"
-              name="name"
-              [(ngModel)]="form.name"
-              #name="ngModel"
-              class="input-text"
-              placeholder="ชื่อ"
-              required
-            />
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="name"
+                [(ngModel)]="form.name"
+                #name="ngModel"
+                placeholder="ชื่อ"
+              />
+            </mat-form-field>
           </div>
           <div class="form-row form-row-2">
-            <input
-              type="text"
-              name="lastname"
-              [(ngModel)]="form.lastname"
-              #firstname="ngModel"
-              class="input-text"
-              placeholder="นามสกุล"
-              required
-            />
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="lastname"
+                [(ngModel)]="form.lastname"
+                #firstname="ngModel"
+                class="input-text"
+                placeholder="นามสกุล"
+              />
+            </mat-form-field>
           </div>
         </div>
         <div class="form-group">
           <div class="form-row form-row-1">
-            <input
-              type="text"
-              name="nickname"
-              [(ngModel)]="form.nickname"
-              #nickname="ngModel"
-              class="input-text"
-              placeholder="ชื่อเล่น"
-              required
-            />
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="nickname"
+                [(ngModel)]="form.nickname"
+                #nickname="ngModel"
+                class="input-text"
+                placeholder="ชื่อเล่น"
+              />
+            </mat-form-field>
           </div>
           <div class="form-row form-row-2">
-            <input
-              type="date"
-              name="birthday"
-              [(ngModel)]="form.birthday"
-              #birthday="ngModel"
-              class="input-text"
-              required
-            />
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="date"
+                name="birthday"
+                [(ngModel)]="form.birthday"
+                #birthday="ngModel"
+              />
+            </mat-form-field>
           </div>
         </div>
         <div class="form-group">
           <div class="form-row form-row-1">
-            <select
-              name="gender"
-              placeholder="เลือกเพศของท่าน"
-              [(ngModel)]="form.gender"
-              #gender="ngModel"
-            >
-              <option value="ชาย">ชาย</option>
-              <option value="หญิง">หญิง</option>
-            </select>
-            <span class="select-btn">
-              <i class="zmdi zmdi-chevron-down"></i>
-            </span>
+            <mat-form-field appearance="fill" class="example-full-width">
+              <mat-label>เลือกเพศของท่าน</mat-label>
+              <mat-select name="gender" [(ngModel)]="form.gender">
+                <mat-option value="ชาย"> ชาย </mat-option>
+                <mat-option value="หญิง"> หญิง </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
           <div class="form-row form-row-2">
-            <input
-              type="text"
-              name="religion"
-              [(ngModel)]="form.religion"
-              #religion="ngModel"
-              class="input-text"
-              placeholder="ศาสนา"
-              required
-            />
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="religion"
+                [(ngModel)]="form.religion"
+                #religion="ngModel"
+                class="input-text"
+                placeholder="ศาสนา"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="phoneNumber"
+                [(ngModel)]="form.phoneNumber"
+                #phoneNumber="ngModel"
+                class="input-text"
+                placeholder="เบอร์โทรศัพท์"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="form-right">
+        <h2>ข้อมูลเพิ่มเติม</h2>
+
+        <div class="form-group">
+          <div class="form-row form-row-1">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="career"
+                [(ngModel)]="form.career"
+                #career="ngModel"
+                class="input-text"
+                placeholder="อาชีพ"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-row form-row-2">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="workplace"
+                [(ngModel)]="form.workplace"
+                #workplace="ngModel"
+                class="input-text"
+                placeholder="สถานที่ทำงาน/สถานศึกษา"
+                required
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row form-row-1">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="congenitalDisease"
+                [(ngModel)]="form.congenitalDisease"
+                #congenitalDisease="ngModel"
+                class="input-text"
+                placeholder="โรคประจำตัว"
+              />
+            </mat-form-field>
+          </div>
+          <div class="form-row form-row-2">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="allergicFood"
+                [(ngModel)]="form.allergicFood"
+                #allergicFood="ngModel"
+                class="input-text"
+                placeholder="อาหารที่แพ้"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-row">
+            <mat-form-field class="example-full-width">
+              <input
+                matInput
+                type="text"
+                name="talent"
+                [(ngModel)]="form.talent"
+                #talent="ngModel"
+                class="input-text"
+                placeholder="ความสามารถพิเศษ"
+                r
+              />
+            </mat-form-field>
           </div>
         </div>
         <div class="form-row">
-          <input
-            type="text"
-            name="phoneNumber"
-            [(ngModel)]="form.phoneNumber"
-            #phoneNumber="ngModel"
-            class="input-text"
-            required
-            placeholder="เบอร์โทรศัพท์"
-          />
-        </div>
-        <div class="form-group">
-          <div class="form-row form-row-1">
-            <input
-              type="text"
-              name="career"
-              [(ngModel)]="form.career"
-              #career="ngModel"
-              class="input-text"
-              placeholder="อาชีพ"
-              required
-            />
-          </div>
-          <div class="form-row form-row-2">
-            <input
-              type="text"
-              name="workplace"
-              [(ngModel)]="form.workplace"
-              #workplace="ngModel"
-              class="input-text"
-              placeholder="สถานที่ทำงาน/สถานศึกษา"
-              required
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row form-row-1">
-            <input
-              type="text"
-              name="congenitalDisease"
-              [(ngModel)]="form.congenitalDisease"
-              #congenitalDisease="ngModel"
-              class="input-text"
-              placeholder="โรคประจำตัว"
-              required
-            />
-          </div>
-          <div class="form-row form-row-2">
-            <input
-              type="text"
-              name="allergicFood"
-              [(ngModel)]="form.allergicFood"
-              #allergicFood="ngModel"
-              class="input-text"
-              placeholder="อาหารที่แพ้"
-              required
-            />
-          </div>
-        </div>
-        <div class="form-row">
-          <input
-            type="text"
-            name="talent"
-            [(ngModel)]="form.talent"
-            #talent="ngModel"
-            class="input-text"
-            placeholder="ความสามารถพิเศษ"
-            required
-          />
-        </div>
-        <div class="form-row">
-          <select
-            name="know_from"
-            placeholder="ช่องทางที่รู้จักมูลนิธิกระจกเงา"
-            [(ngModel)]="form.know_from"
-            #know_from="ngModel"
-          >
-            <option value="" disabled="" selected="">
-              ช่องทางที่รู้จักมูลนิธิกระจกเงา
-            </option>
-            <option value="สื่อสิ่งพิมพ์">สื่อสิ่งพิมพ์</option>
-            <option value="สื่อทางวิทยุโทรทัศน์">สื่อทางวิทยุโทรทัศน์</option>
-            <option value="สื่อออนไลน์ Google Search">
-              สื่อออนไลน์ Google Search
-            </option>
-            <option value="บุคคลที่เคยมาร่วมกิจกรรมอาสา">
-              บุคคลที่เคยมาร่วมกิจกรรมอาสา
-            </option>
-            <option value="หน่วยงานหรือสังกัดที่เคยอาสา">
-              หน่วยงานหรือสังกัดที่เคยอาสา
-            </option>
-            <option value="เพื่อน/คนรู้จักแนะนำ">เพื่อน/คนรู้จักแนะนำ</option>
-            <option value="สื่อออนไลน์ Facebook">สื่อออนไลน์ Facebook</option>
-            <option value="สื่อออนไลน์ Twitter">สื่อออนไลน์ Twitter</option>
-            <option value="อื่นๆ">อื่นๆ</option>
-          </select>
-          <span class="select-btn">
-            <i class="zmdi zmdi-chevron-down"></i>
-          </span>
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>ช่องทางที่รู้จักมูลนิธิกระจกเงา</mat-label>
+            <mat-select name="gender" [(ngModel)]="form.gender">
+              <mat-option value="สื่อสิ่งพิมพ์"> สื่อสิ่งพิมพ์ </mat-option>
+              <mat-option value="สื่อทางวิทยุโทรทัศน์">
+                สื่อทางวิทยุโทรทัศน์
+              </mat-option>
+              <mat-option value="สื่อออนไลน์ Google Search">
+                สื่อออนไลน์ Google Search
+              </mat-option>
+              <mat-option value="บุคคลที่เคยมาร่วมกิจกรรมอาสา">
+                บุคคลที่เคยมาร่วมกิจกรรมอาสา
+              </mat-option>
+              <mat-option value="หน่วยงานหรือสังกัดที่เคยอาสา">
+                หน่วยงานหรือสังกัดที่เคยอาสา
+              </mat-option>
+              <mat-option value="เพื่อน/คนรู้จักแนะนำ">
+                เพื่อน/คนรู้จักแนะนำ
+              </mat-option>
+              <mat-option value="สื่อออนไลน์ Facebook">
+                สื่อออนไลน์ Facebook
+              </mat-option>
+              <mat-option value="สื่อออนไลน์ Twitter">
+                สื่อออนไลน์ Twitter
+              </mat-option>
+              <mat-option value="อื่นๆ"> อื่นๆ </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
         <div class="form-row-last">
           <input

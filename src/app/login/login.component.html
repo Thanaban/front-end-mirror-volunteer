@@ -1,4 +1,4 @@
-<div class="bg-register">
+<!-- <div class="bg-register">
   <div class="register-box">
     <div class="image-holder">
       <img src="../../assets/image/6.jpg" />
@@ -58,4 +58,132 @@
       </p>
     </form>
   </div>
+</div> -->
+<div class="login">
+<div class="login_box">
+  <div class="left">
+    <div class="contact">
+      <!-- <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="emailFormControl"
+          placeholder="Ex. pat@example.com"
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        
+      </mat-form-field> -->
+
+      <form
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+        style="margin-top: 9rem"
+      >
+        <h3 style="font-weight: bold"><strong>เข้าสู่ระบบ</strong></h3>
+        <div class="form-row">
+          <mat-form-field class="example-full-width">
+            <mat-label>อีเมล</mat-label>
+            <input
+              type="email"
+              name="email"
+              matInput
+              [formControl]="emailFormControl"
+              [(ngModel)]="form.email"
+              placeholder="Ex. pat@example.com"
+            />
+            <mat-error
+              *ngIf="
+                emailFormControl.hasError('email') &&
+                !emailFormControl.hasError('required')
+              "
+            >
+              โปรดกรอกอีเมลที่ถูกต้อง
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              โปรดกรอกอีเมล
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="example-full-width">
+            <mat-label>รหัสผ่าน</mat-label>
+
+            <input
+              [type]="hide ? 'password' : 'text'"
+              name="password"
+              matInput
+              [formControl]="passwordFormControl"
+              [(ngModel)]="form.password"
+            />
+              <!-- <mat-icon (click)="hide = !hide" [attr.aria-label]="hide ? 'Show password' : 'Hide password'">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> -->
+              <i class="fa fa-eye-slash" aria-hidden="true" (click)="hide = !hide" [attr.aria-label]="hide ? 'Show password' : 'Hide password'"></i>
+            <!-- <i
+              class="fa fa-eye-slash"
+              aria-hidden="true"
+              (click)="hide = !hide"
+            ></i> -->
+            <mat-error
+              *ngIf="
+                passwordFormControl.hasError('invalidPassword') &&
+                !passwordFormControl.hasError('required')
+              "
+            >
+              โปรดกรอกรหัสผ่านที่ถูกต้อง
+            </mat-error>
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+              โปรดกรอกรหัสผ่าน
+            </mat-error>
+            <!-- <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+            รหัสผ่านต้องมีอย่างน้อย 8 ตัว
+         </mat-error> -->
+          </mat-form-field>
+          <!-- <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+          [ngClass]="{ 'is-invalid': f.submitted && password.errors }"
+          placeholder="รหัสผ่าน"
+        />
+        <div *ngIf="password.errors && f.submitted" class="invalid-feedback">
+          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['minlength']">
+            Password must be at least 6 characters
+          </div>
+        </div> -->
+        </div>
+        <div class="form-group">
+          <button><i class="fa fa-sign-in" style="margin: 5%;"></i>เข้าสู่ระบบ</button>
+        </div>
+        <p class="text-center">
+          <strong>
+            <a routerLink="/register" routerLinkActive="active"
+              >ลงทะเบียนเพื่อเข้าสู่ระบบ</a
+            >/<a routerLink="/reset-password" routerLinkActive="active"
+              >ลืมรหัสผ่าน</a
+            >
+          </strong>
+        </p>
+      </form>
+    </div>
+  </div>
+  
+</div>
 </div>
