@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { FormControl, Validators } from '@angular/forms';
+import { passwordValidator } from '../login/password-Validator';
 
 @Component({
   selector: 'app-register',
@@ -44,6 +45,12 @@ export class RegisterComponent implements OnInit {
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
+  ]);
+
+  passwordFormControl = new FormControl('', [
+    Validators.required,
+    passwordValidator(),
+    Validators.minLength(8),
   ]);
 
   onSubmit(): void {

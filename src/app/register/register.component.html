@@ -44,11 +44,22 @@
                 type="password"
                 name="password"
                 [(ngModel)]="form.password"
-                #password="ngModel"
+                [formControl]="passwordFormControl"
                 class="input-text"
                 placeholder="รหัสผ่าน"
-                required
+                
               />
+              <mat-error
+                *ngIf="
+                  passwordFormControl.hasError('invalidPassword') &&
+                  !passwordFormControl.hasError('required')
+                "
+              >
+                โปรดกรอกรหัสผ่านที่ถูกต้อง
+              </mat-error>
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                โปรดกรอกรหัสผ่าน
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
