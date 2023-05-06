@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { passwordValidator } from '../login/password-Validator';
 
 @Component({
@@ -38,20 +45,74 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) {}
+  myForm: FormGroup;
+
+  constructor(private authService: AuthService, private fb: FormBuilder) {
+    this.myForm = this.fb.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: [
+          '',
+          [Validators.required, passwordValidator(), Validators.minLength(6)],
+        ],
+        confirmPassword: ['', [Validators.required]],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        nickname: ['', Validators.required],
+        birthday: ['', Validators.required],
+        gender: ['', Validators.required],
+        religion: ['', Validators.required],
+        phoneNumber: ['', Validators.required],
+        career: ['', Validators.required],
+        workplace: ['', Validators.required],
+        congenitalDisease: ['', Validators.required],
+        allergicFood: ['', Validators.required],
+        talent: [],
+        know_from: ['', Validators.required],
+      },
+      { validator: this.matchingPasswords('password', 'confirmPassword') }
+    );
+  }
+
+  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    return (group: FormGroup): ValidationErrors | null => {
+      const password = group.controls[passwordKey];
+      const confirmPassword = group.controls[confirmPasswordKey];
+
+      //   if (confirmPassword.value === '') {
+      //     confirmPassword.setErrors({ required: true });
+      // }
+      if (password.value !== confirmPassword.value) {
+        confirmPassword.setErrors({ passwordMismatch: true });
+      } else {
+        confirmPassword.setErrors(null);
+      }
+
+      return null;
+    };
+  }
 
   ngOnInit(): void {}
 
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
+  // emailFormControl = new FormControl('', [
+  //   Validators.required,
+  //   Validators.email,
+  // ]);
 
-  passwordFormControl = new FormControl('', [
-    Validators.required,
-    passwordValidator(),
-    Validators.minLength(8),
-  ]);
+  // passwordFormControl = new FormControl('', [
+  //   Validators.required,
+  //   passwordValidator(),
+  //   Validators.minLength(8),
+  // ]);
+
+  // confirmPasswordFormControl = new FormControl('', [
+  //   Validators.required,
+  //   passwordValidator(),
+  // ]);
+
+  // matchingPasswords(x:string): void {
+
+  // }
 
   onSubmit(): void {
     const {
