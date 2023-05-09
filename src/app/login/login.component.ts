@@ -4,6 +4,9 @@ import { StorageService } from '../_services/storage.service';
 import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { passwordValidator } from './password-Validator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackBarMessageComponent } from '../snack-bar-message/snack-bar-message.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,21 +18,32 @@ export class LoginComponent implements OnInit {
     email: null,
     password: null,
   };
+  formresetPassword: any = {
+    email: null,
+    
+  };
 
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  durationInSeconds = 5;
 
   constructor(
     private authService: AuthService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
+      let message = { text: 'เข้าสู่ระบบสำเร็จ' };
+      localStorage.setItem('MESSAGE', JSON.stringify(message));
+      this._snackBar.openFromComponent(SnackBarMessageComponent, {
+        duration: this.durationInSeconds * 1000,
+      });
       this.roles = this.storageService.getUser().roles;
       this.router.navigate(['/home']);
     }
@@ -49,6 +63,16 @@ export class LoginComponent implements OnInit {
       error: (err) => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        Swal.fire({
+          icon: 'error',
+          title: '<strong>เกิดข้อผิดพลาด!</strong>',
+          html: 'โปรดอีเมลและรหัสผ่านให้ถูกต้อง',
+          // showCloseButton: true,
+          focusConfirm: false,
+          confirmButtonText: '<i class="fa fa-times"></i> ปิด',
+          confirmButtonColor: '#27a644',
+          confirmButtonAriaLabel: 'Thumbs up, great!',
+        });
       },
     });
   }
@@ -63,6 +87,113 @@ export class LoginComponent implements OnInit {
   ]);
   hide = true;
 
+  resetPassword() {
+    Swal.fire({
+      title: 'กรอกอีเมลที่ต้องการเปลี่ยนรหัสผ่าน',
+      input: 'email',
+      
+      inputPlaceholder: 'กรอกอีเมล',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'โปรดกรอกอีเมล';
+        }
+        if (!/\S+@\S+\.\S+/.test(value)) {
+          return 'โปรดกรอกอีเมลให้ถูกต้อง';
+        }
+        return null;
+      },
+      showCancelButton: true,
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก',
+      confirmButtonColor: '#27a644',
+      cancelButtonColor: '#d33',
+      confirmButtonAriaLabel: 'Thumbs up, great!',
+      cancelButtonAriaLabel: 'Thumbs down',
+      focusConfirm: false,
+      allowOutsideClick: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const { value: email } = result;
+        this.authService.emailResetPassWord(email).subscribe({
+          next: (data) => {
+            Swal.fire({
+              icon: 'success',
+              title: '<strong>อีเมลถูกต้อง</strong>',
+              html: 'โปรดตรวจสอบคำขอที่อีเมลของท่าน',
+              // showCloseButton: true,
+              focusConfirm: false,
+              confirmButtonText: '<i class="fa fa-times"></i> ปิด',
+              confirmButtonColor: '#27a644',
+              confirmButtonAriaLabel: 'Thumbs up, great!',
+            });
+          },
+          error: (err) => {
+            Swal.fire({
+              icon: 'error',
+              title: '<strong>เกิดข้อผิดพลาด</strong>',
+              html: 'ไม่มีอีเมลนี้ในระบบ',
+              // showCloseButton: true,
+              focusConfirm: false,
+              confirmButtonText: 'ลองอีกครั้ง',
+              confirmButtonColor: '#27a644',
+              confirmButtonAriaLabel: 'Thumbs up, great!',
+              showCancelButton:true,
+              cancelButtonText: 'ยกเลิก',
+              cancelButtonColor:'#d33'
+            })
+            .then((result) =>{
+              if (result.isConfirmed){
+                this.resetPassword()
+              }
+            })
+            
+          },
+        });
+      }
+    });
+  }
+  
+  // async resetPassword() {
+  //   const { value: email } = await Swal.fire({
+  //     title: 'Input email address',
+  //     input: 'email',
+  //     inputLabel: 'Your email address',
+  //     inputPlaceholder: 'Enter your email address'
+      
+  //   })
+
+  //   this.authService.emailResetPassWord(email).subscribe({
+  //     next: (data) => {
+  //       console.warn(data)
+  //     },
+  //     error: (err) => {
+  //       this.errorMessage = err.error.message;
+  //     },
+      
+  
+  //   if (email) {
+  //     Swal.fire(`Entered email: ${email}`)
+  //   }
+  // })
+  // const { value: email, isConfirmed } = await Swal.fire({
+  //   title: 'Input email address',
+  //   input: 'email',
+  //   inputLabel: 'Your email address',
+  //   inputPlaceholder: 'Enter your email address',
+  //   inputValidator: (value) => {
+  //     if (!value) {
+  //       return 'Email address is required'
+  //     }
+  //     if (!/\S+@\S+\.\S+/.test(value)) {
+  //       return 'Please enter a valid email address'
+  //     }
+  //   }
+  // })
+  
+//   if (isConfirmed) {
+//     Swal.fire(`Entered email: ${email}`)
+//   }
+// }
 
   reloadPage(): void {
     window.location.reload();

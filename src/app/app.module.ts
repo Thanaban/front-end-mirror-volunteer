@@ -130,6 +130,7 @@ import Swal from 'sweetalert2';
     MatSlideToggleModule,
     MatSnackBarModule,
     MatBadgeModule,
+    MatFormFieldModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

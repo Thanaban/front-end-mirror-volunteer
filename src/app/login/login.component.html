@@ -71,13 +71,16 @@
               <i class="fa fa-sign-in" style="margin: 5%"></i>เข้าสู่ระบบ
             </button>
           </div>
+        
           <p class="text-center">
             <strong>
               <a routerLink="/register" routerLinkActive="active"
                 >ลงทะเบียนเพื่อเข้าสู่ระบบ</a
-              >/<a routerLink="/reset-password" routerLinkActive="active"
+              >/
+              <a (click)="resetPassword()" routerLinkActive="active"
                 >ลืมรหัสผ่าน</a
               >
+              
             </strong>
           </p>
         </form>
