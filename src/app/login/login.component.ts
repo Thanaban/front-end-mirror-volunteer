@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   };
   formresetPassword: any = {
     email: null,
-    
   };
 
   isLoggedIn = false;
@@ -91,7 +90,7 @@ export class LoginComponent implements OnInit {
     Swal.fire({
       title: 'กรอกอีเมลที่ต้องการเปลี่ยนรหัสผ่าน',
       input: 'email',
-      
+
       inputPlaceholder: 'กรอกอีเมล',
       inputValidator: (value) => {
         if (!value) {
@@ -120,7 +119,6 @@ export class LoginComponent implements OnInit {
               icon: 'success',
               title: '<strong>อีเมลถูกต้อง</strong>',
               html: 'โปรดตรวจสอบคำขอที่อีเมลของท่าน',
-              // showCloseButton: true,
               focusConfirm: false,
               confirmButtonText: '<i class="fa fa-times"></i> ปิด',
               confirmButtonColor: '#27a644',
@@ -132,69 +130,24 @@ export class LoginComponent implements OnInit {
               icon: 'error',
               title: '<strong>เกิดข้อผิดพลาด</strong>',
               html: 'ไม่มีอีเมลนี้ในระบบ',
-              // showCloseButton: true,
               focusConfirm: false,
               confirmButtonText: 'ลองอีกครั้ง',
               confirmButtonColor: '#27a644',
               confirmButtonAriaLabel: 'Thumbs up, great!',
-              showCancelButton:true,
+              showCancelButton: true,
               cancelButtonText: 'ยกเลิก',
-              cancelButtonColor:'#d33'
-            })
-            .then((result) =>{
-              if (result.isConfirmed){
-                this.resetPassword()
+              cancelButtonColor: '#d33',
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.resetPassword();
               }
-            })
-            
+            });
           },
         });
       }
     });
   }
   
-  // async resetPassword() {
-  //   const { value: email } = await Swal.fire({
-  //     title: 'Input email address',
-  //     input: 'email',
-  //     inputLabel: 'Your email address',
-  //     inputPlaceholder: 'Enter your email address'
-      
-  //   })
-
-  //   this.authService.emailResetPassWord(email).subscribe({
-  //     next: (data) => {
-  //       console.warn(data)
-  //     },
-  //     error: (err) => {
-  //       this.errorMessage = err.error.message;
-  //     },
-      
-  
-  //   if (email) {
-  //     Swal.fire(`Entered email: ${email}`)
-  //   }
-  // })
-  // const { value: email, isConfirmed } = await Swal.fire({
-  //   title: 'Input email address',
-  //   input: 'email',
-  //   inputLabel: 'Your email address',
-  //   inputPlaceholder: 'Enter your email address',
-  //   inputValidator: (value) => {
-  //     if (!value) {
-  //       return 'Email address is required'
-  //     }
-  //     if (!/\S+@\S+\.\S+/.test(value)) {
-  //       return 'Please enter a valid email address'
-  //     }
-  //   }
-  // })
-  
-//   if (isConfirmed) {
-//     Swal.fire(`Entered email: ${email}`)
-//   }
-// }
-
   reloadPage(): void {
     window.location.reload();
   }
