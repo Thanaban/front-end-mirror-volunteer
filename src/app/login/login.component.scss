@@ -20,7 +20,7 @@
 }
 
 .login_box {
-  width: 50%;
+  width: 30%;
   height: 100%;
   margin: auto;
   margin-top: 4%;
@@ -105,8 +105,8 @@
 
 .form-login {
   margin-top: 5%;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .forgot-password-box {
@@ -155,4 +155,9 @@
   width: 50%;
   background-color: #565656;
   color: #ffde02;
+}
+
+.submit-button[disabled] {
+  background-color: gray !important;
+  cursor: not-allowed;
 }

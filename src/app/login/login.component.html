@@ -84,16 +84,14 @@
               'font-size': '150%',
               padding: '5%'
             }"
+            [disabled]="!form.email || !form.password"
+            class="submit-button"
           >
             <i class="fa fa-sign-in"></i>
             เข้าสู่ระบบ
           </button>
         </div>
-        <!-- <div class="forgot-password-box">
-          <a mat-flat-button (click)="resetPassword()" routerLinkActive="active"
-            >ลืมรหัสผ่าน?</a
-          >
-        </div> -->
+        
 
         <mat-button-toggle-group
           class="group-bottom-button"
@@ -112,91 +110,5 @@
         </mat-button-toggle-group>
       </form>
     </div>
-    <!-- <div class="left">
-      <div class="contact">
-        <form
-          *ngIf="!isLoggedIn"
-          name="form"
-          (ngSubmit)="f.form.valid && onSubmit()"
-          #f="ngForm"
-          novalidate
-          
-        >
-          <h3 style="font-weight: bold"><strong>เข้าสู่ระบบ</strong></h3>
-          
-            <mat-form-field class="example-full-width">
-              <mat-label>อีเมล</mat-label>
-              <input
-                type="email"
-                name="email"
-                matInput
-                [formControl]="emailFormControl"
-                [(ngModel)]="form.email"
-                placeholder="Ex. pat@example.com"
-              />
-              <mat-error
-                *ngIf="
-                  emailFormControl.hasError('email') &&
-                  !emailFormControl.hasError('required')
-                "
-              >
-                โปรดกรอกอีเมลที่ถูกต้อง
-              </mat-error>
-              <mat-error *ngIf="emailFormControl.hasError('required')">
-                โปรดกรอกอีเมล
-              </mat-error>
-            </mat-form-field>
-          
-          
-            <mat-form-field class="example-full-width">
-              <mat-label>รหัสผ่าน</mat-label>
-
-              <input
-                [type]="hide ? 'password' : 'text'"
-                name="password"
-                matInput
-                [formControl]="passwordFormControl"
-                [(ngModel)]="form.password"
-              />
-              <i
-                class="fa fa-eye-slash"
-                aria-hidden="true"
-                (click)="hide = !hide"
-                [attr.aria-label]="hide ? 'Show password' : 'Hide password'"
-              ></i>
-
-              <mat-error
-                *ngIf="
-                  passwordFormControl.hasError('invalidPassword') &&
-                  !passwordFormControl.hasError('required')
-                "
-              >
-                โปรดกรอกรหัสผ่านที่ถูกต้อง
-              </mat-error>
-              <mat-error *ngIf="passwordFormControl.hasError('required')">
-                โปรดกรอกรหัสผ่าน
-              </mat-error>
-            </mat-form-field>
-          
-          <div class="form-group">
-            <button>
-              <i class="fa fa-sign-in" style="margin: 5%"></i>เข้าสู่ระบบ
-            </button>
-          </div>
-        
-          <p class="text-center">
-            <strong>
-              <a routerLink="/register" routerLinkActive="active"
-                >ลงทะเบียนเพื่อเข้าสู่ระบบ</a
-              >/
-              <a (click)="resetPassword()" routerLinkActive="active"
-                >ลืมรหัสผ่าน</a
-              >
-              
-            </strong>
-          </p>
-        </form>
-      </div>
-    </div> -->
   </div>
 </div>
