@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   durationInSeconds = 5;
+  isDisabled: boolean = true;
 
   constructor(
     private authService: AuthService,

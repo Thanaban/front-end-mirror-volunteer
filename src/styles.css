@@ -7,6 +7,7 @@ body {
   font-family: 'Kanit';
     margin: 0;
   background-color: #F8F9FD;
+  height: 100% !important;
   }
   
   .basic-container {
@@ -17,4 +18,9 @@ body {
     font-size: 8pt;
     float: right;
   }
-  
+  ::ng-deep.mat-form-field 
+    { 
+    background-image: linear-gradient( to right, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 0.42) 33%, #c2c7cc 0 ) !important; 
+    background-size: 1px 100% !important;
+     background-repeat: repeat-x !important; 
+    } 

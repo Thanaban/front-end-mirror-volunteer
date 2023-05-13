@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     ResetPasswordComponent
+    
   ],
   imports: [
     CommonModule,

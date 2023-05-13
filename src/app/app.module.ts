@@ -64,6 +64,7 @@ import { CancelEventConfirmComponent } from './profile/cancel-event-confirm/canc
 import { SnackBarMessageComponent } from './snack-bar-message/snack-bar-message.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import Swal from 'sweetalert2';
+import { ConfirmPasswordComponent } from './reset-password/confirm-password/confirm-password.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import Swal from 'sweetalert2';
     AdminManageVolunteerListComponent,
     ConfirmEditVolunteerListComponent,
     CancelEventConfirmComponent,
-    SnackBarMessageComponent
+    SnackBarMessageComponent,
+    ConfirmPasswordComponent
   ],
   entryComponents:[
     ModalEventComponent

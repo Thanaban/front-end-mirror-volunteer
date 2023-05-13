@@ -49,7 +49,11 @@ export class RegisterComponent implements OnInit {
 
   myForm: FormGroup;
 
-  constructor(private authService: AuthService, private fb: FormBuilder,private router: Router) {
+  constructor(
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.myForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -99,8 +103,6 @@ export class RegisterComponent implements OnInit {
     this.form.confirmPassword = null;
   }
 
-
-
   onSubmit(): void {
     const {
       email,
@@ -118,7 +120,7 @@ export class RegisterComponent implements OnInit {
       allergicFood,
       talent,
       know_from,
-      confirmPassword
+      
     } = this.myForm.value;
 
     this.authService
@@ -155,31 +157,30 @@ export class RegisterComponent implements OnInit {
             confirmButtonAriaLabel: 'Thumbs up, great!',
           });
           this.router.navigate(['/login']);
-          
         },
         error: (err) => {
           this.errorMessage = err.error.message;
           this.isSignUpFailed = true;
-          
-          if (this.errorMessage=='This e-mail is already used'){
-            this.errorMessage = 'อีเมล: ' +this.myForm.value.email+ ' ถูกใช้ไปแล้ว'
+
+          if (this.errorMessage == 'This e-mail is already used') {
+            this.errorMessage =
+              'อีเมล: ' + this.myForm.value.email + ' ถูกใช้ไปแล้ว';
             Swal.fire({
               icon: 'error',
               title: '<strong>เกิดข้อผิดพลาด!</strong>',
               html: this.errorMessage,
-              // showCloseButton: true,
+
               focusConfirm: false,
               confirmButtonText: '<i class="fa fa-times"></i> ปิด',
               confirmButtonColor: '#27a644',
               confirmButtonAriaLabel: 'Thumbs up, great!',
             });
-          }
-          else{
+          } else {
             Swal.fire({
               icon: 'error',
               title: '<strong>เกิดข้อผิดพลาด!</strong>',
               html: 'โปรดกรอกข้อมูลที่บังคับ',
-              // showCloseButton: true,
+
               focusConfirm: false,
               confirmButtonText: '<i class="fa fa-times"></i> ปิด',
               confirmButtonColor: '#27a644',
@@ -188,81 +189,5 @@ export class RegisterComponent implements OnInit {
           }
         },
       });
-    // Check if the form is valid
-  // if (this.myForm.valid) {
-  //   const {
-  //     email,
-  //     password,
-  //     name,
-  //     lastname,
-  //     nickname,
-  //     birthday,
-  //     gender,
-  //     religion,
-  //     phoneNumber,
-  //     career,
-  //     workplace,
-  //     congenitalDisease,
-  //     allergicFood,
-  //     talent,
-  //     know_from,
-  //   } = this.myForm.value;
-
-  //   // Submit the form data
-  //   this.authService.register(
-  //     email,
-  //     password,
-  //     name,
-  //     lastname,
-  //     nickname,
-  //     birthday,
-  //     gender,
-  //     religion,
-  //     phoneNumber,
-  //     career,
-  //     workplace,
-  //     congenitalDisease,
-  //     allergicFood,
-  //     talent,
-  //     know_from
-  //   ).subscribe({
-  //     next: (data) => {
-  //       console.log(data);
-  //       this.isSuccessful = true;
-  //       this.isSignUpFailed = false;
-  //       Swal.fire({
-  //         icon: 'warning',
-  //         title: '<strong>สำเร็จ!</strong>',
-  //         html: 'โปรดเข้าสู่ระบบก่อนสมัครเข้าร่วม',
-  //         showCloseButton: true,
-  //         focusConfirm: false,
-  //         confirmButtonText: '<i class="fa fa-sign-in"></i> เข้าสู่ระบบ',
-  //         confirmButtonColor: '#27a644',
-  //         confirmButtonAriaLabel: 'Thumbs up, great!',
-        
-  //       });
-  //     },
-  //     error: (err) => {
-  //       this.errorMessage = err.error.message;
-  //       this.isSignUpFailed = true;
-  //     },
-  //   });
-  // } else {
-  //   // Set all form controls to touched to trigger validation messages
-    // Swal.fire({
-    //   icon: 'warning',
-    //   title: '<strong>เกิดข้อผิดพลาด!</strong>',
-    //   html: 'โปรดกรอกข้อมูลที่บังคับ',
-    //   showCloseButton: true,
-    //   focusConfirm: false,
-    //   confirmButtonText: '<i class="fa fa-sign-in"></i> เข้าสู่ระบบ',
-    //   confirmButtonColor: '#27a644',
-    //   confirmButtonAriaLabel: 'Thumbs up, great!',
-    
-    // });
-  //   this.myForm.markAllAsTouched();
-    
   }
-
-  
 }
