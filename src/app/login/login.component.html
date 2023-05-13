@@ -19,6 +19,7 @@
           <input
             type="email"
             name="email"
+            id="email"
             placeholder="กรอกอีเมล"
             [formControl]="emailFormControl"
             [(ngModel)]="form.email"
@@ -42,6 +43,7 @@
             ><i class="fa fa-key" style="margin: 5%"> รหัสผ่าน</i></mat-label
           >
           <input
+          id="password"
             [type]="hide ? 'password' : 'text'"
             type="password"
             matInput
@@ -73,6 +75,7 @@
         </mat-form-field>
         <div class="login-button">
           <button
+            id="loginbtn"
             mat-raised-button
             (click)="onSubmit()"
             [ngStyle]="{
@@ -97,10 +100,11 @@
           name="fontStyle"
           aria-label="Font Style"
         >
-          <mat-button-toggle class="register-button" routerLink="/register"
+          <mat-button-toggle id="newregister" class="register-button" routerLink="/register"
             >ลงทะเบียนใหม่</mat-button-toggle
           >
           <mat-button-toggle
+          id = "forgetpw"
             class="forgot-password-button"
             (click)="resetPassword()"
             >ลืมรหัสผ่าน?</mat-button-toggle
