@@ -18,6 +18,11 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { SuccessJoinEventComponent } from './success-join-event/success-join-event.component';
 import { PleaseLoginComponent } from './please-login/please-login.component';
+import { MatIconModule } from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import { ImageSliderModule } from '../image-slider/image-slider.module';
+import {MatCardModule} from '@angular/material/card';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -38,8 +43,12 @@ import { PleaseLoginComponent } from './please-login/please-login.component';
     MatNativeDateModule,
     MatDividerModule,
     MatTabsModule,
-    MatButtonToggleModule
-    
+    MatButtonToggleModule,
+    MatIconModule,
+    MatListModule,
+    ImageSliderModule,
+    MatCardModule,
+    ScrollingModule
   ]
 })
 export class OpeneventModule { }

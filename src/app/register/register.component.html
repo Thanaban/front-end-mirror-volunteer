@@ -1,356 +1,347 @@
 <div class="page-content">
-  <div class="form-v10-content">
-    <form
-      [formGroup]="myForm"
-      class="form-detail"
-      *ngIf="!isSuccessful"
-      name="form"
-      (ngSubmit)="onSubmit()"
-      #f="ngForm"
-      novalidate
-    >
-      <div class="form-left">
-        <h2>บัญชี</h2>
-        <div class="form-group">
-          <div class="form-row">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="email"
-                name="email"
-                [(ngModel)]="form.email"
-                formControlName="email"
-                class="input-text"
-                placeholder="Ex. pat@example.com"
-              />
-              <mat-error *ngIf="myForm.get('email')?.hasError('email')">
-                โปรดกรอกอีเมลที่ถูกต้อง
-              </mat-error>
-              <mat-error *ngIf="myForm.get('email')?.hasError('required')">
-                โปรดกรอกอีเมล
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="password"
-                name="password"
-                [(ngModel)]="form.password"
-                formControlName="password"
-                class="input-text"
-                placeholder="รหัสผ่าน"
-              />
-              <mat-error
-                *ngIf="
-                  myForm.get('password')?.hasError('invalidPassword') &&
-                  !myForm.get('password')?.hasError('required')
-                "
-              >
-                โปรดกรอกรหัสผ่านที่ถูกต้อง
-              </mat-error>
-              <mat-error *ngIf="myForm.get('password')?.hasError('required')">
-                โปรดกรอกรหัสผ่าน
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="password"
-                name="confirmPassword"
-                class="input-text"
-                formControlName="confirmPassword"
-                placeholder="รหัสผ่านอีกครั้ง"
-              />
-              <mat-error
-                *ngIf="myForm.get('confirmPassword')?.hasError('required')"
-              >
-                โปรดยืนยันรหัสผ่านอีกครั้ง
-              </mat-error>
-              <mat-error
-                *ngIf="
-                  !myForm.hasError('passwordMismatch') &&
-                  myForm.get('confirmPassword')?.touched
-                "
-              >
-                โปรดยืนยันรหัสผ่านให้ถูกต้อง
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <div class="form-middle">
-        <h2>ข้อมูลส่วนตัว</h2>
-        <div class="form-group">
-          <div class="form-row form-row-1">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="name"
-                [(ngModel)]="form.name"
-                formControlName="name"
-                placeholder="ชื่อ"
-              />
-              <mat-error *ngIf="myForm.get('name')?.hasError('required')">
-                โปรดกรอกชื่อจริง
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="form-row form-row-2">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="lastname"
-                [(ngModel)]="form.lastname"
-                formControlName="lastname"
-                class="input-text"
-                placeholder="นามสกุล"
-              />
-              <mat-error *ngIf="myForm.get('lastname')?.hasError('required')">
-                โปรดกรอกนามสกุล
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row form-row-1">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="nickname"
-                [(ngModel)]="form.nickname"
-                formControlName="nickname"
-                class="input-text"
-                placeholder="ชื่อเล่น"
-              />
-              <mat-error *ngIf="myForm.get('nickname')?.hasError('required')">
-                โปรดกรอกชื่อเล่น
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="form-row form-row-2">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="date"
-                name="birthday"
-                [(ngModel)]="form.birthday"
-                formControlName="birthday"
-              />
-              <mat-error *ngIf="myForm.get('birthday')?.hasError('required')">
-                โปรดระบุวันเกิด
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row form-row-1">
-            <mat-form-field appearance="fill" class="example-full-width">
-              <mat-label>เลือกเพศของท่าน</mat-label>
-              <mat-select
-                name="gender"
-                [(ngModel)]="form.gender"
-                formControlName="gender"
-              >
-                <mat-option value="ชาย"> ชาย </mat-option>
-                <mat-option value="หญิง"> หญิง </mat-option>
-              </mat-select>
-              <mat-error *ngIf="myForm.get('gender')?.hasError('required')">
-                โปรดเลือกเพศของท่าน
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="form-row form-row-2">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="religion"
-                [(ngModel)]="form.religion"
-                formControlName="religion"
-                class="input-text"
-                placeholder="ศาสนา"
-              />
-              <mat-error *ngIf="myForm.get('religion')?.hasError('required')">
-                โปรดกรอกศาสนาของท่าน
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="tel"
-                name="phoneNumber"
-                [(ngModel)]="form.phoneNumber"
-                formControlName="phoneNumber"
-                class="input-text"
-                placeholder="เบอร์โทรศัพท์"
-              />
-              <mat-error
-                *ngIf="myForm.get('phoneNumber')?.hasError('required')"
-              >
-                โปรดกรอกเบอร์โทรศัพท์ของท่าน
-              </mat-error>
-              <mat-error *ngIf="myForm.get('phoneNumber')?.hasError('pattern')"
-                >Phone number must only contain numbers
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-      </div>
-      <div class="form-right">
-        <h2>ข้อมูลเพิ่มเติม</h2>
+  <div class="register_box">
+    <div class="center">
+      <h3 style="font-weight: bold">
+        <strong>ลงทะเบียนอาสาสมัครใหม่</strong>
+      </h3>
+      <form
+        [formGroup]="myForm"
+        class="form-register"
+        *ngIf="!isSuccessful"
+        name="form"
+        #f="ngForm"
+        novalidate
+      >
+        <mat-form-field class="example-full-width">
+          <mat-label
+            ><i class="fa fa-envelope" style="margin: 5%"> อีเมล</i></mat-label
+          >
+          <input
+            matInput
+            type="email"
+            name="email"
+            [(ngModel)]="form.email"
+            formControlName="email"
+            class="input-text"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error *ngIf="myForm.get('email')?.hasError('email')">
+            โปรดกรอกอีเมลที่ถูกต้อง
+          </mat-error>
+          <mat-error *ngIf="myForm.get('email')?.hasError('required')">
+            โปรดกรอกอีเมล
+          </mat-error>
+        </mat-form-field>
 
-        <div class="form-group">
-          <div class="form-row form-row-1">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="career"
-                [(ngModel)]="form.career"
-                formControlName="career"
-                class="input-text"
-                placeholder="อาชีพ"
-              />
-              <mat-error *ngIf="myForm.get('career')?.hasError('required')">
-                โปรดกรอกอาชีพของท่าน
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="form-row form-row-2">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="workplace"
-                [(ngModel)]="form.workplace"
-                formControlName="workplace"
-                class="input-text"
-                placeholder="สถานที่ทำงาน/สถานศึกษา"
-              />
-              <mat-error *ngIf="myForm.get('workplace')?.hasError('required')">
-                โปรดกรอกสถานที่ทำงาน/สถานศึกษาของท่าน
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row form-row-1">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="congenitalDisease"
-                [(ngModel)]="form.congenitalDisease"
-                formControlName="congenitalDisease"
-                class="input-text"
-                placeholder="โรคประจำตัว"
-              />
-              <mat-error
-                *ngIf="myForm.get('congenitalDisease')?.hasError('required')"
-              >
-                โปรดกรอกโรคประจำตัวของท่าน
-              </mat-error>
-            </mat-form-field>
-          </div>
-          <div class="form-row form-row-2">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="allergicFood"
-                [(ngModel)]="form.allergicFood"
-                formControlName="allergicFood"
-                class="input-text"
-                placeholder="อาหารที่แพ้"
-              />
-              <mat-error
-                *ngIf="myForm.get('congenitalDisease')?.hasError('required')"
-              >
-                โปรดกรอกอาหารที่แพ้ของท่าน
-              </mat-error>
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-row">
-            <mat-form-field class="example-full-width">
-              <input
-                matInput
-                type="text"
-                name="talent"
-                [(ngModel)]="form.talent"
-                formControlName="talent"
-                class="input-text"
-                placeholder="ความสามารถพิเศษ"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-        <div class="form-row">
-          <mat-form-field appearance="fill" class="example-full-width">
-            <mat-label>ช่องทางที่รู้จักมูลนิธิกระจกเงา</mat-label>
-            <mat-select
-              name="know_from"
-              [(ngModel)]="form.know_from"
-              formControlName="know_from"
-            >
-              <mat-option value="สื่อสิ่งพิมพ์"> สื่อสิ่งพิมพ์ </mat-option>
-              <mat-option value="สื่อทางวิทยุโทรทัศน์">
-                สื่อทางวิทยุโทรทัศน์
-              </mat-option>
-              <mat-option value="สื่อออนไลน์ Google Search">
-                สื่อออนไลน์ Google Search
-              </mat-option>
-              <mat-option value="บุคคลที่เคยมาร่วมกิจกรรมอาสา">
-                บุคคลที่เคยมาร่วมกิจกรรมอาสา
-              </mat-option>
-              <mat-option value="หน่วยงานหรือสังกัดที่เคยอาสา">
-                หน่วยงานหรือสังกัดที่เคยอาสา
-              </mat-option>
-              <mat-option value="เพื่อน/คนรู้จักแนะนำ">
-                เพื่อน/คนรู้จักแนะนำ
-              </mat-option>
-              <mat-option value="สื่อออนไลน์ Facebook">
-                สื่อออนไลน์ Facebook
-              </mat-option>
-              <mat-option value="สื่อออนไลน์ Twitter">
-                สื่อออนไลน์ Twitter
-              </mat-option>
-              <mat-option value="อื่นๆ"> อื่นๆ </mat-option>
-            </mat-select>
-            <mat-error
-                *ngIf="myForm.get('know_from')?.hasError('required')"
-              >
-                โปรดระบุ
-              </mat-error>
-          </mat-form-field>
-        </div>
-
-        <div class="form-row-last">
+        <mat-form-field class="example-full-width">
+          <mat-label
+            ><i class="fa fa-key" style="margin: 5%"> รหัสผ่าน</i></mat-label
+          >
+          <input
+            matInput
+            type="password"
+            name="password"
+            [(ngModel)]="form.password"
+            formControlName="password"
+            class="input-text"
+            placeholder="รหัสผ่าน"
+          />
+          <button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>help</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="
+              myForm.get('password')?.hasError('invalidPassword') &&
+              !myForm.get('password')?.hasError('required')
+            "
+          >
+            โปรดกรอกรหัสผ่านที่ถูกต้อง
+          </mat-error>
+          <mat-error *ngIf="myForm.get('password')?.hasError('required')">
+            โปรดกรอกรหัสผ่าน
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label
+            ><i class="fa fa-key" style="margin: 5%">
+              ยืนยันรหัสผ่านอีกครั้ง</i
+            ></mat-label
+          >
+          <input
+            matInput
+            type="password"
+            name="confirmPassword"
+            class="input-text"
+            formControlName="confirmPassword"
+            placeholder="รหัสผ่านอีกครั้ง"
+          />
+          <button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>help</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="myForm.get('confirmPassword')?.hasError('required')"
+          >
+            โปรดยืนยันรหัสผ่านอีกครั้ง
+          </mat-error>
+          <mat-error
+            *ngIf="
+              !myForm.hasError('passwordMismatch') &&
+              myForm.get('confirmPassword')?.touched
+            "
+          >
+            โปรดยืนยันรหัสผ่านให้ถูกต้อง
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label
+            ><i class="fa fa-user" style="margin: 5%"> ชื่่อจริง</i></mat-label
+          >
+          <input
+            matInput
+            type="text"
+            name="name"
+            [(ngModel)]="form.name"
+            formControlName="name"
+            placeholder="ชื่อจริง"
+          />
+          <mat-error *ngIf="myForm.get('name')?.hasError('required')">
+            โปรดกรอกชื่อจริง
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label
+            ><i class="fa fa-user" style="margin: 5%"> นามสกุล</i></mat-label
+          >
+          <input
+            matInput
+            type="text"
+            name="lastname"
+            [(ngModel)]="form.lastname"
+            formControlName="lastname"
+            class="input-text"
+            placeholder="นามสกุล"
+          />
+          <mat-error *ngIf="myForm.get('lastname')?.hasError('required')">
+            โปรดกรอกนามสกุล
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label
+            ><i class="fa fa-user" style="margin: 5%"> ชื่อเล่น</i></mat-label
+          >
+          <input
+            matInput
+            type="text"
+            name="nickname"
+            [(ngModel)]="form.nickname"
+            formControlName="nickname"
+            class="input-text"
+            placeholder="ชื่อเล่น"
+          />
+          <mat-error *ngIf="myForm.get('nickname')?.hasError('required')">
+            โปรดกรอกชื่อเล่น
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>
+            <i class="fa fa-calendar" style="margin: 5%">วันเกิด</i>
+          </mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            name="birthday"
+            [(ngModel)]="form.birthday"
+            formControlName="birthday"
+          />
+          <mat-hint>เดือน/วัน/ปี</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="myForm.get('birthday')?.hasError('required')">
+            โปรดระบุวันเกิด
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label
+            ><i class="fa fa-venus-mars" style="margin: 5%"> เพศ</i></mat-label
+          >
+          <mat-select
+            name="gender"
+            [(ngModel)]="form.gender"
+            formControlName="gender"
+            placeholder="เลือกเพศของท่าน"
+          >
+            <mat-option value="ชาย"> ชาย </mat-option>
+            <mat-option value="หญิง"> หญิง </mat-option>
+          </mat-select>
+          <mat-error *ngIf="myForm.get('gender')?.hasError('required')">
+            โปรดเลือกเพศของท่าน
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label> ศาสนา</mat-label>
+          <input
+            matInput
+            type="text"
+            name="religion"
+            [(ngModel)]="form.religion"
+            formControlName="religion"
+            class="input-text"
+            placeholder="ศาสนา"
+          />
+          <mat-error *ngIf="myForm.get('religion')?.hasError('required')">
+            โปรดกรอกศาสนาของท่าน
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label
+            ><i class="fa fa-phone" style="margin: 5%">
+              เบอร์โทรศัพท์</i
+            ></mat-label
+          >
+          <input
+            matInput
+            type="tel"
+            name="phoneNumber"
+            [(ngModel)]="form.phoneNumber"
+            formControlName="phoneNumber"
+            class="input-text"
+            placeholder="เบอร์โทรศัพท์"
+          />
+          <mat-error *ngIf="myForm.get('phoneNumber')?.hasError('required')">
+            โปรดกรอกเบอร์โทรศัพท์ของท่าน
+          </mat-error>
+          <mat-error *ngIf="myForm.get('phoneNumber')?.hasError('pattern')"
+            >Phone number must only contain numbers
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label> อาชีพ </mat-label>
+          <input
+            matInput
+            type="text"
+            name="career"
+            [(ngModel)]="form.career"
+            formControlName="career"
+            class="input-text"
+            placeholder="อาชีพ"
+          />
+          <mat-error *ngIf="myForm.get('career')?.hasError('required')">
+            โปรดกรอกอาชีพของท่าน
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="text"
+            name="workplace"
+            [(ngModel)]="form.workplace"
+            formControlName="workplace"
+            class="input-text"
+            placeholder="สถานที่ทำงาน/สถานศึกษา"
+          />
+          <mat-error *ngIf="myForm.get('workplace')?.hasError('required')">
+            โปรดกรอกสถานที่ทำงาน/สถานศึกษาของท่าน
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="text"
+            name="congenitalDisease"
+            [(ngModel)]="form.congenitalDisease"
+            formControlName="congenitalDisease"
+            class="input-text"
+            placeholder="โรคประจำตัว"
+          />
+          <mat-error
+            *ngIf="myForm.get('congenitalDisease')?.hasError('required')"
+          >
+            โปรดกรอกโรคประจำตัวของท่าน
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="text"
+            name="allergicFood"
+            [(ngModel)]="form.allergicFood"
+            formControlName="allergicFood"
+            class="input-text"
+            placeholder="อาหารที่แพ้"
+          />
+          <mat-error
+            *ngIf="myForm.get('congenitalDisease')?.hasError('required')"
+          >
+            โปรดกรอกอาหารที่แพ้ของท่าน
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            type="text"
+            name="talent"
+            [(ngModel)]="form.talent"
+            formControlName="talent"
+            class="input-text"
+            placeholder="ความสามารถพิเศษ"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>ช่องทางที่รู้จักมูลนิธิกระจกเงา </mat-label>
+          <mat-select
+            name="know_from"
+            [(ngModel)]="form.know_from"
+            formControlName="know_from"
+          >
+            <mat-option value="สื่อสิ่งพิมพ์"> สื่อสิ่งพิมพ์ </mat-option>
+            <mat-option value="สื่อทางวิทยุโทรทัศน์">
+              สื่อทางวิทยุโทรทัศน์
+            </mat-option>
+            <mat-option value="สื่อออนไลน์ Google Search">
+              สื่อออนไลน์ Google Search
+            </mat-option>
+            <mat-option value="บุคคลที่เคยมาร่วมกิจกรรมอาสา">
+              บุคคลที่เคยมาร่วมกิจกรรมอาสา
+            </mat-option>
+            <mat-option value="หน่วยงานหรือสังกัดที่เคยอาสา">
+              หน่วยงานหรือสังกัดที่เคยอาสา
+            </mat-option>
+            <mat-option value="เพื่อน/คนรู้จักแนะนำ">
+              เพื่อน/คนรู้จักแนะนำ
+            </mat-option>
+            <mat-option value="สื่อออนไลน์ Facebook">
+              สื่อออนไลน์ Facebook
+            </mat-option>
+            <mat-option value="สื่อออนไลน์ Twitter">
+              สื่อออนไลน์ Twitter
+            </mat-option>
+            <mat-option value="อื่นๆ"> อื่นๆ </mat-option>
+          </mat-select>
+          <mat-error *ngIf="myForm.get('know_from')?.hasError('required')">
+            โปรดระบุ
+          </mat-error>
+        </mat-form-field>
+        <div class="login-button">
           <button
+            id="loginbtn"
             mat-raised-button
-            type="submit"
-            style="background-color: #27a644; color: #ffffff;margin-bottom: 16%;"
+            (click)="onSubmit()"
+            [ngStyle]="{
+              'background-color': '#27A644',
+              color: '#ffffff',
+              'font-size': '150%',
+              padding: '5%'
+            }"
+            
+            class="submit-button"
           >
             ลงทะเบียน
           </button>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

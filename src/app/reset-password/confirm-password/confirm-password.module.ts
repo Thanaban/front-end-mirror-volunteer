@@ -5,6 +5,7 @@ import { ConfirmPasswordRoutingModule } from './confirm-password-routing.module'
 import { ConfirmPasswordComponent } from './confirm-password.component';
 import { FormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -15,7 +16,10 @@ import {MatCardModule} from '@angular/material/card';
     CommonModule,
     ConfirmPasswordRoutingModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
+    
   ]
 })
-export class ConfirmPasswordModule { }
+export class ConfirmPasswordModule {
+  
+ }

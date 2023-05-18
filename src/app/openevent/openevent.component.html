@@ -1,115 +1,209 @@
 <div class="wrapper" style="margin-top: 2%">
   <div *ngFor="let event of eventlist; let i = index">
     <div class="event-box">
-      <div>
-        <div style="display: flex">
-          <img
-            src="{{ event.picture }}"
-            style="width: 50%; border-top-left-radius: 10px"
-          />
-          <div style="width: 100%">
-            <div class="text-header">
-              <div style="width: 100%; font-family: 'Kanit'; font-weight: bold">
-                <div style="margin-top: 4%; margin-left: 6%; font-size: 28px">
-                  กิจกรรม : {{ event.activity_name }}
-                </div>
-                <mat-tab-group style="margin: 4%">
-                  <mat-tab label="สิ่งที่อาสาจะได้ทำ">
-                    <div
-                      style="font-size: 18px; margin-top: 4%; overflow: auto"
-                    >
-                      {{ event.activity_details }}
-                    </div></mat-tab
-                  >
-                  <mat-tab label="สถานที่ปฏิบัติกิจกรรม"
-                    ><div style="font-size: 18px; margin-top: 4%">
-                      Google map link : <br />
-                      <div style="text-align: center">
-                        <a href="{{ event.map }}" target="_blank"
-                          ><img
-                            src="../../assets/image/map.png"
-                            style="width: 20%"
-                        /></a>
-                      </div>
-                    </div>
-                  </mat-tab>
-                </mat-tab-group>
-              </div>
-            </div>
-
-            <div style="display: flex; width: 100%; margin-top: 4%">
-              <mat-button-toggle-group
-                name="fontStyle"
-                aria-label="Font Style"
-                style="width: 100%"
-              >
-                <mat-button-toggle
-                  value="ดูรายละเอียดเพิ่มเติม"
-                  (click)="openDialog()"
-                  style="width: 50%; font-family: 'Kanit'; font-weight: bold"
-                  >ดูรายละเอียดเพิ่มเติม</mat-button-toggle
-                >
-                <mat-button-toggle *ngIf="checklogin"
-                  value="สมัครเข้าร่วม"
-                  (click)="
-                    openDialog2(
-                      event.id,
-                      event.activity_name,
-                      currentUser.id,
-                      currentUser.name
-                    )
-                  "
-                  style="
-                    width: 50%;
-                    background-color: #ffde02;
-                    font-family: 'Kanit';
-                    font-weight: bold;
-                  "
-                  >สมัครเข้าร่วม</mat-button-toggle
-                >
-                <mat-button-toggle *ngIf="!checklogin"
-                  value="สมัครเข้าร่วม"
-                  (click)="
-                  openDialogPleaseLogin(
-                      
-                    )
-                  "
-                  style="
-                    width: 50%;
-                    background-color: #ffde02;
-                    font-family: 'Kanit';
-                    font-weight: bold;
-                  "
-                  >สมัครเข้าร่วม</mat-button-toggle
-                >
-              </mat-button-toggle-group>
-            </div>
+      <div class="event-box-left">
+        <app-image-slider [slides]="slides"></app-image-slider>
+      </div>
+      <div class="event-box-right">
+        <div class="text-header">
+          <div
+            style="
+              margin-top: 4%;
+              margin-left: 6%;
+              font-size: 28px;
+              font-weight: bold;
+            "
+          >
+            กิจกรรม : {{ event.activity_name }}
           </div>
         </div>
-        <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
+        <mat-tab-group
+          mat-stretch-tabs
+          style="height: 68%; margin-left: 4%; margin-right: 4%"
         >
-          <mat-expansion-panel-header style="background-color: #f7f1e5">
-            <mat-panel-title
-              ><div
-                style="font-size: 24px; font-weight: bold; font-family: 'Kanit'"
-              >
-                กดดูความคิดเห็นจากอาสา
-              </div>
-            </mat-panel-title>
-            <mat-panel-description> </mat-panel-description>
-          </mat-expansion-panel-header>
-
-          <div class="text-comment-box" *ngFor="let comment of commentActivity">
-            <mat-divider></mat-divider>
-            <div class="text-comment">
-              {{ comment.comment_detail }}
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>work</mat-icon>
+              <span>สิ่งที่อาสาจะได้ทำ</span>
+            </ng-template>
+            <div style="font-size: 18px; margin-top: 4%; overflow: auto">
+              {{ event.activity_details }}
             </div>
-          </div>
-          <mat-divider></mat-divider>
-        </mat-expansion-panel>
+          </mat-tab>
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon>comment</mat-icon>
+              ความคิดเห็นจากอาสา
+            </ng-template>
+            <mat-list
+              class="example-list-wrapping"
+              *ngFor="let comment of event.comments"
+            >
+              <mat-list-item lines="2">
+                <span matListItemTitle class="icon-and-text">
+                  <i
+                    class="fa fa-commenting-o mirror-icon"
+                    aria-hidden="true"
+                  ></i>
+                  <span class="user-name">{{ comment.user_name }}</span>
+                </span>
+                {{ comment.comment_detail }}
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </mat-list>
+          </mat-tab>
+        </mat-tab-group>
+        
+        <div style="display: flex; width: 100%;height: 12%;">
+          <mat-button-toggle-group
+            name="fontStyle"
+            aria-label="Font Style"
+            style="width: 100%"
+          >
+            <mat-button-toggle
+              value="ดูรายละเอียดเพิ่มเติม"
+              (click)="openDialog()"
+              style="
+                width: 50%;
+                font-family: 'Kanit';
+                font-weight: bold;
+                background-color: #565656;
+                color: #ffde02;
+              "
+              ><mat-icon>info</mat-icon>
+              ดูรายละเอียดเพิ่มเติม</mat-button-toggle
+            >
+            <mat-button-toggle
+              *ngIf="checklogin"
+              value="สมัครเข้าร่วม"
+              (click)="
+                openDialog2(
+                  event.id,
+                  event.activity_name,
+                  currentUser.id,
+                  currentUser.name
+                )
+              "
+              style="
+                width: 50%;
+                background-color: #ffde02;
+                font-family: 'Kanit';
+                font-weight: bold;
+              "
+              >สมัครเข้าร่วม</mat-button-toggle
+            >
+            <mat-button-toggle
+              *ngIf="!checklogin"
+              value="สมัครเข้าร่วม"
+              (click)="openDialogPleaseLogin()"
+              style="
+                width: 50%;
+                background-color: #ffde02;
+                font-family: 'Kanit';
+                font-weight: bold;
+              "
+              >สมัครเข้าร่วม</mat-button-toggle
+            >
+          </mat-button-toggle-group>
+        </div>
       </div>
+
+      <!-- <div style="width: 100%">
+        <div class="text-header">
+          <div style="width: 100%; font-family: 'Kanit'; font-weight: bold">
+            <div
+              style="
+                margin-top: 4%;
+                margin-left: 6%;
+                font-size: 28px;
+                font-weight: bold;
+              "
+            >
+              กิจกรรม : {{ event.activity_name }}
+            </div>
+
+            <mat-tab-group style="margin: 4%">
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  <mat-icon>work</mat-icon>
+                  <span>สิ่งที่อาสาจะได้ทำ</span>
+                </ng-template>
+                <div style="font-size: 18px; margin-top: 4%; overflow: auto">
+                  {{ event.activity_details }}
+                </div>
+              </mat-tab>
+              <mat-tab style="display: flex">
+                
+                <ng-template mat-tab-label>
+                  <mat-icon style="margin-right: 2%">comment</mat-icon>
+                  ความคิดเห็นจากอาสา
+                </ng-template>
+                <div style="max-height: 162px; max-width: 530px">
+                  <mat-list role="list" *ngFor="let comment of event.comments"><button>
+                    <mat-list-item role="listitem">{{
+                      comment.comment_detail
+                    }}</mat-list-item></button>
+                    <mat-divider></mat-divider>
+                  </mat-list>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+
+        <div style="display: flex; width: 100%; margin-top: 5%">
+          <mat-button-toggle-group
+            name="fontStyle"
+            aria-label="Font Style"
+            style="width: 100%"
+          >
+            <mat-button-toggle
+              value="ดูรายละเอียดเพิ่มเติม"
+              (click)="openDialog()"
+              style="
+                width: 50%;
+                font-family: 'Kanit';
+                font-weight: bold;
+                background-color: #565656;
+                color: #ffde02;
+              "
+              ><mat-icon>info</mat-icon>
+              ดูรายละเอียดเพิ่มเติม</mat-button-toggle
+            >
+            <mat-button-toggle
+              *ngIf="checklogin"
+              value="สมัครเข้าร่วม"
+              (click)="
+                openDialog2(
+                  event.id,
+                  event.activity_name,
+                  currentUser.id,
+                  currentUser.name
+                )
+              "
+              style="
+                width: 50%;
+                background-color: #ffde02;
+                font-family: 'Kanit';
+                font-weight: bold;
+              "
+              >สมัครเข้าร่วม</mat-button-toggle
+            >
+            <mat-button-toggle
+              *ngIf="!checklogin"
+              value="สมัครเข้าร่วม"
+              (click)="openDialogPleaseLogin()"
+              style="
+                width: 50%;
+                background-color: #ffde02;
+                font-family: 'Kanit';
+                font-weight: bold;
+              "
+              >สมัครเข้าร่วม</mat-button-toggle
+            >
+          </mat-button-toggle-group>
+        </div>
+      </div> -->
     </div>
   </div>
 </div>

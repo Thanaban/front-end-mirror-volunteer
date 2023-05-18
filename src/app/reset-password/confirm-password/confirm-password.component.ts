@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/_services/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Token } from '@angular/compiler';
@@ -24,6 +24,9 @@ const httpOptions = {
   styleUrls: ['./confirm-password.component.scss'],
 })
 export class ConfirmPasswordComponent implements OnInit {
+
+  hidePassword = true;
+  hideConfirmPassword = true;
   currentToken: any;
   myForm: FormGroup;
   errorMessage = '';
@@ -36,7 +39,8 @@ export class ConfirmPasswordComponent implements OnInit {
     private authService: AuthService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.myForm = this.fb.group(
       {
@@ -90,15 +94,16 @@ export class ConfirmPasswordComponent implements OnInit {
         next: (data) => {
           console.log(data);
           Swal.fire({
-            icon: 'error',
-            title: '<strong>เกิดข้อผิดพลาด!</strong>',
-            html: this.errorMessage,
+            icon: 'success',
+            title: '<strong>สำเร็จ</strong>',
+            html: 'เปลี่ยนรหัสผ่านสำเร็จ',
 
             focusConfirm: false,
             confirmButtonText: '<i class="fa fa-times"></i> ปิด',
             confirmButtonColor: '#27a644',
             confirmButtonAriaLabel: 'Thumbs up, great!',
           });
+          this.router.navigate(['/login']);
         },
         error: (err) =>{
           this.errorMessage = err.error.message;

@@ -139,15 +139,18 @@ export class EventService {
 
   post_comment(
     userId: number,
+    userActivityId:number,
     activityId: number,
+    
     comment_detail: string
   ): Observable<any> {
     return this.http.post(
       'http://localhost:8000/users/post_comment',
       {
         userId,
+        userActivityId,
         activityId,
-        comment_detail,
+        comment_detail
       },
       httpOptions
     );
@@ -194,5 +197,15 @@ export class EventService {
       },
       httpOptions
     );
+  }
+
+  get_commnet_form_Ac(activityId:number): Observable<any>{
+    return this.http.post(
+      'http://localhost:8000/activities/get_commnet_form_UserAc',
+      {
+        activityId
+      },
+      httpOptions
+    )
   }
 }

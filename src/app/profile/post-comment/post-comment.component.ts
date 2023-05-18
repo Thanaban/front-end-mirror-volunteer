@@ -19,10 +19,8 @@ export class PostCommentComponent implements OnInit {
     let data: any = localStorage.getItem('EVENT');
     this.comment_event = JSON.parse(data);
     console.log(
-      'activityId' + this.comment_event.currentActivityId,
-      this.comment_event.currentActivityName,
-      'userId' + this.comment_event.currentUserID,
-      this.comment_event.currentUserName
+      
+      this.comment_event
     );
   }
 
@@ -32,6 +30,7 @@ export class PostCommentComponent implements OnInit {
     this.eventService
       .post_comment(
         this.comment_event.currentUserID,
+        this.comment_event.currentUserActivityId,
         this.comment_event.currentActivityId,
         comment
       )
@@ -40,5 +39,7 @@ export class PostCommentComponent implements OnInit {
           console.log(test, comment);
         },
       });
+
+    
   }
 }

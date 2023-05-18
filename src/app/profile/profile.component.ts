@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.history_activity)
     this.isLoggedIn = this.storageService.isLoggedIn();
 
     let data: any = localStorage.getItem('TABS');
@@ -140,6 +141,7 @@ export class ProfileComponent implements OnInit {
   }
 
   openDialogComment(
+    currentUserActivityId:number,
     currentActivityId: number,
     currentActivityName: string,
     currentUserID: number,
@@ -148,6 +150,7 @@ export class ProfileComponent implements OnInit {
     this.dialog.open(PostCommentComponent);
 
     let data = {
+      currentUserActivityId,
       currentActivityId,
       currentActivityName,
       currentUserID,

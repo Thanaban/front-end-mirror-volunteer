@@ -11,6 +11,8 @@ import { AppComponent } from '../app.component';
 import { PleaseLoginComponent } from './please-login/please-login.component';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { SlideInterface } from '../image-slider/slide.interface';
+import { EventService } from '../_services/event.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -27,8 +29,17 @@ export class OpeneventComponent implements OnInit {
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
     private status: AppComponent,
-    private router: Router
+    private router: Router,
+    private eventService: EventService
   ) {}
+  items = Array.from({ length: 100000 }).map((_, i) => `Item #${i}`);
+
+  content?: string;
+  slides: SlideInterface[] = [
+    { url: '../../assets/image/2.jpg', title: '1' },
+    { url: '../../assets/image/5.jpg', title: '1' },
+    { url: '../../assets/image/14.jpg', title: '1' },
+  ];
 
   panelOpenState = false;
   checklogin = this.status.isLoggedIn;
@@ -39,26 +50,58 @@ export class OpeneventComponent implements OnInit {
   currentUserID: any;
   currentUserName: any;
   commentActivity: any;
+  dateForm: any;
+  month: any;
 
   ngOnInit(): void {
-    this.http
-      .get<Event_show[]>('http://localhost:8000/activities/open_activity')
-      .subscribe((response) => {
-        this.eventlist = response;
-        console.warn('result', response);
-      });
+    this.getEvent();
 
     this.http.get('http://localhost:8000/users/user').subscribe((response) => {
       this.currentUser = response;
       console.warn('result', this.currentUser);
     });
+  }
 
+  getEvent() {
     this.http
-      .get('http://localhost:8000/activities/get_all_comment')
-      .subscribe((response2) => {
-        this.commentActivity = response2;
-        console.warn('test', this.commentActivity[0].comment_detail);
+      .get<Event_show[]>('http://localhost:8000/activities/open_activity')
+      .subscribe((response) => {
+        this.eventlist = response;
+        console.warn(1);
+        for (let i = 0; i < this.eventlist.length; i++) {
+          this.fill_comment(this.eventlist[i].id, i);
+        }
       });
+  }
+
+  fill_comment(x: number, index: number) {
+    this.eventService.get_commnet_form_Ac(x).subscribe({
+      next: (data) => {
+        this.eventlist[index].comments = data;
+        console.warn(this.eventlist[index].comments);
+      },
+    });
+  }
+
+  expand_comment(name:string,dateComment:string,textComment:string){
+    Swal.fire({
+      title: name,
+      html: textComment + '<br>แสดงความคิดเห็นเมื่อวันที่: ' + dateComment,
+      
+    })
+  }
+
+  con_date(d: any) {
+    d = d.split('-');
+    this.month = d[1];
+    if (d[1] == '04') {
+      d[1] = 'เม.ย';
+    } else if (d[1] == '05') {
+      d[1] = 'พ.ค';
+    }
+    d[0] = parseInt(d[0]) + 543;
+    this.dateForm = d.reverse().join(' ');
+    return this.dateForm;
   }
 
   openDialog() {

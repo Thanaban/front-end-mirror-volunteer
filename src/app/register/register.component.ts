@@ -12,17 +12,13 @@ import {
 import { passwordValidator } from '../login/password-Validator';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [
-    {
-      provide: STEPPER_GLOBAL_OPTIONS,
-      useValue: { showError: true },
-    },
-  ],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'th-TH' }],
 })
 export class RegisterComponent implements OnInit {
   form: any = {
@@ -104,6 +100,24 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
+    for (const key in this.myForm.value) {
+      if (
+        this.myForm.value.hasOwnProperty(key) &&
+        this.myForm.value[key] === null
+      ) {
+        Swal.fire({
+          icon: 'error',
+          title: '<strong>เกิดข้อผิดพลาด!</strong>',
+          html: `โปรดกรอกข้อมูลที่บังคับให้ครบถ้วน`,
+          focusConfirm: false,
+          confirmButtonText: '<i class="fa fa-times"></i> ปิด',
+          confirmButtonColor: '#27a644',
+          confirmButtonAriaLabel: 'Thumbs up, great!',
+        });
+        return;
+      }
+    }
+
     const {
       email,
       password,
@@ -120,7 +134,6 @@ export class RegisterComponent implements OnInit {
       allergicFood,
       talent,
       know_from,
-      
     } = this.myForm.value;
 
     this.authService
@@ -179,7 +192,7 @@ export class RegisterComponent implements OnInit {
             Swal.fire({
               icon: 'error',
               title: '<strong>เกิดข้อผิดพลาด!</strong>',
-              html: 'โปรดกรอกข้อมูลที่บังคับ',
+              html: 'โปรดกรอกข้อมูลให้ถูกต้อง',
 
               focusConfirm: false,
               confirmButtonText: '<i class="fa fa-times"></i> ปิด',
