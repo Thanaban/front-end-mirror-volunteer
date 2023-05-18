@@ -83,12 +83,11 @@ export class OpeneventComponent implements OnInit {
     });
   }
 
-  expand_comment(name:string,dateComment:string,textComment:string){
+  expand_comment(name: string, dateComment: string, textComment: string) {
     Swal.fire({
       title: name,
       html: textComment + '<br>แสดงความคิดเห็นเมื่อวันที่: ' + dateComment,
-      
-    })
+    });
   }
 
   con_date(d: any) {
@@ -102,6 +101,59 @@ export class OpeneventComponent implements OnInit {
     d[0] = parseInt(d[0]) + 543;
     this.dateForm = d.reverse().join(' ');
     return this.dateForm;
+  }
+
+  openClothesDetail(x: string) {
+    Swal.fire({
+      title: 'การแต่งกาย',
+      html: '<div style="text-align: left;"><b>' + x + '</b></div>',
+      showCloseButton: true,
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#ff2626',
+    });
+  }
+
+  openTravelCarDetail(x: string) {
+    Swal.fire({
+      title: 'การเดินทางด้วยรถส่วนตัว',
+      html: '<div style="text-align: left;"><b>' + x + '</b></div>',
+      showCloseButton: true,
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#ff2626',
+    });
+  }
+
+  openTravelPulicDetail(x: string) {
+    const formattedText = x.replace(/\n/g, '<br>');
+    Swal.fire({
+      title: 'การเดินทางด้วยรถส่วนตัว',
+      html: '<div style="text-align: left;"><b>' + formattedText + '</b></div>',
+      showCloseButton: true,
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#ff2626',
+    });
+  }
+
+  openServiceDetail(x: string) {
+    const formattedText = x.replace(/\n/g, '<br>');
+    Swal.fire({
+      title: 'บริการจากมูลนิธิ',
+      html: '<div style="text-align: left;"><b>' + formattedText + '</b></div>',
+      showCloseButton: true,
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#ff2626',
+    });
+  }
+
+  openRewardDetail(x: string,y:number) {
+    const formattedText = x.replace(/\n/g, '<br>');
+    Swal.fire({
+      title: 'สิ่งที่อาสาจะได้รับ',
+      html: '<div style="text-align: left;"><b>' + formattedText + '<br> เวลาเข้าร่วมกิจกรรม ' + y + ' ชั่วโมง</b> </div>',
+      showCloseButton: true,
+      confirmButtonText: 'ปิด',
+      confirmButtonColor: '#ff2626',
+    });
   }
 
   openDialog() {
