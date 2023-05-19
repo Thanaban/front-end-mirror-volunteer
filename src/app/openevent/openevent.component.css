@@ -24,7 +24,7 @@
 
 .event-box .event-box-left .img-box {
   min-width: 50%;
-  height: 88%;
+  height: 100%;
   text-align: center;
 }
 
@@ -59,19 +59,9 @@
   width: 100%;
 }
 
-.event-box .event-box-right .text-event-bottom .button-left {
-  text-align: center;
-  height: 100%;
-  width: 50%;
-  padding-bottom: 4%;
-}
 
-.event-box .event-box-right .text-event-bottom .button-right {
-  text-align: center;
-  height: 100%;
-  width: 50%;
-  padding-bottom: 4%;
-}
+
+
 
 .modal {
   display: none; /* Hidden by default */
@@ -143,15 +133,36 @@
   min-width: 100%;
   max-width: 100%;
 }
+
+.group-detail-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-height: 50%;
+}
+
+.detail-link {
+  text-decoration: none;
+}
+
 .detail-button {
   font-weight: bold;
   font-size: medium;
   width: 50%;
+  border-left: solid 1px #e0e0e0;
 }
+
 .detail-button:hover {
   background-color: #565656;
   color: #ffde02;
 }
+/* .detail-button {
+  font-weight: bold;
+  font-size: medium;
+  width: 50%;
+  background-color:#ffde02 ;
+} */
+
 
 .icon-and-text {
   display: flex;

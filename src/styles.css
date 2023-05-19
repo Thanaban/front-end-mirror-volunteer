@@ -1,26 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
 
-body { 
-  font-family: 'Kanit';
-    margin: 0;
-  background-color: #F8F9FD;
+body {
+  font-family: "Kanit";
+  margin: 0;
+  background-color: #f8f9fd;
   height: 100% !important;
-  }
-  
-  .basic-container {
-    padding: 5px;
-  }
-  
-  .version-info {
-    font-size: 8pt;
-    float: right;
-  }
-  ::ng-deep.mat-form-field 
-    { 
-    background-image: linear-gradient( to right, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 0.42) 33%, #c2c7cc 0 ) !important; 
-    background-size: 1px 100% !important;
-     background-repeat: repeat-x !important; 
-    } 
+}
+
+.basic-container {
+  padding: 5px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+::ng-deep.mat-form-field {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1) 0,
+    rgba(0, 0, 0, 0.42) 33%,
+    #c2c7cc 0
+  ) !important;
+  background-size: 1px 100% !important;
+  background-repeat: repeat-x !important;
+}

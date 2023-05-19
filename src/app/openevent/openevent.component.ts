@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+} from '@angular/material/datepicker';
 import { Event_show } from './openevent-request-get';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEventComponent } from './modal-event/modal-event.component';
@@ -13,6 +17,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SlideInterface } from '../image-slider/slide.interface';
 import { EventService } from '../_services/event.service';
+import flatpickr from 'flatpickr';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -103,10 +108,25 @@ export class OpeneventComponent implements OnInit {
     return this.dateForm;
   }
 
-  openClothesDetail(x: string) {
+  openClothesDetail(
+    clothesDetail: string,
+    serviceDetail: string,
+    rewardDetail: string,
+    receivedHours: number
+  ) {
     Swal.fire({
-      title: 'การแต่งกาย',
-      html: '<div style="text-align: left;"><b>' + x + '</b></div>',
+      title: 'ข้อมูลเพิ่มเติม',
+      width: 1200,
+      html:
+        '<b><div style="display: flex; text-align: center;"><div style="width: 30%;border-width: 0px 2px 2px 0px;border-style: solid;border-color: #00000020;border-radius: 10px; margin: 2%;"><div style="margin: 5%;"><div style="font-size: 24px;margin: 2%;">การแต่งกาย</div><div style="text-align: left;">' +
+        clothesDetail +
+        '</div></div></div><div style="width: 30%;border-width: 0px 2px 2px 0px;border-style: solid;border-color: #00000020;border-radius: 10px; margin: 2%;"><div style="margin: 5%;"><div style="font-size: 24px;margin: 2%;">บริการจากมูลนิธิ</div><div style="text-align: left;">' +
+        serviceDetail +
+        '</div></div></div><div style="width: 30%;border-width: 0px 2px 2px 0px;border-style: solid;border-color: #00000020;border-radius: 10px; margin: 2%;"><div style="margin: 5%;"><div style="font-size: 24px;margin: 2%;">สิ่งที่อาสาจะได้รับ</div><div style="text-align: left;">' +
+        rewardDetail +
+        '<br>เวลาเข้าร่วมกิจกรรม ' +
+        receivedHours +
+        ' ชั่วโมง</div></div></div></div></b>',
       showCloseButton: true,
       confirmButtonText: 'ปิด',
       confirmButtonColor: '#ff2626',
@@ -145,11 +165,16 @@ export class OpeneventComponent implements OnInit {
     });
   }
 
-  openRewardDetail(x: string,y:number) {
+  openRewardDetail(x: string, y: number) {
     const formattedText = x.replace(/\n/g, '<br>');
     Swal.fire({
       title: 'สิ่งที่อาสาจะได้รับ',
-      html: '<div style="text-align: left;"><b>' + formattedText + '<br> เวลาเข้าร่วมกิจกรรม ' + y + ' ชั่วโมง</b> </div>',
+      html:
+        '<div style="text-align: left;"><b>' +
+        formattedText +
+        '<br> เวลาเข้าร่วมกิจกรรม ' +
+        y +
+        ' ชั่วโมง</b> </div>',
       showCloseButton: true,
       confirmButtonText: 'ปิด',
       confirmButtonColor: '#ff2626',
@@ -182,7 +207,8 @@ export class OpeneventComponent implements OnInit {
     currentEventID: number,
     currentEventName: string,
     currentUserID: number,
-    currentUserName: string
+    currentUserName: string,
+    endDate:Date
   ) {
     if (this.status.isLoggedIn) {
       console.warn('asdas', this.status.isLoggedIn);
@@ -191,14 +217,13 @@ export class OpeneventComponent implements OnInit {
         currentEventName,
         currentUserID,
         currentUserName,
+        endDate
       };
       localStorage.setItem('EVENT', JSON.stringify(data));
-
       console.warn(
         'ID event:' + currentEventID,
         'ID user:' + this.currentUser.id
       );
-
       this.dialog.open(JoinEventComponent);
       this.http
         .get('http://localhost:8000/activities/getoneid/' + currentEventID)
