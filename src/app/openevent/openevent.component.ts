@@ -1,23 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {
-  MatDatepicker,
-  MatDatepickerInput,
-} from '@angular/material/datepicker';
 import { Event_show } from './openevent-request-get';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEventComponent } from './modal-event/modal-event.component';
 import { JoinEventComponent } from './join-event/join-event.component';
 import { Observable } from 'rxjs';
-import { SuccessJoinEventComponent } from './success-join-event/success-join-event.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppComponent } from '../app.component';
-import { PleaseLoginComponent } from './please-login/please-login.component';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SlideInterface } from '../image-slider/slide.interface';
 import { EventService } from '../_services/event.service';
-import flatpickr from 'flatpickr';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -32,7 +25,7 @@ export class OpeneventComponent implements OnInit {
   constructor(
     private http: HttpClient,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar,
+
     private status: AppComponent,
     private router: Router,
     private eventService: EventService
@@ -85,13 +78,6 @@ export class OpeneventComponent implements OnInit {
         this.eventlist[index].comments = data;
         console.warn(this.eventlist[index].comments);
       },
-    });
-  }
-
-  expand_comment(name: string, dateComment: string, textComment: string) {
-    Swal.fire({
-      title: name,
-      html: textComment + '<br>แสดงความคิดเห็นเมื่อวันที่: ' + dateComment,
     });
   }
 
@@ -154,39 +140,11 @@ export class OpeneventComponent implements OnInit {
     });
   }
 
-  openServiceDetail(x: string) {
-    const formattedText = x.replace(/\n/g, '<br>');
-    Swal.fire({
-      title: 'บริการจากมูลนิธิ',
-      html: '<div style="text-align: left;"><b>' + formattedText + '</b></div>',
-      showCloseButton: true,
-      confirmButtonText: 'ปิด',
-      confirmButtonColor: '#ff2626',
-    });
-  }
-
-  openRewardDetail(x: string, y: number) {
-    const formattedText = x.replace(/\n/g, '<br>');
-    Swal.fire({
-      title: 'สิ่งที่อาสาจะได้รับ',
-      html:
-        '<div style="text-align: left;"><b>' +
-        formattedText +
-        '<br> เวลาเข้าร่วมกิจกรรม ' +
-        y +
-        ' ชั่วโมง</b> </div>',
-      showCloseButton: true,
-      confirmButtonText: 'ปิด',
-      confirmButtonColor: '#ff2626',
-    });
-  }
-
   openDialog() {
     this.dialog.open(ModalEventComponent);
   }
 
   openDialogPleaseLogin() {
-    // this.dialog.open(PleaseLoginComponent);
     Swal.fire({
       icon: 'warning',
       title: '<strong>เกิดข้อผิดพลาด!</strong>',
@@ -203,47 +161,27 @@ export class OpeneventComponent implements OnInit {
     });
   }
 
-  openDialog2(
+  openJoinEventDialog(
     currentEventID: number,
     currentEventName: string,
     currentUserID: number,
     currentUserName: string,
-    endDate:Date
+    endDate: Date
   ) {
-    if (this.status.isLoggedIn) {
-      console.warn('asdas', this.status.isLoggedIn);
-      let data = {
-        currentEventID,
-        currentEventName,
-        currentUserID,
-        currentUserName,
-        endDate
-      };
-      localStorage.setItem('EVENT', JSON.stringify(data));
-      console.warn(
-        'ID event:' + currentEventID,
-        'ID user:' + this.currentUser.id
-      );
-      this.dialog.open(JoinEventComponent);
-      this.http
-        .get('http://localhost:8000/activities/getoneid/' + currentEventID)
-        .subscribe((response) => {
-          console.warn('result', response);
-        });
-    } else {
-      console.warn('sssssssasdas', this.status.isLoggedIn);
-    }
+    let data = {
+      currentEventID,
+      currentEventName,
+      currentUserID,
+      currentUserName,
+      endDate,
+    };
+    localStorage.setItem('EVENT', JSON.stringify(data));
+    this.dialog.open(JoinEventComponent);
+    this.http
+      .get('http://localhost:8000/activities/getoneid/' + currentEventID)
+      .subscribe((response) => {
+        console.warn('result', response);
+      });
   }
 
-  join_event(activityId: number, userId: number, date: Date): Observable<any> {
-    return this.http.post(
-      'http://localhost:8000/users/dateAc2',
-      {
-        activityId,
-        userId,
-        date,
-      },
-      httpOptions
-    );
-  }
 }

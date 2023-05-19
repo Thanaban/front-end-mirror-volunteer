@@ -103,7 +103,7 @@
               class="example-list-wrapping"
               *ngFor="let comment of event.comments"
             >
-              <mat-list-item lines="1" style="margin-bottom: 2%;">
+              <mat-list-item lines="1" style="margin-bottom: 2%">
                 <span matListItemTitle class="icon-and-text">
                   <i
                     class="fa fa-commenting-o mirror-icon"
@@ -140,7 +140,7 @@
             *ngIf="checklogin"
             value="สมัครเข้าร่วม"
             (click)="
-              openDialog2(
+              openJoinEventDialog(
                 event.id,
                 event.activity_name,
                 currentUser.id,
