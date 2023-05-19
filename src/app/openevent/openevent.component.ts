@@ -4,8 +4,6 @@ import { Event_show } from './openevent-request-get';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEventComponent } from './modal-event/modal-event.component';
 import { JoinEventComponent } from './join-event/join-event.component';
-import { Observable } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppComponent } from '../app.component';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -53,7 +51,6 @@ export class OpeneventComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvent();
-
     this.http.get('http://localhost:8000/users/user').subscribe((response) => {
       this.currentUser = response;
       console.warn('result', this.currentUser);
@@ -183,5 +180,4 @@ export class OpeneventComponent implements OnInit {
         console.warn('result', response);
       });
   }
-
 }
