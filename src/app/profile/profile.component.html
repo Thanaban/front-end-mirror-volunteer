@@ -1,5 +1,434 @@
 <div class="wrapper">
-  <mat-tab-group
+  <div
+    style="
+      margin-top: 2%;
+      display: flex;
+      border: 2px solid #00000020;
+      background-color: #ffffff;
+      border-radius: 10px;
+    "
+  >
+    <div style="width: 15%; text-align: center; background-color: #ffed02">
+      <img src="../../assets/image/user1.png" style="width: 45%; margin: 6%" />
+    </div>
+    <div
+      style="
+        width: 65%;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        font-weight: bold;
+      "
+    >
+      <div
+        style="
+          text-align: center;
+
+          width: 50%;
+        "
+      >
+        {{ currentUser.name }}
+      </div>
+      <div
+        style="
+          text-align: center;
+
+          width: 50%;
+        "
+      >
+        เข้าร่วมกิจกรรม : {{ currentUser.received_hours }} ชั่วโมง
+      </div>
+    </div>
+    <div
+      *ngIf="isBlacklist"
+      style="
+        width: 25%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: linear-gradient(to left, #00ff7f 0%, #ffffff 100%);
+      "
+    >
+      <div style="font-size: 28px; font-weight: bold">
+        <div>สถานะ : {{ this.status }}</div>
+      </div>
+    </div>
+    <div
+      *ngIf="!isBlacklist"
+      style="
+        width: 25%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        background: linear-gradient(to left, #ff3131 0%, #ffffff 100%);
+      "
+    >
+      <div style="font-size: 28px; font-weight: bold">
+        <div>สถานะ : {{ this.status }}</div>
+      </div>
+    </div>
+  </div>
+  <div
+    style="
+      width: 100%;
+      margin-top: 2%;
+      border: 2px solid #00000020;
+      background-color: #ffffff;
+      border-radius: 10px;
+    "
+  >
+    <mat-tab-group style="margin: 2%">
+      <mat-tab label="First">
+        <div class="profile-right">
+          <div class="part1">
+            <div class="card-body">
+              <div class="row">
+                <div class="label-row">ชื่อ</div>
+                <div>
+                  {{ currentUser.name }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">นามสกุล</div>
+                <div>
+                  {{ currentUser.lastname }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">ชื่อเล่น</div>
+                <div>
+                  {{ currentUser.nickname }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">เพศ</div>
+                <div>
+                  {{ currentUser.gender }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">วันเกิด</div>
+                <div>
+                  {{ currentUser.birthday }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">ศาสนา</div>
+                <div>
+                  {{ currentUser.religion }}
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+          <div class="part2">
+            <div class="card-body">
+              <div class="row">
+                <div class="label-row">อีเมล</div>
+                <div>
+                  {{ currentUser.email }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">เบอร์โทรศัพท์</div>
+                <div>
+                  {{ currentUser.phoneNumber }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">อาชีพ</div>
+                <div>
+                  {{ currentUser.career }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">สถานที่ทำงาน</div>
+                <div>
+                  {{ currentUser.workplace }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">โรคประจำตัว</div>
+                <div>
+                  {{ currentUser.congenitalDisease }}
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="label-row">อาหารที่แพ้</div>
+                <div>
+                  {{ currentUser.allergicFood }}
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Second">
+        <mat-paginator
+          [length]="check_activity.length"
+          [pageSize]="3"
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page"
+          (page)="handlePageChange($event)"
+        ></mat-paginator>
+
+        <div style="display: flex; width: 100%; overflow-x: hidden">
+          <mat-card
+            class="example-card"
+            *ngFor="let x of pagedDataArray"
+            style="min-width: 33%"
+          >
+            <mat-card-header>
+              <mat-card-title>{{ x.id }}</mat-card-title>
+              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p>This card indeterminates progress bar.</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
+  <!-- <div class="gutters-sm" style="font-weight: bold">
+    <div class="profile-box">
+      <div class="card mb-3">
+        <div class="profile-detail">
+          <div class="profile-left">
+            <div class="mt-3">
+              <img
+                id="profile-img"
+                src="../../assets/image/user1.png"
+                class="profile-img"
+              />
+              <h4 style="font-weight: bold">
+                {{ currentUser.name }} {{ currentUser.lastname }}
+              </h4>
+              <p class="">
+                สถานะ : {{ this.status }} <br />
+                เวลาการเข้าร่วม : {{ currentUser.received_hours }} ชั่วโมง
+              </p>
+            </div>
+          </div>
+          <mat-tab-group style="width: 100%" backgroundColor="accent" color="warn">
+            <mat-tab label="First">
+              <div class="profile-right">
+                <div class="part1">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="label-row">ชื่อ</div>
+                      <div>
+                        {{ currentUser.name }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">นามสกุล</div>
+                      <div>
+                        {{ currentUser.lastname }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">ชื่อเล่น</div>
+                      <div>
+                        {{ currentUser.nickname }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">เพศ</div>
+                      <div>
+                        {{ currentUser.gender }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">วันเกิด</div>
+                      <div>
+                        {{ currentUser.birthday }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">ศาสนา</div>
+                      <div>
+                        {{ currentUser.religion }}
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                </div>
+                <div class="part2">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="label-row">อีเมล</div>
+                      <div>
+                        {{ currentUser.email }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">เบอร์โทรศัพท์</div>
+                      <div>
+                        {{ currentUser.phoneNumber }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">อาชีพ</div>
+                      <div>
+                        {{ currentUser.career }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">สถานที่ทำงาน</div>
+                      <div>
+                        {{ currentUser.workplace }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">โรคประจำตัว</div>
+                      <div>
+                        {{ currentUser.congenitalDisease }}
+                      </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                      <div class="label-row">อาหารที่แพ้</div>
+                      <div>
+                        {{ currentUser.allergicFood }}
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab label="Second"> Content 2 </mat-tab>
+            <mat-tab label="Third"> Content 3 </mat-tab>
+          </mat-tab-group>
+          <div class="profile-right">
+            <div class="part1">
+              <div class="card-body">
+                <div class="row">
+                  <div class="label-row">ชื่อ</div>
+                  <div>
+                    {{ currentUser.name }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">นามสกุล</div>
+                  <div>
+                    {{ currentUser.lastname }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">ชื่อเล่น</div>
+                  <div>
+                    {{ currentUser.nickname }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">เพศ</div>
+                  <div>
+                    {{ currentUser.gender }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">วันเกิด</div>
+                  <div>
+                    {{ currentUser.birthday }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">ศาสนา</div>
+                  <div>
+                    {{ currentUser.religion }}
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+            <div class="part2">
+              <div class="card-body">
+                <div class="row">
+                  <div class="label-row">อีเมล</div>
+                  <div>
+                    {{ currentUser.email }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">เบอร์โทรศัพท์</div>
+                  <div>
+                    {{ currentUser.phoneNumber }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">อาชีพ</div>
+                  <div>
+                    {{ currentUser.career }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">สถานที่ทำงาน</div>
+                  <div>
+                    {{ currentUser.workplace }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">โรคประจำตัว</div>
+                  <div>
+                    {{ currentUser.congenitalDisease }}
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="label-row">อาหารที่แพ้</div>
+                  <div>
+                    {{ currentUser.allergicFood }}
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- <mat-tab-group
     mat-stretch-tabs="false"
     mat-align-tabs="center"
     [selectedIndex]="tabs"
@@ -121,19 +550,9 @@
                 </div>
               </div>
             </div>
-            <mat-expansion-panel hideToggle>
-              <mat-expansion-panel-header>
-                <mat-panel-title> This is the expansion title </mat-panel-title>
-                <mat-panel-description>
-                  This is a summary of the content
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <p>This is the primary content of the panel.</p>
-            </mat-expansion-panel>
           </div>
-        </div>
-      </div></mat-tab
-    >
+        </div></div
+    ></mat-tab>
     <mat-tab label="ตรวจสอบกิจกรรม"
       ><div style="margin-top: 4%">
         <div *ngFor="let x of check_activity">
@@ -232,7 +651,7 @@
         </div>
       </div></mat-tab
     >
-  </mat-tab-group>
+  </mat-tab-group> -->
 </div>
 <!-- <div
               class="header-contain"

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { StorageService } from '../_services/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { User_show } from './profile-request-get';
@@ -13,18 +15,25 @@ import { CancelEventConfirmComponent } from './cancel-event-confirm/cancel-event
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, AfterViewInit {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   tabs: number = 0;
 
   public C1: User_show[] = [];
   currentUser: any;
-  check_activity: any;
+  check_activity: any[] = [];
+  pagedDataArray: any[] = [];
+  currentPage: number = 0;
+  pageSize: number = 3;
+  totalItems: number = 0;
   history_activity: any;
   show_check_activity: any;
   date_con: any;
   status: any;
   currentActivity: any;
   isLoggedIn = false;
+  isBlacklist = true;
+  
 
   constructor(
     private http: HttpClient,
@@ -33,10 +42,32 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.history_activity)
-    this.isLoggedIn = this.storageService.isLoggedIn();
+  ngAfterViewInit(): void {
+    if (this.paginator) {
+      this.paginator.page.subscribe(() => {
+        this.pagedData();
+      });
+    }
+  }
 
+  handlePageChange(event: any): void {
+    const startIndex = event.pageIndex * event.pageSize;
+    const endIndex = startIndex + event.pageSize;
+    this.pagedDataArray = this.check_activity.slice(startIndex, endIndex);
+    this.currentPage = event.pageIndex;
+  }
+
+  pagedData(): any[] {
+    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
+    const endIndex = startIndex + this.paginator.pageSize;
+    if (this.check_activity) {
+      return this.check_activity.slice(startIndex, endIndex);
+    }
+    return [];
+  }
+
+  ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
     let data: any = localStorage.getItem('TABS');
     this.tabs = data;
     localStorage.removeItem('TABS');
@@ -56,24 +87,26 @@ export class ProfileComponent implements OnInit {
       .subscribe((response4) => {
         this.history_activity = response4;
       });
+
+      const initialPageEvent = { pageIndex: 0, pageSize: 3 } as PageEvent;
+      this.handlePageChange(initialPageEvent);
   }
 
-  getDataUserActivity() {
+  getDataUserActivity(): void {
     this.http
-      .get('http://localhost:8000/users/get-useractivity')
-      .subscribe((response2) => {
-        this.check_activity = response2;
-        for (let i of this.check_activity) {
-          this.date_con = i.date.split('-').reverse().join('-');
-          console.warn('activityId:', this.date_con);
-          this.http
-            .get('http://localhost:8000/activities/getoneid/' + i.activityId)
-            .subscribe((response3) => {
-              this.show_check_activity[i] = response3;
-              console.warn('result3', response3);
-            });
-        }
+      .get<any[]>('http://localhost:8000/users/get-useractivity')
+      .subscribe((response) => {
+        this.check_activity = response;
+        this.totalItems = this.check_activity.length;
+        this.handlePageChange({ pageIndex: this.currentPage, pageSize: this.pageSize });
       });
+  }
+
+
+  blackListLabel(x: boolean) {
+    if (x == false) {
+      this.isBlacklist = false;
+    }
   }
 
   con_date(d: any) {
@@ -141,7 +174,7 @@ export class ProfileComponent implements OnInit {
   }
 
   openDialogComment(
-    currentUserActivityId:number,
+    currentUserActivityId: number,
     currentActivityId: number,
     currentActivityName: string,
     currentUserID: number,

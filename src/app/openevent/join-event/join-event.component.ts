@@ -85,7 +85,7 @@ export class JoinEventComponent implements OnInit {
             console.warn(test);
             Swal.fire({
               icon: 'success',
-              title: test,
+              title: 'ลงทะเบียนเข้าร่วมสำเร็จ',
               html: '<b style="color: red;"><i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin-right: 2%" ></i>คำเตือน: หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์</b>',
               showCloseButton: true,
               confirmButtonText: 'รับทราบ',
@@ -122,6 +122,7 @@ export class JoinEventComponent implements OnInit {
                 if (result.isConfirmed) {
                   Swal.close();
                   this.dialog.closeAll();
+                  localStorage.setItem('TABS', JSON.stringify(1));
                   this.router.navigate(['/profile']);
                 }
               });
