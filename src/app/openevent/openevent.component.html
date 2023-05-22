@@ -103,7 +103,15 @@
               class="example-list-wrapping"
               *ngFor="let comment of event.comments"
             >
-              <mat-list-item lines="1" style="margin-bottom: 2%">
+              <mat-list-item
+                lines="1"
+                style="
+                  margin-bottom: 2%;
+                  color: black;
+                  font-size: large;
+                  font-weight: bold;
+                "
+              >
                 <span matListItemTitle class="icon-and-text">
                   <i
                     class="fa fa-commenting-o mirror-icon"
@@ -111,7 +119,7 @@
                   ></i>
                   <span class="user-name">{{ comment.user_name }}</span>
                 </span>
-                {{ comment.comment_detail }}
+                <b>{{ comment.comment_detail }}</b>
               </mat-list-item>
               <mat-divider></mat-divider>
             </mat-list>
