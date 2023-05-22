@@ -400,3 +400,46 @@
 .example-card {
   max-width: 400px;
 }
+
+.group-detail-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-height: 50%;
+}
+
+.detail-link {
+  text-decoration: none;
+}
+
+.detail-button {
+  font-weight: bold;
+  font-size: medium;
+  width: 50%;
+  border-left: solid 1px #e0e0e0;
+  background-color: #27a644;
+  color: #ffffff;
+}
+
+.cancel-button {
+  font-weight: bold;
+  font-size: medium;
+  width: 50%;
+  border-left: solid 1px #e0e0e0;
+  background-color: #ff2626;
+  color: #ffffff;
+}
+
+.comment-button {
+  font-weight: bold;
+  font-size: medium;
+  width: 50%;
+  border-left: solid 1px #e0e0e0;
+  background-color: #4B4737;
+  color: #ffffff;
+}
+
+/* .detail-button:hover {
+  background-color: #565656;
+  color: #ffde02;
+} */

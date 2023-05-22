@@ -129,7 +129,7 @@ export class OpeneventComponent implements OnInit {
   openTravelPulicDetail(x: string) {
     const formattedText = x.replace(/\n/g, '<br>');
     Swal.fire({
-      title: 'การเดินทางด้วยรถส่วนตัว',
+      title: 'เดินทางด้วยรถสาธารณะ',
       html: '<div style="text-align: left;"><b>' + formattedText + '</b></div>',
       showCloseButton: true,
       confirmButtonText: 'ปิด',

@@ -85,11 +85,9 @@ export class JoinEventComponent implements OnInit {
             console.warn(test);
             Swal.fire({
               icon: 'success',
-              title: 'ลงทะเบียนเข้าร่วมสำเร็จ',
-              html: '<b style="color: red;"><i class="fa fa-exclamation-triangle" aria-hidden="true" style="margin-right: 2%" ></i>คำเตือน: หากอาสาไม่ได้มาตามวันเวลาที่ได้นัดหมายและไม่ได้ทำการยกเลิกการสมัครเข้าร่วมการจะติดสถานะแบล็คลิสต์</b>',
-              showCloseButton: true,
-              confirmButtonText: 'รับทราบ',
-              confirmButtonColor: '#27a644',
+              title: 'ลงทะเบียนสำเร็จ',
+              showConfirmButton: false,
+              timer: 1500,
             }).then(() => {
               this.dialog.closeAll(); // Close the dialog
             });

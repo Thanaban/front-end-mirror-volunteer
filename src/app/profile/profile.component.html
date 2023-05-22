@@ -77,13 +77,14 @@
       width: 100%;
       margin-top: 2%;
       border: 2px solid #00000020;
+
       background-color: #ffffff;
       border-radius: 10px;
     "
   >
-    <mat-tab-group style="margin: 2%">
-      <mat-tab label="First">
-        <div class="profile-right">
+    <mat-tab-group style="margin: 2%" (selectedTabChange)="onTabChange($event)">
+      <mat-tab label="ข้อมูลบัญชี">
+        <!-- <div class="profile-right">
           <div class="part1">
             <div class="card-body">
               <div class="row">
@@ -176,38 +177,194 @@
               <hr />
             </div>
           </div>
-        </div>
+        </div> -->
       </mat-tab>
-      <mat-tab label="Second">
+      <mat-tab label="ตรวจสอบกิจกรรม">
         <mat-paginator
           [length]="check_activity.length"
           [pageSize]="3"
-          [pageSizeOptions]="[5, 10, 25, 100]"
           aria-label="Select page"
-          (page)="handlePageChange($event)"
+          [pageIndex]="currentPageIndex"
+          (page)="handlePageChange($event, check_activity)"
         ></mat-paginator>
 
         <div style="display: flex; width: 100%; overflow-x: hidden">
-          <mat-card
-            class="example-card"
+          <div
             *ngFor="let x of pagedDataArray"
-            style="min-width: 33%"
+            style="min-width: 31%; margin: 1%; border: 1px solid #00000020"
           >
-            <mat-card-header>
-              <mat-card-title>{{ x.id }}</mat-card-title>
-              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-              <p>This card indeterminates progress bar.</p>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button>LIKE</button>
-              <button mat-button>SHARE</button>
-            </mat-card-actions>
-          </mat-card>
+            <div
+              style="
+                background-image: url(../../assets/image/14.jpg);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 100%;
+              "
+            >
+              <mat-card
+                style="margin-left: 5%; margin-right: 5%; margin-bottom: 5%"
+              >
+                <mat-card-header>
+                  <mat-card-title style="font-weight: bold">{{
+                    con_date(x.date)
+                  }}</mat-card-title>
+                  <mat-card-subtitle style="color: #000000; font-weight: bold">
+                    ลงทะเบียน : {{ formatDate(x.updatedAt) }}
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content style="margin-top: 5%">
+                  <b>
+                    <p>
+                      ชื่อกิจกรรม : {{ x.getEvent?.activity_name }}<br />
+                      เวลาทำกิจกรรม : {{ x.getEvent?.time_detail }}<br />
+                      สิ่งที่อาสาจะได้ทำ : {{ x.getEvent?.activity_details
+                      }}<br />
+                    </p>
+                  </b>
+                </mat-card-content>
+              </mat-card>
+              <br />
+            </div>
+            <div>
+              <mat-button-toggle-group
+                name="fontStyle"
+                aria-label="Font Style"
+                class="group-detail-button"
+              >
+                <mat-button-toggle
+                  class="detail-button"
+                  [matMenuTriggerFor]="menu"
+                >
+                  รายละเอียด
+                </mat-button-toggle>
+                <mat-menu #menu="matMenu">
+                  <a
+                    href="https://goo.gl/maps/JDoN6Bcu3JjQpGsLA"
+                    target="_blank"
+                  >
+                    <button mat-menu-item>
+                      <mat-icon>location_on</mat-icon>สถานที่ทำกิจกรรม
+                    </button>
+                  </a>
+                  <button
+                    mat-menu-item
+                    (click)="
+                      openClothesDetail(
+                        x.getEvent?.clothes_detail,
+                        x.getEvent?.etc_detail,
+                        x.getEvent?.travel_etc_detail,
+                        x.getEvent?.received_hours
+                      )
+                    "
+                  >
+                    <mat-icon>help_outline</mat-icon>ข้อมูลเพิ่มเติม
+                  </button>
+                  <button
+                    mat-menu-item
+                    (click)="openTravelCarDetail(x.getEvent?.travel_detail)"
+                  >
+                    <mat-icon>directions_car</mat-icon>เดินทางด้วยรถส่วนตัว
+                  </button>
+                  <button
+                    mat-menu-item
+                    (click)="
+                      openTravelPulicDetail(x.getEvent?.travel_public_detail)
+                    "
+                  >
+                    <mat-icon>directions_bus</mat-icon>เดินทางด้วยรถสาธารณะ
+                  </button>
+                </mat-menu>
+                <mat-button-toggle
+                  class="cancel-button"
+                  (click)="
+                    openDialogCancel(x.activityId, currentUser.id, x.date)
+                  "
+                >
+                  ยกเลิกการลงทะเบียน
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
         </div>
       </mat-tab>
-      <mat-tab label="Third"> Content 3 </mat-tab>
+      <mat-tab label="ประวัติการเข้าร่วม">
+        <mat-paginator
+          [length]="history_activity.length"
+          [pageSize]="3"
+          [pageIndex]="currentPageIndex"
+          aria-label="Select page"
+          (page)="handlePageChange($event, history_activity)"
+        ></mat-paginator>
+
+        <div style="display: flex; width: 100%; overflow-x: hidden">
+          <div
+            *ngFor="let x of pagedDataArray"
+            style="min-width: 31%; margin: 1%; border: 1px solid #00000020"
+          >
+            <div
+              style="
+                background-image: url(../../assets/image/14.jpg);
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                width: 100%;
+              "
+            >
+              <mat-card
+                style="margin-left: 5%; margin-right: 5%; margin-bottom: 5%"
+              >
+                <mat-card-header>
+                  <mat-card-title style="font-weight: bold">{{
+                    con_date(x.date)
+                  }}</mat-card-title>
+                  <mat-card-subtitle style="color: #000000; font-weight: bold">
+                    ลงทะเบียน : {{ formatDate(x.updatedAt) }}
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content style="margin-top: 5%">
+                  <b>
+                    <p>
+                      ชื่อกิจกรรม : {{ x.getEvent?.activity_name }}<br />
+                      เวลาการเข้าร่วม :
+                      {{ x.getEvent?.received_hours }} ชั่วโมง<br />
+                      ผู้อนุมัติ : ADMIN<br />
+                    </p>
+                  </b>
+                </mat-card-content>
+              </mat-card>
+              <br />
+            </div>
+            <div>
+              <mat-button-toggle-group
+                name="fontStyle"
+                aria-label="Font Style"
+                class="group-detail-button"
+              >
+                <mat-button-toggle class="detail-button">
+                  <mat-icon>file_download</mat-icon>
+                  เกียรติบัตร
+                </mat-button-toggle>
+
+                <mat-button-toggle
+                  class="comment-button"
+                  (click)="
+                    openDialogComment(
+                      x.id,
+                      x.activityId,
+                      x.userActivityName,
+                      currentUser.id,
+                      currentUser.name
+                    )
+                  "
+                  ><mat-icon>insert_comment</mat-icon>
+                  แสดงความคิดเห็น
+                </mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
     </mat-tab-group>
   </div>
   <!-- <div class="gutters-sm" style="font-weight: bold">

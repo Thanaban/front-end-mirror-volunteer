@@ -208,4 +208,14 @@ export class EventService {
       httpOptions
     )
   }
+
+  get_one_activity(activityId:number): Observable<any>{
+    return this.http.post(
+      'http://localhost:8000/users/get_one_activity',
+      {
+        activityId
+      },
+      httpOptions
+    )
+  }
 }
