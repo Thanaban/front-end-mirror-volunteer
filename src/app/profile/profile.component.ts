@@ -70,6 +70,20 @@ export class ProfileComponent implements OnInit {
     const initialPageEvent = { pageIndex: 0, pageSize: 3 } as PageEvent;
   }
 
+  calculateAge(birthdate: string): number {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+      monthDiff < 0 ||
+      (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+    return age;
+  }
+
   getDataUserActivity(): void {
     this.http
       .get<userActivity_show[]>('http://localhost:8000/users/get-useractivity')
@@ -130,21 +144,16 @@ export class ProfileComponent implements OnInit {
   handlePageChange(event: PageEvent, dataSource: any[]): void {
     this.currentPageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
-  
+
     const startIndex = this.currentPageIndex * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.pagedDataArray = dataSource.slice(startIndex, endIndex);
   }
 
-  
-
-  
-
   onTabChange(event: MatTabChangeEvent): void {
     if (event.index === 1) {
       console.warn('TAB1');
       this.getDataUserActivity();
-      
     } else if (event.index === 2) {
       console.warn('TAB2');
       this.getDataUserActivityEnd();
@@ -232,22 +241,6 @@ export class ProfileComponent implements OnInit {
     return d;
   }
 
-  cancle_activity(
-    currentActivityId: number,
-    currentActivityName: string,
-    currentUserID: number,
-    currentUserName: string,
-    cancelDate: Date
-  ) {
-    this.eventService
-      .cancel_activity(currentActivityId, currentUserID, cancelDate)
-      .subscribe({
-        next: (test) => {
-          console.log(test.date);
-        },
-      });
-  }
-
   openDialogCancel(
     currentActivityId: number,
     currentUserID: number,
@@ -268,9 +261,15 @@ export class ProfileComponent implements OnInit {
           .cancel_activity(currentActivityId, currentUserID, cancelDate)
           .subscribe({
             next: () => {
-              Swal.fire('สำเร็จ', 'ยกเลิกกิจกรรมสำเร็จ', 'success');
-              this.getDataUserActivity();
+              Swal.fire({
+                icon: 'success',
+                title: 'ยกเลิกกิจกรรมสำเร็จ',
+                showConfirmButton: false,
+                timer: 1500,
+              });
+
               this.refreshTabData(this.check_activity); // Refresh the tab data
+              this.getDataUserActivity();
             },
           });
       }
