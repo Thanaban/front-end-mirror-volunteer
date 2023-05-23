@@ -58,6 +58,7 @@ export class ProfileComponent implements OnInit {
         this.status = 'ปกติ';
       } else {
         this.status = 'แบล็คลิสต์';
+        this.isBlacklist = false
       }
     });
 

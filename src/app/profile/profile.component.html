@@ -84,19 +84,98 @@
   >
     <mat-tab-group style="margin: 2%" (selectedTabChange)="onTabChange($event)">
       <mat-tab label="ข้อมูลบัญชี">
-        <div style="font-weight: bold">
-          <h2>ข้อมูลบัญชี</h2>
-          <p>ชื่อ: {{ currentUser.name }} {{ currentUser.lastname }}</p>
-          <p>ชื่อเล่น: {{ currentUser.nickname }}</p>
-          <p>อายุ: {{ calculateAge(currentUser.birthday) }} ปี</p>
-          <p>เพศ: {{ currentUser.gender }}</p>
-          <p>ศาสนา: {{ currentUser.religion }}</p>
-          <p>เบอร์โทรศัพท์: {{ currentUser.phoneNumber }}</p>
-          <p>อีเมล: {{ currentUser.email }}</p>
-          <p>อาชีพ: {{ currentUser.career }}</p>
-          <p>สถานที่ทำงาน: {{ currentUser.workplace }}</p>
-          <p>อาหารที่แพ้: {{ currentUser.allergicFood }}</p>
-          <p>โรคประจำตัว: {{ currentUser.congenitalDisease }}</p>
+        <div
+          style="
+            font-weight: bold;
+            margin-top: 2%;
+            width: 100%;
+            font-size: large;
+          "
+        >
+          <div style="width: 100%; display: flex">
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>ชื่อ :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.name }}</p>
+              </div>
+            </div>
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>นามสกุล :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.lastname }}</p>
+              </div>
+            </div>
+          </div>
+          <div style="width: 100%; display: flex">
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>ชื่อเล่น :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.nickname }}</p>
+              </div>
+            </div>
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>อายุ :</p></div>
+              <div style="width: 80%">
+                <p>{{ calculateAge(currentUser.birthday) }} ปี</p>
+              </div>
+            </div>
+          </div>
+          <div style="width: 100%; display: flex">
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>เพศ :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.gender }}</p>
+              </div>
+            </div>
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>ศาสนา :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.religion }}</p>
+              </div>
+            </div>
+          </div>
+          <div style="width: 100%; display: flex">
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>อีเมล :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.email }}</p>
+              </div>
+            </div>
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>เบอร์โทรศัพท์ :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.phoneNumber }}</p>
+              </div>
+            </div>
+          </div>
+          <div style="width: 100%; display: flex">
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>อาชีพ :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.career }}</p>
+              </div>
+            </div>
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>สถานที่ทำงาน :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.workplace }}</p>
+              </div>
+            </div>
+          </div>
+          <div style="width: 100%; display: flex">
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>อาหารที่แพ้ :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.allergicFood }}</p>
+              </div>
+            </div>
+            <div style="width: 50%; display: flex">
+              <div style="width: 20%"><p>โรคประจำตัว :</p></div>
+              <div style="width: 80%">
+                <p>{{ currentUser.congenitalDisease }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </mat-tab>
       <mat-tab label="ตรวจสอบกิจกรรม">
@@ -160,7 +239,7 @@
                 <mat-button-toggle
                   class="detail-button"
                   [matMenuTriggerFor]="menu"
-                >
+                  ><mat-icon>details</mat-icon>
                   รายละเอียด
                 </mat-button-toggle>
                 <mat-menu #menu="matMenu">
@@ -205,7 +284,7 @@
                   (click)="
                     openDialogCancel(x.activityId, currentUser.id, x.date)
                   "
-                >
+                  ><mat-icon>cancel_schedule_send</mat-icon>
                   ยกเลิกการลงทะเบียน
                 </mat-button-toggle>
               </mat-button-toggle-group>
@@ -292,4 +371,4 @@
       </mat-tab>
     </mat-tab-group>
   </div>
-  
+</div>
