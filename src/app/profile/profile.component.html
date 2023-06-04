@@ -8,7 +8,7 @@
       border-radius: 10px;
     "
   >
-    <div style="width: 15%; text-align: center; background-color: #ffed02">
+    <div style="width: 15%; text-align: center; background-color: #ffed02;border-radius: 10px 0px 0px 10px;">
       <img src="../../assets/image/user1.png" style="width: 45%; margin: 6%" />
     </div>
     <div
@@ -37,7 +37,7 @@
 
           width: 50%;
         "
-      >
+      ><mat-icon>emoji_events</mat-icon>
         เข้าร่วมกิจกรรม : {{ currentUser.received_hours }} ชั่วโมง
       </div>
     </div>
@@ -50,6 +50,7 @@
         align-items: center;
         display: flex;
         background: linear-gradient(to left, #00ff7f 0%, #ffffff 100%);
+        border-radius: 0px 10px 10px 0px;
       "
     >
       <div style="font-size: 28px; font-weight: bold">
@@ -65,6 +66,7 @@
         align-items: center;
         display: flex;
         background: linear-gradient(to left, #ff3131 0%, #ffffff 100%);
+        border-radius: 0px 10px 10px 0px;
       "
     >
       <div style="font-size: 28px; font-weight: bold">
@@ -83,7 +85,11 @@
     "
   >
     <mat-tab-group style="margin: 2%" (selectedTabChange)="onTabChange($event)">
-      <mat-tab label="ข้อมูลบัญชี">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <mat-icon>info_outline</mat-icon>
+          <span>ข้อมูลบัญชี</span>
+        </ng-template>
         <div
           style="
             font-weight: bold;
@@ -178,7 +184,11 @@
           </div>
         </div>
       </mat-tab>
-      <mat-tab label="ตรวจสอบกิจกรรม">
+      <mat-tab >
+        <ng-template mat-tab-label>
+          <mat-icon>event</mat-icon>
+          <span>ตรวจสอบกิจกรรม</span>
+        </ng-template>
         <mat-paginator
           [length]="check_activity.length"
           [pageSize]="3"
@@ -292,7 +302,11 @@
           </div>
         </div>
       </mat-tab>
-      <mat-tab label="ประวัติการเข้าร่วม">
+      <mat-tab >
+        <ng-template mat-tab-label>
+          <mat-icon>history</mat-icon>
+          <span>ประวัติการเข้าร่วม</span>
+        </ng-template>
         <mat-paginator
           [length]="history_activity.length"
           [pageSize]="3"

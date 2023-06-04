@@ -124,7 +124,21 @@ export class JoinEventComponent implements OnInit {
                   this.router.navigate(['/profile']);
                 }
               });
+            } else if (err.error.message == 'black list') {
+              
+              Swal.fire({
+                icon: 'error',
+                title: 'เกิดข้อผิดพลาด',
+                html: 'ไม่สามารถลงทะเบียนได้เนื่องจากคุณติดสถานะแบล็คลิสต์',
+                showCloseButton: true,
+                confirmButtonText: 'ติดต่อฝ่ายประสานอาสาสมัคร',
+                confirmButtonColor: '#27a644',
+                showCancelButton: true,
+                cancelButtonText: 'ปิด',
+                cancelButtonColor: '#ff2626',
+              });
             }
+            console.warn(err.error.message);
           },
         });
     } else {

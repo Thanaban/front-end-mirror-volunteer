@@ -23,6 +23,10 @@ import {MatListModule} from '@angular/material/list';
 import { ImageSliderModule } from '../image-slider/image-slider.module';
 import {MatCardModule} from '@angular/material/card';
 import {ScrollingModule} from '@angular/cdk/scrolling';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +52,10 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     MatListModule,
     ImageSliderModule,
     MatCardModule,
-    ScrollingModule
+    ScrollingModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    NgbModule
   ]
 })
 export class OpeneventModule { }

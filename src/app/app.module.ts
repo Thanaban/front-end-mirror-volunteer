@@ -44,7 +44,7 @@ import { PostCommentComponent } from './profile/post-comment/post-comment.compon
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {ReactiveFormsModule} from '@angular/forms';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgIf } from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
@@ -65,7 +65,9 @@ import { SnackBarMessageComponent } from './snack-bar-message/snack-bar-message.
 import {MatBadgeModule} from '@angular/material/badge';
 import Swal from 'sweetalert2';
 import { ConfirmPasswordComponent } from './reset-password/confirm-password/confirm-password.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +93,8 @@ import { ConfirmPasswordComponent } from './reset-password/confirm-password/conf
     ConfirmEditVolunteerListComponent,
     CancelEventConfirmComponent,
     SnackBarMessageComponent,
-    ConfirmPasswordComponent
+    ConfirmPasswordComponent,
+    AboutUsComponent
   ],
   entryComponents:[
     ModalEventComponent
@@ -132,7 +135,10 @@ import { ConfirmPasswordComponent } from './reset-password/confirm-password/conf
     MatSlideToggleModule,
     MatSnackBarModule,
     MatBadgeModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    NgbModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

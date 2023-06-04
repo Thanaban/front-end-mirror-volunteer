@@ -11,10 +11,12 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { OpeneventComponent } from './openevent/openevent.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminManageVolunteerComponent } from './admin-dashboard/admin-manage-volunteer/admin-manage-volunteer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'about-us', component: AboutUsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },

@@ -7,8 +7,8 @@
 
 .event-box {
   width: 100% !important;
-  min-height: 420px;
-  max-height: 420px;
+  min-height: 470px;
+  max-height: 470px;
   border-radius: 10px;
   display: flex;
   margin-bottom: 4%;
@@ -18,7 +18,7 @@
 
 .event-box .event-box-left {
   min-width: 50%;
-  min-height: 420px;
+  min-height: 470px;
   text-align: center;
 }
 
@@ -188,4 +188,22 @@
 
 .custom-dialog {
   width: 600px;
+}
+
+.yellow-star {
+  color: #FFDE02;
+}
+
+.gray-star {
+  color: gray;
+}
+
+.fb-share-button {
+  display: inline-block;
+}
+
+.facebook-icon {
+  font-family: 'Font Awesome 5 Brands';
+  font-size: 24px;
+  color: #4267B2;
 }

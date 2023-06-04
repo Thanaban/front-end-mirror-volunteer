@@ -39,6 +39,8 @@ export class ProfileComponent implements OnInit {
   isBlacklist = true;
   dataActivity: any;
   currentPageIndex = 0;
+  dateForm: any;
+  month: any;
 
   constructor(
     private http: HttpClient,
@@ -58,7 +60,7 @@ export class ProfileComponent implements OnInit {
         this.status = 'ปกติ';
       } else {
         this.status = 'แบล็คลิสต์';
-        this.isBlacklist = false
+        this.isBlacklist = false;
       }
     });
 
@@ -103,7 +105,6 @@ export class ProfileComponent implements OnInit {
           pageSize: this.pageSize,
           length: this.totalItems,
         };
-        console.warn(this.check_activity);
 
         this.handlePageChange(pageEvent, this.check_activity);
       });
@@ -153,10 +154,8 @@ export class ProfileComponent implements OnInit {
 
   onTabChange(event: MatTabChangeEvent): void {
     if (event.index === 1) {
-      console.warn('TAB1');
       this.getDataUserActivity();
     } else if (event.index === 2) {
-      console.warn('TAB2');
       this.getDataUserActivityEnd();
     }
   }
@@ -231,15 +230,17 @@ export class ProfileComponent implements OnInit {
 
   con_date(d: any) {
     d = d.split('-');
-
+    this.month = d[1];
     if (d[1] == '04') {
-      d[1] = 'เมษายน';
+      d[1] = 'เม.ย';
     } else if (d[1] == '05') {
-      d[1] = 'พฤษภาคม';
+      d[1] = 'พ.ค';
+    } else if (d[1] == '06') {
+      d[1] = 'มิ.ย';
     }
     d[0] = parseInt(d[0]) + 543;
-    d = d.reverse().join(' ');
-    return d;
+    this.dateForm = d.reverse().join(' ');
+    return this.dateForm;
   }
 
   openDialogCancel(

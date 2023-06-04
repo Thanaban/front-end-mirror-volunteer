@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { SlideInterface } from '../image-slider/slide.interface';
 import { EventService } from '../_services/event.service';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -37,6 +38,9 @@ export class OpeneventComponent implements OnInit {
     { url: '../../assets/image/14.jpg', title: '1' },
   ];
 
+  MaxratingValue: number[]= [1,2,3,4,5];
+  ratingValue: number=3;
+
   panelOpenState = false;
   checklogin = this.status.isLoggedIn;
   currentUser: any;
@@ -53,7 +57,6 @@ export class OpeneventComponent implements OnInit {
     this.getEvent();
     this.http.get('http://localhost:8000/users/user').subscribe((response) => {
       this.currentUser = response;
-      console.warn('result', this.currentUser);
     });
   }
 
@@ -62,20 +65,23 @@ export class OpeneventComponent implements OnInit {
       .get<Event_show[]>('http://localhost:8000/activities/open_activity')
       .subscribe((response) => {
         this.eventlist = response;
-        console.warn(1);
-        for (let i = 0; i < this.eventlist.length; i++) {
-          this.fill_comment(this.eventlist[i].id, i);
-        }
+
+        // for (let i = 0; i < this.eventlist.length; i++) {
+        //   this.fill_comment(this.eventlist[i].id, i);
+        // }
       });
   }
 
+  encodeUrl(url: string): string {
+    return encodeURIComponent(url);
+  }
+
   fill_comment(x: number, index: number) {
-    this.eventService.get_commnet_form_Ac(x).subscribe({
-      next: (data) => {
-        this.eventlist[index].comments = data;
-        console.warn(this.eventlist[index].comments);
-      },
-    });
+    // this.eventService.get_commnet_form_Ac(x).subscribe({
+    //   next: (data) => {
+    //     this.eventlist[index].comments = data;
+    //   },
+    // });
   }
 
   con_date(d: any) {
@@ -85,6 +91,8 @@ export class OpeneventComponent implements OnInit {
       d[1] = 'เม.ย';
     } else if (d[1] == '05') {
       d[1] = 'พ.ค';
+    } else if (d[1] == '06') {
+      d[1] = 'มิ.ย';
     }
     d[0] = parseInt(d[0]) + 543;
     this.dateForm = d.reverse().join(' ');
@@ -162,22 +170,31 @@ export class OpeneventComponent implements OnInit {
     currentEventID: number,
     currentEventName: string,
     currentUserID: number,
-    currentUserName: string,
+    currentStatus: boolean,
     endDate: Date
   ) {
-    let data = {
-      currentEventID,
-      currentEventName,
-      currentUserID,
-      currentUserName,
-      endDate,
-    };
-    localStorage.setItem('EVENT', JSON.stringify(data));
-    this.dialog.open(JoinEventComponent);
-    this.http
-      .get('http://localhost:8000/activities/getoneid/' + currentEventID)
-      .subscribe((response) => {
-        console.warn('result', response);
+    if (currentStatus == false) {
+      Swal.fire({
+        icon: 'error',
+        title: 'เกิดข้อผิดพลาด',
+        html: 'ไม่สามารถลงทะเบียนได้เนื่องจากคุณติดสถานะแบล็คลิสต์',
+        showCloseButton: true,
+        confirmButtonText: 'ติดต่อฝ่ายประสานอาสาสมัคร',
+        confirmButtonColor: '#27a644',
+        showCancelButton: true,
+        cancelButtonText: 'ปิด',
+        cancelButtonColor: '#ff2626',
       });
+    } else {
+      let data = {
+        currentEventID,
+        currentEventName,
+        currentUserID,
+        currentStatus,
+        endDate,
+      };
+      localStorage.setItem('EVENT', JSON.stringify(data));
+      this.dialog.open(JoinEventComponent);
+    }
   }
 }

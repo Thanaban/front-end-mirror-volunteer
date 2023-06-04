@@ -18,5 +18,6 @@ export interface Event_show {
   is_open: boolean;
   picture?: string;
   priority?: number;
-  comments?: any[];
+  rating_point?:number;
+
 }

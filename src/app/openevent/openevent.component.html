@@ -10,14 +10,18 @@
         <div class="text-header">
           <div
             style="
-              margin-top: 4%;
+              margin-top: 2%;
               margin-left: 6%;
               font-size: 28px;
               font-weight: bold;
             "
           >
-            กิจกรรม : {{ event.activity_name }}
+            กิจกรรม : {{ event.activity_name }} <br>
+            <ng-container *ngFor="let star of MaxratingValue; let i = index">
+              <mat-icon [ngClass]="{'yellow-star': i < ratingValue, 'gray-star': i >= ratingValue}">star</mat-icon>
+            </ng-container>
           </div>
+          
         </div>
         <mat-tab-group
           mat-stretch-tabs
@@ -35,7 +39,8 @@
                 >
                 <mat-card-subtitle style="color: black; font-size: large">
                   เวลาทำกิจกรรม : {{ event.time_detail }} น.<br />เปิดรับสมัคร :
-                  {{ event.size_number }} คน <br />สิ่งที่อาสาจะได้ทำ :
+                  วันละ {{ event.size_number }} คน จนถึงวันที่
+                  {{ con_date(event.end_date) }}<br />สิ่งที่อาสาจะได้ทำ :
                   {{ event.activity_details }}
                 </mat-card-subtitle>
               </mat-card-header>
@@ -95,34 +100,20 @@
           </mat-tab>
           <mat-tab>
             <ng-template mat-tab-label>
-              <mat-icon>comment</mat-icon>
-              ความคิดเห็นจากอาสา
+              <mat-icon>share</mat-icon>
+              แชร์กิจกรรม
             </ng-template>
-
-            <mat-list
-              class="example-list-wrapping"
-              *ngFor="let comment of event.comments"
-            >
-              <mat-list-item
-                lines="1"
-                style="
-                  margin-bottom: 2%;
-                  color: black;
-                  font-size: large;
-                  font-weight: bold;
-                "
-              >
-                <span matListItemTitle class="icon-and-text">
-                  <i
-                    class="fa fa-commenting-o mirror-icon"
-                    aria-hidden="true"
-                  ></i>
-                  <span class="user-name">{{ comment.user_name }}</span>
-                </span>
-                <b>{{ comment.comment_detail }}</b>
-              </mat-list-item>
-              <mat-divider></mat-divider>
-            </mat-list>
+            <div class="fb-share-button" 
+                 data-href="http://localhost:4200/openevent" 
+                 data-layout="button" 
+                 data-size="large">
+              <a target="_blank" 
+                 rel="noopener noreferrer" 
+                 href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyour-website-url.com%2Fopenevent&amp;src=sdkpreparse" 
+                 class="fb-xfbml-parse-ignore">
+                <mat-icon class="facebook-icon">facebook</mat-icon>
+              </a>
+            </div>
           </mat-tab>
         </mat-tab-group>
         <div style="display: flex; width: 100%; height: 12%">
@@ -152,7 +143,7 @@
                 event.id,
                 event.activity_name,
                 currentUser.id,
-                currentUser.name,
+                currentUser.non_blacklist,
                 event.end_date
               )
             "
