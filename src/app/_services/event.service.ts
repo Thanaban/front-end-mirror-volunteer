@@ -6,11 +6,17 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
+const ACTIVITY_API = 'https://backend-volunteer.onrender.com/activities';
+
 @Injectable({
   providedIn: 'root',
 })
 export class EventService {
   constructor(private http: HttpClient) {}
+
+  get_open_activity(): Observable<any> {
+    return this.http.get(ACTIVITY_API + 'open_activity', httpOptions);
+  }
 
   join_activity(
     activityId: number,
@@ -139,9 +145,9 @@ export class EventService {
 
   post_comment(
     userId: number,
-    userActivityId:number,
+    userActivityId: number,
     activityId: number,
-    
+
     comment_detail: string
   ): Observable<any> {
     return this.http.post(
@@ -150,7 +156,7 @@ export class EventService {
         userId,
         userActivityId,
         activityId,
-        comment_detail
+        comment_detail,
       },
       httpOptions
     );
@@ -192,30 +198,30 @@ export class EventService {
   get_useractivity_by_id(id: number): Observable<any> {
     return this.http.post(
       'http://localhost:8000/activities/get_useractivity_by_id',
-      { 
-        id 
+      {
+        id,
       },
       httpOptions
     );
   }
 
-  get_commnet_form_Ac(activityId:number): Observable<any>{
+  get_commnet_form_Ac(activityId: number): Observable<any> {
     return this.http.post(
       'http://localhost:8000/activities/get_commnet_form_UserAc',
       {
-        activityId
+        activityId,
       },
       httpOptions
-    )
+    );
   }
 
-  get_one_activity(activityId:number): Observable<any>{
+  get_one_activity(activityId: number): Observable<any> {
     return this.http.post(
       'http://localhost:8000/users/get_one_activity',
       {
-        activityId
+        activityId,
       },
       httpOptions
-    )
+    );
   }
 }

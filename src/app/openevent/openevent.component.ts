@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SlideInterface } from '../image-slider/slide.interface';
 import { EventService } from '../_services/event.service';
-
+import { response } from 'express';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -38,8 +38,8 @@ export class OpeneventComponent implements OnInit {
     { url: '../../assets/image/14.jpg', title: '1' },
   ];
 
-  MaxratingValue: number[]= [1,2,3,4,5];
-  ratingValue: number=3;
+  MaxratingValue: number[] = [1, 2, 3, 4, 5];
+  ratingValue: number = 3;
 
   panelOpenState = false;
   checklogin = this.status.isLoggedIn;
@@ -61,15 +61,14 @@ export class OpeneventComponent implements OnInit {
   }
 
   getEvent() {
-    this.http
-      .get<Event_show[]>('http://localhost:8000/activities/open_activity')
-      .subscribe((response) => {
-        this.eventlist = response;
-
-        // for (let i = 0; i < this.eventlist.length; i++) {
-        //   this.fill_comment(this.eventlist[i].id, i);
-        // }
-      });
+    this.eventService.get_open_activity().subscribe((response) =>{
+      this.eventlist = response;
+    })
+    // this.http
+    //   .get<Event_show[]>('http://localhost:8000/activities/open_activity')
+    //   .subscribe((response) => {
+    //     this.eventlist = response;
+    //   });
   }
 
   encodeUrl(url: string): string {
