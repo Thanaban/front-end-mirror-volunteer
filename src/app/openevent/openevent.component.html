@@ -16,12 +16,17 @@
               font-weight: bold;
             "
           >
-            กิจกรรม : {{ event.activity_name }} <br>
+            กิจกรรม : {{ event.activity_name }} <br />
             <ng-container *ngFor="let star of MaxratingValue; let i = index">
-              <mat-icon [ngClass]="{'yellow-star': i < ratingValue, 'gray-star': i >= ratingValue}">star</mat-icon>
+              <mat-icon
+                [ngClass]="{
+                  'yellow-star': i < ratingValue,
+                  'gray-star': i >= ratingValue
+                }"
+                >star</mat-icon
+              >
             </ng-container>
           </div>
-          
         </div>
         <mat-tab-group
           mat-stretch-tabs
@@ -103,14 +108,18 @@
               <mat-icon>share</mat-icon>
               แชร์กิจกรรม
             </ng-template>
-            <div class="fb-share-button" 
-                 data-href="https://front-end-mirror-volunteer.netlify.app/openevent" 
-                 data-layout="button" 
-                 data-size="large">
-              <a target="_blank" 
-                 rel="noopener noreferrer" 
-                 href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyour-website-url.com%2Fopenevent&amp;src=sdkpreparse" 
-                 class="fb-xfbml-parse-ignore">
+            <div
+              class="fb-share-button"
+              data-href="https://front-end-mirror-volunteer.netlify.app/openevent"
+              data-layout="button"
+              data-size="large"
+            >
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffront-end-mirror-volunteer.netlify.app%2Fopenevent&amp;src=sdkpreparse"
+                class="fb-xfbml-parse-ignore"
+              >
                 <mat-icon class="facebook-icon">facebook</mat-icon>
               </a>
             </div>
