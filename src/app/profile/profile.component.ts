@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
     let data: any = localStorage.getItem('TABS');
     this.tabs = data;
     localStorage.removeItem('TABS');
-    this.http.get('http://localhost:8000/users/user').subscribe((response) => {
+    this.http.get('https://backend-volunteer.onrender.com/users/user').subscribe((response) => {
       this.currentUser = response;
       if (this.currentUser.non_blacklist == true) {
         this.status = 'ปกติ';
