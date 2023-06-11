@@ -53,7 +53,7 @@ export class AppComponent {
       // this.roles = user.roles;
 
       this.currentUser = this.storageService.getUser();
-      console.warn(this.currentUser.result)
+      console.warn(this.currentUser.result.name)
       // this.http
       //   .get('https://backend-volunteer.onrender.com/users/user')
       //   .subscribe((response) => {
