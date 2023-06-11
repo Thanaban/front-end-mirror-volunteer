@@ -75,7 +75,7 @@ export class ProfileComponent implements OnInit {
     // });
 
     this.http
-      .get<any[]>('http://localhost:8000/users/get-ended-useractivity')
+      .get<any[]>('https://volunteer-management-backend.onrender.com/users/get-ended-useractivity')
       .subscribe((response4) => {
         this.history_activity = response4;
       });
@@ -99,7 +99,7 @@ export class ProfileComponent implements OnInit {
 
   getDataUserActivity(): void {
     this.http
-      .get<userActivity_show[]>('http://localhost:8000/users/get-useractivity')
+      .get<userActivity_show[]>('https://volunteer-management-backend.onrender.com/users/get-useractivity')
       .subscribe((response) => {
         this.check_activity = response;
         this.totalItems = this.check_activity.length;
@@ -123,7 +123,7 @@ export class ProfileComponent implements OnInit {
   getDataUserActivityEnd(): void {
     this.http
       .get<userActivity_show[]>(
-        'http://localhost:8000/users/get-ended-useractivity'
+        'https://volunteer-management-backend.onrender.com/users/get-ended-useractivity'
       )
       .subscribe((response) => {
         this.history_activity = response;
@@ -290,7 +290,7 @@ export class ProfileComponent implements OnInit {
 
   refreshTabData(data: any[]): void {
     this.http
-      .get<any[]>('http://localhost:8000/users/get-useractivity')
+      .get<any[]>('https://volunteer-management-backend.onrender.com/users/get-useractivity')
       .subscribe((response) => {
         data = response;
         this.totalItems = data.length;
