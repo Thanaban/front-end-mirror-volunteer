@@ -29,7 +29,7 @@
           width: 50%;
         "
       >
-        {{ currentUser.name }}
+        {{ currentUser.result.name }}
       </div>
       <div
         style="
@@ -38,7 +38,7 @@
           width: 50%;
         "
       ><mat-icon>emoji_events</mat-icon>
-        เข้าร่วมกิจกรรม : {{ currentUser.received_hours }} ชั่วโมง
+        เข้าร่วมกิจกรรม : {{ currentUser.result.received_hours }} ชั่วโมง
       </div>
     </div>
     <div
@@ -54,7 +54,7 @@
       "
     >
       <div style="font-size: 28px; font-weight: bold">
-        <div>สถานะ : {{ this.status }}</div>
+        <!-- <div>สถานะ : {{ this.status }}</div> -->
       </div>
     </div>
     <div
@@ -70,7 +70,7 @@
       "
     >
       <div style="font-size: 28px; font-weight: bold">
-        <div>สถานะ : {{ this.status }}</div>
+        <!-- <div>สถานะ : {{ this.status }}</div> -->
       </div>
     </div>
   </div>
@@ -102,13 +102,13 @@
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>ชื่อ :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.name }}</p>
+                <p>{{ currentUser.result.name }}</p>
               </div>
             </div>
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>นามสกุล :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.lastname }}</p>
+                <p>{{ currentUser.result.lastname }}</p>
               </div>
             </div>
           </div>
@@ -116,7 +116,7 @@
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>ชื่อเล่น :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.nickname }}</p>
+                <p>{{ currentUser.result.nickname }}</p>
               </div>
             </div>
             <div style="width: 50%; display: flex">
@@ -130,13 +130,13 @@
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>เพศ :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.gender }}</p>
+                <p>{{ currentUser.result.gender }}</p>
               </div>
             </div>
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>ศาสนา :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.religion }}</p>
+                <p>{{ currentUser.result.religion }}</p>
               </div>
             </div>
           </div>
@@ -144,13 +144,13 @@
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>อีเมล :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.email }}</p>
+                <p>{{ currentUser.result.email }}</p>
               </div>
             </div>
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>เบอร์โทรศัพท์ :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.phoneNumber }}</p>
+                <p>{{ currentUser.result.phoneNumber }}</p>
               </div>
             </div>
           </div>
@@ -158,13 +158,13 @@
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>อาชีพ :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.career }}</p>
+                <p>{{ currentUser.result.career }}</p>
               </div>
             </div>
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>สถานที่ทำงาน :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.workplace }}</p>
+                <p>{{ currentUser.result.workplace }}</p>
               </div>
             </div>
           </div>
@@ -172,13 +172,13 @@
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>อาหารที่แพ้ :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.allergicFood }}</p>
+                <p>{{ currentUser.result.allergicFood }}</p>
               </div>
             </div>
             <div style="width: 50%; display: flex">
               <div style="width: 20%"><p>โรคประจำตัว :</p></div>
               <div style="width: 80%">
-                <p>{{ currentUser.congenitalDisease }}</p>
+                <p>{{ currentUser.result.congenitalDisease }}</p>
               </div>
             </div>
           </div>

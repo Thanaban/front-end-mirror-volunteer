@@ -56,31 +56,23 @@ export class ProfileComponent implements OnInit {
   private httpOptions: any;
 
   ngOnInit(): void {
-    // Retrieve the token from your storage service
-    const token = this.storageService.getToken();
-
-    // Set the httpOptions with the token
-    this.httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
-      }),
-    };
+    
     this.isLoggedIn = this.storageService.isLoggedIn();
+    this.currentUser = this.storageService.getUser();
     let data: any = localStorage.getItem('TABS');
     this.tabs = data;
     localStorage.removeItem('TABS');
-    this.http
-      .get('https://backend-volunteer.onrender.com/users/user', this.httpOptions)
-      .subscribe((response) => {
-        this.currentUser = response;
-      if (this.currentUser.non_blacklist == true) {
-        this.status = 'ปกติ';
-      } else {
-        this.status = 'แบล็คลิสต์';
-        this.isBlacklist = false;
-      }
-    });
+    // this.http
+    //   .get('https://backend-volunteer.onrender.com/users/user', this.httpOptions)
+    //   .subscribe((response) => {
+    //     this.currentUser = response;
+    //   if (this.currentUser.non_blacklist == true) {
+    //     this.status = 'ปกติ';
+    //   } else {
+    //     this.status = 'แบล็คลิสต์';
+    //     this.isBlacklist = false;
+    //   }
+    // });
 
     this.http
       .get<any[]>('http://localhost:8000/users/get-ended-useractivity')
