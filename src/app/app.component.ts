@@ -43,7 +43,7 @@ export class AppComponent {
     private http: HttpClient,
     private router: Router,
     private eventService: EventService
-  ) {}
+  ) {this.storageService.getToken();}
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
