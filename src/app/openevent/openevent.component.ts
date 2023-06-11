@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { SlideInterface } from '../image-slider/slide.interface';
 import { EventService } from '../_services/event.service';
 import { response } from 'express';
+import { StorageService } from '../_services/storage.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -24,7 +25,7 @@ export class OpeneventComponent implements OnInit {
   constructor(
     private http: HttpClient,
     public dialog: MatDialog,
-
+    private storageService: StorageService,
     private status: AppComponent,
     private router: Router,
     private eventService: EventService
@@ -55,9 +56,10 @@ export class OpeneventComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvent();
-    this.http.get('http://localhost:8000/users/user').subscribe((response) => {
-      this.currentUser = response;
-    });
+    // this.http.get('http://localhost:8000/users/user').subscribe((response) => {
+    //   this.currentUser = response;
+    // });
+    this.currentUser = this.storageService.getUser();
   }
 
   getEvent() {
