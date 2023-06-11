@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { HttpHeaders } from '@angular/common/http';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { StorageService } from '../_services/storage.service';
 import { HttpClient } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 import { userActivity_show } from './user-activity-request-get';
 import { result } from 'cypress/types/lodash';
 
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -22,6 +24,8 @@ import { result } from 'cypress/types/lodash';
 export class ProfileComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   tabs: number = 0;
+
+ 
 
   public C1: User_show[] = [];
   currentUser: any;
@@ -49,13 +53,27 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
+  private httpOptions: any;
+
   ngOnInit(): void {
+    // Retrieve the token from your storage service
+    const token = this.storageService.getToken();
+
+    // Set the httpOptions with the token
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      }),
+    };
     this.isLoggedIn = this.storageService.isLoggedIn();
     let data: any = localStorage.getItem('TABS');
     this.tabs = data;
     localStorage.removeItem('TABS');
-    this.http.get('https://backend-volunteer.onrender.com/users/user').subscribe((response) => {
-      this.currentUser = response;
+    this.http
+      .get('https://backend-volunteer.onrender.com/users/user', this.httpOptions)
+      .subscribe((response) => {
+        this.currentUser = response;
       if (this.currentUser.non_blacklist == true) {
         this.status = 'ปกติ';
       } else {
