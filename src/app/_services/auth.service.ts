@@ -74,8 +74,11 @@ export class AuthService {
   }
 
   logout(): Observable<any> {
-    return this.http.post(AUTH_API + 'logout', { }, httpOptions);
-    
+    const token = localStorage.getItem('token'); // Assuming the JWT token is stored in the 'token' key of localStorage
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const options = { headers };
+  
+    return this.http.post(AUTH_API + 'logout', {}, options);
   }
 
   refreshToken() {
