@@ -84,25 +84,37 @@ export class OpeneventComponent implements OnInit {
   }
 
   con_date(d: any) {
-    if (d) {
-      const dateParts = d.split('-');
-      this.month = dateParts[1];
-    
-      if (dateParts[1] === '04') {
-        dateParts[1] = 'เม.ย';
-      } else if (dateParts[1] === '05') {
-        dateParts[1] = 'พ.ค';
-      } else if (dateParts[1] === '06') {
-        dateParts[1] = 'มิ.ย';
-      }
-    
-      dateParts[0] = parseInt(dateParts[0]) + 543;
-      this.dateForm = dateParts.reverse().join(' ');
-      return this.dateForm;
-    }
-    
-    return '';
+  if (d) {
+    const dateParts = d.split('-');
+    this.month = dateParts[1];
+  
+    if (dateParts[1] === '04') {
+      dateParts[1] = 'เม.ย';
+    } else if (dateParts[1] === '05') {
+      dateParts[1] = 'พ.ค';
+    } else if (dateParts[1] === '06') {
+      dateParts[1] = 'มิ.ย';
+    } else if (dateParts[1] === '07') {
+      dateParts[1] = 'ก.ค';
+    } else if (dateParts[1] === '08') {
+      dateParts[1] = 'ส.ค';
+    } else if (dateParts[1] === '09') {
+      dateParts[1] = 'ก.ย';
+    } else if (dateParts[1] === '10') {
+      dateParts[1] = 'ต.ค';
+    } else if (dateParts[1] === '11') {
+      dateParts[1] = 'พ.ย';
+    } else if (dateParts[1] === '12') {
+      dateParts[1] = 'ธ.ค';
+    } 
+  
+    dateParts[0] = parseInt(dateParts[0]) + 543;
+    this.dateForm = dateParts.reverse().join(' ');
+    return this.dateForm;
   }
+  
+  return '';
+}
 
   openClothesDetail(
     clothesDetail: string,
