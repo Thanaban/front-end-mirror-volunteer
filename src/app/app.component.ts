@@ -54,7 +54,7 @@ export class AppComponent {
 
       this.currentUser = this.storageService.getUser();
       this.http
-        .get('http://localhost:8000/users/user')
+        .get('https://backend-volunteer.onrender.com/users/user')
         .subscribe((response) => {
           this.currentUser = response;
           console.warn('result', this.currentUser);
