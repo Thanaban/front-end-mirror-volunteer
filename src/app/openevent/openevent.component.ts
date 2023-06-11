@@ -84,18 +84,24 @@ export class OpeneventComponent implements OnInit {
   }
 
   con_date(d: any) {
-    d = d.split('-');
-    this.month = d[1];
-    if (d[1] == '04') {
-      d[1] = 'เม.ย';
-    } else if (d[1] == '05') {
-      d[1] = 'พ.ค';
-    } else if (d[1] == '06') {
-      d[1] = 'มิ.ย';
+    if (d) {
+      const dateParts = d.split('-');
+      this.month = dateParts[1];
+    
+      if (dateParts[1] === '04') {
+        dateParts[1] = 'เม.ย';
+      } else if (dateParts[1] === '05') {
+        dateParts[1] = 'พ.ค';
+      } else if (dateParts[1] === '06') {
+        dateParts[1] = 'มิ.ย';
+      }
+    
+      dateParts[0] = parseInt(dateParts[0]) + 543;
+      this.dateForm = dateParts.reverse().join(' ');
+      return this.dateForm;
     }
-    d[0] = parseInt(d[0]) + 543;
-    this.dateForm = d.reverse().join(' ');
-    return this.dateForm;
+    
+    return '';
   }
 
   openClothesDetail(
