@@ -100,9 +100,9 @@ export class AppComponent {
         });
     }
 
-    this.eventBusSub = this.eventBusService.on('logout', () => {
-      this.logout();
-    });
+    // this.eventBusSub = this.eventBusService.on('logout', () => {
+    //   this.logout();
+    // });
   }
 
   con_date(d: any) {
