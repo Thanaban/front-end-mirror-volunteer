@@ -6,7 +6,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-const ACTIVITY_API = 'https://backend-volunteer.onrender.com/activities/';
+const ACTIVITY_API = 'https://volunteer-management-backend.onrender.com/activities/';
 
 @Injectable({
   providedIn: 'root',
