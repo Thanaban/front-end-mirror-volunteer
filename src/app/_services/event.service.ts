@@ -22,7 +22,7 @@ export class EventService {
     activityId: number,
     userId: number,
     date: Date
-  ): Observable<any> {
+  ): Observable<any> { console.warn(httpOptions)
     return this.http.post(
       'https://backend-volunteer.onrender.com/users/dateAc2',
       {
@@ -32,6 +32,7 @@ export class EventService {
       },
       httpOptions
     );
+    
   }
 
   cancel_activity(
