@@ -24,7 +24,7 @@ export class EventService {
     date: Date
   ): Observable<any> {
     return this.http.post(
-      'http://localhost:8000/users/dateAc2',
+      'https://backend-volunteer.onrender.com/users/dateAc2',
       {
         activityId,
         userId,
