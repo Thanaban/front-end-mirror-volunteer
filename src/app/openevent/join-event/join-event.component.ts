@@ -18,6 +18,7 @@ import {
 import Swal from 'sweetalert2';
 import { result } from 'cypress/types/lodash';
 import { Router } from '@angular/router';
+import { StorageService } from 'src/app/_services/storage.service';
 
 @Component({
   selector: 'app-join-event',
@@ -44,7 +45,8 @@ export class JoinEventComponent implements OnInit {
     private eventService: EventService,
     public dialog: MatDialog,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private storageService: StorageService
   ) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date();
@@ -54,6 +56,7 @@ export class JoinEventComponent implements OnInit {
     this.myForm = this.fb.group({
       date: [this.currentDate, Validators.required],
     });
+    this.storageService.getToken();
   }
 
   ngOnInit(): void {
