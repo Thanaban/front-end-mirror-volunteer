@@ -40,6 +40,7 @@ export class JoinEventComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   currentDate: Date;
+  isLoggedIn = false;
 
   constructor(
     private eventService: EventService,
@@ -60,6 +61,7 @@ export class JoinEventComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.storageService.isLoggedIn();
     const currentDate = new Date();
     console.log(this.minDate);
     let data: any = localStorage.getItem('EVENT');
