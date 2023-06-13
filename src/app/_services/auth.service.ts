@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 const AUTH_API = 'https://volunteer-management-backend.onrender.com/users/';
 
@@ -14,15 +15,25 @@ const httpOptions = {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> { console.warn(httpOptions)
-    return this.http.post(
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(
       AUTH_API + 'login',
-      {
-        email,
-        password,
-      },
+      { email, password },
       httpOptions
+    ).pipe(
+      tap(response => {
+        const jwtToken = response.token; // Assuming the response has a 'token' property
+        if (jwtToken) {
+          this.storeToken(jwtToken); // Store the token in localStorage or a secure cookie
+        }
+      })
     );
+  }
+
+  private storeToken(token: string): void {
+    // Store the token in localStorage or a secure cookie
+    // Example using localStorage:
+    localStorage.setItem('jwtToken', token);
   }
 
   register(
