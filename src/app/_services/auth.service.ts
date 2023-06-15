@@ -16,7 +16,12 @@ const httpOptions = {
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> { console.warn(httpOptions)
+  login(email: string, password: string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      withCredentials: true, // Include credentials (cookies) in the request
+    };
+
     return this.http.post(
       AUTH_API + 'login',
       {
