@@ -6,7 +6,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
-const ACTIVITY_API = 'https://www.api.volunteerm.online/activities/';
+const ACTIVITY_API = 'https://api.volunteerm.online/activities/';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class EventService {
     date: Date
   ): Observable<any> { console.warn(httpOptions)
     return this.http.post(
-      'https://www.api.volunteerm.online/users/dateAc2',
+      'https://api.volunteerm.online/users/dateAc2',
       {
         activityId,
         userId,
@@ -41,7 +41,7 @@ export class EventService {
     date: Date
   ): Observable<any> {
     return this.http.patch(
-      'https://www.api.volunteerm.online/users/cancel_activity',
+      'https://api.volunteerm.online/users/cancel_activity',
       {
         activityId,
         userId,
@@ -53,7 +53,7 @@ export class EventService {
 
   status_activity(id: number, is_open: boolean): Observable<any> {
     return this.http.patch(
-      'https://www.api.volunteerm.online/activities/update_activity_status',
+      'https://api.volunteerm.online/activities/update_activity_status',
       {
         id,
         is_open,
@@ -73,7 +73,7 @@ export class EventService {
     travel_etc_detail: string
   ): Observable<any> {
     return this.http.patch(
-      'https://www.api.volunteerm.online/activities/update_activity',
+      'https://api.volunteerm.online/activities/update_activity',
       {
         id,
         activity_name,
@@ -109,7 +109,7 @@ export class EventService {
     priority: number
   ): Observable<any> {
     return this.http.post(
-      'https://www.api.volunteerm.online/activities/createActivity',
+      'https://api.volunteerm.online/activities/createActivity',
       {
         activity_name,
         activity_details,
@@ -135,7 +135,7 @@ export class EventService {
 
   status_user(id: number, non_blacklist: boolean): Observable<any> {
     return this.http.patch(
-      'https://www.api.volunteerm.online/activities/update_blacklist',
+      'https://api.volunteerm.online/activities/update_blacklist',
       {
         id,
         non_blacklist,
@@ -152,7 +152,7 @@ export class EventService {
     comment_detail: string
   ): Observable<any> {
     return this.http.post(
-      'https://www.api.volunteerm.online/users/post_comment',
+      'https://api.volunteerm.online/users/post_comment',
       {
         userId,
         userActivityId,
@@ -165,7 +165,7 @@ export class EventService {
 
   get_user_in_userAc(id: number): Observable<any> {
     return this.http.post(
-      'https://www.api.volunteerm.online/activities/get_user_in_userAc',
+      'https://api.volunteerm.online/activities/get_user_in_userAc',
       {
         id,
       }
@@ -177,7 +177,7 @@ export class EventService {
     userActivityId: number
   ): Observable<any> {
     return this.http.patch(
-      'https://www.api.volunteerm.online/activities/remove_user_from_useractivity',
+      'https://api.volunteerm.online/activities/remove_user_from_useractivity',
       {
         userId,
         userActivityId,
@@ -188,7 +188,7 @@ export class EventService {
 
   finish_activity(id: number): Observable<any> {
     return this.http.patch(
-      'https://www.api.volunteerm.online/activities/finish_activity',
+      'https://api.volunteerm.online/activities/finish_activity',
       {
         id,
       },
@@ -198,7 +198,7 @@ export class EventService {
 
   get_useractivity_by_id(id: number): Observable<any> {
     return this.http.post(
-      'https://www.api.volunteerm.online/activities/get_useractivity_by_id',
+      'https://api.volunteerm.online/activities/get_useractivity_by_id',
       {
         id,
       },
@@ -208,7 +208,7 @@ export class EventService {
 
   get_commnet_form_Ac(activityId: number): Observable<any> {
     return this.http.post(
-      'https://www.api.volunteerm.online/activities/get_commnet_form_UserAc',
+      'https://api.volunteerm.online/activities/get_commnet_form_UserAc',
       {
         activityId,
       },
@@ -218,7 +218,7 @@ export class EventService {
 
   get_one_activity(activityId: number): Observable<any> {
     return this.http.post(
-      'https://www.api.volunteerm.online/users/get_one_activity',
+      'https://api.volunteerm.online/users/get_one_activity',
       {
         activityId,
       },
