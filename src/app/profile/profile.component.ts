@@ -272,7 +272,7 @@ export class ProfileComponent implements OnInit {
         this.eventService
           .cancel_activity(currentActivityId, currentUserID, cancelDate)
           .subscribe({
-            next: () => {
+            next: (data) => {
               Swal.fire({
                 icon: 'success',
                 title: 'ยกเลิกกิจกรรมสำเร็จ',
@@ -283,6 +283,17 @@ export class ProfileComponent implements OnInit {
               this.refreshTabData(this.check_activity); // Refresh the tab data
               this.getDataUserActivity();
             },
+            error: (err) =>{
+              Swal.fire({
+                icon: 'error',
+                title: '<strong>เกิดข้อผิดพลาด</strong>',
+                html: 'ไม่มีสามารถยกเลิกก่อนวันเริ่มกิจกรรมได้',
+                focusConfirm: false,
+                showCancelButton: true,
+                cancelButtonText: 'ปิด',
+                cancelButtonColor: '#d33',
+              })
+            }
           });
       }
     });
