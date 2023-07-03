@@ -29,7 +29,7 @@ export class AdminManageEventComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get<Event_show[]>('http://localhost:8000/users/activities')
+      .get<Event_show[]>('https://api.volunteerm.online/users/activities')
       .subscribe((response) => {
         this.eventlist = response;
         console.warn('result', response);

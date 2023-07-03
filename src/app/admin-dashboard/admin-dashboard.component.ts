@@ -44,7 +44,7 @@ export class AdminDashboardComponent implements OnInit {
 
   getDataWaitToStartActivity() {
     this.http
-      .get('http://localhost:8000/activities/wait_to_start')
+      .get('https://api.volunteerm.online/activities/wait_to_start')
       .subscribe((response) => {
         this.eventWaitToStartActivity = response;
 
@@ -64,7 +64,7 @@ export class AdminDashboardComponent implements OnInit {
 
   getDataOnGoingActivity() {
     this.http
-      .get('http://localhost:8000/activities/ongoing_activity')
+      .get('https://api.volunteerm.online/activities/ongoing_activity')
       .subscribe((response2) => {
         this.eventOnGoingActivity = response2;
         for (let i = 0; i < this.eventOnGoingActivity.length; i++) {

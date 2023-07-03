@@ -70,7 +70,7 @@ export class AppComponent {
       
       this.http
         .get(
-          'http://localhost:8000/activities/get_useractivity_for_notification'
+          'https://api.volunteerm.online/activities/get_useractivity_for_notification'
         )
         .subscribe((data) => {
           this.eventTomorrow = data;

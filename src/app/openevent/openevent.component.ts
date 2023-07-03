@@ -56,7 +56,7 @@ export class OpeneventComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEvent();
-    // this.http.get('http://localhost:8000/users/user').subscribe((response) => {
+    // this.http.get('https://api.volunteerm.online/users/user').subscribe((response) => {
     //   this.currentUser = response;
     // });
     this.currentUser = this.storageService.getUser();
@@ -67,7 +67,7 @@ export class OpeneventComponent implements OnInit {
       this.eventlist = response;
     })
     // this.http
-    //   .get<Event_show[]>('http://localhost:8000/activities/open_activity')
+    //   .get<Event_show[]>('https://api.volunteerm.online/activities/open_activity')
     //   .subscribe((response) => {
     //     this.eventlist = response;
     //   });

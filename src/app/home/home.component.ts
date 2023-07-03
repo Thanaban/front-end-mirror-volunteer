@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.http
-      .get('http://localhost:8000/activities/get_user_for_competition')
+      .get('https://api.volunteerm.online/activities/get_user_for_competition')
       .subscribe((response) => {
         this.allUser = response;
         console.warn('result', this.allUser.received_hours.sort());

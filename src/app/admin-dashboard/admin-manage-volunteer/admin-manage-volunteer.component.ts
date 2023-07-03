@@ -68,7 +68,7 @@ export class AdminManageVolunteerComponent implements OnInit {
 
   ngOnInit() {
     this.http
-      .get('http://localhost:8000/activities/get_all_users')
+      .get('https://api.volunteerm.online/activities/get_all_users')
       .subscribe((response) => {
         this.currentUser = response;
         this.dataSource = new MatTableDataSource(this.currentUser);

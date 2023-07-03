@@ -73,11 +73,11 @@ export class AuthService {
   }
 
   emailResetPassWord(email:string): Observable<any> {
-    return this.http.post('http://localhost:8000/users/password-reset',{email},httpOptions);
+    return this.http.post('https://api.volunteerm.online/users/password-reset',{email},httpOptions);
   }
 
   confirmResetPassWord(password:string): Observable<any> {
-    return this.http.post('http://localhost:8000/users/reset-password',{password},httpOptions);
+    return this.http.post('https://api.volunteerm.online/users/reset-password',{password},httpOptions);
   }
 
   logout(): Observable<any> {

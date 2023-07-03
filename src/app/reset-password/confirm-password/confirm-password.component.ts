@@ -76,7 +76,7 @@ export class ConfirmPasswordComponent implements OnInit {
       this.currentToken = token;
       console.log(
         token,
-        'http://localhost:8000/users/reset-password?token=' + this.currentToken
+        'https://api.volunteerm.online/users/reset-password?token=' + this.currentToken
       ); // Do whatever you want with the token value
     });
   }
@@ -87,7 +87,7 @@ export class ConfirmPasswordComponent implements OnInit {
     console.warn(password);
     this.http
       .post(
-        `http://localhost:8000/users/reset-password?token=${this.currentToken}`,
+        `https://api.volunteerm.online/users/reset-password?token=${this.currentToken}`,
         { password }
       )
       .subscribe({

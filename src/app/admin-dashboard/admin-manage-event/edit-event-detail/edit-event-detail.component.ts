@@ -33,7 +33,7 @@ export class EditEventDetailComponent implements OnInit {
     console.log('activityId' + this.event.currentActivityId);
     this.http
       .get<Event_show[]>(
-        'http://localhost:8000/activities/getoneid/' +
+        'https://api.volunteerm.online/activities/getoneid/' +
           this.event.currentActivityId
       )
       .subscribe((response) => {
