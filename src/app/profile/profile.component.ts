@@ -14,8 +14,6 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 import { userActivity_show } from './user-activity-request-get';
 import { result } from 'cypress/types/lodash';
 
-
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -24,8 +22,6 @@ import { result } from 'cypress/types/lodash';
 export class ProfileComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   tabs: number = 0;
-
- 
 
   public C1: User_show[] = [];
   currentUser: any;
@@ -56,7 +52,6 @@ export class ProfileComponent implements OnInit {
   private httpOptions: any;
 
   ngOnInit(): void {
-    
     this.isLoggedIn = this.storageService.isLoggedIn();
     this.currentUser = this.storageService.getUser();
     let data: any = localStorage.getItem('TABS');
@@ -99,7 +94,9 @@ export class ProfileComponent implements OnInit {
 
   getDataUserActivity(): void {
     this.http
-      .get<userActivity_show[]>('https://api.volunteerm.online/users/get-useractivity')
+      .get<userActivity_show[]>(
+        'https://api.volunteerm.online/users/get-useractivity'
+      )
       .subscribe((response) => {
         this.check_activity = response;
         this.totalItems = this.check_activity.length;
@@ -283,17 +280,16 @@ export class ProfileComponent implements OnInit {
               this.refreshTabData(this.check_activity); // Refresh the tab data
               this.getDataUserActivity();
             },
-            error: (err) =>{
+            error: (err) => {
               Swal.fire({
                 icon: 'error',
                 title: '<strong>เกิดข้อผิดพลาด</strong>',
                 html: 'ไม่มีสามารถยกเลิกก่อนวันเริ่มกิจกรรมได้',
-                focusConfirm: false,
-                showCancelButton: true,
-                cancelButtonText: 'ปิด',
-                cancelButtonColor: '#d33',
-              })
-            }
+                showCloseButton: true,
+                confirmButtonText: 'ปิด',
+                confirmButtonColor: '#ff2626',
+              });
+            },
           });
       }
     });
