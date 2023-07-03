@@ -1,53 +1,185 @@
 <!-- <img src="../../assets/image/New_Project.jpeg"> -->
-
-<div class="volunteer-title">Mirror Volunteer</div>
-
-<mat-grid-list cols="7" rowHeight="4:1">
-  <mat-grid-tile rowspan="10"></mat-grid-tile>
-  <mat-grid-tile colspan="3" rowspan="10" style="margin-bottom: 20%">
-    <div style="width: 724px; height: 521px">
-      <app-image-slider [slides]="slides"></app-image-slider>
-    </div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="3"></mat-grid-tile>
-  <mat-grid-tile colspan="2" rowspan="6">
-    <div class="volunteer-competition">
-      <mat-card style="width: 100%; height: 100%; border: 1px solid #c9c9c986">
-        <mat-card-content>
-          <div class="text-title">อาสาดีเด่น</div>
-          <mat-list role="list" *ngFor="let x of allUser; let i = index">
-            <div class="competition-box">
-              <mat-list-item
-                role="listitem"
-                style="background-color: #ffde02; border-radius: 5px"
-              >
-                <div class="competition-box">
-                  <div class="competition-part1">อันดับ {{ i + 1 }}.</div>
-                  <div class="competition-part2">
-                    {{ x.name }} {{ x.lastname }}
-                  </div>
-                  <div class="competition-part3">
-                    {{ x.received_hours }} ชม.
-                  </div>
-                </div>
-              </mat-list-item>
+<div class="page-container">
+  <div
+    style="
+      background-image: url('../../assets/image/first1.jpg');
+      width: 100%;
+      height: 850px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    "
+  >
+    <div
+      style="
+        margin-left: 5%;
+        background-color: rgba(0, 0, 255, 0);
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div style="width: 90%; height: 100%">
+        <div style="background-color: #ffde02; border-radius: 25px">
+          <div
+            style="
+              text-align: left;
+              margin-top: 12%;
+              margin-left: 5%;
+              margin-bottom: 5%;
+              margin-right: 5%;
+            "
+          >
+            <div style="font-size: 600%; font-weight: bold">อาสาสมัคร</div>
+            <div style="font-size: 180%; font-weight: bold; padding-bottom: 5%">
+              บุคคลที่เสนอตัวทำเพื่อผู้อื่นด้วย ความสมัครใจ มีใจอาสาสมัคร
+              และผลของการกระทำนั้นเป็น ประโยชน์ส่งผลดีต่อตนเองและ
+              สังคมเป็นบุคคลที่มีความรับผิดชอบ ต่อตนเองและสังคม มีความอดทน
+              มีความเสียสละ มีเวลาและใช้เวลาให้เกิด
+              ประโยชน์รวมทั้งมีความเข้าใจสถานการณ์
+              ในภาพรวมของงานที่มีความหลากหลาย นั้นๆ แล้ววางตนเองอยู่ในบทบาทที่
+              หนุนเสริมต่อกลไกการทำงานทั้งทางตรง และทางอ้อม
+              เพื่อที่จะทำให้เกิดประโยชน์ ต่อสาธารณะในวงกว้าง
+              <div style="margin-top: 5%">
+                <button
+                  mat-raised-button
+                  style="
+                    width: 50%;
+                    padding: 3%;
+                    font-size: x-large;
+                    background-color: #ffffff;
+                  "
+                >
+                  <mat-icon>forward</mat-icon>
+                  เข้าร่วมอาสาสมัคร
+                </button>
+              </div>
             </div>
-          </mat-list>
-        </mat-card-content>
-      </mat-card>
+          </div>
+        </div>
+      </div>
     </div>
-  </mat-grid-tile>
-  <mat-grid-tile rowspan="10"></mat-grid-tile>
+  </div>
+  <div style="width: 100%; height: 850px">
+    <div
+      style="
+        width: 90%;
+        margin-top: 3%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+      "
+    >
+      <div style="width: 60%">
+        <mat-card style="background-color: #ffde02">
+          <div
+            style="
+              text-align: center;
+              font-size: xx-large;
+              font-weight: bold;
+              margin-top: 2%;
+              margin-bottom: 2%;
+            "
+          >
+            กิจกรรมแนะนำ
+          </div>
+          <mat-card-content style="background-color: #ffffff;">
+            <mat-tab-group style="margin-top: 2%;">
+              <mat-tab>
+                  <ng-template mat-tab-label>
+                      <span class="large-font">อาสาจัดเต็ม</span>
+                  </ng-template>
+                  <div style="width: 100%; height: 621px; margin-top: 2%">
+                      <app-image-slider [slides]="slides"></app-image-slider>
+                  </div>
+              </mat-tab>
+              <mat-tab>
+                  <ng-template mat-tab-label>
+                      <span class="large-font">คอมพิวเตอร์เพื่อน้อง</span>
+                  </ng-template>
+                  <div style="width: 100%; height: 621px; margin-top: 2%">
+                      <app-image-slider [slides]="slides"></app-image-slider>
+                  </div>
+              </mat-tab>
+              <mat-tab>
+                  <ng-template mat-tab-label>
+                      <span class="large-font">อาสาไฟป่า</span>
+                  </ng-template>
+                  <div style="width: 100%; height: 621px; margin-top: 2%">
+                      <app-image-slider [slides]="slides"></app-image-slider>
+                  </div>
+              </mat-tab>
+          </mat-tab-group>
+            <!-- <mat-list role="list">
+              <mat-list-item role="listitem">Item 1</mat-list-item>
+              <mat-list-item role="listitem">Item 2</mat-list-item>
+              <mat-list-item role="listitem">Item 3</mat-list-item>
+            </mat-list> -->
+          </mat-card-content>
+        </mat-card>
+      </div>
 
-  <mat-grid-tile colspan="2" rowspan="4">
-    <div class="volunteer-competition">
-      <mat-card style="width: 100%; height: 100%; border: 1px solid #c9c9c986">
-        <mat-card-content>
-          <div class="text-title">รีวิว</div>
-        </mat-card-content>
-      </mat-card>
+      <div style="width: 35%; margin-left: 5%">
+        <mat-card style="background-color: #ffde02">
+          <div
+            style="
+              text-align: center;
+              font-size: xx-large;
+              font-weight: bold;
+              margin-top: 4%;
+              margin-bottom: 3%;
+            "
+          >
+            อันดับอาสา
+          </div>
+          <mat-card-content style="background-color: #ffffff"
+            ><mat-list class="large-list">
+              <mat-list-item>
+                <img
+                  matListItemAvatar
+                  src="../../assets/image/gold-medal.png"
+                  alt="..."
+                />
+                <h3 matListItemTitle class="large-font">ธนบรรณ พรมส่วน</h3>
+                <p matListItemLine>
+                  <span>เวลาเข้าร่วม</span>
+                  <span class="demo-2"> 72 ชม.</span>
+                </p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <img
+                  matListItemAvatar
+                  src="../../assets/image/silver-medal.png"
+                  alt="..."
+                />
+                <h3 matListItemTitle class="large-font">ธนบรรณ พรมส่วน</h3>
+                <p matListItemLine>
+                  <span>เวลาเข้าร่วม</span>
+                  <span class="demo-2"> 72 ชม.</span>
+                </p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <img
+                  matListItemAvatar
+                  src="../../assets/image/bronze-medal.png"
+                  alt="..."
+                />
+                <h3 matListItemTitle class="large-font">ธนบรรณ พรมส่วน</h3>
+                <p matListItemLine>
+                  <span>เวลาเข้าร่วม</span>
+                  <span class="demo-2"> 72 ชม.</span>
+                </p>
+              </mat-list-item>
+              <mat-divider></mat-divider> </mat-list
+          ></mat-card-content>
+        </mat-card>
+      </div>
     </div>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="4"></mat-grid-tile>
-  <mat-grid-tile colspan="7"></mat-grid-tile>
-</mat-grid-list>
+  </div>
+</div>
+<!-- <div >
+    <img src="../../assets/image/first1.jpg" style="width: 100%;">
+</div> -->

@@ -46,3 +46,24 @@ mat-grid-tile {
     text-align: right;
 }
 
+/* .page-container {
+  background-color: #ffde02;
+} */
+
+.large-list {
+    width: 100%; /* Adjust as needed */
+}
+
+.large-font {
+    font-size: 24px; /* Adjust the font size as needed */
+}
+
+.mat-list-item {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.large-font {
+    font-size: 20px; /* Adjust the font size as needed */
+    font-weight: bold;
+}
