@@ -49,7 +49,7 @@
   </div>
 </div> -->
 
-<mat-toolbar 
+<mat-toolbar
   style="
     background-color: #ffde02;
     display: flex;
@@ -107,7 +107,75 @@
     </div>
   </div>
 
-  <div style="text-align: right" *ngIf="isLoggedIn && !isAdmin">
+  <div style="text-align: right" *ngIf="isLoggedIn">
+    <div *ngIf="!isAdmin">
+      <button mat-button [matMenuTriggerFor]="notifications">
+        <span
+          class="material-symbols-outlined"
+          matBadge="{{ this.userActivityTomorrow }}"
+          matBadgeColor="warn"
+        >
+          notifications
+        </span>
+      </button>
+      <mat-menu #notifications="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let x of listUserActivityTomorrow"
+          (click)="notification_bell()"
+        >
+          คุณมีกิจกรรม{{ x.userActivityName }} ที่ลงทะเบียนไว้
+          กิจกรรมเริ่มวันที่
+          {{ x.date }}
+          <mat-divider></mat-divider>
+        </button>
+      </mat-menu>
+      <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
+        <mat-icon style="vertical-align: middle">menu</mat-icon>
+        <span style="vertical-align: middle">{{
+          currentUser.result.name
+        }}</span>
+      </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/profile'">โปรไฟล์</button>
+        <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
+      </mat-menu>
+    </div>
+    <div *ngIf="isAdmin">
+      <button mat-button [matMenuTriggerFor]="notifications">
+        <span
+          class="material-symbols-outlined"
+          matBadge="{{ this.userActivityTomorrow }}"
+          matBadgeColor="warn"
+        >
+          notifications
+        </span>
+      </button>
+      <mat-menu #notifications="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let x of listUserActivityTomorrow"
+          (click)="notification_bell()"
+        >
+          คุณมีกิจกรรม{{ x.userActivityName }} ที่ลงทะเบียนไว้
+          กิจกรรมเริ่มวันที่
+          {{ x.date }}
+          <mat-divider></mat-divider>
+        </button>
+      </mat-menu>
+      <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
+        <mat-icon style="vertical-align: middle">menu</mat-icon>
+        <span style="vertical-align: middle">{{
+          currentUser.result.name
+        }}</span>
+      </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/profile'">Admin</button>
+        <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
+      </mat-menu>
+    </div>
+  </div>
+  <!-- <div style="text-align: right" *ngIf="isLoggedIn">
     <button mat-button [matMenuTriggerFor]="notifications">
       <span
         class="material-symbols-outlined"
@@ -133,40 +201,10 @@
       <span style="vertical-align: middle">{{ currentUser.result.name }}</span>
     </a>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item [routerLink]="'/profile'">โปรไฟล์</button>
-      <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
-    </mat-menu>
-  </div>
-  <div style="text-align: right" *ngIf="isLoggedIn && isAdmin">
-    <!-- <button mat-button [matMenuTriggerFor]="notifications">
-      <span
-        class="material-symbols-outlined"
-        matBadge="{{ this.userActivityTomorrow }}"
-        matBadgeColor="warn"
-      >
-        notifications
-      </span>
-    </button>
-    <mat-menu #notifications="matMenu">
-      <button
-        mat-menu-item
-        *ngFor="let x of listUserActivityTomorrow"
-        (click)="notification_bell()"
-      >
-        คุณมีกิจกรรม{{ x.userActivityName }} ที่ลงทะเบียนไว้ กิจกรรมเริ่มวันที่
-        {{ x.date }}
-        <mat-divider></mat-divider>
-      </button>
-    </mat-menu> -->
-    <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
-      <mat-icon style="vertical-align: middle">menu</mat-icon>
-      <span style="vertical-align: middle">{{ currentUser.result.name }}</span>
-    </a>
-    <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="'/profile'">admin</button>
       <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
     </mat-menu>
-  </div>
+  </div> -->
 
   <div style="text-align: right" *ngIf="!isLoggedIn">
     <a mat-button [routerLink]="'/login'" style="font-size: large">
