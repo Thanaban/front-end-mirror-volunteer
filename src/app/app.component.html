@@ -108,7 +108,7 @@
   </div>
 
   <div style="text-align: right" *ngIf="isLoggedIn">
-    <div *ngIf="!isAdmin">
+    <div *ngIf="isAdmin!">
       <button mat-button [matMenuTriggerFor]="notifications">
         <span
           class="material-symbols-outlined"
