@@ -54,19 +54,19 @@ export class AppComponent {
 
       this.currentUser = this.storageService.getUser();
       console.warn(this.currentUser.result.name)
-      // this.http
-      //   .get('https://backend-volunteer.onrender.com/users/user')
-      //   .subscribe((response) => {
-      //     this.currentUser = response;
-      //     console.warn('result', this.currentUser);
-      //     if (this.currentUser.admin) {
-      //       this.isAdmin = this.currentUser.admin;
-      //       console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', this.isAdmin);
-      //     } else {
-      //       this.isAdmin = this.currentUser.admin;
-      //       console.warn('BBBBBBBBBBBBBBBBBBBBBBB', this.isAdmin);
-      //     }
-      //   });
+      this.http
+        .get('https://api.volunteerm.online/users/user')
+        .subscribe((response) => {
+          this.currentUser = response;
+          console.warn('result', this.currentUser);
+          if (this.currentUser.admin) {
+            this.isAdmin = this.currentUser.admin;
+            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', this.isAdmin);
+          } else {
+            this.isAdmin = this.currentUser.admin;
+            console.warn('BBBBBBBBBBBBBBBBBBBBBBB', this.isAdmin);
+          }
+        });
       
       this.http
         .get(
