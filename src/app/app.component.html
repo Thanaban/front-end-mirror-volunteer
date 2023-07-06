@@ -1,4 +1,4 @@
-
+<!-- 
 <div id="app" *ngIf="!isAdmin">
   <nav class="navbar navbar-expand" style="background-color: #0355ff">
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
@@ -47,9 +47,9 @@
   <div class="">
     <router-outlet></router-outlet>
   </div>
-</div>
+</div> -->
 
-<mat-toolbar
+<mat-toolbar 
   style="
     background-color: #ffde02;
     display: flex;
@@ -59,7 +59,7 @@
   ><div style="display: flex; justify-content: left">
     <img src="../assets/image/logo.jpg" width="20%" height="20%" />
   </div>
-  <div style="display: flex; justify-content: center">
+  <div *ngIf="!isAdmin" style="display: flex; justify-content: center">
     <div style="flex: 1">
       <a
         mat-button
@@ -210,7 +210,7 @@
   </div>
 </div>-->
 
-<div id="app" *ngIf="isAdmin">
+<!-- <div id="app" *ngIf="isAdmin">
   <nav class="navbar navbar-expand" style="background-color: #0355ff">
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
@@ -258,7 +258,7 @@
   <div class="">
     <router-outlet></router-outlet>
   </div>
-</div> 
+</div>  -->
 
 <!-- <header class="site-header">
 <div class="wrapper site-header__wrapper">
