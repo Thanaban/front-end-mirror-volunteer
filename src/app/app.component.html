@@ -144,7 +144,7 @@
     <div *ngIf="isAdmin">
       <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
         <mat-icon style="vertical-align: middle">menu</mat-icon>
-        <span style="vertical-align: middle">sss</span>
+        <span style="vertical-align: middle">{{currentUser.result.name}}</span>
       </a>
       <mat-menu #menu="matMenu">
         <button mat-menu-item [routerLink]="'/admin-dashboard'">Admin</button>
