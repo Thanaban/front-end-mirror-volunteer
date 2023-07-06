@@ -147,6 +147,9 @@
         <span style="vertical-align: middle">sss</span>
       </a>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/admin-dashboard'">Admin</button>
+        <button mat-menu-item [routerLink]="'/profile'">Admin</button>
+        <button mat-menu-item [routerLink]="'/profile'">Admin</button>
         <button mat-menu-item [routerLink]="'/profile'">Admin</button>
         <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
       </mat-menu>
