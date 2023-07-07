@@ -149,10 +149,9 @@
         }}</span>
       </a>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item [routerLink]="'/admin-dashboard'">Admin</button>
-        <button mat-menu-item [routerLink]="'/profile'">Admin</button>
-        <button mat-menu-item [routerLink]="'/profile'">Admin</button>
-        <button mat-menu-item [routerLink]="'/profile'">Admin</button>
+        <button mat-menu-item [routerLink]="'/admin-dashboard'">ภาพรวม</button>
+        <button mat-menu-item [routerLink]="'/admin-manage-event'">จัดการกิจกรรม</button>
+        <button mat-menu-item [routerLink]="'/admin-manage-volunteer'">จัดการอาสา</button>
         <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
       </mat-menu>
     </div>
