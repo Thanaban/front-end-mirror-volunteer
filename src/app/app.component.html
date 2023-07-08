@@ -1,6 +1,5 @@
-
-
-<mat-toolbar *ngIf="!isLoggedIn"
+<mat-toolbar
+  *ngIf="!isLoggedIn"
   style="
     background-color: #ffde02;
     display: flex;
@@ -95,14 +94,16 @@
     <div *ngIf="isAdmin">
       <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
         <mat-icon style="vertical-align: middle">menu</mat-icon>
-        <span style="vertical-align: middle">{{
-          currentUser.name
-        }}</span>
+        <span style="vertical-align: middle">{{ currentUser.name }}</span>
       </a>
       <mat-menu #menu="matMenu">
         <button mat-menu-item [routerLink]="'/admin-dashboard'">ภาพรวม</button>
-        <button mat-menu-item [routerLink]="'/admin-manage-event'">จัดการกิจกรรม</button>
-        <button mat-menu-item [routerLink]="'/admin-manage-volunteer'">จัดการอาสา</button>
+        <button mat-menu-item [routerLink]="'/admin-manage-event'">
+          จัดการกิจกรรม
+        </button>
+        <button mat-menu-item [routerLink]="'/admin-manage-volunteer'">
+          จัดการอาสา
+        </button>
         <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
       </mat-menu>
     </div>
@@ -114,9 +115,11 @@
     </a>
   </div>
 </mat-toolbar>
-<mat-toolbar *ngIf="isLoggedIn"
+
+<mat-toolbar
+  *ngIf="isLoggedIn && !isAdmin"
   style="
-    background-color: #72640c;
+    background-color: #ffde02;
     display: flex;
     justify-content: space-between;
     font-size: x-large;
@@ -209,19 +212,80 @@
     <div *ngIf="isAdmin">
       <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
         <mat-icon style="vertical-align: middle">menu</mat-icon>
-        <span style="vertical-align: middle">{{
-          currentUser.name
-        }}</span>
+        <span style="vertical-align: middle">{{ currentUser.name }}</span>
       </a>
       <mat-menu #menu="matMenu">
         <button mat-menu-item [routerLink]="'/admin-dashboard'">ภาพรวม</button>
-        <button mat-menu-item [routerLink]="'/admin-manage-event'">จัดการกิจกรรม</button>
-        <button mat-menu-item [routerLink]="'/admin-manage-volunteer'">จัดการอาสา</button>
+        <button mat-menu-item [routerLink]="'/admin-manage-event'">
+          จัดการกิจกรรม
+        </button>
+        <button mat-menu-item [routerLink]="'/admin-manage-volunteer'">
+          จัดการอาสา
+        </button>
+        <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-toolbar
+  *ngIf="isLoggedIn && isAdmin"
+  style="
+    background-color: #0213ff;
+    display: flex;
+    justify-content: space-between;
+    font-size: x-large;
+  "
+>
+  <div style="text-align: right" *ngIf="isLoggedIn && isAdmin">
+    <div *ngIf="!isAdmin">
+      <button mat-button [matMenuTriggerFor]="notifications">
+        <span
+          class="material-symbols-outlined"
+          matBadge="{{ this.userActivityTomorrow }}"
+          matBadgeColor="warn"
+        >
+          notifications
+        </span>
+      </button>
+      <mat-menu #notifications="matMenu">
+        <button
+          mat-menu-item
+          *ngFor="let x of listUserActivityTomorrow"
+          (click)="notification_bell()"
+        >
+          คุณมีกิจกรรม{{ x.userActivityName }} ที่ลงทะเบียนไว้
+          กิจกรรมเริ่มวันที่
+          {{ x.date }}
+          <mat-divider></mat-divider>
+        </button>
+      </mat-menu>
+      <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
+        <mat-icon style="vertical-align: middle">menu</mat-icon>
+        <span style="vertical-align: middle">{{
+          currentUser.result.name
+        }}</span>
+      </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/profile'">โปรไฟล์</button>
+        <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
+      </mat-menu>
+    </div>
+    <div *ngIf="isAdmin">
+      <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
+        <mat-icon style="vertical-align: middle">menu</mat-icon>
+        <span style="vertical-align: middle">{{ currentUser.name }}</span>
+      </a>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/admin-dashboard'">ภาพรวม</button>
+        <button mat-menu-item [routerLink]="'/admin-manage-event'">
+          จัดการกิจกรรม
+        </button>
+        <button mat-menu-item [routerLink]="'/admin-manage-volunteer'">
+          จัดการอาสา
+        </button>
         <button mat-menu-item (click)="logout()">ออกจากระบบ</button>
       </mat-menu>
     </div>
   </div>
 </mat-toolbar>
 <router-outlet></router-outlet>
-
-
