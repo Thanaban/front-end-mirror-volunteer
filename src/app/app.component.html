@@ -235,8 +235,55 @@
     justify-content: space-between;
     font-size: x-large;
   "
->
+><div style="display: flex; justify-content: center">
+  <div style="flex: 1">
+    <a
+      mat-button
+      [routerLink]="'/home'"
+      style="
+        font-size: large;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <mat-icon style="vertical-align: middle">home</mat-icon>
+      <span style="vertical-align: middle">หน้าแรก</span>
+    </a>
+  </div>
+  <div style="flex: 1">
+    <a
+      mat-button
+      [routerLink]="'/openevent'"
+      style="
+        font-size: large;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+    >
+      <mat-icon style="vertical-align: middle">event</mat-icon>
+      <span style="vertical-align: middle">กิจกรรมอาสา</span>
+    </a>
+  </div>
+  <div style="flex: 1">
+    <a
+      mat-button
+      style="
+        font-size: large;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      "
+      [routerLink]="'/about-us'"
+    >
+      <mat-icon style="vertical-align: middle">call</mat-icon>
+      <span style="vertical-align: middle">ติดต่อเรา</span>
+    </a>
+  </div>
+</div>
   <div style="text-align: right" *ngIf="isLoggedIn && isAdmin">
+    
     <div *ngIf="!isAdmin">
       <button mat-button [matMenuTriggerFor]="notifications">
         <span
