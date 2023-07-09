@@ -65,17 +65,33 @@ export class AdminManageEventComponent implements OnInit {
   }
 
   AddEvent(){
-    Swal.fire({
-      title: 'แสดงความคิดเห็น',
-      input: 'file',
-
-      inputPlaceholder: 'เขียนความคิดเห็นของท่าน',
-      inputValidator: (value) => {
-        if (!value) {
-          return 'โปรดกรอกความคิดเห็น';
+    async function addEvent() {
+      const { value: file } = await Swal.fire({
+        title: 'Select image',
+        input: 'file',
+        inputAttributes: {
+          'accept': 'image/*',
+          'aria-label': 'Upload your profile picture'
         }
-        return null;
-      }})
+      });
+    
+      if (file) {
+        const reader = new FileReader();
+    
+        reader.onload = (e) => {
+          Swal.fire({
+            title: 'Your uploaded picture',
+            imageUrl: e.target?.result as string,
+            imageAlt: 'The uploaded picture'
+          });
+        };
+    
+        reader.readAsDataURL(file);
+      }
+    }
+    
+    // Call the async function
+    addEvent();
   }
 
   reloadPage(): void {
