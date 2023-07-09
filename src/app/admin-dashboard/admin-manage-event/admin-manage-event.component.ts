@@ -5,6 +5,7 @@ import { EventService } from 'src/app/_services/event.service';
 import { EditEventDetailComponent } from './edit-event-detail/edit-event-detail.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from './add-event/add-event.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-manage-event',
@@ -61,6 +62,20 @@ export class AdminManageEventComponent implements OnInit {
 
   openDialogaAddEvent() {
     this.dialog.open(AddEventComponent);
+  }
+
+  AddEvent(){
+    Swal.fire({
+      title: 'แสดงความคิดเห็น',
+      input: 'file',
+
+      inputPlaceholder: 'เขียนความคิดเห็นของท่าน',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'โปรดกรอกความคิดเห็น';
+        }
+        return null;
+      }})
   }
 
   reloadPage(): void {
