@@ -13,6 +13,7 @@ import { readFileSync } from 'fs';
 import { BodyParser } from 'body-parser';
 import { Socket } from 'socket.io';
 import { EventService } from './_services/event.service';
+import { CertificateComponent } from './profile/cer/certificate.component';
 
 @Component({
   selector: 'app-root',
@@ -42,7 +43,8 @@ export class AppComponent {
     private eventBusService: EventBusService,
     private http: HttpClient,
     private router: Router,
-    private eventService: EventService
+    private eventService: EventService,
+   
   ) {this.storageService.getToken();}
 
   ngOnInit(): void {
@@ -104,6 +106,10 @@ export class AppComponent {
     // this.eventBusSub = this.eventBusService.on('logout', () => {
     //   this.logout();
     // });
+  }
+
+  cer(){
+    
   }
 
   con_date(d: any) {
