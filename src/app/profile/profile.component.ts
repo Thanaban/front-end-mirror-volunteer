@@ -49,7 +49,6 @@ export class ProfileComponent implements OnInit {
     private http: HttpClient,
     private storageService: StorageService,
     private eventService: EventService,
-    private certi:CertificateComponent,
     public dialog: MatDialog
   ) {}
 
@@ -83,7 +82,7 @@ export class ProfileComponent implements OnInit {
   }
 
   cer(){
-    this.certi.generatePDF()
+    this.dialog.open(CertificateComponent)
   }
 
   
