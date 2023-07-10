@@ -33,6 +33,7 @@
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
+    "jspdf": "^2.5.1",
     "ng-gallery": "^8.0.2",
     "primeflex": "^3.3.0",
     "rxjs": "~7.5.0",

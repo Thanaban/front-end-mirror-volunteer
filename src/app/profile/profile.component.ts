@@ -13,6 +13,8 @@ import Swal from 'sweetalert2';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { userActivity_show } from './user-activity-request-get';
 import { result } from 'cypress/types/lodash';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-profile',
@@ -391,6 +393,25 @@ export class ProfileComponent implements OnInit {
       currentUserName,
     };
     localStorage.setItem('EVENT', JSON.stringify(data));
+  }
+
+  generatePDF() {
+    const element = document.getElementById('element-to-export');
+    window.scrollTo(0, 0);
+    if (element?.nodeName) {
+      html2canvas(element).then((canvas) => {
+        const doc = new jsPDF();
+        const imgData = canvas.toDataURL('image/png');
+        const imgProps = doc.getImageProperties(imgData);
+        const pdfWidth = doc.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+        doc.addImage(imgData, 'PNG', 0, -12.5, pdfWidth, pdfHeight);
+        doc.save('example.pdf');
+      });
+    } else {
+      console.log('Element not found');
+    }
   }
 
   reloadPage(): void {

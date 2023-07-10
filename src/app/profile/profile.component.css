@@ -1,3 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap');
+body, html {
+    margin: 0;
+    padding: 0;
+}
+body {
+    color: black;
+    display: table;
+    font-family: Georgia, serif;
+    font-size: 24px;
+    text-align: center;
+}
+.container {
+    border: 20px solid tan;
+    width: 1500px;
+    height: 1500px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.top-padding {
+    padding: 1px 1px 75px 100px;
+    background-color: #FFDE02;
+    width: 2000px;
+}
+.header {
+    margin-top: 50%;
+    /* font-weight: bolder; */
+    font-size: 50px;
+    color: black;
+    font-family: 'Sarabun', sans-serif;
+    margin-bottom: 2%;
+}
+.tagline {
+    font-size: 38px;
+    margin-bottom: 2%;
+}
+.ensure {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 2%;
+}
+.content {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
 .card {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
