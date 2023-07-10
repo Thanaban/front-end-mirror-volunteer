@@ -96,7 +96,7 @@ import { CertificateComponent } from './profile/cer/certificate.component';
     SnackBarMessageComponent,
     ConfirmPasswordComponent,
     AboutUsComponent,
-    CertificateComponent
+    
   ],
   entryComponents:[
     ModalEventComponent

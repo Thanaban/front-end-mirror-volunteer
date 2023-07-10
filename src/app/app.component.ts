@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
@@ -21,6 +21,8 @@ import { CertificateComponent } from './profile/cer/certificate.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+  @ViewChild(CertificateComponent) certificateComponent!: CertificateComponent;
+
   private roles: string[] = [];
   isLoggedIn = false;
   isAdmin = false;
@@ -109,7 +111,7 @@ export class AppComponent {
   }
 
   cer(){
-    
+    this.certificateComponent.generatePDF();
   }
 
   con_date(d: any) {
