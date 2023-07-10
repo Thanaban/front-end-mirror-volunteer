@@ -68,6 +68,7 @@ import { ConfirmPasswordComponent } from './reset-password/confirm-password/conf
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { CertificateComponent } from './profile/cer/certificate.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     CancelEventConfirmComponent,
     SnackBarMessageComponent,
     ConfirmPasswordComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    CertificateComponent
   ],
   entryComponents:[
     ModalEventComponent
