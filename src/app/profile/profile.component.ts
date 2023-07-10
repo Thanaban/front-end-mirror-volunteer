@@ -15,6 +15,7 @@ import { userActivity_show } from './user-activity-request-get';
 import { result } from 'cypress/types/lodash';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { CertificateComponent } from './cer/certificate.component';
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +24,7 @@ import html2canvas from 'html2canvas';
 })
 export class ProfileComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(CertificateComponent) certificateComponent!: CertificateComponent;
   tabs: number = 0;
 
   public C1: User_show[] = [];
@@ -80,24 +82,30 @@ export class ProfileComponent implements OnInit {
     const initialPageEvent = { pageIndex: 0, pageSize: 3 } as PageEvent;
   }
 
-  generatePDF() {
-    const element = document.getElementById('element-to-export');
-    window.scrollTo(0, 0);
-    if (element?.nodeName) {
-      html2canvas(element).then((canvas) => {
-        const doc = new jsPDF();
-        const imgData = canvas.toDataURL('image/png');
-        const imgProps = doc.getImageProperties(imgData);
-        const pdfWidth = doc.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        doc.addImage(imgData, 'PNG', 0, -12.5, pdfWidth, pdfHeight);
-        doc.save('example.pdf');
-      });
-    } else {
-      console.log('Element not found');
-    }
+  cer(){
+    this.certificateComponent.generatePDF()
   }
+
+  
+
+  // generatePDF() {
+  //   const element = document.getElementById('element-to-export');
+  //   window.scrollTo(0, 0);
+  //   if (element?.nodeName) {
+  //     html2canvas(element).then((canvas) => {
+  //       const doc = new jsPDF();
+  //       const imgData = canvas.toDataURL('image/png');
+  //       const imgProps = doc.getImageProperties(imgData);
+  //       const pdfWidth = doc.internal.pageSize.getWidth();
+  //       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+  //       doc.addImage(imgData, 'PNG', 0, -12.5, pdfWidth, pdfHeight);
+  //       doc.save('example.pdf');
+  //     });
+  //   } else {
+  //     console.log('Element not found');
+  //   }
+  // }
 
   calculateAge(birthdate: string): number {
     const today = new Date();
