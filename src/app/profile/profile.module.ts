@@ -6,18 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CancelEventConfirmComponent } from './cancel-event-confirm/cancel-event-confirm.component';
 import { CertificateComponent } from './cer/certificate.component';
-import { ProfileComponent } from './profile.component';
-import {MatIconModule} from '@angular/material/icon';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
   declarations: [
-    CertificateComponent,
-    ProfileComponent
+    CertificateComponent
+  
     
   ],
   imports: [
@@ -26,12 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatDialogModule,
     MatButtonModule,
     MatDialogModule,
-    MatTabsModule,
-    MatIconModule,
-    MatPaginatorModule,
-    MatCardModule,
-    MatButtonToggleModule,
-    MatMenuModule
+    MatTabsModule
   ]
 })
 export class ProfileModule { }
