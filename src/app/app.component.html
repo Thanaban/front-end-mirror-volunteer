@@ -175,7 +175,7 @@
     </div>
   </div>
 
-  <div style="text-align: right" *ngIf="isLoggedIn">
+  <div style="text-align: right" >
     <button mat-button [matMenuTriggerFor]="notifications">
       <span
         class="material-symbols-outlined"
@@ -198,7 +198,7 @@
     </mat-menu>
     <a mat-button [matMenuTriggerFor]="menu" style="font-size: large">
       <mat-icon style="vertical-align: middle">menu</mat-icon>
-      <span style="vertical-align: middle">{{ currentUser.result.name }} sssssss</span>
+      <span style="vertical-align: middle">{{ currentUser.result.name }} </span>
     </a>
     <mat-menu #menu="matMenu">
       <button mat-menu-item [routerLink]="'/profile'">โปรไฟล์</button>
