@@ -24,6 +24,7 @@ import { CertificateComponent } from './cer/certificate.component';
 })
 export class ProfileComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(CertificateComponent) certificateComponent!: CertificateComponent;
   tabs: number = 0;
 
   public C1: User_show[] = [];
