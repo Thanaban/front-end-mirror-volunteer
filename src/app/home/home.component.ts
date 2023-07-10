@@ -26,13 +26,18 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.warn('ress')
+    console.warn('ress');
     this.http
       .get('https://api.volunteerm.online/activities/get_user_for_competition')
-      .subscribe((response) => {
-        this.allUser = response;
-        console.warn('result', this.allUser.received_hours.sort());
-      });
+      .subscribe(
+        (response) => {
+          this.allUser = response;
+          console.warn('result', this.allUser.received_hours.sort());
+        },
+        (error) => {
+          console.error('Error occurred:', error);
+        }
+      );
 
     this.userService.getPublicContent().subscribe({
       next: (data) => {
