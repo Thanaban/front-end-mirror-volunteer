@@ -1,5 +1,4 @@
 <mat-toolbar
-  
   style="
     background-color: #ffde02;
     display: flex;
@@ -94,7 +93,9 @@
     <div *ngIf="isAdmin">
       <a mat-button [matMenuTriggerFor]="menuAdmin" style="font-size: large">
         <mat-icon style="vertical-align: middle">menu</mat-icon>
-        <span style="vertical-align: middle">{{ currentUser.name }}</span>
+        <span style="vertical-align: middle">{{
+          currentUser.result.name
+        }}</span>
       </a>
       <mat-menu #menuAdmin="matMenu">
         <button mat-menu-item [routerLink]="'/admin-dashboard'">ภาพรวม</button>
