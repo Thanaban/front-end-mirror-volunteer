@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.warn('ress')
     this.http
       .get('https://api.volunteerm.online/activities/get_user_for_competition')
       .subscribe((response) => {
