@@ -76,7 +76,7 @@ import { CertificateComponent } from './profile/cer/certificate.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProfileComponent,
+    
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
