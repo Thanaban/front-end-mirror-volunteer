@@ -13,7 +13,7 @@ import { readFileSync } from 'fs';
 import { BodyParser } from 'body-parser';
 import { Socket } from 'socket.io';
 import { EventService } from './_services/event.service';
-import { CertificateComponent } from './profile/cer/certificate.component';
+
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,6 @@ import { CertificateComponent } from './profile/cer/certificate.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @ViewChild(CertificateComponent) certificateComponent!: CertificateComponent;
 
   private roles: string[] = [];
   isLoggedIn = false;
@@ -108,10 +107,6 @@ export class AppComponent {
     // this.eventBusSub = this.eventBusService.on('logout', () => {
     //   this.logout();
     // });
-  }
-
-  cer(){
-    this.certificateComponent.generatePDF();
   }
 
   con_date(d: any) {
