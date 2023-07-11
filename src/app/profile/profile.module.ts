@@ -5,12 +5,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CancelEventConfirmComponent } from './cancel-event-confirm/cancel-event-confirm.component';
-import { CertificateComponent } from './cer/certificate.component';
 
 
 @NgModule({
   declarations: [
-    CertificateComponent
+    
   
     
   ],
