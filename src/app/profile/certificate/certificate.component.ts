@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-certificate',
@@ -8,7 +9,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./certificate.component.css']
 })
 export class CertificateComponent {
-  generatePDF() {
+  ngOnInit(): void {
     const element = document.getElementById('element-to-export');
     window.scrollTo(0, 0);
     if (element?.nodeName) {
@@ -25,5 +26,8 @@ export class CertificateComponent {
     } else {
       console.log('Element not found');
     }
+  }
+  generatePDF() {
+    
   }
 }
