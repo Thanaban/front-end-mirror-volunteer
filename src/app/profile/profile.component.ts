@@ -15,8 +15,9 @@ import { userActivity_show } from './user-activity-request-get';
 import { result } from 'cypress/types/lodash';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { CertificateComponent } from './certificate/certificate.component';
+
 import { Router } from '@angular/router';
+import { CertificateComponent } from './certificate/certificate.component';
 
 
 @Component({
