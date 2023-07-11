@@ -27,7 +27,6 @@ import { CertificateComponent } from './certificate/certificate.component';
 })
 export class ProfileComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(CertificateComponent) certificateComponent!: CertificateComponent
   ;
   tabs: number = 0;
 
