@@ -359,7 +359,7 @@
                 aria-label="Font Style"
                 class="group-detail-button"
               >
-                <mat-button-toggle class="detail-button" (click)="cer()">
+                <mat-button-toggle class="detail-button" (click)="generatePDF()">
                   <mat-icon>file_download</mat-icon>
                   เกียรติบัตร
                 </mat-button-toggle>
@@ -387,7 +387,7 @@
   </div>
 </div>
 
-<html>
+<html *ngIf="certi">
     <body id="element-to-export">
         <!-- <div class="container" > -->
             <div class="top-padding"></div>
