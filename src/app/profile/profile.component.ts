@@ -88,7 +88,7 @@ export class ProfileComponent implements OnInit {
   }
 
   cer(){
-    window.open(this.router.createUrlTree(['/certificate']).toString(), '_blank');
+    this.router.navigate(['/certificate']);
   }
 
   calculateAge(birthdate: string): number {
