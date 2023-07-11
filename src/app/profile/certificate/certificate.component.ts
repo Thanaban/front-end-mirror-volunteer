@@ -20,7 +20,7 @@ export class CertificateComponent {
         const pdfWidth = doc.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-        doc.addImage(imgData, 'PNG', 0, -12.5, pdfWidth, pdfHeight);
+        doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
         doc.save('example.pdf');
       });
     } else {
