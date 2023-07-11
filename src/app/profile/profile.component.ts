@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit {
   }
 
   cer(){
-    this.certificateComponent.generatePDF();
+    this.dialog.open(CertificateComponent);
   }
 
   
