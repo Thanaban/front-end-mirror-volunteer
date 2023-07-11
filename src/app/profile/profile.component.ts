@@ -87,7 +87,12 @@ export class ProfileComponent implements OnInit {
     const initialPageEvent = { pageIndex: 0, pageSize: 3 } as PageEvent;
   }
 
-  cer(){
+  cer(currentUser:string,currentActivityName:string){
+    let data = {
+      currentUser,
+      currentActivityName
+    };
+    localStorage.setItem('CERTI', JSON.stringify(data));
     this.router.navigate(['/certificate']);
   }
 

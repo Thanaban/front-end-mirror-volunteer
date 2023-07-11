@@ -9,7 +9,12 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./certificate.component.css']
 })
 export class CertificateComponent {
+
+  certi_data :any
+
   ngOnInit(): void {
+    let data: any = localStorage.getItem('CERTI');
+    this.certi_data = JSON.parse(data);
     const element = document.getElementById('element-to-export');
     window.scrollTo(0, 0);
     if (element?.nodeName) {
@@ -20,7 +25,7 @@ export class CertificateComponent {
         const pdfWidth = doc.internal.pageSize.getWidth();
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
-        doc.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        doc.addImage(imgData, 'PNG', 0, -10, pdfWidth, pdfHeight);
         doc.save('example.pdf');
       });
     } else {
