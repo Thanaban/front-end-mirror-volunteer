@@ -15,7 +15,9 @@ import { userActivity_show } from './user-activity-request-get';
 import { result } from 'cypress/types/lodash';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { CertificateComponent } from './cer/certificate.component';
+import { CertificateComponent } from './certificate/certificate.component';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +26,8 @@ import { CertificateComponent } from './cer/certificate.component';
 })
 export class ProfileComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(CertificateComponent) certificateComponent!: CertificateComponent;
+  @ViewChild(CertificateComponent) certificateComponent!: CertificateComponent
+  ;
   tabs: number = 0;
 
   public C1: User_show[] = [];
@@ -51,7 +54,7 @@ export class ProfileComponent implements OnInit {
     private http: HttpClient,
     private storageService: StorageService,
     private eventService: EventService,
-    
+    private router: Router,
     public dialog: MatDialog
   ) {}
 
@@ -85,28 +88,7 @@ export class ProfileComponent implements OnInit {
   }
 
   cer(){
-    this.dialog.open(CertificateComponent);
-  }
-
-  
-
-  generatePDF() {
-    const element = document.getElementById('element-to-export');
-    window.scrollTo(0, 0);
-    if (element?.nodeName) {
-      html2canvas(element).then((canvas) => {
-        const doc = new jsPDF();
-        const imgData = canvas.toDataURL('image/png');
-        const imgProps = doc.getImageProperties(imgData);
-        const pdfWidth = doc.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        doc.addImage(imgData, 'PNG', 0, -12.5, pdfWidth, pdfHeight);
-        doc.save('example.pdf');
-      });
-    } else {
-      console.log('Element not found');
-    }
+    window.open(this.router.createUrlTree(['/certificate']).toString(), '_blank');
   }
 
   calculateAge(birthdate: string): number {

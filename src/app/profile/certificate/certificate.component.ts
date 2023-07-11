@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-// import * as jsPDF from 'jspdf';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-certificate',
   templateUrl: './certificate.component.html',
-  styleUrls: ['./certificate.component.css'],
+  styleUrls: ['./certificate.component.css']
 })
 export class CertificateComponent {
   generatePDF() {
