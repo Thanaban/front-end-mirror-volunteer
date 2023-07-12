@@ -102,6 +102,7 @@ export class AppComponent {
                   console.warn('ssss', this.tettte.date);
                   this.listUserActivityTomorrow.push(this.tettte);
                   let dad = this.listUserActivityTomorrow;
+                  console.warn('uuuuu',this.listUserActivityTomorrow)
                 },
               });
           }
