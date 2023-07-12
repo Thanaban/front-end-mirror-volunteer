@@ -42,7 +42,6 @@ export class JoinEventComponent implements OnInit {
   currentDate: Date;
   isLoggedIn = false;
   currentUser: any;
-  
 
   constructor(
     private eventService: EventService,
@@ -86,14 +85,16 @@ export class JoinEventComponent implements OnInit {
   onSubmit(): void {
     const { date } = this.myForm.value;
     if (date !== null || date == '') {
-      console.warn('old',date);
-      let newDate = date[0][23]
+      console.warn('old', date);
+
+      const newDate = new Date(date);
+      const formattedDate = date.toUTCString();
 
       this.eventService
         .join_activity(
           this.join_event.currentEventID,
           this.join_event.currentUserID,
-          newDate
+          formattedDate
         )
         .subscribe({
           next: (test) => {
@@ -104,7 +105,7 @@ export class JoinEventComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500,
             }).then(() => {
-              console.warn('new',newDate);
+              console.warn('new', formattedDate);
               this.dialog.closeAll(); // Close the dialog
             });
           },
@@ -162,8 +163,6 @@ export class JoinEventComponent implements OnInit {
       // You can show an error message or perform other actions
     }
   }
-
-  
 
   openDialog3() {
     this.dialog.open(SuccessJoinEventComponent);
