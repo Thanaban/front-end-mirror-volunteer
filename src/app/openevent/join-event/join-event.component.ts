@@ -87,7 +87,7 @@ export class JoinEventComponent implements OnInit {
     const { date } = this.myForm.value;
     if (date !== null || date == '') {
       console.warn('old',date);
-      let newDate = date.replace(/ GMT\+\d+ \(.+\)$/, '');
+      let newDate = date.split(" GMT")[0];
 
       this.eventService
         .join_activity(
