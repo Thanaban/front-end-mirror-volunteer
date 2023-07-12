@@ -80,6 +80,9 @@ export class JoinEventComponent implements OnInit {
   onSubmit(): void {
     const { date } = this.myForm.value;
     if (date !== null || date == '') {
+      console.warn('old',date);
+      this.replace_date(date)
+
       this.eventService
         .join_activity(
           this.join_event.currentEventID,
@@ -95,7 +98,7 @@ export class JoinEventComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500,
             }).then(() => {
-              console.warn(date)
+              console.warn('new',date);
               this.dialog.closeAll(); // Close the dialog
             });
           },
@@ -132,7 +135,6 @@ export class JoinEventComponent implements OnInit {
                 }
               });
             } else if (err.error.message == 'black list') {
-              
               Swal.fire({
                 icon: 'error',
                 title: 'เกิดข้อผิดพลาด',
@@ -153,6 +155,11 @@ export class JoinEventComponent implements OnInit {
       console.warn('Date is null');
       // You can show an error message or perform other actions
     }
+  }
+
+  replace_date(x: string) {
+    x = x.replace(/ GMT\+\d+ \(.+\)$/, '');
+    return x;
   }
 
   openDialog3() {
