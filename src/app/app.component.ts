@@ -72,8 +72,8 @@ export class AppComponent {
         });
       
       this.http
-        .get(
-          'https://api.volunteerm.online/activities/notify_user'
+        .patch(
+          'https://api.volunteerm.online/activities/notify_user',this.currentUser.id
         )
         .subscribe((data) => {
           this.eventTomorrow = data;
