@@ -42,6 +42,7 @@ export class JoinEventComponent implements OnInit {
   currentDate: Date;
   isLoggedIn = false;
   currentUser: any;
+  
 
   constructor(
     private eventService: EventService,
@@ -77,17 +78,22 @@ export class JoinEventComponent implements OnInit {
     this.maxDate = new Date(this.join_event.endDate);
   }
 
+  // replace_date(x: string) {
+  //   x = x.replace(/ GMT\+\d+ \(.+\)$/, '');
+  //   return x;
+  // }
+
   onSubmit(): void {
     const { date } = this.myForm.value;
     if (date !== null || date == '') {
       console.warn('old',date);
-      date == this.replace_date(date)
+      let newDate = date.replace(/ GMT\+\d+ \(.+\)$/, '');
 
       this.eventService
         .join_activity(
           this.join_event.currentEventID,
           this.join_event.currentUserID,
-          date
+          newDate
         )
         .subscribe({
           next: (test) => {
@@ -98,7 +104,7 @@ export class JoinEventComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500,
             }).then(() => {
-              console.warn('new',date);
+              console.warn('new',newDate);
               this.dialog.closeAll(); // Close the dialog
             });
           },
@@ -157,10 +163,7 @@ export class JoinEventComponent implements OnInit {
     }
   }
 
-  replace_date(x: string) {
-    x = x.replace(/ GMT\+\d+ \(.+\)$/, '');
-    return x;
-  }
+  
 
   openDialog3() {
     this.dialog.open(SuccessJoinEventComponent);
