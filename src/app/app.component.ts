@@ -72,7 +72,7 @@ export class AppComponent {
         });
       
       this.http
-        .patch(
+        .post(
           'https://api.volunteerm.online/activities/notify_user',this.currentUser.id
         )
         .subscribe((data) => {
