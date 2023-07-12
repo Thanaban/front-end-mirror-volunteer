@@ -146,8 +146,8 @@ export class AppComponent {
       d[1] = 'มี.ค';
     }
     
-    d[0] = parseInt(d[0]) + 543;
-    this.dateForm = d.reverse().join(' ');
+    d[2] = parseInt(d[2]) + 543;
+    // this.dateForm = d.reverse().join(' ');
     return this.dateForm;
   }
 
