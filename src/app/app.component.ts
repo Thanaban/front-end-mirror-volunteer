@@ -1,4 +1,4 @@
-import { Component,ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StorageService } from './_services/storage.service';
 import { AuthService } from './_services/auth.service';
@@ -14,14 +14,12 @@ import { BodyParser } from 'body-parser';
 import { Socket } from 'socket.io';
 import { EventService } from './_services/event.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-
   private roles: string[] = [];
   isLoggedIn = false;
   isAdmin = false;
@@ -44,9 +42,10 @@ export class AppComponent {
     private eventBusService: EventBusService,
     private http: HttpClient,
     private router: Router,
-    private eventService: EventService,
-   
-  ) {this.storageService.getToken();}
+    private eventService: EventService
+  ) {
+    this.storageService.getToken();
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = this.storageService.isLoggedIn();
@@ -56,7 +55,7 @@ export class AppComponent {
       // this.roles = user.roles;
 
       this.currentUser = this.storageService.getUser();
-      console.warn(this.currentUser.result.name)
+      console.warn(this.currentUser.result.name);
       this.http
         .get('https://api.volunteerm.online/users/user')
         .subscribe((response) => {
@@ -71,11 +70,13 @@ export class AppComponent {
           }
         });
 
-        this.eventService.notifyUser(this.currentUser.id).subscribe((data) =>{
+      this.eventService.notifyUser(this.currentUser.id).subscribe({
+        next: (data) => {
           this.eventTomorrow = data;
-          console.warn(data)
-        })
-      
+          console.warn(data);
+        },
+      });
+
       // this.http
       //   .post(
       //     'https://api.volunteerm.online/activities/notify_user',this.currentUser.id
@@ -101,7 +102,7 @@ export class AppComponent {
       //                 console.warn('ssss', this.tettte.date);
       //                 this.listUserActivityTomorrow.push(this.tettte);
       //                 let dad = this.listUserActivityTomorrow;
-                      
+
       //               },
       //             });
       //         }
@@ -126,32 +127,24 @@ export class AppComponent {
       d[1] = 'มิ.ย';
     } else if (d[1] == '07') {
       d[1] = 'ก.ค';
-    }
-    else if (d[1] == '08') {
+    } else if (d[1] == '08') {
       d[1] = 'ส.ค';
-    }
-    else if (d[1] == '09') {
+    } else if (d[1] == '09') {
       d[1] = 'ก.ย';
-    }
-    else if (d[1] == '10') {
+    } else if (d[1] == '10') {
       d[1] = 'ต.ค';
-    }
-    else if (d[1] == '11') {
+    } else if (d[1] == '11') {
       d[1] = 'พ.ย';
-    }
-    else if (d[1] == '12') {
+    } else if (d[1] == '12') {
       d[1] = 'ธ.ค';
-    }
-    else if (d[1] == '01') {
+    } else if (d[1] == '01') {
       d[1] = 'ม.ค';
-    }
-    else if (d[1] == '02') {
+    } else if (d[1] == '02') {
       d[1] = 'ก.พ';
-    }
-    else if (d[1] == '03') {
+    } else if (d[1] == '03') {
       d[1] = 'มี.ค';
     }
-    
+
     d[2] = parseInt(d[2]) + 543;
     // this.dateForm = d.reverse().join(' ');
     return this.dateForm;
