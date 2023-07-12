@@ -262,7 +262,34 @@ export class ProfileComponent implements OnInit {
       d[1] = 'พ.ค';
     } else if (d[1] == '06') {
       d[1] = 'มิ.ย';
+    } else if (d[1] == '07') {
+      d[1] = 'ก.ค';
     }
+    else if (d[1] == '08') {
+      d[1] = 'ส.ค';
+    }
+    else if (d[1] == '09') {
+      d[1] = 'ก.ย';
+    }
+    else if (d[1] == '10') {
+      d[1] = 'ต.ค';
+    }
+    else if (d[1] == '06') {
+      d[1] = 'มิ.ย';
+    }
+    else if (d[1] == '06') {
+      d[1] = 'มิ.ย';
+    }
+    else if (d[1] == '06') {
+      d[1] = 'มิ.ย';
+    }
+    else if (d[1] == '06') {
+      d[1] = 'มิ.ย';
+    }
+    else if (d[1] == '06') {
+      d[1] = 'มิ.ย';
+    }
+    
     d[0] = parseInt(d[0]) + 543;
     this.dateForm = d.reverse().join(' ');
     return this.dateForm;
