@@ -81,7 +81,7 @@ export class JoinEventComponent implements OnInit {
     const { date } = this.myForm.value;
     if (date !== null || date == '') {
       console.warn('old',date);
-      this.replace_date(date)
+      date == this.replace_date(date)
 
       this.eventService
         .join_activity(
