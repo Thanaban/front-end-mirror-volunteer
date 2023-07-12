@@ -274,20 +274,20 @@ export class ProfileComponent implements OnInit {
     else if (d[1] == '10') {
       d[1] = 'ต.ค';
     }
-    else if (d[1] == '06') {
-      d[1] = 'มิ.ย';
+    else if (d[1] == '11') {
+      d[1] = 'พ.ย';
     }
-    else if (d[1] == '06') {
-      d[1] = 'มิ.ย';
+    else if (d[1] == '12') {
+      d[1] = 'ธ.ค';
     }
-    else if (d[1] == '06') {
-      d[1] = 'มิ.ย';
+    else if (d[1] == '01') {
+      d[1] = 'ม.ค';
     }
-    else if (d[1] == '06') {
-      d[1] = 'มิ.ย';
+    else if (d[1] == '02') {
+      d[1] = 'ก.พ';
     }
-    else if (d[1] == '06') {
-      d[1] = 'มิ.ย';
+    else if (d[1] == '03') {
+      d[1] = 'มี.ค';
     }
     
     d[0] = parseInt(d[0]) + 543;
