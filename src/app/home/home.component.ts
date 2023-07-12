@@ -32,7 +32,6 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (response) => {
           this.allUser = response;
-          console.warn('result', this.allUser.received_hours.sort());
         },
         (error) => {
           console.error('Error occurred:', error);
