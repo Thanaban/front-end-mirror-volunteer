@@ -21,7 +21,7 @@ export class EventService {
   join_activity(
     activityId: number,
     userId: number,
-    date: Date
+    date: string
   ): Observable<any> {
     console.warn(httpOptions);
     return this.http.post(

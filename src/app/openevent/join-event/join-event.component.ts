@@ -88,7 +88,20 @@ export class JoinEventComponent implements OnInit {
       console.warn('old', date);
 
       const newDate = new Date(date);
-      const formattedDate = date.toUTCString();
+      
+
+      const options: Intl.DateTimeFormatOptions = {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        timeZone: "UTC",
+      };
+      
+      const formattedDate  = newDate.toLocaleString("en-US", options);
 
       this.eventService
         .join_activity(
