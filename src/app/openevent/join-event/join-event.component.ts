@@ -95,6 +95,7 @@ export class JoinEventComponent implements OnInit {
               showConfirmButton: false,
               timer: 1500,
             }).then(() => {
+              console.warn(date)
               this.dialog.closeAll(); // Close the dialog
             });
           },
