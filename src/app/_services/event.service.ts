@@ -22,7 +22,8 @@ export class EventService {
     activityId: number,
     userId: number,
     date: Date
-  ): Observable<any> { console.warn(httpOptions)
+  ): Observable<any> {
+    console.warn(httpOptions);
     return this.http.post(
       'https://api.volunteerm.online/users/dateAc2',
       {
@@ -32,7 +33,6 @@ export class EventService {
       },
       httpOptions
     );
-    
   }
 
   cancel_activity(
@@ -177,10 +177,10 @@ export class EventService {
       'https://api.volunteerm.online/activities/notify_user',
       {
         id,
-      }
+      },
+      httpOptions
     );
   }
-
 
   remove_user_from_useractivity(
     userId: number,
