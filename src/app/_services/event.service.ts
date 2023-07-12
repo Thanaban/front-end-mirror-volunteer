@@ -172,6 +172,16 @@ export class EventService {
     );
   }
 
+  notifyUser(id: number): Observable<any> {
+    return this.http.post(
+      'https://api.volunteerm.online/activities/notify_user',
+      {
+        id,
+      }
+    );
+  }
+
+
   remove_user_from_useractivity(
     userId: number,
     userActivityId: number
