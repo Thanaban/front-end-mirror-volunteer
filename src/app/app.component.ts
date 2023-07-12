@@ -78,12 +78,12 @@ export class AppComponent {
           console.warn(data);
         });
 
-      this.eventService.notifyUser(this.currentUser.id).subscribe({
-        next: (data) => {
-          this.eventTomorrow = data;
-          console.warn(data);
-        },
-      });
+      // this.eventService.notifyUser(this.currentUser.id).subscribe({
+      //   next: (data) => {
+      //     this.eventTomorrow = data;
+      //     console.warn(data);
+      //   },
+      // });
 
       for (let i = 0; i < this.eventTomorrow.length; i++) {
         for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
@@ -92,6 +92,7 @@ export class AppComponent {
             this.eventTomorrow[i].date = this.con_date(
               this.eventTomorrow[i].date
             );
+            
 
             this.eventService
               .get_useractivity_by_id(this.eventTomorrow[i].id)
@@ -102,12 +103,13 @@ export class AppComponent {
                   console.warn('ssss', this.tettte.date);
                   this.listUserActivityTomorrow.push(this.tettte);
                   let dad = this.listUserActivityTomorrow;
-                  console.warn('uuuuu',this.listUserActivityTomorrow)
+                  console.warn('uuuuu', this.listUserActivityTomorrow);
                 },
               });
           }
         }
       }
+      console.warn('uuuuu',this.listUserActivityTomorrow)
 
       // this.http
       //   .post(
