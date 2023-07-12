@@ -98,7 +98,7 @@ export class JoinEventComponent implements OnInit {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
-        timeZone: "UTC",
+        timeZone: "Asia/Bangkok",
       };
       
       const formattedDate  = newDate.toLocaleString("en-US", options);
