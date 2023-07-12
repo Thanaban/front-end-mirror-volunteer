@@ -172,11 +172,11 @@ export class EventService {
     );
   }
 
-  notifyUser(id: number): Observable<any> {
+  notifyUser(userId: number): Observable<any> {
     return this.http.post(
       'https://api.volunteerm.online/activities/notify_user',
       {
-        id,
+        userId,
       },
       httpOptions
     );
