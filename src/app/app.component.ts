@@ -13,6 +13,7 @@ import { readFileSync } from 'fs';
 import { BodyParser } from 'body-parser';
 import { Socket } from 'socket.io';
 import { EventService } from './_services/event.service';
+import { data } from 'cypress/types/jquery';
 
 @Component({
   selector: 'app-root',
@@ -70,12 +71,19 @@ export class AppComponent {
           }
         });
 
-      this.eventService.notifyUser(this.currentUser.id).subscribe({
-        next: (data) => {
+        this.http.get('https://api.volunteerm.online/activities/notify_user').subscribe((data) =>{
           this.eventTomorrow = data;
           console.warn(data);
-        },
-      });
+        })
+
+      // this.eventService.notifyUser(this.currentUser.id).subscribe({
+      //   next: (data) => {
+      //     this.eventTomorrow = data;
+      //     console.warn(data);
+      //   },
+      // });
+
+
 
       // this.http
       //   .post(
