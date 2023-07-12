@@ -77,9 +77,9 @@ export class AppComponent {
           this.eventTomorrow = data;
           console.warn(data);
           for (let i = 0; i < this.eventTomorrow.length; i++) {
-            console.warn(i);
+            console.warn('i',i);
             for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
-              console.warn(j);
+              console.warn('j',j);
               if ((this.eventTomorrow[i].userId[j] = this.currentUser.id)) {
                 this.userActivityTomorrow = this.userActivityTomorrow + 1;
                 this.eventTomorrow[i].date = this.con_date(
