@@ -90,8 +90,12 @@ export class AppComponent {
   }
 
   readNoti(x: number) {
-    this.eventService.read_notify(x);
-    console.warn('asff',this.eventTomorrow)
+    this.eventService.read_notify(x).subscribe({
+      next: (data) => {
+        console.warn('asff', this.eventTomorrow);
+      },
+    });
+
     this.router.navigate(['/profile']);
   }
 
