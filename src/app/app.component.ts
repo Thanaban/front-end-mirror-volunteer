@@ -77,7 +77,7 @@ export class AppComponent {
           this.eventTomorrow = data;
           console.warn(data);
           for (let i = 0; i < this.eventTomorrow.length; i++) {
-            console.warn('i lenght', this.eventTomorrow.length);
+            console.warn('i lenght', this.eventTomorrow[i].userId.length);
             console.warn('i', i);
             for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
               console.warn('j', j);
