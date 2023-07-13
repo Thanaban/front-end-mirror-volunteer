@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DetailActivityComponent } from './detail-activity/detail-activity.component';
 import { PostCommentComponent } from './post-comment/post-comment.component';
 import { CancelEventConfirmComponent } from './cancel-event-confirm/cancel-event-confirm.component';
-import Swal,{ SweetAlertResult,SweetAlertOptions    } from 'sweetalert2';
+import Swal, { SweetAlertResult, SweetAlertOptions } from 'sweetalert2';
 interface ValidatorFn {
   (value: string): string | null;
 }
@@ -22,7 +22,6 @@ import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
 import { CertificateComponent } from './certificate/certificate.component';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -30,7 +29,6 @@ import { CertificateComponent } from './certificate/certificate.component';
 })
 export class ProfileComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  ;
   tabs: number = 0;
 
   public C1: User_show[] = [];
@@ -52,7 +50,6 @@ export class ProfileComponent implements OnInit {
   dateForm: any;
   month: any;
   certi = false;
-  
 
   constructor(
     private http: HttpClient,
@@ -61,7 +58,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) {}
-    
+
   private httpOptions: any;
 
   ngOnInit(): void {
@@ -91,10 +88,10 @@ export class ProfileComponent implements OnInit {
     const initialPageEvent = { pageIndex: 0, pageSize: 3 } as PageEvent;
   }
 
-  cer(currentUser:string,currentActivityName:string){
+  cer(currentUser: string, currentActivityName: string) {
     let data = {
       currentUser,
-      currentActivityName
+      currentActivityName,
     };
     localStorage.setItem('CERTI', JSON.stringify(data));
     this.router.navigate(['/certificate']);
@@ -268,32 +265,24 @@ export class ProfileComponent implements OnInit {
       d[1] = 'มิ.ย';
     } else if (d[1] == '07') {
       d[1] = 'ก.ค';
-    }
-    else if (d[1] == '08') {
+    } else if (d[1] == '08') {
       d[1] = 'ส.ค';
-    }
-    else if (d[1] == '09') {
+    } else if (d[1] == '09') {
       d[1] = 'ก.ย';
-    }
-    else if (d[1] == '10') {
+    } else if (d[1] == '10') {
       d[1] = 'ต.ค';
-    }
-    else if (d[1] == '11') {
+    } else if (d[1] == '11') {
       d[1] = 'พ.ย';
-    }
-    else if (d[1] == '12') {
+    } else if (d[1] == '12') {
       d[1] = 'ธ.ค';
-    }
-    else if (d[1] == '01') {
+    } else if (d[1] == '01') {
       d[1] = 'ม.ค';
-    }
-    else if (d[1] == '02') {
+    } else if (d[1] == '02') {
       d[1] = 'ก.พ';
-    }
-    else if (d[1] == '03') {
+    } else if (d[1] == '03') {
       d[1] = 'มี.ค';
     }
-    
+
     d[0] = parseInt(d[0]) + 543;
     this.dateForm = d.reverse().join(' ');
     return this.dateForm;
@@ -380,8 +369,6 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem('EVENT', JSON.stringify(data));
   }
 
-  
-
   async openDialogRating(
     currentUserID: number,
     currentActivityId: number,
@@ -395,7 +382,7 @@ export class ProfileComponent implements OnInit {
         '2': '2 ดาว',
         '3': '3 ดาว',
         '4': '4 ดาว',
-        '5': '5 ดาว'
+        '5': '5 ดาว',
       },
       inputPlaceholder: 'Select a rating',
       showCancelButton: true,
@@ -407,15 +394,20 @@ export class ProfileComponent implements OnInit {
             resolve('You need to select a rating'); // Return an error message if the value is invalid
           }
         });
-      }
+      },
     });
-  
+
     if (rating) {
+      const numericRating = Number(rating);
+      this.eventService.post_ratings(
+        Number(rating),
+        currentUserID,
+        currentActivityId,
+        currentUserActivityId
+      );
       Swal.fire(`You selected: ${rating}`);
     }
   }
-
-  
 
   reloadPage(): void {
     window.location.reload();

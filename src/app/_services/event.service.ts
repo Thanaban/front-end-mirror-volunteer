@@ -148,7 +148,7 @@ export class EventService {
     ratings: number,
     userId: number,
     activityId: number,
-    userActivityId: string
+    userActivityId: number
   ): Observable<any> {
     return this.http.post(
       'https://api.volunteerm.online/users/post_ratings',
