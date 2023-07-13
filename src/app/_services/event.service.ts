@@ -235,4 +235,14 @@ export class EventService {
       httpOptions
     );
   }
+
+  read_notify(id: number): Observable<any> {
+    return this.http.patch(
+      'https://api.volunteerm.online/users/read_notify',
+      {
+        id,
+      },
+      httpOptions
+    );
+  }
 }

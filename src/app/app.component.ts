@@ -76,7 +76,7 @@ export class AppComponent {
         .subscribe((data) => {
           this.eventTomorrow = data;
           this.userActivityTomorrow = this.eventTomorrow.length;
-          console.warn(data);
+
           for (let i = 0; i < this.eventTomorrow.length; i++) {
             this.eventTomorrow[i].date = this.con_date(
               this.eventTomorrow[i].date
@@ -84,72 +84,15 @@ export class AppComponent {
             this.eventTomorrow[i].detail =
               'คุณมีกิจกรรม อาสาจัดเต็ม ที่ต้องทำในวันที่ ' +
               this.eventTomorrow[i].date;
-            console.warn('i lenght', this.eventTomorrow[i].detail);
-
-            console.warn('i lenght', this.eventTomorrow[i].userId);
-            console.warn('i', i);
-
-            // this.eventService
-            //   .get_one_activity(this.eventTomorrow[i].activityId)
-            //   .subscribe({
-            //     next: (data) => {
-            //       console.warn('data', data);
-            //       this.eventTomorrow[i].push(data.activity_name)
-            //       this.eventTomorrow[i].date = this.con_date(this.eventTomorrow[i].date)
-            //       console.warn('ssss', this.eventTomorrow[i].date);
-            //       data.date = this.con_date(data.date);
-            //       this.tettte = data;
-            //       console.warn('ssss', this.tettte.date);
-            //       this.listUserActivityTomorrow.push(this.tettte);
-            //       let dad = this.listUserActivityTomorrow;
-            //       console.warn('uuuuu', this.listUserActivityTomorrow);
-            //     },
-            //   });
-            // for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
-            //   console.warn('j', j);
-            //   if ((this.eventTomorrow[i].userId[j] = this.currentUser.id)) {
-            //     this.userActivityTomorrow = this.userActivityTomorrow + 1;
-            //     this.eventTomorrow[i].date = this.con_date(
-            //       this.eventTomorrow[i].date
-            //     );
-            //     console.warn('asagg');
-
-            //   this.eventService
-            //     .get_useractivity_by_id(this.eventTomorrow[i].id)
-            //     .subscribe({
-            //       next: (data) => {
-            //         data.date = this.con_date(data.date);
-            //         this.tettte = data;
-            //         console.warn('ssss', this.tettte.date);
-            //         this.listUserActivityTomorrow.push(this.tettte);
-            //         let dad = this.listUserActivityTomorrow;
-            //         console.warn('uuuuu', this.listUserActivityTomorrow);
-            //       },
-            //     });
-            // // }
-            // }
           }
         });
-
-      // this.eventService.notifyUser(this.currentUser.id).subscribe({
-      //   next: (data) => {
-      //     this.eventTomorrow = data;
-      //     console.warn(data);
-      //   },
-      // });
-
-      // this.http
-      //   .post(
-      //     'https://api.volunteerm.online/activities/notify_user',this.currentUser.id
-      //   )
-      //   .subscribe((data) => {
-      //     this.eventTomorrow = data;
-      //     console.warn(data)
     }
+  }
 
-    // this.eventBusSub = this.eventBusService.on('logout', () => {
-    //   this.logout();
-    // });
+  readNoti(x: number) {
+    this.eventService.read_notify(x);
+    console.warn(this.eventTomorrow)
+    this.router.navigate(['/profile']);
   }
 
   con_date(d: any) {
