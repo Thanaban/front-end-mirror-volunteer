@@ -387,30 +387,28 @@ export class ProfileComponent implements OnInit {
     currentActivityId: number,
     currentUserActivityId: number
   ) {
-    const ratingOptions = [
-      { value: 1, label: '1 star' },
-      { value: 2, label: '2 stars' },
-      { value: 3, label: '3 stars' },
-      { value: 4, label: '4 stars' },
-      { value: 5, label: '5 stars' },
-    ];
-  
-    const options: SweetAlertOptions = {
-      title: 'Select color',
-      input: 'radio',
-      inputOptions: ratingOptions,
-      inputValidator: (value: string): string | null => {
-        if (!value) {
-          return 'You need to choose something!';
-        }
-        return null; // Validation passed
+    const { value: rating } = await Swal.fire({
+      title: 'Rate the activity',
+      input: 'number',
+      inputAttributes: {
+        min: '1',
+        max: '5',
+        step: '1'
       },
-    };
+      inputValidator: (value) => {
+        return new Promise((resolve) => {
+          const numRating = Number(value);
+          if (numRating >= 1 && numRating <= 5) {
+            resolve(null); // Return null if the value is valid
+          } else {
+            resolve('Please enter a rating between 1 and 5'); // Return an error message if the value is invalid
+          }
+        });
+      }
+    });
   
-    const { value: color }: SweetAlertResult<number> = await Swal.fire(options);
-  
-    if (color) {
-      Swal.fire({ html: `You selected: ${color}` });
+    if (rating) {
+      Swal.fire(`You selected: ${rating}`);
     }
   }
 

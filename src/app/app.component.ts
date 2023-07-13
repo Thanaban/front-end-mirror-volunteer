@@ -91,7 +91,7 @@ export class AppComponent {
 
   readNoti(x: number) {
     this.eventService.read_notify(x);
-    console.warn(this.eventTomorrow)
+    console.warn('asff',this.eventTomorrow)
     this.router.navigate(['/profile']);
   }
 
