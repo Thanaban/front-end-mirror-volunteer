@@ -70,10 +70,10 @@
       <mat-menu #notifications="matMenu">
         <button
           mat-menu-item
-          *ngFor="let x of listUserActivityTomorrow"
+          *ngFor="let x of eventTomorrow"
           (click)="notification_bell()"
         >
-          คุณมีกิจกรรม{{ x.userActivityName }} ที่ลงทะเบียนไว้
+          คุณมีกิจกรรมที่ลงทะเบียนไว้
           กิจกรรมเริ่มวันที่
           {{ x.date }}
           <mat-divider></mat-divider>
