@@ -80,7 +80,7 @@ export class AppComponent {
             console.warn('i lenght', this.eventTomorrow[i].userId);
             console.warn('i', i);
             this.eventService
-              .get_useractivity_by_id(this.eventTomorrow[i].id)
+              .get_useractivity_by_id(this.eventTomorrow[i].activityId)
               .subscribe({
                 next: (data) => {
                   console.warn('data', data);
