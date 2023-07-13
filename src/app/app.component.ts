@@ -79,29 +79,41 @@ export class AppComponent {
           for (let i = 0; i < this.eventTomorrow.length; i++) {
             console.warn('i lenght', this.eventTomorrow[i].userId);
             console.warn('i', i);
-            for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
-              console.warn('j', j);
-              if ((this.eventTomorrow[i].userId[j] = this.currentUser.id)) {
-                this.userActivityTomorrow = this.userActivityTomorrow + 1;
-                this.eventTomorrow[i].date = this.con_date(
-                  this.eventTomorrow[i].date
-                );
-                console.warn('asagg');
+            this.eventService
+              .get_useractivity_by_id(this.eventTomorrow[i].id)
+              .subscribe({
+                next: (data) => {
+                  data.date = this.con_date(data.date);
+                  this.tettte = data;
+                  console.warn('ssss', this.tettte.date);
+                  this.listUserActivityTomorrow.push(this.tettte);
+                  let dad = this.listUserActivityTomorrow;
+                  console.warn('uuuuu', this.listUserActivityTomorrow);
+                },
+              });
+            // for (let j = 0; j < this.eventTomorrow[i].userId.length; j++) {
+            //   console.warn('j', j);
+            //   if ((this.eventTomorrow[i].userId[j] = this.currentUser.id)) {
+            //     this.userActivityTomorrow = this.userActivityTomorrow + 1;
+            //     this.eventTomorrow[i].date = this.con_date(
+            //       this.eventTomorrow[i].date
+            //     );
+            //     console.warn('asagg');
 
-                this.eventService
-                  .get_useractivity_by_id(this.eventTomorrow[i].id)
-                  .subscribe({
-                    next: (data) => {
-                      data.date = this.con_date(data.date);
-                      this.tettte = data;
-                      console.warn('ssss', this.tettte.date);
-                      this.listUserActivityTomorrow.push(this.tettte);
-                      let dad = this.listUserActivityTomorrow;
-                      console.warn('uuuuu', this.listUserActivityTomorrow);
-                    },
-                  });
-              }
-            }
+            //   this.eventService
+            //     .get_useractivity_by_id(this.eventTomorrow[i].id)
+            //     .subscribe({
+            //       next: (data) => {
+            //         data.date = this.con_date(data.date);
+            //         this.tettte = data;
+            //         console.warn('ssss', this.tettte.date);
+            //         this.listUserActivityTomorrow.push(this.tettte);
+            //         let dad = this.listUserActivityTomorrow;
+            //         console.warn('uuuuu', this.listUserActivityTomorrow);
+            //       },
+            //     });
+            // // }
+            // }
           }
         });
 
