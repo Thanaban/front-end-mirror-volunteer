@@ -27,18 +27,18 @@ export class PostCommentComponent implements OnInit {
   onSubmit(): void {
     const { comment } = this.form;
 
-    this.eventService
-      .post_comment(
-        this.comment_event.currentUserID,
-        this.comment_event.currentUserActivityId,
-        this.comment_event.currentActivityId,
-        comment
-      )
-      .subscribe({
-        next: (test) => {
-          console.log(test, comment);
-        },
-      });
+    // this.eventService
+    //   .post_comment(
+    //     this.comment_event.currentUserID,
+    //     this.comment_event.currentUserActivityId,
+    //     this.comment_event.currentActivityId,
+    //     comment
+    //   )
+    //   .subscribe({
+    //     next: (test) => {
+    //       console.log(test, comment);
+    //     },
+    //   });
 
     
   }
