@@ -83,6 +83,7 @@ export class AppComponent {
               .get_useractivity_by_id(this.eventTomorrow[i].id)
               .subscribe({
                 next: (data) => {
+                  console.warn('data', data);
                   data.date = this.con_date(data.date);
                   this.tettte = data;
                   console.warn('ssss', this.tettte.date);
