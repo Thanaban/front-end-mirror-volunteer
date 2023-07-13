@@ -28,7 +28,7 @@ export class CertificateComponent {
         const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
 
         doc.addImage(imgData, 'PNG', 0, -10, pdfWidth, pdfHeight);
-        doc.save('example.pdf');
+        doc.save('certificate.pdf');
       });
     } else {
       console.log('Element not found');
