@@ -367,12 +367,11 @@
                 <mat-button-toggle
                   class="comment-button"
                   (click)="
-                    openDialogComment(
-                      x.id,
-                      x.activityId,
-                      x.userActivityName,
-                      currentUser.id,
-                      currentUser.name
+                  openDialogRating(
+                    currentUser.id,
+                    x.activityId,
+                      x.id
+                      
                     )
                   "
                   ><mat-icon>insert_comment</mat-icon>

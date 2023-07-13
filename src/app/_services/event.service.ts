@@ -144,20 +144,19 @@ export class EventService {
     );
   }
 
-  post_comment(
+  post_ratings(
+    ratings: number,
     userId: number,
-    userActivityId: number,
     activityId: number,
-
-    comment_detail: string
+    userActivityId: string
   ): Observable<any> {
     return this.http.post(
-      'https://api.volunteerm.online/users/post_comment',
+      'https://api.volunteerm.online/users/post_ratings',
       {
+        ratings,
         userId,
-        userActivityId,
         activityId,
-        comment_detail,
+        userActivityId,
       },
       httpOptions
     );

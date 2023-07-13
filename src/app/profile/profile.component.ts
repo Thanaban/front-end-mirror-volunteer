@@ -9,7 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { DetailActivityComponent } from './detail-activity/detail-activity.component';
 import { PostCommentComponent } from './post-comment/post-comment.component';
 import { CancelEventConfirmComponent } from './cancel-event-confirm/cancel-event-confirm.component';
-import Swal from 'sweetalert2';
+import Swal,{ SweetAlertResult,SweetAlertOptions    } from 'sweetalert2';
+interface ValidatorFn {
+  (value: string): string | null;
+}
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { userActivity_show } from './user-activity-request-get';
 import { result } from 'cypress/types/lodash';
@@ -49,6 +52,7 @@ export class ProfileComponent implements OnInit {
   dateForm: any;
   month: any;
   certi = false;
+  
 
   constructor(
     private http: HttpClient,
@@ -57,7 +61,7 @@ export class ProfileComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog
   ) {}
-
+    
   private httpOptions: any;
 
   ngOnInit(): void {
@@ -376,66 +380,38 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem('EVENT', JSON.stringify(data));
   }
 
-  openDialogComment(
-    currentUserActivityId: number,
-    currentActivityId: number,
-    currentActivityName: string,
+  
+
+  async openDialogRating(
     currentUserID: number,
-    currentUserName: string
+    currentActivityId: number,
+    currentUserActivityId: number
   ) {
-    // this.dialog.open(PostCommentComponent);
-
-    Swal.fire({
-      title: 'แสดงความคิดเห็น',
-      input: 'textarea',
-
-      inputPlaceholder: 'เขียนความคิดเห็นของท่าน',
-      inputValidator: (value) => {
+    const ratingOptions = [
+      { value: 1, label: '1 star' },
+      { value: 2, label: '2 stars' },
+      { value: 3, label: '3 stars' },
+      { value: 4, label: '4 stars' },
+      { value: 5, label: '5 stars' },
+    ];
+  
+    const options: SweetAlertOptions = {
+      title: 'Select color',
+      input: 'radio',
+      inputOptions: ratingOptions,
+      inputValidator: (value: string): string | null => {
         if (!value) {
-          return 'โปรดกรอกความคิดเห็น';
+          return 'You need to choose something!';
         }
-        return null;
+        return null; // Validation passed
       },
-      showCancelButton: true,
-      confirmButtonText: 'โพสต์',
-      cancelButtonText: 'ยกเลิก',
-      confirmButtonColor: '#27a644',
-      cancelButtonColor: '#d33',
-      confirmButtonAriaLabel: 'Thumbs up, great!',
-      cancelButtonAriaLabel: 'Thumbs down',
-      focusConfirm: false,
-      allowOutsideClick: false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        const { value: comment } = result;
-        this.eventService
-          .post_comment(
-            currentUserID,
-            currentUserActivityId,
-            currentActivityId,
-            comment
-          )
-          .subscribe({
-            next: (data) => {
-              Swal.fire({
-                icon: 'success',
-                title: 'โพสต์คความคิดเห็นสำเร็จ',
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            },
-          });
-      }
-    });
-
-    let data = {
-      currentUserActivityId,
-      currentActivityId,
-      currentActivityName,
-      currentUserID,
-      currentUserName,
     };
-    localStorage.setItem('EVENT', JSON.stringify(data));
+  
+    const { value: color }: SweetAlertResult<number> = await Swal.fire(options);
+  
+    if (color) {
+      Swal.fire({ html: `You selected: ${color}` });
+    }
   }
 
   
