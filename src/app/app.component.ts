@@ -92,7 +92,7 @@ export class AppComponent {
   readNoti(x: number) {
     this.eventService.read_notify(x).subscribe({
       next: (data) => {
-        console.warn('asff', this.eventTomorrow);
+        console.warn('asff', this.eventTomorrow,data);
       },
     });
 

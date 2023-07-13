@@ -391,7 +391,7 @@ export class ProfileComponent implements OnInit {
       title: 'Rate the activity',
       input: 'select',
       inputOptions: {
-        '1': '1',
+        '1': '1 x',
         '2': '2',
         '3': '3',
         '4': '4',
