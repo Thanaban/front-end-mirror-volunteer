@@ -197,28 +197,16 @@
 .gray-star {
   color: gray;
 }
+
+
 .fb-share-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #4267B2;
-  color: white;
-  padding: 10px;
-  border-radius: 4px;
   cursor: pointer;
-}
-
-.facebook-button-text {
-  font-size: 16px;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
-.facebook-button-text:hover {
-  text-decoration: underline;
 }
 
 .facebook-icon {
   font-size: 40px;
-  color: white;
+  color: #4267B2;
 }
