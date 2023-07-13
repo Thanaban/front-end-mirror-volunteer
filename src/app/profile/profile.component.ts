@@ -387,21 +387,24 @@ export class ProfileComponent implements OnInit {
     currentActivityId: number,
     currentUserActivityId: number
   ) {
-    const { value: rating } = await Swal.fire({
+    const { value: rating } = await Swal.fire<number>({
       title: 'Rate the activity',
-      input: 'number',
-      inputAttributes: {
-        min: '1',
-        max: '5',
-        step: '1'
+      input: 'select',
+      inputOptions: {
+        '1': '1',
+        '2': '2',
+        '3': '3',
+        '4': '4',
+        '5': '5'
       },
+      inputPlaceholder: 'Select a rating',
+      showCancelButton: true,
       inputValidator: (value) => {
-        return new Promise((resolve) => {
-          const numRating = Number(value);
-          if (numRating >= 1 && numRating <= 5) {
+        return new Promise<string | null>((resolve) => {
+          if (value) {
             resolve(null); // Return null if the value is valid
           } else {
-            resolve('Please enter a rating between 1 and 5'); // Return an error message if the value is invalid
+            resolve('You need to select a rating'); // Return an error message if the value is invalid
           }
         });
       }
