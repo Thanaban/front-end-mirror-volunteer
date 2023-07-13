@@ -1,13 +1,16 @@
 <head>
-  <meta property="og:url" content="https://front-end-mirror-volunteer.netlify.app/openevent">
-  <meta property="og:title" content="Your Post Title">
-  <meta property="og:description" content="Your Post Description">
-  <meta property="og:image" content="https://example.com/your-image.jpg">
-  <meta property="og:image:alt" content="Image Alt Text">
+  <meta
+    property="og:url"
+    content="https://front-end-mirror-volunteer.netlify.app/openevent"
+  />
+  <meta property="og:title" content="Your Post Title" />
+  <meta property="og:description" content="Your Post Description" />
+  <meta property="og:image" content="https://example.com/your-image.jpg" />
+  <meta property="og:image:alt" content="Image Alt Text" />
 </head>
 <div class="wrapper" style="margin-top: 2%">
   <div *ngFor="let event of eventlist; let i = index">
-    <div class="event-box">
+    <div class="event-box" *ngIf="event">
       <div class="event-box-left">
         <div class="img-box">
           <img src="../../assets/image/14.jpg" alt="Image" class="image" />
@@ -23,16 +26,13 @@
               font-weight: bold;
             "
           >
-            กิจกรรม : {{ event.activity_name }} <br />
-            <ng-container *ngFor="let star of MaxratingValue; let i = index">
-              <mat-icon
-                [ngClass]="{
-                  'yellow-star': i < ratingValue,
-                  'gray-star': i >= ratingValue
-                }"
-                >star</mat-icon
-              >
-            </ng-container>
+          กิจกรรม: {{ event?.activity_name ?? '' }} <br />
+          <ng-container *ngFor="let star of MaxratingValue; let i = index">
+            <mat-icon [ngClass]="{
+              'yellow-star': i < (event?.rating_point ?? 0),
+              'gray-star': i >= (event?.rating_point ?? 0)
+            }">star</mat-icon>
+          </ng-container>
           </div>
         </div>
         <mat-tab-group

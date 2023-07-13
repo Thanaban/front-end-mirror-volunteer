@@ -40,7 +40,7 @@ export class OpeneventComponent implements OnInit {
   ];
 
   MaxratingValue: number[] = [1, 2, 3, 4, 5];
-  ratingValue: number = 3;
+  ratingValue: number = 0;
 
   panelOpenState = false;
   checklogin = this.status.isLoggedIn;
