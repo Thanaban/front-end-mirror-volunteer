@@ -71,7 +71,7 @@
         <button
           mat-menu-item
           *ngFor="let x of eventTomorrow"
-          (click)="notification_bell()"
+          (click)="readNoti(x.id)"
         >
           {{x.detail}}
           <mat-divider></mat-divider>
