@@ -375,7 +375,7 @@ export class ProfileComponent implements OnInit {
     currentUserActivityId: number
   ) {
     const { value: rating } = await Swal.fire<number>({
-      title: 'Rate the activity',
+      title: 'ให้คะแนนกิจกรรม',
       input: 'select',
       inputOptions: {
         '1': '1 ดาว',
@@ -384,14 +384,14 @@ export class ProfileComponent implements OnInit {
         '4': '4 ดาว',
         '5': '5 ดาว',
       },
-      inputPlaceholder: 'Select a rating',
+      inputPlaceholder: 'เลือกคะแนนที่ต้องการ',
       showCancelButton: true,
       inputValidator: (value) => {
         return new Promise<string | null>((resolve) => {
           if (value) {
             resolve(null); // Return null if the value is valid
           } else {
-            resolve('You need to select a rating'); // Return an error message if the value is invalid
+            resolve('โปรดเลือกคะแนนที่ต้องการ'); // Return an error message if the value is invalid
           }
         });
       },
@@ -406,7 +406,7 @@ export class ProfileComponent implements OnInit {
         currentUserActivityId
       ).subscribe({next: (data) => {
         console.warn(data)
-        Swal.fire(`You selected: ${rating}`);
+        Swal.fire(`ขอบคุณสำหรับการให้คะแนน`);
       }});
       
     }
