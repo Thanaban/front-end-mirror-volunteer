@@ -73,9 +73,7 @@
           *ngFor="let x of eventTomorrow"
           (click)="notification_bell()"
         >
-          คุณมีกิจกรรมที่ลงทะเบียนไว้
-          กิจกรรมเริ่มวันที่
-          {{ con_date(x.date) }}
+          {{x.detail}}
           <mat-divider></mat-divider>
         </button>
       </mat-menu>
