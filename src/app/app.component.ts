@@ -153,37 +153,41 @@ export class AppComponent {
   }
 
   con_date(d: any) {
-    d = d.split('-');
-    this.month = d[1];
-    if (d[1] == '04') {
-      d[1] = 'เม.ย';
-    } else if (d[1] == '05') {
-      d[1] = 'พ.ค';
-    } else if (d[1] == '06') {
-      d[1] = 'มิ.ย';
-    } else if (d[1] == '07') {
-      d[1] = 'ก.ค';
-    } else if (d[1] == '08') {
-      d[1] = 'ส.ค';
-    } else if (d[1] == '09') {
-      d[1] = 'ก.ย';
-    } else if (d[1] == '10') {
-      d[1] = 'ต.ค';
-    } else if (d[1] == '11') {
-      d[1] = 'พ.ย';
-    } else if (d[1] == '12') {
-      d[1] = 'ธ.ค';
-    } else if (d[1] == '01') {
-      d[1] = 'ม.ค';
-    } else if (d[1] == '02') {
-      d[1] = 'ก.พ';
-    } else if (d[1] == '03') {
-      d[1] = 'มี.ค';
+    if (typeof d !== 'string') {
+      return ''; // or handle the error in an appropriate way
     }
-
-    d[2] = parseInt(d[2]) + 543;
-    // this.dateForm = d.reverse().join(' ');
-    return this.dateForm;
+    
+    const dateParts = d.split('-');
+    const month = dateParts[1];
+  
+    if (month === '04') {
+      dateParts[1] = 'เม.ย';
+    } else if (month === '05') {
+      dateParts[1] = 'พ.ค';
+    } else if (month === '06') {
+      dateParts[1] = 'มิ.ย';
+    } else if (month === '07') {
+      dateParts[1] = 'ก.ค';
+    } else if (month === '08') {
+      dateParts[1] = 'ส.ค';
+    } else if (month === '09') {
+      dateParts[1] = 'ก.ย';
+    } else if (month === '10') {
+      dateParts[1] = 'ต.ค';
+    } else if (month === '11') {
+      dateParts[1] = 'พ.ย';
+    } else if (month === '12') {
+      dateParts[1] = 'ธ.ค';
+    } else if (month === '01') {
+      dateParts[1] = 'ม.ค';
+    } else if (month === '02') {
+      dateParts[1] = 'ก.พ';
+    } else if (month === '03') {
+      dateParts[1] = 'มี.ค';
+    }
+  
+    dateParts[2] = (parseInt(dateParts[2]) + 543).toString();
+    return dateParts.reverse().join(' ');
   }
 
   notification_bell(): void {
