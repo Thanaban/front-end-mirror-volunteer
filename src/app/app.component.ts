@@ -181,7 +181,7 @@ export class AppComponent {
       d[1] = 'มี.ค';
     }
 
-    d[2] = parseInt(d[2]) + 543;
+    d[2] = parseInt(d[0]) + 543;
     this.dateForm = d.reverse().join(' ');
     return this.dateForm;
   }
