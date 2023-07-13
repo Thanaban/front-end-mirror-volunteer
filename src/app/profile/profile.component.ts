@@ -400,12 +400,15 @@ export class ProfileComponent implements OnInit {
     if (rating) {
       const numericRating = Number(rating);
       this.eventService.post_ratings(
-        Number(rating),
+        numericRating,
         currentUserID,
         currentActivityId,
         currentUserActivityId
-      );
-      Swal.fire(`You selected: ${rating}`);
+      ).subscribe({next: (data) => {
+        console.warn(data)
+        Swal.fire(`You selected: ${rating}`);
+      }});
+      
     }
   }
 
