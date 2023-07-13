@@ -80,10 +80,13 @@ export class AppComponent {
             console.warn('i lenght', this.eventTomorrow[i].userId);
             console.warn('i', i);
             this.eventService
-              .get_useractivity_by_id(this.eventTomorrow[i].activityId)
+              .get_one_activity(this.eventTomorrow[i].activityId)
               .subscribe({
                 next: (data) => {
                   console.warn('data', data);
+                  this.eventTomorrow[i].push(data.activity_name)
+                  this.eventTomorrow[i].date = this.con_date(this.eventTomorrow[i].date)
+                  console.warn('ssss', this.eventTomorrow[i].date);
                   data.date = this.con_date(data.date);
                   this.tettte = data;
                   console.warn('ssss', this.tettte.date);
