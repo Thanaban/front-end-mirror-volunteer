@@ -199,7 +199,16 @@
               *matRowDef="let row; columns: displayedColumns"
             ></tr></table
         ></mat-tab>
-        <mat-tab label="กิจกรรมที่เสร็จสิ้น"><table mat-table [dataSource]="dataSourceEndActivity" matSort>
+        <mat-tab label="กิจกรรมที่เสร็จสิ้น">
+          <mat-form-field style="width: 100%; margin-top: 2%">
+            <input
+              matInput
+              (keyup)="applyFilterEndActivity($event)"
+              placeholder="ค้นหา"
+              #input
+            />
+          </mat-form-field>
+          <table mat-table [dataSource]="dataSourceEndActivity" matSort>
           <!-- Position Column -->
           <ng-container matColumnDef="date">
             <th

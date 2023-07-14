@@ -38,6 +38,11 @@ export class AdminDashboardComponent implements OnInit {
     this.dataSourceOnGoingActivity.filter = filterValue.trim().toLowerCase();
   }
 
+  applyFilterEndActivity(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceEndActivity.filter = filterValue.trim().toLowerCase();
+  }
+
   constructor(private http: HttpClient, public dialog: MatDialog) {}
 
   ngOnInit(): void {
