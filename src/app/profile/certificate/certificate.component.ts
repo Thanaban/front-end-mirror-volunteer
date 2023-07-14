@@ -94,56 +94,47 @@ export class CertificateComponent {
   </html>
   `;
 
-  try {
-    const pdfDoc = await PDFDocument.create();
-    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-    const page = pdfDoc.addPage();
-    page.setFont(font);
-    page.setFontSize(12);
+    try {
+      const pdfDoc = await PDFDocument.create();
+      const fontBytes = await fetch('path/to/arial-unicode-ms.ttf').then(
+        (res) => res.arrayBuffer()
+      );
+      const font = await pdfDoc.embedFont(fontBytes);
 
-    // Set the font color
-    const fontColor = rgb(0, 0, 0);
+      const page = pdfDoc.addPage();
+      page.setFont(font);
+      page.setFontSize(12);
 
-    // Calculate the width and height of the text box
-    const textWidth = page.getWidth() - 40;
-    const textHeight = page.getHeight() - 40;
+      const fontColor = rgb(0, 0, 0);
+      const textWidth = page.getWidth() - 40;
+      const textHeight = page.getHeight() - 40;
 
-    // Split the HTML content into lines manually
-    const lines = html.split('\n');
+      const lines = html.split('\n');
+      const lineHeight = 20;
+      const numLines = lines.length;
+      const calculatedHeight = numLines * lineHeight;
+      const adjustedTextHeight = textHeight - calculatedHeight;
 
-    // Calculate the height of the text box based on the number of lines
-    const lineHeight = 20;
-    const numLines = lines.length;
-    const calculatedHeight = numLines * lineHeight;
-
-    // Calculate the y position for vertical alignment
-    const adjustedTextHeight = textHeight - calculatedHeight;
-
-    // Draw the HTML content on the PDF page with adjusted height
-    lines.forEach((line, index) => {
-      const y = adjustedTextHeight + index * lineHeight;
-      page.drawText(line, {
-        x: 20,
-        y,
-        maxWidth: textWidth,
-        lineHeight,
-        size: 12,
-        color: fontColor,
+      lines.forEach((line, index) => {
+        const y = adjustedTextHeight + index * lineHeight;
+        page.drawText(line, {
+          x: 20,
+          y,
+          maxWidth: textWidth,
+          lineHeight,
+          size: 12,
+          color: fontColor,
+        });
       });
-    });
 
-    const pdfBytes = await pdfDoc.save();
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      saveAs(blob, 'certificate.pdf');
 
-    // Convert the PDF bytes to a Blob
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-
-    // Save the Blob as a file using FileSaver.js
-    saveAs(blob, 'certificate.pdf');
-
-    console.log('PDF generated successfully!');
-  } catch (error) {
-    console.error('Error generating PDF:', error);
-  }
+      console.log('PDF generated successfully!');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    }
   }
 
   con_date(d: any) {
