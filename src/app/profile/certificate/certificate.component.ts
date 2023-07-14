@@ -16,8 +16,8 @@ export class CertificateComponent {
   certi_data: any;
 
   ngOnInit(): void {
-    // let data: any = localStorage.getItem('CERTI');
-    // this.certi_data = JSON.parse(data);
+    let data: any = localStorage.getItem('CERTI');
+    this.certi_data = JSON.parse(data);
     // console.warn('cer', this.certi_data.currentUser.result.name);
     // const element = document.getElementById('element-to-export');
     // window.scrollTo(0, 0);
