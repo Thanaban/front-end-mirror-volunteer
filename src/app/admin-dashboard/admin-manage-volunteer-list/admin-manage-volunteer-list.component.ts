@@ -89,12 +89,14 @@ export class AdminManageVolunteerListComponent implements OnInit {
           )
           .subscribe({
             next: (data) => {
+              this.get_data()
               console.log('test', data);
               Swal.fire(
                 'Deleted!',
                 'นำอาสา' +name+' ' +lastname+' ออกจากรายชื่อแล้ว',
                 'success'
               );
+
             },
           });
         
