@@ -86,6 +86,7 @@ export class AdminManageEventComponent implements OnInit {
         `<input id="timeline" class="swal2-input large-input" placeholder="Timeline" value="string">`,
       focusConfirm: false,
       customClass: {
+        container: 'swal2-container-custom',
         input: 'swal2-input',
         confirmButton: 'swal2-confirm-button',
         cancelButton: 'swal2-cancel-button',
@@ -207,10 +208,10 @@ export class AdminManageEventComponent implements OnInit {
     });
   
     if (formValues) {
-      Swal.fire(
-        'เพิ่มกิจกรรมสำเร็จ',
-        'success'
-      )
+      Swal.fire({
+        title: 'เพิ่มกิจกรรมสำเร็จ',
+        icon: 'success',
+      });
     }
   }
 

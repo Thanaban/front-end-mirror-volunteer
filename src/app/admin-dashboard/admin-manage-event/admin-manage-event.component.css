@@ -57,3 +57,7 @@
   .large-input {
     width: 400px;
   }
+
+  .swal2-container-custom {
+    width: 70% !important;
+  }
