@@ -13,15 +13,18 @@ import { AdminManageVolunteerListComponent } from './admin-manage-volunteer-list
 export class AdminDashboardComponent implements OnInit {
   eventWaitToStartActivity: any;
   eventOnGoingActivity: any;
+  eventEndActivity: any;
   dateForm: any;
   month: any;
   afterMonth: string = '';
   userActivityWaitToStart = [] as any;
   userActivityOnGoing = [] as any;
+  userActivityEnd = [] as any;
 
   displayedColumns: string[] = ['date', 'gender', 'birthday', 'volunteer'];
   dataSourceWaitToStartActivity = new MatTableDataSource<any>();
   dataSourceOnGoingActivity = new MatTableDataSource<any>();
+  dataSourceEndActivity = new MatTableDataSource<any>();
 
   applyFilterWaitToStartActivity(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -79,6 +82,24 @@ export class AdminDashboardComponent implements OnInit {
       });
   }
 
+  getDataEndActivity() {
+    this.http
+      .get('https://api.volunteerm.online/activities/ended_activity')
+      .subscribe((response3) => {
+        this.eventEndActivity = response3;
+        for (let i = 0; i < this.eventEndActivity.length; i++) {
+          this.eventEndActivity[i].date = this.con_date(
+            this.eventEndActivity[i].date
+          );
+          this.userActivityEnd.push(this.eventEndActivity[i]);
+        }
+        this.dataSourceEndActivity = new MatTableDataSource(
+          this.userActivityEnd
+        );
+      });
+  }
+
+
   con_date(d: any) {
     d = d.split('-');
     this.month = d[1];
@@ -112,4 +133,6 @@ export class AdminDashboardComponent implements OnInit {
     let data = { currentActivityId, currentActivityName, date };
     localStorage.setItem('ADMINEVENT', JSON.stringify(data));
   }
+
+
 }
