@@ -6,7 +6,7 @@ body, html {
 
 @font-face {
     font-family: 'Angsana New';
-    src: url('../../../assets/font/AngsanaNewBoldItalic.ttf');
+    src: url('../../../font/AngsanaNewBoldItalic.ttf');
     /* Add more font formats if available */
   }
 body {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
-import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
-
+import { PDFDocument, rgb, TextAlignment, PDFFont } from 'pdf-lib';
 
 @Component({
   selector: 'app-certificate',
@@ -10,14 +9,12 @@ import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
 })
 export class CertificateComponent implements OnInit {
   certi_data: any;
-  dateForm: any;
-  month: any;
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     let data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
-    this.generatePDF();
+    await this.generatePDF();
   }
 
   async generatePDF(): Promise<void> {
@@ -79,8 +76,11 @@ export class CertificateComponent implements OnInit {
   </html>
     `;
 
+    const fontBytes = await fetch('assets/fonts/AngsanaNew-BoldItalic.ttf').then((res) => res.arrayBuffer());
+    const customFont = await pdfDoc.embedFont(fontBytes) as PDFFont;
+
     const drawTextOptions = {
-      font: await pdfDoc.embedFont(StandardFonts.HelveticaBold),
+      font: customFont,
       size: 12,
       color: rgb(0, 0, 0),
       alignment: TextAlignment.Left,
