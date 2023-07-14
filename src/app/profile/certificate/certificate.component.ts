@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
 import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
 
+
 @Component({
   selector: 'app-certificate',
   templateUrl: './certificate.component.html',

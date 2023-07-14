@@ -10,6 +10,12 @@ body {
   height: 100% !important;
 }
 
+@font-face {
+  font-family: 'Angsana New';
+  src: url('/src/assets/font/AngsanaNewBoldItalic.ttf');
+  /* Add more font formats if available */
+}
+
 .basic-container {
   padding: 5px;
 }

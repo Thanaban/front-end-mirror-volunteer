@@ -3,10 +3,16 @@ body, html {
     margin: 0;
     padding: 0;
 }
+
+@font-face {
+    font-family: 'Angsana New';
+    src: url('../../../assets/font/AngsanaNewBoldItalic.ttf');
+    /* Add more font formats if available */
+  }
 body {
     color: black;
     display: table;
-    font-family: Georgia, serif;
+    font-family: 'Angsana New';
     font-size: 24px;
     text-align: center;
 }
