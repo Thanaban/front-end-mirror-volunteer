@@ -23,35 +23,43 @@ export class CertificateComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const element = this.elementRef.nativeElement.querySelector('#element-to-export');
-    if (element) {
-      // Load the certificate template
-      const template = document.createElement('template');
-      template.innerHTML = `<html><body>${element.innerHTML}</body></html>`;
-
-      // Replace dynamic data in the template
-      const html = template.content.firstElementChild?.innerHTML;
-      if (!html) {
-        console.error('Unable to find template content');
-        return;
-      }
-      const populatedHtml = html.replace('{{ name }}', this.certi_data?.currentUser?.result?.name)
-        .replace('{{ lastname }}', this.certi_data?.currentUser?.result?.lastname)
-        .replace('{{ activity_name }}', this.certi_data?.currentActivityName?.getEvent?.activity_name);
-
-      // Generate PDF from the populated HTML template
-      html2canvas(element).then((canvas) => {
-        const doc = new jsPDF();
-        const imgData = canvas.toDataURL('image/png');
-        const imgProps = doc.getImageProperties(imgData);
-        const pdfWidth = doc.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-        doc.addImage(imgData, 'PNG', 0, -10, pdfWidth, pdfHeight);
-        doc.save('certificate.pdf');
-      });
-    } else {
+    const element = document.getElementById('element-to-export');
+    if (!element) {
       console.log('Element not found');
+      return;
     }
+
+    // Load the certificate template
+    const template = document.createElement('template');
+    template.innerHTML = `<html><body>${element.innerHTML}</body></html>`;
+
+    // Extract the content from the template
+    const content = template.content;
+    if (!content || !content.firstElementChild) {
+      console.log('Unable to find template content');
+      return;
+    }
+
+    // Replace dynamic data in the template
+    const html = content.firstElementChild.innerHTML;
+    const populatedHtml = html
+      .replace('{{ name }}', this.certi_data?.currentUser?.result?.name)
+      .replace('{{ lastname }}', this.certi_data?.currentUser?.result?.lastname)
+      .replace(
+        '{{ activity_name }}',
+        this.certi_data?.currentActivityName?.getEvent?.activity_name
+      );
+
+    // Generate PDF from the populated HTML template
+    html2canvas(content.firstElementChild as HTMLElement).then((canvas) => {
+      const doc = new jsPDF();
+      const imgData = canvas.toDataURL('image/png');
+      const imgProps = doc.getImageProperties(imgData);
+      const pdfWidth = doc.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+
+      doc.addImage(imgData, 'PNG', 0, -10, pdfWidth, pdfHeight);
+      doc.save('certificate.pdf');
+    });
   }
 }
