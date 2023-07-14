@@ -5,15 +5,16 @@ body, html {
 }
 
 @font-face {
-    font-family: 'Angsana New';
-    src: url('../../../font/AngsanaNewBoldItalic.ttf');
+    font-family: 'THSarabunNew';
+    src: url('../../../font/THSarabunNew.ttf');
     /* Add more font formats if available */
   }
 body {
     color: black;
     display: table;
-    font-family: 'Angsana New';
+    font-family: 'THSarabunNew';
     font-size: 24px;
+    font-weight: bold;
     text-align: center;
 }
 .container {
