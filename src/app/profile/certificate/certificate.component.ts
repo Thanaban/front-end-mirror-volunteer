@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef,OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
 import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
 import jsPDF from 'jspdf';
@@ -10,6 +10,7 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./certificate.component.css'],
 })
 export class CertificateComponent implements OnInit {
+  @ViewChild('element-to-export') htmlData!: ElementRef;
   certi_data: any;
 
   async ngOnInit(): Promise<void> {
