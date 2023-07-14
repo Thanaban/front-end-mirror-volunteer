@@ -1,76 +1,77 @@
 <mat-card style="margin-top: 2rem; margin-left: 6rem; margin-right: 6rem">
   <mat-card-content>
-    <mat-tab-group
+    <button
+      mat-button
+      (click)="AddEvent()"
+      style="
+        background-color: #27a644;
+        color: rgb(255, 255, 255);
+        margin-top: 1.4rem;
+        margin-bottom: 1.4rem;
+        margin-right: 2rem;
+      "
+    >
+      เพิ่มกิจกรรม
+    </button>
+
+    <div
+      *ngFor="let event of eventlist"
+      style="margin-bottom: 1rem"
+      matBadge="8"
+      matBadgePosition="before"
+      matBadgeColor="accent"
+    >
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState = true"
+          (closed)="panelOpenState = false"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              กิจกรรม : {{ event.activity_name
+              }}{{ event_status(event.is_open) }}
+            </mat-panel-title>
+            <mat-panel-description>
+              สถานะ : {{ status }}
+              <!-- {{panelOpenState ? 'open' : 'closed'}} -->
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <img
+            src="{{ event.picture }}"
+            style="width: 30%; border-radius: 10px; margin: 1rem"
+          />
+
+          <mat-slide-toggle
+            [(ngModel)]="event.is_open"
+            (click)="update_event_status(event.id, event.is_open)"
+            >สถานะกิจกรรม: {{ status }}</mat-slide-toggle
+          >
+          <button
+            mat-button
+            (click)="openDialogEditDetail(event.id)"
+            style="
+              background-color: #27a644;
+              color: rgb(255, 255, 255);
+              margin-top: 1.4rem;
+              margin-bottom: 1.4rem;
+              margin-right: 2rem;
+            "
+          >
+            แก้ไขรายละเอียด
+          </button>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <!-- <mat-tab-group
       mat-stretch-tabs="false"
       mat-align-tabs="center"
       style="margin-bottom: 2rem"
     >
       <mat-tab label="หลายวัน">
-        <button
-          mat-button
-          (click)="AddEvent()"
-          style="
-            background-color: #27a644;
-            color: rgb(255, 255, 255);
-            margin-top: 1.4rem;
-            margin-bottom: 1.4rem;
-            margin-right: 2rem;
-          "
-        >
-          เพิ่มกิจกรรม
-        </button>
-
-        <div
-          *ngFor="let event of eventlist"
-          style="margin-bottom: 1rem"
-          matBadge="8"
-          matBadgePosition="before"
-          matBadgeColor="accent"
-        >
-          <mat-accordion>
-            <mat-expansion-panel
-              (opened)="panelOpenState = true"
-              (closed)="panelOpenState = false"
-            >
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  กิจกรรม : {{ event.activity_name
-                  }}{{ event_status(event.is_open) }}
-                </mat-panel-title>
-                <mat-panel-description>
-                  สถานะ : {{ status }}
-                  <!-- {{panelOpenState ? 'open' : 'closed'}} -->
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <img
-                src="{{ event.picture }}"
-                style="width: 30%; border-radius: 10px; margin: 1rem"
-              />
-
-              <mat-slide-toggle
-                [(ngModel)]="event.is_open"
-                (click)="update_event_status(event.id, event.is_open)"
-                >สถานะกิจกรรม: {{ status }}</mat-slide-toggle
-              >
-              <button
-                mat-button
-                (click)="openDialogEditDetail(event.id)"
-                style="
-                  background-color: #27a644;
-                  color: rgb(255, 255, 255);
-                  margin-top: 1.4rem;
-                  margin-bottom: 1.4rem;
-                  margin-right: 2rem;
-                "
-              >
-                แก้ไขรายละเอียด
-              </button>
-            </mat-expansion-panel>
-          </mat-accordion>
-        </div>
+        
       </mat-tab>
       <mat-tab label="วันเดียว">Content 2</mat-tab>
       <mat-tab label="Third">Content 3</mat-tab>
-    </mat-tab-group>
+    </mat-tab-group> -->
   </mat-card-content>
 </mat-card>
