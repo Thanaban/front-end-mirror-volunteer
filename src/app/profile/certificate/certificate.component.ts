@@ -1,65 +1,52 @@
-import { Component, OnInit, AfterViewInit, ElementRef } from '@angular/core';
-import { PDFDocument } from 'pdf-lib';
+import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 
 @Component({
   selector: 'app-certificate',
   templateUrl: './certificate.component.html',
   styleUrls: ['./certificate.component.css'],
 })
-export class CertificateComponent implements OnInit, AfterViewInit {
+export class CertificateComponent implements OnInit {
   certi_data: any;
   dateForm: any;
   month: any;
-
-  constructor(private elementRef: ElementRef) {}
 
   ngOnInit(): void {
     let data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
+    this.generatePDF();
   }
 
-  ngAfterViewInit(): void {
-    const element = document.getElementById('element-to-export');
-    if (!element) {
-      console.log('Element not found');
-      return;
-    }
+  async generatePDF(): Promise<void> {
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage();
+    const { width, height } = page.getSize();
+    const margin = 50;
 
-    // Load the certificate template
-    const template = document.createElement('template');
-    template.innerHTML = `<html><body>${element.innerHTML}</body></html>`;
+    const content = `
+      <!-- your HTML template here -->
+    `;
 
-    // Extract the content from the template
-    const content = template.content;
-    if (!content || !content.firstElementChild) {
-      console.log('Unable to find template content');
-      return;
-    }
+    const drawTextOptions = {
+      font: await pdfDoc.embedFont(StandardFonts.HelveticaBold),
+      size: 12,
+      textColor: rgb(0, 0, 0),
+    };
 
-    // Replace dynamic data in the template
-    const html = content.firstElementChild.innerHTML;
-    const populatedHtml = html
-      .replace('{{ name }}', this.certi_data?.currentUser?.result?.name)
-      .replace('{{ lastname }}', this.certi_data?.currentUser?.result?.lastname)
-      .replace(
-        '{{ activity_name }}',
-        this.certi_data?.currentActivityName?.getEvent?.activity_name
-      );
-
-    // Generate PDF from the populated HTML template
-    html2canvas(content.firstElementChild as HTMLElement).then((canvas) => {
-      const doc = new jsPDF();
-      const imgData = canvas.toDataURL('image/png');
-      const imgProps = doc.getImageProperties(imgData);
-      const pdfWidth = doc.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-
-      doc.addImage(imgData, 'PNG', 0, -10, pdfWidth, pdfHeight);
-      doc.save('certificate.pdf');
+    page.drawText(content, {
+      ...drawTextOptions,
+      x: margin,
+      y: height - margin,
+      maxWidth: width - 2 * margin,
+      lineHeight: 15,
+      wordBreaks: [' '],
     });
+
+    const pdfBytes = await pdfDoc.save();
+
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    saveAs(blob, 'certificate.pdf');
   }
 }
