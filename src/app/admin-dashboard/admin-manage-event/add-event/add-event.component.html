@@ -15,22 +15,22 @@
               />
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>เวลาทำกิจกรรม</label>
+              <label>รายละเอียดกิจกรรม</label>
               <input
                 type="text"
                 class="form-control"
-                name="time_detail"
+                name="activity_details"
                 [(ngModel)]="form.time_detail"
                 #time_detail="ngModel"
                 required
               />
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>ราายละเอียดกิจกรรม</label>
+              <label>จำนวนที่เปิดรับสมัคร</label>
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                name="activity_details"
+                name="size_number"
                 [(ngModel)]="form.activity_details"
                 #activity_details="ngModel"
                 required
