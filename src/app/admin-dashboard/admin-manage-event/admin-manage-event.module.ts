@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { EditEventDetailComponent } from './edit-event-detail/edit-event-detail.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddEventComponent } from './add-event/add-event.component';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AddEventComponent } from './add-event/add-event.component';
     MatFormFieldModule,
     MatSlideToggleModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class AdminManageEventModule { }

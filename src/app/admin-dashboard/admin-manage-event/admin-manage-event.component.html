@@ -1,18 +1,20 @@
 <mat-card style="margin-top: 2rem; margin-left: 6rem; margin-right: 6rem">
   <mat-card-content>
-    <button
-      mat-button
-      (click)="AddEvent()"
-      style="
-        background-color: #27a644;
-        color: rgb(255, 255, 255);
-        margin-top: 1.4rem;
-        margin-bottom: 1.4rem;
-        margin-right: 2rem;
-      "
-    >
-      เพิ่มกิจกรรม
-    </button>
+    <div style="width: 100%;align-items: center;display: flex;">
+      <button
+        mat-raised-button
+        (click)="AddEvent()"
+        style="
+          background-color: #27a644;
+          color: rgb(255, 255, 255);
+          margin-top: 1.4rem;
+          margin-bottom: 1.4rem;
+          margin-right: 2rem;
+        "
+      >
+        เพิ่มกิจกรรม
+      </button>
+    </div>
 
     <div
       *ngFor="let event of eventlist"
