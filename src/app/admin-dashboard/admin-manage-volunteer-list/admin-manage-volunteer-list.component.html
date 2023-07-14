@@ -121,9 +121,7 @@
           style="background-color: #0355ff; color: #ffffff"
         ></th>
         <td mat-cell *matCellDef="let element">
-          <button
-            mat-mini-fab
-            (click)="openDialogEditVolunteerList(element.id)"
+          <button mat-mini-fab (click)="openDialogEditVolunteerList(element.id,element.name,element.lastname)"
             style="
               background-color: #ff9a02;
               color: rgb(0, 0, 0);
@@ -134,7 +132,7 @@
               font-weight: bold;
             "
           >
-            {{ element.userId }}
+            <mat-icon>cancel</mat-icon>
           </button>
         </td>
       </ng-container>

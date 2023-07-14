@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmEditVolunteerListComponent } from './confirm-edit-volunteer-list/confirm-edit-volunteer-list.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackBarMessageComponent } from 'src/app/snack-bar-message/snack-bar-message.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-manage-volunteer-list',
@@ -63,15 +64,33 @@ export class AdminManageVolunteerListComponent implements OnInit {
       });
   }
 
-  openDialogEditVolunteerList(userId: number) {
+  openDialogEditVolunteerList(userId: number,name:string,lastname:string) {
     this.dialog
       .open(ConfirmEditVolunteerListComponent)
       .afterClosed()
       .subscribe((result) => {
         this.get_data();
       });
-    let data = { userId };
-    localStorage.setItem('REMOVEVOLUNTEERLIST', JSON.stringify(data));
+      Swal.fire({
+        title: 'โปรดยืนยัน?',
+        text: "นำอาสา {{ element.name }} {{ element.lastname }} ออกจากรายชื่อ",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+
+    // let data = { userId };
+    // localStorage.setItem('REMOVEVOLUNTEERLIST', JSON.stringify(data));
   }
 
   finish_activity() {
