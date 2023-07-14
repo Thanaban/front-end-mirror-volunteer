@@ -10,7 +10,7 @@ import * as puppeteer from 'puppeteer';
   templateUrl: './certificate.component.html',
   styleUrls: ['./certificate.component.css'],
 })
-export class CertificateComponent {
+export class CertificateComponent implements OnInit {
   dateForm: any;
   month: any;
   certi_data: any;
