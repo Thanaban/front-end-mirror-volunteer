@@ -73,7 +73,7 @@ export class AdminManageVolunteerListComponent implements OnInit {
     //   });
     Swal.fire({
       title: 'โปรดยืนยัน?',
-      text: 'นำอาสา' +name+' ' +lastname+' ออกจากรายชื่อ',
+      text: 'นำอาสา ' +name+' ' +lastname+' ออกจากรายชื่อ',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#27a644',
