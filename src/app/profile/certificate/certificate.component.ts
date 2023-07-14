@@ -1,5 +1,6 @@
-import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -8,33 +9,39 @@ import html2canvas from 'html2canvas';
   templateUrl: './certificate.component.html',
   styleUrls: ['./certificate.component.css'],
 })
-export class CertificateComponent implements AfterViewInit {
-  @ViewChild('element-to-export', { static: false }) htmlData!: ElementRef;
+export class CertificateComponent implements OnInit {
   certi_data: any;
+  test:string = 'หกาสหาดว้า'
+  @ViewChild('elementToExport', { static: true }) elementToExport!: ElementRef;
 
-  ngAfterViewInit(): void {
-    const data: any = localStorage.getItem('CERTI');
+  ngOnInit(): void {
+    let data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
-    this.generatePDF();
+    setTimeout(() => {
+      this.generatePDF();
+    }, 0);
   }
 
   generatePDF(): void {
-    const DATA: any = this.htmlData.nativeElement;
-    html2canvas(DATA).then((canvas) => {
+    const elementToExport = this.elementToExport.nativeElement;
+
+    html2canvas(elementToExport).then((canvas) => {
       const fileWidth = 208;
       const fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
+      const FILE_URI = canvas.toDataURL('image/png');
 
       const PDF = new jsPDF('p', 'mm', 'a4');
       const position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('certificate.pdf');
+
+      PDF.addImage(FILE_URI, 'PNG', 0, position, fileWidth, fileHeight);
+
+      const pdfBytes = PDF.output('arraybuffer');
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      saveAs(blob, 'angular-demo.pdf');
     });
   }
 }
-
-
   // async generatePDF(): Promise<void> {
   //   const pdfDoc = await PDFDocument.create();
   //   const page = pdfDoc.addPage();
