@@ -20,8 +20,8 @@
                 type="text"
                 class="form-control"
                 name="activity_details"
-                [(ngModel)]="form.time_detail"
-                #time_detail="ngModel"
+                [(ngModel)]="form.activity_details"
+                #activity_details="ngModel"
                 required
               />
             </div>
@@ -29,17 +29,6 @@
               <label>จำนวนที่เปิดรับสมัคร</label>
               <input
                 type="number"
-                class="form-control"
-                name="size_number"
-                [(ngModel)]="form.activity_details"
-                #activity_details="ngModel"
-                required
-              />
-            </div>
-            <div class="row" style="margin-bottom: 1rem">
-              <label>จำนวนจำกัด</label>
-              <input
-                type="text"
                 class="form-control"
                 name="size_number"
                 [(ngModel)]="form.size_number"
@@ -50,11 +39,22 @@
             <div class="row" style="margin-bottom: 1rem">
               <label>จำนวนชั่วโมงที่ได้รับ</label>
               <input
-                type="textarea"
+                type="number"
                 class="form-control"
                 name="received_hours"
                 [(ngModel)]="form.received_hours"
                 #received_hours="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>Google map link</label>
+              <input
+                type="textarea"
+                class="form-control"
+                name="map"
+                [(ngModel)]="form.map"
+                #map="ngModel"
                 required
               />
             </div>
@@ -70,42 +70,49 @@
               />
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>การแต่งกาย</label>
+              <label>สถานะเปิดรับ</label>
+              <select
+                class="form-control"
+                name="is_open"
+                [(ngModel)]="form.is_open"
+                #is_open="ngModel"
+                required
+              >
+                <option value="" disabled selected>
+                  กรุณาเลือกสถานะเปิดรับสมัคร
+                </option>
+                <option value="true">เปิดรับ</option>
+                <option value="false">ปิดรับ</option>
+              </select>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>picture</label>
+              <input
+                type="text"
+                class="form-control"
+                name="picture"
+                [(ngModel)]="form.picture"
+                #picture="ngModel"
+                required
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>ความสำคัญ</label>
+              <input
+                type="number"
+                class="form-control"
+                name="priority"
+                [(ngModel)]="form.priority"
+                #priority="ngModel"
+                required
+                min="1"
+                max="3"
+              />
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <label>เวลาทำกิจกรรม</label>
               <input
                 type="textarea"
-                class="form-control"
-                name="clothes_detail"
-                [(ngModel)]="form.clothes_detail"
-                #clothes_detail="ngModel"
-                required
-              />
-            </div>
-            <div class="row" style="margin-bottom: 1rem">
-              <label>Google map link</label>
-              <input
-                type="text"
-                class="form-control"
-                name="map"
-                [(ngModel)]="form.map"
-                #map="ngModel"
-                required
-              />
-            </div>
-            <div class="row" style="margin-bottom: 1rem">
-              <label>การเดินทางด้วยรถสาธารณะ</label>
-              <input
-                type="text"
-                class="form-control"
-                name="travel_public_detail"
-                [(ngModel)]="form.travel_public_detail"
-                #travel_public_detail="ngModel"
-                required
-              />
-            </div>
-            <div class="row" style="margin-bottom: 1rem">
-              <label>การเดินทางด้วยรถส่วนตัว</label>
-              <input
-                type="text"
                 class="form-control"
                 name="travel_detail"
                 [(ngModel)]="form.travel_detail"
