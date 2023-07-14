@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -8,12 +8,12 @@ import html2canvas from 'html2canvas';
   templateUrl: './certificate.component.html',
   styleUrls: ['./certificate.component.css'],
 })
-export class CertificateComponent implements OnInit {
-  @ViewChild('element-to-export', { static: true }) htmlData!: ElementRef;
+export class CertificateComponent implements AfterViewInit {
+  @ViewChild('element-to-export', { static: false }) htmlData!: ElementRef;
   certi_data: any;
 
-  ngOnInit(): void {
-    let data: any = localStorage.getItem('CERTI');
+  ngAfterViewInit(): void {
+    const data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
     this.generatePDF();
@@ -33,6 +33,7 @@ export class CertificateComponent implements OnInit {
     });
   }
 }
+
 
   // async generatePDF(): Promise<void> {
   //   const pdfDoc = await PDFDocument.create();
