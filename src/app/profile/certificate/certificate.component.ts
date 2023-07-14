@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PDFDocument, rgb } from 'pdf-lib';
+import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as puppeteer from 'puppeteer';
-import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
-import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-certificate',
@@ -16,6 +16,7 @@ export class CertificateComponent {
   certi_data: any;
 
   ngOnInit(): void {
+    
     let data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
