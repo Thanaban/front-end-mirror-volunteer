@@ -43,6 +43,7 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.getDataWaitToStartActivity();
     this.getDataOnGoingActivity();
+    this.getDataEndActivity();
   }
 
   getDataWaitToStartActivity() {
