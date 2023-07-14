@@ -10,7 +10,7 @@
     </div>
 
     <div class="ensure">
-      มูลนิธิกระจกเงา ขอรับรองว่า {{ name }} <br />
+      มูลนิธิกระจกเงา ขอรับรองว่า {{ certi_data?.currentUser?.result?.name }}  <br />
       ได้เข้าร่วมเป็นอาสาสมัครในกิจกรรม <br />
       ชื่อกิจกรรม <br />
       เป็นเวลา 8 ชั่วโมง
@@ -31,7 +31,7 @@
     </div>
 
     <div class="content">
-      ออกให้ ณ วันที่ {{ con_date(certi_data.currentActivityName.date) }}
+      ออกให้ ณ วันที่ {{certi_data.currentActivityName.date }}
     </div>
 
     <div class="marquee">Certificate of Arsa</div>
