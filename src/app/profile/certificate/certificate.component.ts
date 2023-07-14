@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import * as puppeteer from 'puppeteer';
+import { PDFDocument, StandardFonts, rgb } from 'pdf-lib';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-certificate',
@@ -33,10 +35,10 @@ export class CertificateComponent {
     // } else {
     //   console.log('Element not found');
     // }
-    this.generatePDF2()
+    this.generatePDF();
   }
 
-  async generatePDF2() {
+  async generatePDF() {
     const html = `<html>
     <body id="element-to-export">
       <!-- <div class="container" > -->
@@ -92,24 +94,57 @@ export class CertificateComponent {
   </html>
   `;
 
-    try {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
+  try {
+    const pdfDoc = await PDFDocument.create();
+    const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const page = pdfDoc.addPage();
+    page.setFont(font);
+    page.setFontSize(12);
 
-      // Set the HTML content
-      await page.setContent(html, { waitUntil: 'networkidle0' });
+    // Set the font color
+    const fontColor = rgb(0, 0, 0);
 
-      // Generate PDF
-      await page.pdf({ path: 'output.pdf', format: 'A4' });
+    // Calculate the width and height of the text box
+    const textWidth = page.getWidth() - 40;
+    const textHeight = page.getHeight() - 40;
 
-      await browser.close();
+    // Split the HTML content into lines manually
+    const lines = html.split('\n');
 
-      console.log('PDF generated successfully!');
-    } catch (error) {
-      console.error('Error generating PDF:', error);
-    }
+    // Calculate the height of the text box based on the number of lines
+    const lineHeight = 20;
+    const numLines = lines.length;
+    const calculatedHeight = numLines * lineHeight;
+
+    // Calculate the y position for vertical alignment
+    const adjustedTextHeight = textHeight - calculatedHeight;
+
+    // Draw the HTML content on the PDF page with adjusted height
+    lines.forEach((line, index) => {
+      const y = adjustedTextHeight + index * lineHeight;
+      page.drawText(line, {
+        x: 20,
+        y,
+        maxWidth: textWidth,
+        lineHeight,
+        size: 12,
+        color: fontColor,
+      });
+    });
+
+    const pdfBytes = await pdfDoc.save();
+
+    // Convert the PDF bytes to a Blob
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+
+    // Save the Blob as a file using FileSaver.js
+    saveAs(blob, 'certificate.pdf');
+
+    console.log('PDF generated successfully!');
+  } catch (error) {
+    console.error('Error generating PDF:', error);
   }
-  
+  }
 
   con_date(d: any) {
     d = d.split('-');
