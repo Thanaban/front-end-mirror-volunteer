@@ -5,6 +5,7 @@ import { AuthService } from './_services/auth.service';
 import { EventBusService } from './_shared/event-bus.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { Express } from 'express';
 import { Server } from 'http';
 import { createServer } from 'https';
@@ -14,6 +15,7 @@ import { BodyParser } from 'body-parser';
 import { Socket } from 'socket.io';
 import { EventService } from './_services/event.service';
 import { data } from 'cypress/types/jquery';
+import { AddEventComponent } from './admin-dashboard/admin-manage-event/add-event/add-event.component';
 
 @Component({
   selector: 'app-root',
@@ -43,7 +45,8 @@ export class AppComponent {
     private eventBusService: EventBusService,
     private http: HttpClient,
     private router: Router,
-    private eventService: EventService
+    private eventService: EventService,
+    public dialog: MatDialog
   ) {
     this.storageService.getToken();
   }
@@ -136,6 +139,10 @@ export class AppComponent {
   notification_bell(): void {
     localStorage.setItem('TABS', JSON.stringify(1));
     this.router.navigate(['/profile']);
+  }
+
+  testdialog(){
+    this.dialog.open(AddEventComponent)
   }
 
   logout(): void {
