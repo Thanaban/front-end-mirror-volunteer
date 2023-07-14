@@ -10,12 +10,12 @@
     </div>
 
     <div class="ensure">
-      มูลนิธิกระจกเงา ขอรับรองว่า ({{ certi_data?.currentUser?.result?.name }})
-      ({{ certi_data?.currentUser?.result?.lastname }})<br />
+      มูลนิธิกระจกเงา ขอรับรองว่า {{ certi_data?.currentUser?.result?.name }}
+      {{ certi_data?.currentUser?.result?.lastname }}<br />
       ได้เข้าร่วมเป็นอาสาสมัครในกิจกรรม
-      ({{ certi_data?.currentActivityName?.getEvent?.activity_name }})<br />
-      ชื่อกิจกรรม ({{ certi_data?.currentActivityName?.getEvent?.activity_name
-      }})<br />
+      {{ certi_data?.currentActivityName?.getEvent?.activity_name }}<br />
+      ชื่อกิจกรรม {{ certi_data?.currentActivityName?.getEvent?.activity_name
+      }}<br />
       เป็นเวลา 8 ชั่วโมง
     </div>
 

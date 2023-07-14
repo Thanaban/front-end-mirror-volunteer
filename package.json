@@ -37,6 +37,7 @@
     "ng-gallery": "^8.0.2",
     "pdfmake": "^0.2.7",
     "primeflex": "^3.3.0",
+    "puppeteer": "^20.8.2",
     "rxjs": "~7.5.0",
     "socket.io": "^4.6.1",
     "sweetalert2": "^11.7.4",
