@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
 
 @Component({
   selector: 'app-certificate',
@@ -81,17 +81,26 @@ export class CertificateComponent implements OnInit {
     const drawTextOptions = {
       font: await pdfDoc.embedFont(StandardFonts.HelveticaBold),
       size: 12,
-      textColor: rgb(0, 0, 0),
+      color: rgb(0, 0, 0),
+      alignment: TextAlignment.Left,
     };
 
-    page.drawText(content, {
-      ...drawTextOptions,
-      x: margin,
-      y: height - margin,
-      maxWidth: width - 2 * margin,
-      lineHeight: 15,
-      wordBreaks: [' '],
-    });
+    const lines = content.split('\n').length;
+    const lineHeight = drawTextOptions.size * 1.2; // Adjust line spacing as needed
+
+    const startY = height - margin;
+    let y = startY - (lines - 1) * lineHeight;
+
+    const contentLines = content.split('\n');
+    for (let line of contentLines) {
+      page.drawText(line, {
+        ...drawTextOptions,
+        x: margin,
+        y,
+      });
+
+      y -= lineHeight;
+    }
 
     const pdfBytes = await pdfDoc.save();
 
