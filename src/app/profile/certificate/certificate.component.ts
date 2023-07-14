@@ -1,6 +1,5 @@
-import { Component, ViewChild, ElementRef,OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
-import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -10,24 +9,30 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./certificate.component.css'],
 })
 export class CertificateComponent implements OnInit {
-  @ViewChild('element-to-export') htmlData!: ElementRef;
+  @ViewChild('element-to-export', { static: true }) htmlData!: ElementRef;
   certi_data: any;
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     let data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
-    let DATA: any = document.getElementById('element-to-export');
+    this.generatePDF();
+  }
+
+  generatePDF(): void {
+    const DATA: any = this.htmlData.nativeElement;
     html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const fileWidth = 208;
+      const fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
+
+      const PDF = new jsPDF('p', 'mm', 'a4');
+      const position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
+      PDF.save('certificate.pdf');
     });
   }
+}
 
   // async generatePDF(): Promise<void> {
   //   const pdfDoc = await PDFDocument.create();
@@ -123,4 +128,4 @@ export class CertificateComponent implements OnInit {
   //   const blob = new Blob([pdfBytes], { type: 'application/pdf' });
   //   saveAs(blob, 'certificate.pdf');
   // }
-}
+
