@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { saveAs } from 'file-saver';
-import { PDFDocument, rgb, TextAlignment, PDFFont } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts, TextAlignment } from 'pdf-lib';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-certificate',
@@ -14,98 +16,110 @@ export class CertificateComponent implements OnInit {
     let data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
-    await this.generatePDF();
+    let DATA: any = document.getElementById('element-to-export');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');
+    });
   }
 
-  async generatePDF(): Promise<void> {
-    const pdfDoc = await PDFDocument.create();
-    const page = pdfDoc.addPage();
-    const { width, height } = page.getSize();
-    const margin = 50;
+  // async generatePDF(): Promise<void> {
+  //   const pdfDoc = await PDFDocument.create();
+  //   const page = pdfDoc.addPage();
+  //   const { width, height } = page.getSize();
+  //   const margin = 50;
 
-    const content = `
-    <html>
-    <body id="element-to-export">
-      <!-- <div class="container" > -->
-      <div class="top-padding"></div>
-      <div class="header">" อาสาสมัคร "</div>
-  
-      <div class="tagline">
-        คือคนที่มีหัวใจอาสา คนที่อยากเห็นสังคมงดงาม<br />
-        คนที่แสวงหาความหมายของการมีชีวิตอยู่อย่างมีคุณค่า
-      </div>
-  
-      <div class="ensure">
-        มูลนิธิกระจกเงา ขอรับรองว่า {{ certi_data?.currentUser?.result?.name }}  <br />
-        ได้เข้าร่วมเป็นอาสาสมัครในกิจกรรม <br />
-        ชื่อกิจกรรม <br />
-        เป็นเวลา 8 ชั่วโมง
-      </div>
-  
-      <div class="content">
-        ระหว่างการทำกิจกรรมอาสาสมัครได้ปฏิบัติหน้าที่ด้วยความเสียสละ มีน้ำใจ
-        และให้ความ<br />
-        ร่วมมือแสดงความมีส่วนร่วมที่สำคัญต่อกระบวนการอาสาสมัครหนุนเสริมเป็นกลไกการขับเคลื่อนสังคม<br />
-        ร่วมกับมูลนิธิกระจกเงาได้เป็นอย่างดี
-      </div>
-  
-      <div class="content">
-        มูลนิธิกระจกเงา
-        ขอขอบคุณท่านที่ได้ร่วมเป็นส่วนหนึ่งในกิจกรรมอาสาสมัครในครั้งนี้ <br />
-        ขอให้บทบาทในการเป็น “อาสาสมัคร” ในตัวท่าน
-        ได้ต่อยอดเพื่อสร้างประโยชน์ต่อสังคมสืบไป
-      </div>
-  
-      <div class="content">
-        ออกให้ ณ วันที่ {{certi_data.currentActivityName.date }}
-      </div>
-  
-      <div class="marquee">Certificate of Arsa</div>
-  
-      <div class="assignment">This certificate is presented to</div>
-  
-      <div class="person">Pan</div>
-  
-      <div class="reason">
-        วันที่<br />
-        123181
-      </div>
-      <div class="bottom-padding"></div>
-      <!-- </div> -->
-    </body>
-  </html>
-    `;
+  //   const content = `
+  //   <html>
+  //   <body id="element-to-export">
+  //     <!-- <div class="container" > -->
+  //     <div class="top-padding"></div>
+  //     <div class="header">" อาสาสมัคร "</div>
 
-    const fontBytes = await fetch('assets/fonts/AngsanaNew-BoldItalic.ttf').then((res) => res.arrayBuffer());
-    const customFont = await pdfDoc.embedFont(fontBytes) as PDFFont;
+  //     <div class="tagline">
+  //       คือคนที่มีหัวใจอาสา คนที่อยากเห็นสังคมงดงาม<br />
+  //       คนที่แสวงหาความหมายของการมีชีวิตอยู่อย่างมีคุณค่า
+  //     </div>
 
-    const drawTextOptions = {
-      font: customFont,
-      size: 12,
-      color: rgb(0, 0, 0),
-      alignment: TextAlignment.Left,
-    };
+  //     <div class="ensure">
+  //       มูลนิธิกระจกเงา ขอรับรองว่า {{ certi_data?.currentUser?.result?.name }}  <br />
+  //       ได้เข้าร่วมเป็นอาสาสมัครในกิจกรรม <br />
+  //       ชื่อกิจกรรม <br />
+  //       เป็นเวลา 8 ชั่วโมง
+  //     </div>
 
-    const lines = content.split('\n').length;
-    const lineHeight = drawTextOptions.size * 1.2; // Adjust line spacing as needed
+  //     <div class="content">
+  //       ระหว่างการทำกิจกรรมอาสาสมัครได้ปฏิบัติหน้าที่ด้วยความเสียสละ มีน้ำใจ
+  //       และให้ความ<br />
+  //       ร่วมมือแสดงความมีส่วนร่วมที่สำคัญต่อกระบวนการอาสาสมัครหนุนเสริมเป็นกลไกการขับเคลื่อนสังคม<br />
+  //       ร่วมกับมูลนิธิกระจกเงาได้เป็นอย่างดี
+  //     </div>
 
-    const startY = height - margin;
-    let y = startY - (lines - 1) * lineHeight;
+  //     <div class="content">
+  //       มูลนิธิกระจกเงา
+  //       ขอขอบคุณท่านที่ได้ร่วมเป็นส่วนหนึ่งในกิจกรรมอาสาสมัครในครั้งนี้ <br />
+  //       ขอให้บทบาทในการเป็น “อาสาสมัคร” ในตัวท่าน
+  //       ได้ต่อยอดเพื่อสร้างประโยชน์ต่อสังคมสืบไป
+  //     </div>
 
-    const contentLines = content.split('\n');
-    for (let line of contentLines) {
-      page.drawText(line, {
-        ...drawTextOptions,
-        x: margin,
-        y,
-      });
+  //     <div class="content">
+  //       ออกให้ ณ วันที่ {{certi_data.currentActivityName.date }}
+  //     </div>
 
-      y -= lineHeight;
-    }
+  //     <div class="marquee">Certificate of Arsa</div>
 
-    const pdfBytes = await pdfDoc.save();
+  //     <div class="assignment">This certificate is presented to</div>
 
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    saveAs(blob, 'certificate.pdf');
-  }
+  //     <div class="person">Pan</div>
+
+  //     <div class="reason">
+  //       วันที่<br />
+  //       123181
+  //     </div>
+  //     <div class="bottom-padding"></div>
+  //     <!-- </div> -->
+  //   </body>
+  // </html>
+  //   `;
+
+  //   const AngsanaNewBoldItalicBase64 = '...'; // Base64-encoded string of the font file
+
+  //   // Load the font from the base64-encoded string
+  //   const customFontBytes = Uint8Array.from(atob(AngsanaNewBoldItalicBase64), (c) => c.charCodeAt(0));
+  //   const customFont = await pdfDoc.embedFont(customFontBytes);
+
+  //   const drawTextOptions = {
+  //     font: customFont,
+  //     size: 12,
+  //     color: rgb(0, 0, 0),
+  //     alignment: TextAlignment.Left,
+  //   };
+
+  //   const lines = content.split('\n').length;
+  //   const lineHeight = drawTextOptions.size * 1.2; // Adjust line spacing as needed
+
+  //   const startY = height - margin;
+  //   let y = startY - (lines - 1) * lineHeight;
+
+  //   const contentLines = content.split('\n');
+  //   for (let line of contentLines) {
+  //     page.drawText(line, {
+  //       ...drawTextOptions,
+  //       x: margin,
+  //       y,
+  //     });
+
+  //     y -= lineHeight;
+  //   }
+
+  //   const pdfBytes = await pdfDoc.save();
+
+  //   const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+  //   saveAs(blob, 'certificate.pdf');
+  // }
 }
