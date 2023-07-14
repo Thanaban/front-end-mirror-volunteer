@@ -30,14 +30,14 @@ export class CertificateComponent implements OnInit {
     const elementToExport = this.elementToExport.nativeElement;
 
     html2canvas(elementToExport).then((canvas) => {
-      const fileWidth = 208;
+      const fileWidth = 210;
       const fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILE_URI = canvas.toDataURL('image/png');
 
       const PDF = new jsPDF('p', 'mm', 'a4');
       const position = 0;
 
-      PDF.addImage(FILE_URI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.addImage(FILE_URI, 'PNG', 0, -6.5, fileWidth, fileHeight);
 
       const pdfBytes = PDF.output('arraybuffer');
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
