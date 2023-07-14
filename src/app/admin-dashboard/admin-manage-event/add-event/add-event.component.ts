@@ -36,52 +36,52 @@ export class AddEventComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    const {
-      activity_name,
-      activity_details,
-      clothes_detail,
-      etc_detail,
-      time_detail,
-      timeline,
-      travel_detail,
-      travel_etc_detail,
-      travel_public_detail,
-      regised_number,
-      size_number,
-      received_hours,
-      map,
-      start_date,
-      end_date,
-      is_open,
-      picture,
-      priority,
-    } = this.form;
+    // const {
+    //   activity_name,
+    //   activity_details,
+    //   clothes_detail,
+    //   etc_detail,
+    //   time_detail,
+    //   timeline,
+    //   travel_detail,
+    //   travel_etc_detail,
+    //   travel_public_detail,
+    //   regised_number,
+    //   size_number,
+    //   received_hours,
+    //   map,
+    //   start_date,
+    //   end_date,
+    //   is_open,
+    //   picture,
+    //   priority,
+    // } = this.form;
 
-    this.eventService
-      .create_activity(
-        activity_name,
-        activity_details,
-        clothes_detail,
-        etc_detail,
-        time_detail,
-        timeline,
-        travel_detail,
-        travel_etc_detail,
-        travel_public_detail,
-        regised_number,
-        size_number,
-        received_hours,
-        map,
-        start_date,
-        end_date,
-        picture,
-        priority
-      )
-      .subscribe({
-        next: (data) => {},
-        error: (err) => {},
-      });
-    this.reloadPage();
+    // this.eventService
+    //   .create_activity(
+    //     activity_name,
+    //     activity_details,
+    //     clothes_detail,
+    //     etc_detail,
+    //     time_detail,
+    //     timeline,
+    //     travel_detail,
+    //     travel_etc_detail,
+    //     travel_public_detail,
+    //     regised_number,
+    //     size_number,
+    //     received_hours,
+    //     map,
+    //     start_date,
+    //     end_date,
+    //     picture,
+    //     priority
+    //   )
+    //   .subscribe({
+    //     next: (data) => {},
+    //     error: (err) => {},
+    //   });
+    // this.reloadPage();
   }
   reloadPage(): void {
     window.location.reload();
