@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PDFDocument, rgb } from 'pdf-lib';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -16,7 +16,6 @@ export class CertificateComponent {
   certi_data: any;
 
   ngOnInit(): void {
-    
     let data: any = localStorage.getItem('CERTI');
     this.certi_data = JSON.parse(data);
     console.warn('cer', this.certi_data);
@@ -97,13 +96,11 @@ export class CertificateComponent {
 
     try {
       const pdfDoc = await PDFDocument.create();
-      const fontBytes = await fetch('path/to/arial-unicode-ms.ttf').then(
-        (res) => res.arrayBuffer()
-      );
-      const font = await pdfDoc.embedFont(fontBytes);
+      const fontBytes = '<<BASE64_FONT_DATA>>'; // Replace with the actual base64-encoded font data
+      const customFont = await pdfDoc.embedFont(fontBytes);
 
       const page = pdfDoc.addPage();
-      page.setFont(font);
+      page.setFont(customFont);
       page.setFontSize(12);
 
       const fontColor = rgb(0, 0, 0);
