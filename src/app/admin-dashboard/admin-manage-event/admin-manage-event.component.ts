@@ -68,23 +68,28 @@ export class AdminManageEventComponent implements OnInit {
     const { value: formValues } = await Swal.fire({
       title: 'Add Event',
       html:
-        `<input id="activity_name" class="swal2-input" placeholder="Activity Name" value="อาสาจัดเต็ม">` +
-        `<input id="activity_details" class="swal2-input" placeholder="Activity Details" value="ช่วยงานทุกอย่าาง">` +
-        `<input id="size_number" class="swal2-input" placeholder="Size Number" value="40">` +
-        `<input id="received_hours" class="swal2-input" placeholder="Received Hours" value="8">` +
-        `<input id="map" class="swal2-input" placeholder="Map" value="map">` +
-        `<input id="start_date" class="swal2-input" placeholder="Start Date" value="2023-02-20">` +
-        `<input id="is_open" class="swal2-input" placeholder="Is Open" value="true">` +
-        `<input id="picture" class="swal2-input" placeholder="Picture URL" value="http://drive.google.com/uc?export=view&id=1zbK2OJZ8Hy1lOoTPXjOX1VDvGIKEKpwu">` +
-        `<input id="priority" class="swal2-input" placeholder="Priority" value="1">` +
-        `<input id="time_detail" class="swal2-input" placeholder="Time Detail" value="9.00 - 16.00">` +
-        `<input id="clothes_detail" class="swal2-input" placeholder="Clothes Detail" value="กางเกงขายาว รองเท้าผ้าใบสามารถใส่ชุดนักเรียน ชุดพละ ชุดนักศึกษาได้">` +
-        `<input id="etc_detail" class="swal2-input" placeholder="Etc Detail" value="บริการอาหารกลางวันให้ฟรี  1 มื้อ และตอนเลิก กิจกรรมจะมีเจ้าหน้าที่ไปส่งที่ BTS สีเขียวสถานนีวัดพระศรีมหาธาตุ และ BTS สายสีแดง สถานนี หลักสี่">` +
-        `<input id="travel_detail" class="swal2-input" placeholder="Travel Detail" value="ให้ปักหมุดมายัง Mirror Art เลขที่ 143/19 ถนนแจ้งวัฒนะซอยแจ้งวัฒนะ1แยก6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210">` +
-        `<input id="travel_public_detail" class="swal2-input" placeholder="Travel Public Detail" value="1.โดยสารรถไฟฟ้า BTS ลงสถานนีปลายทางวัดพระศรีมหาธาตุหรือสารรถไฟฟ้าใต้ดิน MRT ลงสถานีปลายทางจตุจักร สามารถขึ้น BTSลงสถานนีปลายทางวัดพระศรีมหาธาตุ 2.ต่อรถเมล์สาย -สาย 510(ไม่ขึ้นทางด่วน)โดยขึ้นฝั่งเดียวกันกับสวนจตุจักรลงป้ายหน้าโรงแรมมิราเคิล(กรณีมาจากฝั่งรังสิตให้ลงป้ายรถเมล์ โรงเรียนผไทอุดมศึกษา )-สาย 51 โดยขึ้นฝั่ง ม.เกษตรศาสตร์ลงป้ายตรงข้ามโรงเรียนเจริญผล-สาย 95ก โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผล -สาย ปอ.150 โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผล 3.ข้ามสะพานลอย เดินมาปากซอยวิภาวดี64 ต่อวินมอเตอร์ไซต์แจ้งว่าจะไปมูลนิธิกระจกเงาซอยแจ้งวัฒนะ1 แยก6">` +
-        `<input id="travel_etc_detail" class="swal2-input" placeholder="Travel Etc Detail" value="เกียรติบัตรจากมูลนิธิ">` +
-        `<input id="timeline" class="swal2-input" placeholder="Timeline" value="string">`,
+        `<input id="activity_name" class="swal2-input large-input" placeholder="Activity Name" value="อาสาจัดเต็ม">` +
+        `<input id="activity_details" class="swal2-input large-input" placeholder="Activity Details" value="ช่วยงานทุกอย่าาง">` +
+        `<input id="size_number" class="swal2-input large-input" placeholder="Size Number" value="40">` +
+        `<input id="received_hours" class="swal2-input large-input" placeholder="Received Hours" value="8">` +
+        `<input id="map" class="swal2-input large-input" placeholder="Map" value="map">` +
+        `<input id="start_date" class="swal2-input large-input" placeholder="Start Date" value="2023-02-20">` +
+        `<input id="is_open" class="swal2-input large-input" placeholder="Is Open" value="true">` +
+        `<input id="picture" class="swal2-input large-input" placeholder="Picture URL" value="http://drive.google.com/uc?export=view&id=1zbK2OJZ8Hy1lOoTPXjOX1VDvGIKEKpwu">` +
+        `<input id="priority" class="swal2-input large-input" placeholder="Priority" value="1">` +
+        `<input id="time_detail" class="swal2-input large-input" placeholder="Time Detail" value="9.00 - 16.00">` +
+        `<input id="clothes_detail" class="swal2-input large-input" placeholder="Clothes Detail" value="กางเกงขายาว รองเท้าผ้าใบสามารถใส่ชุดนักเรียน ชุดพละ ชุดนักศึกษาได้">` +
+        `<input id="etc_detail" class="swal2-input large-input" placeholder="Etc Detail" value="บริการอาหารกลางวันให้ฟรี  1 มื้อ และตอนเลิก กิจกรรมจะมีเจ้าหน้าที่ไปส่งที่ BTS สีเขียวสถานนีวัดพระศรีมหาธาตุ และ BTS สายสีแดง สถานนี หลักสี่">` +
+        `<input id="travel_detail" class="swal2-input large-input" placeholder="Travel Detail" value="ให้ปักหมุดมายัง Mirror Art เลขที่ 143/19 ถนนแจ้งวัฒนะซอยแจ้งวัฒนะ1แยก6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210">` +
+        `<input id="travel_public_detail" class="swal2-input large-input" placeholder="Travel Public Detail" value="1.โดยสารรถไฟฟ้า BTS ลงสถานนีปลายทางวัดพระศรีมหาธาตุหรือสารรถไฟฟ้าใต้ดิน MRT ลงสถานีปลายทางจตุจักร สามารถขึ้น BTSลงสถานนีปลายทางวัดพระศรีมหาธาตุ 2.ต่อรถเมล์สาย -สาย 510(ไม่ขึ้นทางด่วน)โดยขึ้นฝั่งเดียวกันกับสวนจตุจักรลงป้ายหน้าโรงแรมมิราเคิล(กรณีมาจากฝั่งรังสิตให้ลงป้ายรถเมล์ โรงเรียนผไทอุดมศึกษา )-สาย 51 โดยขึ้นฝั่ง ม.เกษตรศาสตร์ลงป้ายตรงข้ามโรงเรียนเจริญผล-สาย 95ก โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผล -สาย ปอ.150 โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผล 3.ข้ามสะพานลอย เดินมาปากซอยวิภาวดี64 ต่อวินมอเตอร์ไซต์แจ้งว่าจะไปมูลนิธิกระจกเงาซอยแจ้งวัฒนะ1 แยก6">` +
+        `<input id="travel_etc_detail" class="swal2-input large-input" placeholder="Travel Etc Detail" value="เกียรติบัตรจากมูลนิธิ">` +
+        `<input id="timeline" class="swal2-input large-input" placeholder="Timeline" value="string">`,
       focusConfirm: false,
+      customClass: {
+        input: 'swal2-input',
+        confirmButton: 'swal2-confirm-button',
+        cancelButton: 'swal2-cancel-button',
+      },
       preConfirm: () => {
         const activityNameInput = document.getElementById(
           'activity_name'
@@ -202,7 +207,10 @@ export class AdminManageEventComponent implements OnInit {
     });
   
     if (formValues) {
-      Swal.fire(JSON.stringify(formValues));
+      Swal.fire(
+        'เพิ่มกิจกรรมสำเร็จ',
+        'success'
+      )
     }
   }
 

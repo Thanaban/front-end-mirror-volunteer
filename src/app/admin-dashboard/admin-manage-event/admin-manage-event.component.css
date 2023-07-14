@@ -53,3 +53,7 @@
     width: 50%;
     padding-bottom: 4%;
   }
+
+  .large-input {
+    width: 400px;
+  }
