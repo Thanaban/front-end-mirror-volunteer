@@ -64,27 +64,29 @@ export class AdminManageEventComponent implements OnInit {
     this.dialog.open(AddEventComponent);
   }
 
-  async AddEvent(){
-    // const { value: formValues } = await Swal.fire({
-    //   title: 'Multiple inputs',
-    //   html:
-    //     '<input id="swal-input1" class="swal2-input">' +
-    //     '<input id="swal-input2" class="swal2-input">',
-    //   focusConfirm: false,
-    //   preConfirm: () => {
-    //     return [
-    //       document.getElementById('swal-input1').value,
-    //       document.getElementById('swal-input2').value
-    //     ]
-    //   }
-    // })
-    
-    // if (formValues) {
-    //   Swal.fire(JSON.stringify(formValues))
-    // }
-    
-    // Call the async function
-   
+  async AddEvent() {
+    const { value: formValues } = await Swal.fire({
+      title: 'Multiple inputs',
+      html:
+        '<input id="swal-input1" class="swal2-input">' +
+        '<input id="swal-input2" class="swal2-input">',
+      focusConfirm: false,
+      preConfirm: () => {
+        const input1 = document.getElementById('swal-input1') as HTMLInputElement;
+        const input2 = document.getElementById('swal-input2') as HTMLInputElement;
+        if (input1 && input2) {
+          return [
+            input1.value,
+            input2.value
+          ];
+        }
+        return null;
+      }
+    });
+  
+    if (formValues) {
+      Swal.fire(JSON.stringify(formValues));
+    }
   }
 
   reloadPage(): void {
