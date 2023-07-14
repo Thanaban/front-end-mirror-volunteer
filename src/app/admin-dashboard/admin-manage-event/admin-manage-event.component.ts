@@ -64,34 +64,27 @@ export class AdminManageEventComponent implements OnInit {
     this.dialog.open(AddEventComponent);
   }
 
-  AddEvent(){
-    async function addEvent() {
-      const { value: file } = await Swal.fire({
-        title: 'Select image',
-        input: 'file',
-        inputAttributes: {
-          'accept': 'image/*',
-          'aria-label': 'Upload your profile picture'
-        }
-      });
+  async AddEvent(){
+    // const { value: formValues } = await Swal.fire({
+    //   title: 'Multiple inputs',
+    //   html:
+    //     '<input id="swal-input1" class="swal2-input">' +
+    //     '<input id="swal-input2" class="swal2-input">',
+    //   focusConfirm: false,
+    //   preConfirm: () => {
+    //     return [
+    //       document.getElementById('swal-input1').value,
+    //       document.getElementById('swal-input2').value
+    //     ]
+    //   }
+    // })
     
-      if (file) {
-        const reader = new FileReader();
-    
-        reader.onload = (e) => {
-          Swal.fire({
-            title: 'Your uploaded picture',
-            imageUrl: e.target?.result as string,
-            imageAlt: 'The uploaded picture'
-          });
-        };
-    
-        reader.readAsDataURL(file);
-      }
-    }
+    // if (formValues) {
+    //   Swal.fire(JSON.stringify(formValues))
+    // }
     
     // Call the async function
-    addEvent();
+   
   }
 
   reloadPage(): void {
