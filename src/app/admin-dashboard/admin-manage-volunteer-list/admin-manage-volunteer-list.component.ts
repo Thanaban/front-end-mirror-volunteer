@@ -76,8 +76,8 @@ export class AdminManageVolunteerListComponent implements OnInit {
       text: 'นำอาสา' +name+' ' +lastname+' ออกจากรายชื่อ',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#27a644',
+      cancelButtonColor: '#ff2626',
       confirmButtonText: 'ยืนยัน',
       cancelButtonText: 'ยกเลิก',
     }).then((result) => {
