@@ -86,6 +86,7 @@ export class AdminDashboardComponent implements OnInit {
     this.http
       .get('https://api.volunteerm.online/activities/ended_activity')
       .subscribe((response3) => {
+        console.warn('ended_activity',response3)
         this.eventEndActivity = response3;
         for (let i = 0; i < this.eventEndActivity.length; i++) {
           this.eventEndActivity[i].date = this.con_date(

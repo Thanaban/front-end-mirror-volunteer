@@ -199,8 +199,7 @@
               *matRowDef="let row; columns: displayedColumns"
             ></tr></table
         ></mat-tab>
-        <mat-tab label="กิจกรรมที่เสร็จสิ้น">Content 2</mat-tab>
-        <table mat-table [dataSource]="dataSourceEndActivity" matSort>
+        <mat-tab label="กิจกรรมที่เสร็จสิ้น"><table mat-table [dataSource]="dataSourceEndActivity" matSort>
           <!-- Position Column -->
           <ng-container matColumnDef="date">
             <th
@@ -282,7 +281,8 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-        </table>
+        </table></mat-tab>
+        
       </mat-tab-group>
     </mat-card-content>
   </mat-card>
