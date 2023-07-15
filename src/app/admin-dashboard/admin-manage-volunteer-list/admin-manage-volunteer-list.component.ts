@@ -65,15 +65,9 @@ export class AdminManageVolunteerListComponent implements OnInit {
   }
 
   openDialogEditVolunteerList(userId: number, name: string, lastname: string) {
-    // this.dialog
-    //   .open(ConfirmEditVolunteerListComponent)
-    //   .afterClosed()
-    //   .subscribe((result) => {
-    //     this.get_data();
-    //   });
     Swal.fire({
       title: 'โปรดยืนยัน?',
-      text: 'นำอาสา ' +name+' ' +lastname+' ออกจากรายชื่อ',
+      html: '<b>นำอาสา ' + name + ' ' + lastname + ' ออกจากรายชื่อ<b>',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#27a644',
@@ -89,46 +83,35 @@ export class AdminManageVolunteerListComponent implements OnInit {
           )
           .subscribe({
             next: (data) => {
-              this.get_data()
+              this.get_data();
               console.log('test', data);
-              Swal.fire(
-                'Deleted!',
-                'นำอาสา' +name+' ' +lastname+' ออกจากรายชื่อแล้ว',
-                'success'
-              );
-
             },
           });
-        
       }
     });
-
-    // let data = { userId };
-    // localStorage.setItem('REMOVEVOLUNTEERLIST', JSON.stringify(data));
   }
 
   finish_activity() {
-    this.eventService
-      .finish_activity(this.userActivityId.currentActivityId)
-      .subscribe({
-        next: (data) => {
-          console.warn(data);
-        },
-      });
-    this.settext =
-      'กิจกรรม:' +
-      ' ' +
-      this.userActivityId.currentActivityName +
-      '  ' +
-      'วันที่:' +
-      '  ' +
-      this.userActivityId.date +
-      '  ' +
-      'เสร็จสิ้นกิจกรรม';
-    let message = { text: this.settext };
-    localStorage.setItem('MESSAGE', JSON.stringify(message));
-    this._snackBar.openFromComponent(SnackBarMessageComponent, {
-      duration: this.durationInSeconds * 1000,
+    Swal.fire({
+      title: 'โปรดยืนยัน?',
+      html: '<b>ต้องการเสร็จสิ้นกิจกรรม<b>',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#27a644',
+      cancelButtonColor: '#ff2626',
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eventService
+          .finish_activity(this.userActivityId.currentActivityId)
+          .subscribe({
+            next: (data) => {
+              console.warn(data);
+              this.get_data();
+            },
+          });
+      }
     });
   }
 }
