@@ -1,190 +1,270 @@
 <form name="form" (ngSubmit)="onSubmit()" #f="ngForm">
-  <mat-dialog-content class="mat-typography">
+  <mat-dialog-content class="mat-typography custom-dialog-content">
     <div class="detail-container">
       <div class="detail-container-body">
         <div class="body-pl">
           <div class="detail-text-left-container">
-            <div class="row" style="margin-bottom: 1rem">
-              <label>ชื่อกิจกรรม</label>
-              <input
-                type="text"
-                class="form-control"
-                name="activity_name"
-                [(ngModel)]="form.activity_name"
-                #activity_name="ngModel"
-              />
+            <!-- <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="text"
+                  name="activity_name"
+                  [(ngModel)]="form.activity_name"
+                  #activity_name="ngModel"
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>รายละเอียดกิจกรรม</label>
-              <input
-                type="text"
-                class="form-control"
-                name="activity_details"
-                [(ngModel)]="form.activity_details"
-                #activity_details="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="text"
+                  name="activity_details"
+                  [(ngModel)]="form.activity_details"
+                  #activity_details="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>จำนวนที่เปิดรับสมัคร</label>
-              <input
-                type="number"
-                class="form-control"
-                name="size_number"
-                [(ngModel)]="form.size_number"
-                #size_number="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="number"
+                  name="size_number"
+                  [(ngModel)]="form.size_number"
+                  #size_number="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>จำนวนชั่วโมงที่ได้รับ</label>
-              <input
-                type="number"
-                class="form-control"
-                name="received_hours"
-                [(ngModel)]="form.received_hours"
-                #received_hours="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="number"
+                  name="received_hours"
+                  [(ngModel)]="form.received_hours"
+                  #received_hours="ngModel"
+                  required
+                />
+              </mat-form-field>
+            </div> -->
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  name="activity_name"
+                  [(ngModel)]="form.activity_name"
+                  #activity_name="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>Google map link</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="map"
-                [(ngModel)]="form.map"
-                #map="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  name="activity_details"
+                  [(ngModel)]="form.activity_details"
+                  #activity_details="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>วันที่เริ่ม</label>
-              <input
-                type="date"
-                class="form-control"
-                name="start_date"
-                [(ngModel)]="form.start_date"
-                #start_date="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="number"
+                  class="form-control"
+                  name="size_number"
+                  [(ngModel)]="form.size_number"
+                  #size_number="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>สถานะเปิดรับ</label>
-              <select
-                class="form-control"
-                name="is_open"
-                [(ngModel)]="form.is_open"
-                #is_open="ngModel"
-                required
-              >
-                <option value="" disabled selected>
-                  กรุณาเลือกสถานะเปิดรับสมัคร
-                </option>
-                <option value="true">เปิดรับ</option>
-                <option value="false">ปิดรับ</option>
-              </select>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="number"
+                  class="form-control"
+                  name="received_hours"
+                  [(ngModel)]="form.received_hours"
+                  #received_hours="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>รูป</label>
-              <input
-                type="text"
-                class="form-control"
-                name="picture"
-                [(ngModel)]="form.picture"
-                #picture="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="textarea"
+                  class="form-control"
+                  name="map"
+                  [(ngModel)]="form.map"
+                  #map="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>ความสำคัญ</label>
-              <input
-                type="number"
-                class="form-control"
-                name="priority"
-                [(ngModel)]="form.priority"
-                #priority="ngModel"
-                required
-                min="1"
-                max="3"
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="date"
+                  class="form-control"
+                  name="start_date"
+                  [(ngModel)]="form.start_date"
+                  #start_date="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>เวลาทำกิจกรรม</label>
-              <input
-                type="text"
-                class="form-control"
-                name="time_detail"
-                [(ngModel)]="form.time_detail"
-                #time_detail="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <select
+                  matInput
+                  class="form-control"
+                  name="is_open"
+                  [(ngModel)]="form.is_open"
+                  #is_open="ngModel"
+                  required
+                >
+                  <option value="" disabled selected>
+                    กรุณาเลือกสถานะเปิดรับสมัคร
+                  </option>
+                  <option value="true">เปิดรับ</option>
+                  <option value="false">ปิดรับ</option>
+                </select>
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>การแต่งกาย</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="clothes_detail"
-                [(ngModel)]="form.clothes_detail"
-                #clothes_detail="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  name="picture"
+                  [(ngModel)]="form.picture"
+                  #picture="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>บริการจากมูลนิธิ</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="etc_detail"
-                [(ngModel)]="form.etc_detail"
-                #etc_detail="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="number"
+                  class="form-control"
+                  name="priority"
+                  [(ngModel)]="form.priority"
+                  #priority="ngModel"
+                  required
+                  min="1"
+                  max="3"
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>การเดินทางด้วยรถส่วนตัว</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="travel_detail"
-                [(ngModel)]="form.travel_detail"
-                #travel_detail="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="text"
+                  class="form-control"
+                  name="time_detail"
+                  [(ngModel)]="form.time_detail"
+                  #time_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>เดินทางด้วยรถสาธารณะ</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="travel_public_detail"
-                [(ngModel)]="form.travel_public_detail"
-                #travel_public_detail="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="textarea"
+                  class="form-control"
+                  name="clothes_detail"
+                  [(ngModel)]="form.clothes_detail"
+                  #clothes_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>สิ่งที่อาสาจะได้รับ</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="travel_etc_detail"
-                [(ngModel)]="form.travel_etc_detail"
-                #travel_etc_detail="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="textarea"
+                  class="form-control"
+                  name="etc_detail"
+                  [(ngModel)]="form.etc_detail"
+                  #etc_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>เพิ่มเติม</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="timeline"
-                [(ngModel)]="form.timeline"
-                #timeline="ngModel"
-                required
-              />
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="textarea"
+                  class="form-control"
+                  name="travel_detail"
+                  [(ngModel)]="form.travel_detail"
+                  #travel_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="textarea"
+                  class="form-control"
+                  name="travel_public_detail"
+                  [(ngModel)]="form.travel_public_detail"
+                  #travel_public_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="textarea"
+                  class="form-control"
+                  name="travel_etc_detail"
+                  [(ngModel)]="form.travel_etc_detail"
+                  #travel_etc_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input
+                  matInput
+                  type="textarea"
+                  class="form-control"
+                  name="timeline"
+                  [(ngModel)]="form.timeline"
+                  #timeline="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
           </div>
         </div>
