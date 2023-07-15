@@ -38,7 +38,7 @@
         >
           <mat-expansion-panel-header
             [style.background-color]="event.is_open ? '#0355FF' : ''"
-            [class.white-text]="event_status(event.is_open)"
+            [style.color]="event.is_open ? '#ffffff' : ''"
             style="font-size: large; font-weight: bold"
           >
             <mat-panel-title>
@@ -62,12 +62,13 @@
               margin-top: 1rem;
             "
           >
-            <mat-slide-toggle
-              [(ngModel)]="event.is_open"
-              (click)="update_event_status(event.id, event.is_open)"
-            >
-              สถานะกิจกรรม: {{ status }}
-            </mat-slide-toggle>
+          <mat-slide-toggle
+          [(ngModel)]="event.is_open"
+          (click)="update_event_status(event.id, event.is_open)"
+          class="custom-slide-toggle"
+        >
+          สถานะกิจกรรม: {{ status }}
+        </mat-slide-toggle>
             <button
               mat-button
               (click)="openDialogEditDetail(event.id)"

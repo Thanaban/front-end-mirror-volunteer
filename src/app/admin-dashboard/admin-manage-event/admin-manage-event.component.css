@@ -61,3 +61,8 @@
   .swal2-container-custom {
     width: 70% !important;
   }
+
+  .custom-slide-toggle {
+    font-size: 20px; /* Adjust the font size as per your preference */
+    transform: scale(1.5); /* Adjust the scale factor to increase the size */
+  }
