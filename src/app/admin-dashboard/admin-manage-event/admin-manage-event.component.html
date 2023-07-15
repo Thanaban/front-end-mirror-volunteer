@@ -37,7 +37,7 @@
           (closed)="panelOpenState = false"
         >
         <mat-expansion-panel-header
-        [style.background-color]="event.is_open ? '#00ff7f' : ''"
+        [style.background-color]="event.is_open ? '#A2FFD0' : ''"
         [style.color]="event.is_open ? 'white' : ''"
         style="font-size: large; font-weight: bold"
       >
@@ -65,6 +65,7 @@
           <mat-slide-toggle
               [(ngModel)]="event.is_open"
               (click)="update_event_status(event.id, event.is_open)"
+              style="font-size: x-large;"
             >
               สถานะกิจกรรม: {{ status }}
             </mat-slide-toggle>
