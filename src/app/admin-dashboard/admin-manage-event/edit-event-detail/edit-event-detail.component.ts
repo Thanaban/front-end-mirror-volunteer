@@ -31,15 +31,12 @@ export class EditEventDetailComponent implements OnInit {
     this.event = JSON.parse(data);
     this.activityId = this.event.currentActivityId;
     console.log('activityId' + this.event.currentActivityId);
-    this.http
-      .post(
-        'https://api.volunteerm.online/users/get_one_activity',
-        this.event.currentActivityId
-      )
-      .subscribe((response) => {
-        this.detail = response;
-        console.warn('get_one_activity', response);
-      });
+    this.eventService.get_one_activity(this.event.currentActivityId).subscribe({
+      next: (data) => {
+        console.warn('data',data)
+      },
+      error: (err) => {},
+    });
   }
 
   // onSubmit(): void {

@@ -130,6 +130,8 @@ export class EventService {
     );
   }
 
+  
+
   status_user(id: number, non_blacklist: boolean): Observable<any> {
     return this.http.patch(
       'https://api.volunteerm.online/activities/update_blacklist',
