@@ -9,15 +9,7 @@ import { EventService } from 'src/app/_services/event.service';
   styleUrls: ['./edit-event-detail.component.css'],
 })
 export class EditEventDetailComponent implements OnInit {
-  form: any = {
-    activity_name: null,
-    time_detail: null,
-    clothes_detail: null,
-    map: null,
-    travel_public_detail: null,
-    travel_detail: null,
-    travel_etc_detail: null,
-  };
+  form: any = {};
 
   event: any;
   detail: any;
@@ -34,6 +26,7 @@ export class EditEventDetailComponent implements OnInit {
     this.eventService.get_one_activity(this.event.currentActivityId).subscribe({
       next: (data) => {
         console.warn('data',data)
+        this.form = { ...data };
       },
       error: (err) => {},
     });

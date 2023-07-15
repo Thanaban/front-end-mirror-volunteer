@@ -1,91 +1,292 @@
 <form name="form" #f="ngForm">
-  <mat-dialog-content class="mat-typography">
+  <mat-dialog-content class="mat-typography custom-dialog-content">
     <div class="detail-container">
       <div class="detail-container-body">
         <div class="body-pl">
           <div class="detail-text-left-container">
             <div class="row" style="margin-bottom: 1rem">
-              <label>ชื่อกิจกรรม</label>
-              <input
-                type="text"
-                class="form-control"
-                name="activity_name"
-                [(ngModel)]="form.activity_name"
-                #activity_name="ngModel"
-                value="{{ detail.result.activity_name }}"
-              />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <input
+                  matInput
+                  placeholder="ชื่อกิจกรรม"
+                  type="text"
+                  class="form-control"
+                  name="activity_name"
+                  [(ngModel)]="form.activity_name"
+                  #activity_name="ngModel"
+                  required
+                />
+                <mat-label>ชื่อกิจกรรม</mat-label>
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>เวลาทำกิจกรรม</label>
-              <input
-                type="text"
-                class="form-control"
-                name="time_detail"
-                [(ngModel)]="form.time_detail"
-                #time_detail="ngModel"
-                required
-                value="{{ detail.result.time_detail }}"
-              />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <input
+                  matInput
+                  placeholder="รายละเอียดกิจกรรม"
+                  type="text"
+                  class="form-control"
+                  name="activity_details"
+                  [(ngModel)]="form.activity_details"
+                  #activity_details="ngModel"
+                  required
+                />
+                <mat-label>รายละเอียดกิจกรรม</mat-label>
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>การแต่งกาย</label>
-              <input
-                type="textarea"
-                class="form-control"
-                name="clothes_detail"
-                [(ngModel)]="form.clothes_detail"
-                #clothes_detail="ngModel"
-                required
-                value="{{ detail.result.clothes_detail }}"
-              />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> จำนวนที่เปิดรับ </mat-label>
+                <input
+                  matInput
+                  placeholder="จำนวนที่เปิดรับ"
+                  type="number"
+                  class="form-control"
+                  name="size_number"
+                  [(ngModel)]="form.size_number"
+                  #size_number="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>Google map link</label>
-              <input
-                type="text"
-                class="form-control"
-                name="map"
-                [(ngModel)]="form.map"
-                #map="ngModel"
-                required
-                value="{{ detail.result.map }}"
-              />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> ชั่วโมงที่ได้รับ </mat-label>
+                <input
+                  matInput
+                  placeholder="ชั่วโมงที่ได้รับ"
+                  type="number"
+                  class="form-control"
+                  name="received_hours"
+                  [(ngModel)]="form.received_hours"
+                  #received_hours="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>การเดินทางด้วยรถสาธารณะ</label>
-              <input
-                type="text"
-                class="form-control"
-                name="travel_public_detail"
-                [(ngModel)]="form.travel_public_detail"
-                #travel_public_detail="ngModel"
-                required
-                value="{{ detail.result.travel_public_detail }}"
-              />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> Google map link </mat-label>
+                <input
+                  matInput
+                  placeholder="Google map link"
+                  type="textarea"
+                  class="form-control"
+                  name="map"
+                  [(ngModel)]="form.map"
+                  #map="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>การเดินทางด้วยรถส่วนตัว</label>
-              <input
-                type="text"
-                class="form-control"
-                name="travel_detail"
-                [(ngModel)]="form.travel_detail"
-                #travel_detail="ngModel"
-                required
-                value="{{ detail.result.travel_detail }}"
-              />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> วันที่เริ่ม </mat-label>
+                <input
+                  matInput
+                  placeholder="วันที่เริ่ม"
+                  type="date"
+                  class="form-control"
+                  name="start_date"
+                  [(ngModel)]="form.start_date"
+                  #start_date="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
             <div class="row" style="margin-bottom: 1rem">
-              <label>การเดินทางอื่นๆ</label>
-              <input
-                type="text"
-                class="form-control"
-                name="travel_etc_detail"
-                [(ngModel)]="form.travel_etc_detail"
-                #travel_etc_detail="ngModel"
-                required
-                value="{{ detail.result.travel_etc_detail }}"
-              />
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> วันที่สิ้นสุด </mat-label>
+                <input
+                  matInput
+                  placeholder="วันที่สิ้นสุด"
+                  type="date"
+                  class="form-control"
+                  name="end_date"
+                  [(ngModel)]="form.end_date"
+                  #end_date="ngModel"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>สถานะกิจกรรม</mat-label>
+                <mat-select
+                  placeholder="สถานะกิจกรรม"
+                  name="is_open"
+                  [(ngModel)]="form.is_open"
+                  #is_open="ngModel"
+                  required
+                >
+                  <mat-option value="" disabled> สถานะกิจกรรม </mat-option>
+                  <mat-option value="true">เปิดรับ</mat-option>
+                  <mat-option value="false">ปิดรับ</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> รูป </mat-label>
+                <input
+                  matInput
+                  placeholder="รูป"
+                  type="text"
+                  class="form-control"
+                  name="picture"
+                  [(ngModel)]="form.picture"
+                  #picture="ngModel"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> ความสำคัญ </mat-label>
+                <input
+                  matInput
+                  placeholder="ความสำคัญ"
+                  type="number"
+                  class="form-control"
+                  name="priority"
+                  [(ngModel)]="form.priority"
+                  #priority="ngModel"
+                  required
+                  min="1"
+                  max="3"
+                />
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>เวลาทำกิจกรรม</mat-label>
+                <mat-select
+                  placeholder="เวลาทำกิจกรรม"
+                  name="time_detail"
+                  [(ngModel)]="form.time_detail"
+                  #time_detail="ngModel"
+                  required
+                >
+                  <mat-option value="" disabled>Select time</mat-option>
+                  <mat-option value="09:00 - 16:00">09:00 - 16:00</mat-option>
+                  <mat-option value="08:00 - 15:00">08:00 - 15:00</mat-option>
+                  <mat-option value="10:00 - 17:00">10:00 - 17:00</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>การแต่งกาย</mat-label>
+                <mat-select
+                  placeholder="การแต่งกาย"
+                  name="clothes_detail"
+                  [(ngModel)]="form.clothes_detail"
+                  #clothes_detail="ngModel"
+                  required
+                >
+                  <mat-option value="" disabled
+                    >Select clothing details</mat-option
+                  >
+                  <mat-option value="casual">Casual</mat-option>
+                  <mat-option value="formal">Formal</mat-option>
+                  <mat-option value="sportswear">Sportswear</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> บริการจากมูลนิธิ </mat-label>
+                <input
+                  matInput
+                  placeholder="บริการจากมูลนิธิ"
+                  type="textarea"
+                  class="form-control"
+                  name="etc_detail"
+                  [(ngModel)]="form.etc_detail"
+                  #etc_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>เดินทางด้วยรถส่วนตัว</mat-label>
+                <mat-select
+                  placeholder="เดินทางด้วยรถส่วนตัว"
+                  name="travel_detail"
+                  [(ngModel)]="form.travel_detail"
+                  #travel_detail="ngModel"
+                  required
+                >
+                  <mat-option value="" disabled
+                    >Select travel details</mat-option
+                  >
+                  <mat-option
+                    value="ให้ปักหมุดมายัง Mirror Art เลขที่ 143/19 ถนนแจ้งวัฒนะซอยแจ้งวัฒนะ1แยก6 แขวงตลาดบางเขน เขตหลักสี่ กรุงเทพมหานคร 10210"
+                    >ให้ปักหมุดมายัง Mirror Art เลขที่ 143/19
+                    ถนนแจ้งวัฒนะซอยแจ้งวัฒนะ1แยก6 แขวงตลาดบางเขน เขตหลักสี่
+                    กรุงเทพมหานคร 10210</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>เดินทางด้วยรถสาธารณะ</mat-label>
+                <mat-select
+                  placeholder="เลือกวิธีการเดินทาง"
+                  class="form-control"
+                  name="travel_public_detail"
+                  [(ngModel)]="form.travel_public_detail"
+                  #travel_public_detail="ngModel"
+                  required
+                >
+                  <mat-option value="" disabled>เลือกวิธีการเดินทาง</mat-option>
+                  <mat-option
+                    value="1.โดยสารรถไฟฟ้า BTS
+                  ลงสถานีปลายทางวัดพระศรีมหาธาตุหรือสารรถไฟฟ้าใต้ดิน MRT
+                  ลงสถานีปลายทางจตุจักร 2.ต่อรถเมล์สาย -สาย
+                  510(ไม่ขึ้นทางด่วน)โดยขึ้นฝั่งเดียวกันกับสวนจตุจักรลงป้ายหน้าโรงแรมมิราเคิล(กรณีมาจากฝั่งรังสิตให้ลงป้ายรถเมล์
+                  โรงเรียนผไทอุดมศึกษา) ต่อรถเมล์สาย 51 โดยขึ้นฝั่ง
+                  ม.เกษตรศาสตร์ลงป้ายตรงข้ามโรงเรียนเจริญผลต่อรถเมล์สาย 95ก
+                  โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผลต่อรถเมล์สาย
+                  ปอ.150
+                  โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผล
+                  3.ข้ามสะพานลอย เดินมาปากซอยวิภาวดี64
+                  ต่อวินมอเตอร์ไซต์แจ้งว่าจะไปมูลนิธิกระจกเงาซอยแจ้งวัฒนะ1
+                  แยก6"
+                    >1.โดยสารรถไฟฟ้า BTS
+                    ลงสถานีปลายทางวัดพระศรีมหาธาตุหรือสารรถไฟฟ้าใต้ดิน MRT
+                    ลงสถานีปลายทางจตุจักร 2.ต่อรถเมล์สาย -สาย
+                    510(ไม่ขึ้นทางด่วน)โดยขึ้นฝั่งเดียวกันกับสวนจตุจักรลงป้ายหน้าโรงแรมมิราเคิล(กรณีมาจากฝั่งรังสิตให้ลงป้ายรถเมล์
+                    โรงเรียนผไทอุดมศึกษา) ต่อรถเมล์สาย 51 โดยขึ้นฝั่ง
+                    ม.เกษตรศาสตร์ลงป้ายตรงข้ามโรงเรียนเจริญผลต่อรถเมล์สาย 95ก
+                    โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผลต่อรถเมล์สาย
+                    ปอ.150
+                    โดยขึ้นจากท่ารถแฮปปี้แลนด์ลงป้ายตรงข้ามโรงเรียนเจริญผล
+                    3.ข้ามสะพานลอย เดินมาปากซอยวิภาวดี64
+                    ต่อวินมอเตอร์ไซต์แจ้งว่าจะไปมูลนิธิกระจกเงาซอยแจ้งวัฒนะ1
+                    แยก6</mat-option
+                  >
+
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="row" style="margin-bottom: 1rem">
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label> สิ่งที่อาสาจะได้รับ </mat-label>
+                <input
+                  matInput
+                  placeholder="สิ่งที่อาสาจะได้รับ"
+                  type="textarea"
+                  class="form-control"
+                  name="travel_etc_detail"
+                  [(ngModel)]="form.travel_etc_detail"
+                  #travel_etc_detail="ngModel"
+                  required
+                />
+              </mat-form-field>
             </div>
           </div>
         </div>
@@ -100,6 +301,7 @@
       class="register"
       value="ลงทะเบียน"
       style="background-color: #27a644; color: #fff"
+      
     >
       แก้ไข
     </button>
