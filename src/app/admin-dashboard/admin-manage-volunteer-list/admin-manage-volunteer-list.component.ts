@@ -58,7 +58,7 @@ export class AdminManageVolunteerListComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.VolunteerList = data;
-          this.dataSource.data = this.VolunteerList; 
+          this.dataSource.data = this.VolunteerList;
           console.log('test', this.VolunteerList);
         },
       });
@@ -92,27 +92,14 @@ export class AdminManageVolunteerListComponent implements OnInit {
   }
 
   finish_activity() {
-    Swal.fire({
-      title: 'โปรดยืนยัน?',
-      html: '<b>ต้องการเสร็จสิ้นกิจกรรม<b>',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#27a644',
-      cancelButtonColor: '#ff2626',
-      confirmButtonText: 'ยืนยัน',
-      cancelButtonText: 'ยกเลิก',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.eventService
-          .finish_activity(this.userActivityId.currentActivityId)
-          .subscribe({
-            next: (data) => {
-              console.warn(data);
-              this.get_data(); // Update the data
-              this.dialogRef.close(); // Close the dialog
-            },
-          });
-      }
-    });
+    this.eventService
+      .finish_activity(this.userActivityId.currentActivityId)
+      .subscribe({
+        next: (data) => {
+          console.warn(data);
+          this.get_data(); // Update the data
+          this.dialogRef.close(); // Close the dialog
+        },
+      });
   }
 }
