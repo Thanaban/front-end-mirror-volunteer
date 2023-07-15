@@ -39,9 +39,11 @@ export class CertificateComponent implements OnInit {
 
       PDF.addImage(FILE_URI, 'PNG', 0, -6.5, fileWidth, fileHeight);
 
+      const filename = this.certi_data.currentUser.result.name + '_certificate.pdf';
       const pdfBytes = PDF.output('arraybuffer');
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-      saveAs(blob, 'angular-demo.pdf');
+      saveAs(blob, filename);
+
     });
   }
 
