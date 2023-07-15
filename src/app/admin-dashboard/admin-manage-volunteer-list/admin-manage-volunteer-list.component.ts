@@ -97,8 +97,6 @@ export class AdminManageVolunteerListComponent implements OnInit {
       .subscribe({
         next: (data) => {
           console.warn(data);
-          this.get_data(); // Update the data
-          this.dialogRef.close(); // Close the dialog
         },
       });
   }

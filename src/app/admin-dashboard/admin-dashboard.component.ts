@@ -92,7 +92,7 @@ export class AdminDashboardComponent implements OnInit {
     this.http
       .get('https://api.volunteerm.online/activities/ended_activity')
       .subscribe((response3) => {
-        console.warn('ended_activity', response3);
+        console.warn('ended_activity',response3)
         this.eventEndActivity = response3;
         for (let i = 0; i < this.eventEndActivity.length; i++) {
           this.eventEndActivity[i].date = this.con_date(
@@ -105,6 +105,7 @@ export class AdminDashboardComponent implements OnInit {
         );
       });
   }
+
 
   con_date(d: any) {
     d = d.split('-');
@@ -126,19 +127,20 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   openDialogEditVolunteerList(
-    currentActivityId: number,
-    currentActivityName: string,
-    date: string
-  ) {
-    const dialogRef = this.dialog.open(AdminManageVolunteerListComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.getDataOnGoingActivity();
-      }
+  currentActivityId: number,
+  currentActivityName: string,
+  date: string
+) {
+  this.dialog
+    .open(AdminManageVolunteerListComponent)
+    .afterClosed()
+    .subscribe((result) => {
+      this.getDataOnGoingActivity();
     });
 
-    let data = { currentActivityId, currentActivityName, date };
-    localStorage.setItem('ADMINEVENT', JSON.stringify(data));
-  }
+  let data = { currentActivityId, currentActivityName, date };
+  localStorage.setItem('ADMINEVENT', JSON.stringify(data));
+}
+
+
 }
