@@ -36,16 +36,15 @@
           (opened)="panelOpenState = true"
           (closed)="panelOpenState = false"
         >
-          <mat-expansion-panel-header style="font-size:large;font-weight: bold;">
-            <mat-panel-title>
-              กิจกรรม : {{ event.activity_name
-              }}{{ event_status(event.is_open) }}
-            </mat-panel-title>
-            <mat-panel-description>
-              สถานะ : {{ status }}
-              <!-- {{panelOpenState ? 'open' : 'closed'}} -->
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+        <mat-expansion-panel-header [style.background-color]="event.is_open ? '#27a644' : ''" style="font-size:large;font-weight: bold;">
+          <mat-panel-title>
+            กิจกรรม : {{ event.activity_name }}
+            {{ event_status(event.is_open) }}
+          </mat-panel-title>
+          <mat-panel-description>
+            สถานะ : {{ status }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
           <img
             src="{{ event.picture }}"
             style="width: 30%; border-radius: 10px; margin: 1rem"
