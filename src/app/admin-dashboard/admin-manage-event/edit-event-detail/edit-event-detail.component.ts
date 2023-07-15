@@ -32,9 +32,9 @@ export class EditEventDetailComponent implements OnInit {
     this.activityId = this.event.currentActivityId;
     console.log('activityId' + this.event.currentActivityId);
     this.http
-      .post<Event_show[]>(
+      .post(
         'https://api.volunteerm.online/users/get_one_activity',
-          this.event.currentActivityId
+        this.event.currentActivityId
       )
       .subscribe((response) => {
         this.detail = response;
@@ -42,35 +42,35 @@ export class EditEventDetailComponent implements OnInit {
       });
   }
 
-  onSubmit(): void {
-    const {
-      id,
-      activity_name,
-      time_detail,
-      clothes_detail,
-      map,
-      travel_public_detail,
-      travel_detail,
-      travel_etc_detail,
-    } = this.form;
+  // onSubmit(): void {
+  //   const {
+  //     id,
+  //     activity_name,
+  //     time_detail,
+  //     clothes_detail,
+  //     map,
+  //     travel_public_detail,
+  //     travel_detail,
+  //     travel_etc_detail,
+  //   } = this.form;
 
-    this.eventService
-      .update_activity(
-        this.activityId,
-        activity_name,
-        time_detail,
-        clothes_detail,
-        map,
-        travel_public_detail,
-        travel_detail,
-        travel_etc_detail
-      )
-      .subscribe({
-        next: (data) => {},
-        error: (err) => {},
-      });
-    this.reloadPage();
-  }
+  //   this.eventService
+  //     .update_activity(
+  //       this.activityId,
+  //       activity_name,
+  //       time_detail,
+  //       clothes_detail,
+  //       map,
+  //       travel_public_detail,
+  //       travel_detail,
+  //       travel_etc_detail
+  //     )
+  //     .subscribe({
+  //       next: (data) => {},
+  //       error: (err) => {},
+  //     });
+  //   this.reloadPage();
+  // }
   reloadPage(): void {
     window.location.reload();
   }
