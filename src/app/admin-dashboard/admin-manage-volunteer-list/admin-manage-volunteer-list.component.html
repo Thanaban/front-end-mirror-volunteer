@@ -54,7 +54,7 @@
           >
             อายุ
           </th>
-          <td mat-cell *matCellDef="let element">{{ element.birthday }}</td>
+          <td mat-cell *matCellDef="let element">{{ calculateAge(element.birthday) }}</td>
         </ng-container>
 
         <ng-container matColumnDef="religion">
