@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Event_show } from '../../../openevent/openevent-request-get';
 import { EventService } from 'src/app/_services/event.service';
 
 @Component({
@@ -35,54 +33,56 @@ export class AddEventComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit(): void {
-    // const {
-    //   activity_name,
-    //   activity_details,
-    //   clothes_detail,
-    //   etc_detail,
-    //   time_detail,
-    //   timeline,
-    //   travel_detail,
-    //   travel_etc_detail,
-    //   travel_public_detail,
-    //   regised_number,
-    //   size_number,
-    //   received_hours,
-    //   map,
-    //   start_date,
-    //   end_date,
-    //   is_open,
-    //   picture,
-    //   priority,
-    // } = this.form;
-
-    // this.eventService
-    //   .create_activity(
-    //     activity_name,
-    //     activity_details,
-    //     clothes_detail,
-    //     etc_detail,
-    //     time_detail,
-    //     timeline,
-    //     travel_detail,
-    //     travel_etc_detail,
-    //     travel_public_detail,
-    //     regised_number,
-    //     size_number,
-    //     received_hours,
-    //     map,
-    //     start_date,
-    //     end_date,
-    //     picture,
-    //     priority
-    //   )
-    //   .subscribe({
-    //     next: (data) => {},
-    //     error: (err) => {},
-    //   });
-    // this.reloadPage();
+  confirm_create() {
+    const {
+      activity_name,
+      activity_details,
+      size_number,
+      received_hours,
+      map,
+      start_date,
+      end_date,
+      is_open,
+      picture,
+      priority,
+      time_detail,
+      clothes_detail,
+      etc_detail,
+      travel_detail,
+      travel_public_detail,
+      travel_etc_detail
+    } = this.form;
+  
+    this.eventService.create_activity(
+      activity_name,
+      activity_details,
+      size_number,
+      received_hours,
+      map,
+      start_date,
+      end_date,
+      is_open,
+      picture,
+      priority,
+      time_detail,
+      clothes_detail,
+      etc_detail,
+      travel_detail,
+      travel_public_detail,
+      travel_etc_detail
+    ).subscribe({
+      next: (data) => {
+        // Handle success
+        console.log('Activity created successfully');
+        this.reloadPage();
+      },
+      error: (err) => {
+        // Handle error
+        console.error('Error creating activity:', err);
+      }
+    });
   }
+
   reloadPage(): void {
     window.location.reload();
   }

@@ -139,6 +139,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     MatFormFieldModule,
     MatTooltipModule,
     MatToolbarModule,
+    MatFormFieldModule,
     NgbModule
   ],
   providers: [httpInterceptorProviders],

@@ -14,6 +14,9 @@ import { EditEventDetailComponent } from './edit-event-detail/edit-event-detail.
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddEventComponent } from './add-event/add-event.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -33,7 +36,11 @@ import { MatButtonModule } from '@angular/material/button';
     MatSlideToggleModule,
     FormsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule ,
+    MatSelectModule
   ]
 })
 export class AdminManageEventModule { }

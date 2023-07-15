@@ -95,6 +95,7 @@ export class EventService {
     received_hours: number,
     map: string,
     start_date: Date,
+    end_date:Date,
     is_open:boolean,
     picture: string,
     priority: number,
@@ -104,8 +105,6 @@ export class EventService {
     travel_detail: string,
     travel_public_detail: string,
     travel_etc_detail: string,
-    timeline: string,
-    
   ): Observable<any> {
     return this.http.post(
       'https://api.volunteerm.online/activities/createActivity',
@@ -116,6 +115,7 @@ export class EventService {
         received_hours,
         map,
         start_date,
+        end_date,
         is_open,
         picture,
         priority,
@@ -125,7 +125,6 @@ export class EventService {
         travel_detail,
         travel_public_detail,
         travel_etc_detail,
-        timeline
       },
       httpOptions
     );
