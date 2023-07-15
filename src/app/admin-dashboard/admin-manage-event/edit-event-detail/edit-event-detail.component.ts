@@ -32,13 +32,13 @@ export class EditEventDetailComponent implements OnInit {
     this.activityId = this.event.currentActivityId;
     console.log('activityId' + this.event.currentActivityId);
     this.http
-      .get<Event_show[]>(
-        'https://api.volunteerm.online/activities/getoneid/' +
+      .post<Event_show[]>(
+        'https://api.volunteerm.online/users/get_one_activity',
           this.event.currentActivityId
       )
       .subscribe((response) => {
         this.detail = response;
-        console.warn('result', response);
+        console.warn('get_one_activity', response);
       });
   }
 
