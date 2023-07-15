@@ -63,6 +63,7 @@ export class EventService {
   }
 
   update_activity(
+    id:number,
     activity_name: string,
     activity_details: string,
     size_number: number,
@@ -83,6 +84,7 @@ export class EventService {
     return this.http.patch(
       'https://api.volunteerm.online/activities/update_activity',
       {
+        id,
         activity_name,
         activity_details,
         size_number,

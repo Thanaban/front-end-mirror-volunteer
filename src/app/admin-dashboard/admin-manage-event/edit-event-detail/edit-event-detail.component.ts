@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Event_show } from '../../../openevent/openevent-request-get';
 import { EventService } from 'src/app/_services/event.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-event-detail',
@@ -16,7 +17,11 @@ export class EditEventDetailComponent implements OnInit {
   eventlist: Event_show[] = [];
   activityId: any;
 
-  constructor(private http: HttpClient, private eventService: EventService) {}
+  constructor(
+    private http: HttpClient,
+    private eventService: EventService,
+    public dialogRef: MatDialogRef<EditEventDetailComponent>
+  ) {}
 
   ngOnInit(): void {
     let data: any = localStorage.getItem('EVENT');
@@ -36,6 +41,7 @@ export class EditEventDetailComponent implements OnInit {
     if (this.form) {
       this.eventService
         .update_activity(
+          this.event.currentActivityId,
           this.form.activity_name,
           this.form.activity_details,
           this.form.size_number,
@@ -57,6 +63,7 @@ export class EditEventDetailComponent implements OnInit {
           next: (response) => {
             console.log('Activity updated successfully:', response);
             // Perform any additional actions after the activity is updated
+            this.dialogRef.close();
           },
           error: (error) => {
             console.error('Error updating activity:', error);
