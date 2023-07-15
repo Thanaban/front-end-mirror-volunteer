@@ -18,7 +18,7 @@ export class AdminManageVolunteerListComponent implements OnInit {
   constructor(
     private eventService: EventService,
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<ConfirmEditVolunteerListComponent>,
+    public dialogRef: MatDialogRef<AdminManageVolunteerListComponent>,
     private _snackBar: MatSnackBar
   ) {}
 
@@ -108,9 +108,8 @@ export class AdminManageVolunteerListComponent implements OnInit {
           .subscribe({
             next: (data) => {
               console.warn(data);
-              setTimeout(() => {
-                this.get_data(); // Delay the call to get_data() to allow time for the backend update
-              }, 1000); // Adjust the delay time as needed
+              this.get_data(); // Update the data
+              this.dialogRef.close(); // Close the dialog
             },
           });
       }
