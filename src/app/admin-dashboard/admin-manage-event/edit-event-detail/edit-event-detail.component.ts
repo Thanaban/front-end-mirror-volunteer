@@ -37,7 +37,7 @@ export class EditEventDetailComponent implements OnInit {
       error: (err) => {},
     });
   }
-
+  
   updateActivity() {
     if (this.form) {
       this.eventService
