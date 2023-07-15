@@ -63,25 +63,41 @@ export class EventService {
   }
 
   update_activity(
-    id: number,
     activity_name: string,
+    activity_details: string,
+    size_number: number,
+    received_hours: number,
+    map: string,
+    start_date: Date,
+    end_date:Date,
+    is_open:boolean,
+    picture: string,
+    priority: number,
     time_detail: string,
     clothes_detail: string,
-    map: string,
-    travel_public_detail: string,
+    etc_detail: string,
     travel_detail: string,
-    travel_etc_detail: string
+    travel_public_detail: string,
+    travel_etc_detail: string,
   ): Observable<any> {
     return this.http.patch(
       'https://api.volunteerm.online/activities/update_activity',
       {
-        id,
         activity_name,
+        activity_details,
+        size_number,
+        received_hours,
+        map,
+        start_date,
+        end_date,
+        is_open,
+        picture,
+        priority,
         time_detail,
         clothes_detail,
-        map,
-        travel_public_detail,
+        etc_detail,
         travel_detail,
+        travel_public_detail,
         travel_etc_detail,
       },
       httpOptions

@@ -25,11 +25,45 @@ export class EditEventDetailComponent implements OnInit {
     console.log('activityId' + this.event.currentActivityId);
     this.eventService.get_one_activity(this.event.currentActivityId).subscribe({
       next: (data) => {
-        console.warn('data',data)
+        console.warn('data', data);
         this.form = { ...data };
       },
       error: (err) => {},
     });
+  }
+
+  updateActivity() {
+    if (this.form) {
+      this.eventService
+        .update_activity(
+          this.form.activity_name,
+          this.form.activity_details,
+          this.form.size_number,
+          this.form.received_hours,
+          this.form.map,
+          this.form.start_date,
+          this.form.end_date,
+          this.form.is_open,
+          this.form.picture,
+          this.form.priority,
+          this.form.time_detail,
+          this.form.clothes_detail,
+          this.form.etc_detail,
+          this.form.travel_detail,
+          this.form.travel_public_detail,
+          this.form.travel_etc_detail
+        )
+        .subscribe({
+          next: (response) => {
+            console.log('Activity updated successfully:', response);
+            // Perform any additional actions after the activity is updated
+          },
+          error: (error) => {
+            console.error('Error updating activity:', error);
+            // Handle any errors that occur during the update process
+          },
+        });
+    }
   }
 
   // onSubmit(): void {
