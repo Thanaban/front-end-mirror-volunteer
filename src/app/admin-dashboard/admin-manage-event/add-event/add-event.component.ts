@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { EventService } from 'src/app/_services/event.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-event',
@@ -29,7 +31,7 @@ export class AddEventComponent implements OnInit {
     priority: null,
   };
 
-  constructor(private eventService: EventService) {}
+  constructor(private eventService: EventService,public dialogRef: MatDialogRef<AddEventComponent>) {}
 
   ngOnInit(): void {}
 
@@ -74,7 +76,12 @@ export class AddEventComponent implements OnInit {
       next: (data) => {
         // Handle success
         console.log('Activity created successfully');
-        this.reloadPage();
+        this.dialogRef.close();
+        Swal.fire(
+          'สำเร็จ',
+          'แก้ไขกิจกรรมเสร็จสิ้น',
+          'success'
+        )
       },
       error: (err) => {
         // Handle error

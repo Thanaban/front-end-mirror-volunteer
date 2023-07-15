@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Event_show } from '../../../openevent/openevent-request-get';
 import { EventService } from 'src/app/_services/event.service';
 import { MatDialogRef } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-event-detail',
@@ -62,12 +63,15 @@ export class EditEventDetailComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Activity updated successfully:', response);
-            // Perform any additional actions after the activity is updated
             this.dialogRef.close();
+            Swal.fire(
+              'สำเร็จ',
+              'แก้ไขกิจกรรมเสร็จสิ้น',
+              'success'
+            )
           },
           error: (error) => {
             console.error('Error updating activity:', error);
-            // Handle any errors that occur during the update process
           },
         });
     }
