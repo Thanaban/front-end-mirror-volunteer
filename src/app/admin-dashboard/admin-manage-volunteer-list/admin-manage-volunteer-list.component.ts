@@ -58,7 +58,7 @@ export class AdminManageVolunteerListComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.VolunteerList = data;
-          this.dataSource = new MatTableDataSource(this.VolunteerList);
+          this.dataSource.data = this.VolunteerList; 
           console.log('test', this.VolunteerList);
         },
       });
