@@ -1,145 +1,145 @@
 <mat-dialog-content class="mat-typography custom-dialog-content">
-<mat-card>
-  <mat-card-content>
-    <mat-form-field style="width: 100%">
-      <input
-        matInput
-        (keyup)="applyFilter($event)"
-        placeholder="ค้นหา"
-        #input
-      />
-    </mat-form-field>
-    <table mat-table [dataSource]="dataSource" matSort>
-      <!-- Position Column -->
-      <ng-container matColumnDef="name">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="
-            background-color: #0355ff;
-            color: #ffffff;
-            font-family: 'Kanit';
-            font-size: large;
-            font-weight: bold;
-          "
-        >
-          ชื่อ-นามสกุล
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.name }} {{ element.lastname }}
-        </td>
-      </ng-container>
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field style="width: 100%">
+        <input
+          matInput
+          (keyup)="applyFilter($event)"
+          placeholder="ค้นหา"
+          #input
+        />
+      </mat-form-field>
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="
+              background-color: #0355ff;
+              color: #ffffff;
+              font-family: 'Kanit';
+              font-size: large;
+              font-weight: bold;
+            "
+          >
+            ชื่อ-นามสกุล
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.name }} {{ element.lastname }}
+          </td>
+        </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="gender">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="background-color: #0355ff; color: #ffffff"
-        >
-          เพศ
-        </th>
-        <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
-      </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="gender">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            เพศ
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+        </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="birthday">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="background-color: #0355ff; color: #ffffff"
-        >
-          อายุ
-        </th>
-        <td mat-cell *matCellDef="let element">{{ element.birthday }}</td>
-      </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="birthday">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            อายุ
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.birthday }}</td>
+        </ng-container>
 
-      <ng-container matColumnDef="religion">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="background-color: #0355ff; color: #ffffff"
-        >
-          ศาสนา
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.religion }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="religion">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            ศาสนา
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.religion }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="phoneNumber">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="background-color: #0355ff; color: #ffffff"
-        >
-          เบอร์โทร
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.phoneNumber }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="phoneNumber">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            เบอร์โทร
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.phoneNumber }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="career">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="background-color: #0355ff; color: #ffffff"
-        >
-          อาชีพ
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.congenitalDisease }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="career">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            อาชีพ
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.congenitalDisease }}
+          </td>
+        </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="congenitalDisease">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="background-color: #0355ff; color: #ffffff"
-        >
-          โรคประจำตัว
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.congenitalDisease }}
-        </td>
-      </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="congenitalDisease">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            โรคประจำตัว
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.congenitalDisease }}
+          </td>
+        </ng-container>
 
-      <ng-container matColumnDef="allergicFood">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          mat-sort-header
-          style="background-color: #0355ff; color: #ffffff"
-        >
-          อาหารที่แพ้
-        </th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.allergicFood }}
-        </td>
-      </ng-container>
+        <ng-container matColumnDef="allergicFood">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            style="background-color: #0355ff; color: #ffffff"
+          >
+            อาหารที่แพ้
+          </th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.allergicFood }}
+          </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-    <mat-dialog-actions align="end">
-      <button
-        mat-button
-        mat-dialog-close
-        style="background-color: #ff2626; color: #fff"
-      >
-        ปิดหน้านี้
-      </button>
-    </mat-dialog-actions>
-  </mat-card-content>
-</mat-card>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  <mat-dialog-actions align="end">
+    <button
+      mat-button
+      mat-dialog-close
+      style="background-color: #ff2626; color: #fff"
+    >
+      ปิดหน้านี้
+    </button>
+  </mat-dialog-actions>
 </mat-dialog-content>
