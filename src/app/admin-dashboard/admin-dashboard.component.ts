@@ -135,8 +135,11 @@ export class AdminDashboardComponent implements OnInit {
       .open(AdminManageVolunteerListComponent)
       .afterClosed()
       .subscribe((result) => {
-        this.getDataOnGoingActivity();
+        if (result) {
+          this.getDataOnGoingActivity();
+        }
       });
+  
     let data = { currentActivityId, currentActivityName, date };
     localStorage.setItem('ADMINEVENT', JSON.stringify(data));
   }
